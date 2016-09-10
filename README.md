@@ -15,6 +15,10 @@ You can create action links where each link can be associated with a workflow de
 
 The system enables you to easly get visitors supporting most of market leader social media authentication systems (e.g. Facebook, Google, Microsoft, Twitter, ...) or even using custom form subscriptions. Furthermore, it contains a business tagging system which enables you to add/remove (colored) tags from your contacts and send newsletters or perform some business operation based on your business tag-based rules. For instance, when a user click your YouTube video link, you can add a business tag with the name 'He/she has seen the 1st video'.
 
+## Newsletter Management
+
+You can send newsletters specifying a group of contacts or even business tag filters.
+
 ## Design Goals
 
 - Project Management
