@@ -11,7 +11,9 @@ Partnerinfo is an Online Marketing System with modern SPA-based CMS services (cl
 
 You can create action links where each link can be associated with a workflow defined by you. You can add a custom URI segment to the end of action links to make those user-friendly, moreover, you can also specify a contact to be able to measure even an action link shared on a social media site with your friends or girl-friends :-)
 
-Partnerinfo 
+## Contact Management
+
+The system enables you to easly get visitors supporting most of market leader social media authentication systems (e.g. Facebook, Google, Microsoft, Twitter, ...) or even using custom form subscriptions. Furthermore, it contains a business tagging system which enables you to add/remove tag to your contacts and send newsletters or perform any other business operation based on your business rules.
 
 ## Design Goals
 
