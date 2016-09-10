@@ -9,7 +9,7 @@ Partnerinfo is an Online Marketing System with modern SPA-based CMS services (cl
 
 ## Action Links
 
-You can create action links where each link can be associated with a workflow defined by you. You can add a custom URI segment to the end of action links to make those user-friendly, moreover, you can also specify a contact to be able to measure even an action link shared on a social media site with your friends or girl-friends :-)
+You can create action links where each link can be associated with a workflow defined by you. You can add a custom URI segment to the end of action links to make those user-friendly, moreover, you can also specify a contact to be able to measure user-specific events outside of your system pages. You can even share an action link with your girl friend on a social media site to get info about what she is doing now :-)
 
 ## Contact Management
 
