@@ -7,6 +7,10 @@ Partnerinfo is an Online Marketing System with modern SPA-based CMS services (cl
 - Standard control flow & business activities (sequence, condition, redirect, schedule, subscribe, sendMail, tagging, ...)
 - HTML-based workflow activity designer for marketing specialists
 
+## Action Links
+
+You can create action links where each link can be associated with a workflow defined by you. You can add a custom URI segment to the end of action links to make those user-friendly, moreover, you can also specify a contact for a link to be able to measure even a link shared on a social media site with your friend :-)
+
 Partnerinfo 
 
 ## Design Goals
