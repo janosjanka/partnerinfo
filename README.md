@@ -3,8 +3,8 @@ Partnerinfo is an Online Marketing System with modern SPA-based CMS services (cl
 
 ## Lightweight Workflow Engine & Activity Designer
 
-- Extensible workflow engine developed for fast web actions
-- Standard Control Flow & Business Activities (sequence, condition, redirect, schedule, subscribe, sendMail, tagging, ...)
+- Extensible workflow engine developed for fast, performance-critical web actions
+- Standard control flow & business activities (sequence, condition, redirect, schedule, subscribe, sendMail, tagging, ...)
 - HTML-based workflow activity designer for marketing specialists
 
 Partnerinfo 
