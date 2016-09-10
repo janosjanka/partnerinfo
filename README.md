@@ -1,5 +1,5 @@
 # Partnerinfo
-Partnerinfo is an Online Marketing System with modern SPA-based CMS services (client-side routing, JavaScript modules, blazing fast, modern web designer, ...). In contrast to most of online marketing systems, it does not contain any built-in business functions, instead, everybody itself can create business activities and use those without extra efforts.
+Partnerinfo is an Online Marketing System with modern SPA-based CMS services (client-side routing, JavaScript modules, blazing fast, modern web designer, ...). In contrast to most of online marketing systems, it does not force you to use any built-in, unchangable business functions. You are totally free to define your own business activities and build business workflows for your web actions.
 
 ## Design Goals
 
