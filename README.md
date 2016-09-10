@@ -17,7 +17,10 @@ The system enables you to easily get visitors supporting most of market leader s
 
 ## Newsletter Management
 
-Marketing specialists can send an arbitrary number of newsletters specifying a group of contacts or even business tag filters. Both token replacement and background processing are supported.
+You can send an arbitrary number of newsletters specifying a group of contacts or even business tag filters. Both token replacement and background processing are supported.
+
+## Content Management
+
 
 ## Design Goals
 
