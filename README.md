@@ -23,7 +23,7 @@ You can send an arbitrary number of newsletters specifying a group of contacts o
 
 ## Content Management
 
-You can easily create both layout and landing pages with a few clicks as you can do it in most of content management systems. This is not a big deal :-) The most important thing is that Partnerinfo uses pure JavaScript modules instead of slow server-side modules. If you are used to develop strongly JavaScript-based SPA applications, you will prefer a more user-experience oriented module system to legacy (server-side rendered) CMS modules. We created a few useful modules that can help you create modern web applications for your business with a minimal badget.
+You can easily create both layout and landing pages with a few clicks as you can do it in most of content management systems. This is not a big deal :-) The most important thing is that Partnerinfo uses pure JavaScript modules instead of slow server-side modules. If you are used to develop strongly JavaScript-based SPA applications, you will prefer a more user-experience oriented module system to legacy (server-side rendered) CMS modules. We created a few useful modules that can help you create modern web applications for your business with a minimal budget.
 
 ## Logging & Rule-based filters
 
