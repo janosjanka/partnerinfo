@@ -15,7 +15,7 @@ You can even add a custom URI segment to the end of action links to make those u
 
 ## Contact Management & Tagging
 
-The system enables you to easily get visitors supporting most of market leader social media authentication systems (e.g. Facebook, Google, Microsoft, Twitter, ...) or even using custom form subscriptions. Furthermore, it contains a business tagging system which enables you to add/remove (colored) tags from your contacts and send newsletters or perform some business operation based on your business tag-based rules. For instance, when someone clicks your YouTube video on your page, you can add a business tag 'He/she has seen the 1st video' to the contact with a redirect action to the next video page.
+The system enables you to easily get visitors supporting most of market leader social media authentication systems (e.g. Facebook, Google, Microsoft, Twitter, ...) or even using custom forms. Furthermore, it contains a business tagging system which enables you to add/remove (colored) tags from your contacts and send newsletters or perform some business operation based on your business tag-based rules. For instance, when someone clicks your YouTube video on your page, you can add a business tag 'He/she has seen the 1st video' extending it with a redirect action to the next video page. No hard-coded business actions !!!
 
 ## Newsletter Management
 
