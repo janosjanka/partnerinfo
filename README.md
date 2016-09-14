@@ -28,3 +28,5 @@ You can easily create both layout and landing pages with a few clicks as you can
 ## Logging & Rule-based filters
 
 ## Collaboration
+
+Similarly to Google Drive services, Partnerinfo also supports collaboration. One or more people can work on a project or site using ACL-based security. Each shareable resource can be associated with an Accesss Control List that defines who & what can do with a resource and its related parts.
