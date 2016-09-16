@@ -1,5 +1,5 @@
 # Partnerinfo (www.partnerinfo.tv)
-Partnerinfo is an Online Marketing System with modern SPA-based CMS services (client-side routing, modules, blazing fast HTML designer, JavaScript module system, ...). In contrast to most of similar systems, it does not force you to use pre-defined, built-in, and unchangable business functions. You are totally free to define your own business activities and build business workflows for your web actions. This project aimed to cover the following areas:
+Partnerinfo is an Online Marketing System with modern SPA-based CMS services (client-side routing, modules, blazing fast HTML designer, JavaScript module system, ...) & REST APIs. In contrast to most of similar marketing systems, it does not force you to use pre-defined, built-in, and unchangable business functions. You are totally free to define your own business workflows for your web actions, including registration (single opt-in, double opt-in, etc.), newsletters, micro sites, and so on. This project aimed to cover the following areas:
 
 ## Lightweight Server-Side Workflow Engine & Client-Side HTML Activity Designer
 
@@ -9,7 +9,7 @@ Partnerinfo is an Online Marketing System with modern SPA-based CMS services (cl
 
 ## Action Links
 
-An action link is a simple URL associated with a server-side workflow which can be called by executing a usual ASP.NET Web API action. When a user clicks a link or posts form data performing either HTTP GET or POST requests, the WF engine invokes the specified workflow passing context data (identity, user agent, user data and other information) into it.
+An action link is a simple URL associated with a server-side workflow which can be called by executing a usual ASP.NET Web API action. When a user clicks a link or posts some form data performing either HTTP GET or POST requests, the engine invokes the specified workflow passing context data (identity, user agent, user data and other information) into it.
 
 You can even add a custom URI segment to the end of action links to make those user-friendly or specify a contact for each action link to be able to measure activity of a given user, including your girl-friend :-)
 
