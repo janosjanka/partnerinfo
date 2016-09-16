@@ -1,11 +1,11 @@
 # Partnerinfo (www.partnerinfo.tv)
-Partnerinfo is an Online Marketing System with modern SPA-based CMS services (client-side routing, JavaScript module engine & modules, blazing fast HTML designer for modules, styles, ...) & REST APIs. In contrast to most of similar marketing systems, it does not force you to use pre-defined, built-in, and unchangable business functions. You are totally free to define your own business workflows for your web actions, including registration (single opt-in, double opt-in, etc.), newsletters, micro sites, and so on. This project aimed to cover the following areas:
+Partnerinfo is an Online Marketing System with modern ASP.NET MVC 5 + SPA-based CMS services (client-side routing, JavaScript module engine & modules, blazing fast HTML designer for modules, styles, ...) & REST APIs. In contrast to most of similar marketing systems, it does not force you to use pre-defined, built-in, and unchangable business functions. You are totally free to define your own business workflows for your web actions, including registration (single opt-in, double opt-in, etc.), newsletters, micro sites, and so on. This project aimed to cover the following areas:
 
-## Lightweight Server-Side Workflow Engine & Client-Side HTML Activity Designer
+## Lightweight Workflow Engine for Web Actions & HTML Activity Designer
 
 - Extensible workflow engine developed for fast, performance-critical web actions
 - Standard control flow & business activities (sequence, condition, redirect, schedule, subscribe, sendMail, tagging, ...)
-- HTML-based workflow activity designer for end-users, marketing specialists
+- HTML-based workflow activity designer for end-users
 
 ## Action Links
 
