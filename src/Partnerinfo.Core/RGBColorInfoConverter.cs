@@ -6,6 +6,10 @@ using Newtonsoft.Json;
 
 namespace Partnerinfo
 {
+    /// <summary>
+    /// Converts a <see cref="RGBColorInfo" /> object to and from JSON.
+    /// </summary>
+    /// <seealso cref="Newtonsoft.Json.JsonConverter" />
     internal sealed class RGBColorInfoConverter : JsonConverter
     {
         /// <summary>

@@ -2,12 +2,14 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
 using System;
+using Newtonsoft.Json;
 
 namespace Partnerinfo
 {
     /// <summary>
     /// Represents an immutable, thread-safe, and cachable mail address as DDD value object.
     /// </summary>
+    [JsonConverter(typeof(RGBColorInfoConverter))]
     public sealed class RGBColorInfo
     {
         /// <summary>
