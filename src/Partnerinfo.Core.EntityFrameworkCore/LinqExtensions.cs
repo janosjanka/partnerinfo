@@ -4,57 +4,11 @@
 using System;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 
 namespace Partnerinfo
 {
     internal static class LinqExtensions
     {
-        /// <summary>
-        /// Bypasses a specified number of elements in a sequence and then returns the remaining elements.
-        /// </summary>
-        public static IQueryable<TSource> Paging<TSource>(this IQueryable<TSource> source, int pageIndex, int pageSize)
-        {
-            return source.Skip((pageIndex <= 1 ? 0 : pageIndex - 1) * pageSize).Take(pageSize);
-        }
-
-        /// <summary>
-        /// Converts query results to an <see cref="ListResult{T}"/> object.
-        /// </summary>
-        /// <typeparam name="TSource">The type of items.</typeparam>
-        /// <param name="source">The query to convert.</param>
-        /// <param name="cancellationToken">A token to observe while waiting for the task to complete.</param>
-        /// <returns>
-        /// The task object representing the asynchronous operation.
-        /// </returns>
-        public static async Task<OpListResult<TSource>> ToListResultAsync<TSource>(this IQueryable<TSource> source, CancellationToken cancellationToken)
-        {
-            return OpListResult.Create(await source.ToArrayAsync(cancellationToken));
-        }
-
-        /// <summary>
-        /// Converts query results to an <see cref="ListResult{T}"/> object.
-        /// </summary>
-        /// <typeparam name="TSource">The type of items.</typeparam>
-        /// <param name="source">The query to convert.</param>
-        /// <param name="pageIndex">The index of the page of results to return. Use 1 to indicate the first page.</param>
-        /// <param name="pageSize">The size of the page of results to return. <paramref name="pageIndex" /> is non-zero-based.</param>
-        /// <param name="cancellationToken">A token to observe while waiting for the task to complete.</param>
-        /// <returns>
-        /// The task object representing the asynchronous operation.
-        /// </returns>
-        public static async Task<OpListResult<TSource>> ToListResultAsync<TSource>(this IQueryable<TSource> source, int pageIndex, int pageSize, CancellationToken cancellationToken)
-        {
-            int total = await source.CountAsync(cancellationToken);
-            if (total == 0)
-            {
-                return OpListResult<TSource>.Empty;
-            }
-            return OpListResult.Create(await source.Paging(pageIndex, pageSize).ToArrayAsync(cancellationToken), total);
-        }
-
         /// <summary>
         /// Merges the member initialization list of two lambda expressions into one.
         /// </summary>
@@ -71,9 +25,8 @@ namespace Partnerinfo
             this Expression<Func<TSource, TBaseDest>> baseExpression,
             Expression<Func<TSource, TExtendedDest>> mergeExpression)
         {
-            var visitor = new MergingVisitor<TSource, TBaseDest, TExtendedDest>(baseExpression);
-
-            return (Expression<Func<TSource, TExtendedDest>>)visitor.Visit(mergeExpression);
+            return (Expression<Func<TSource, TExtendedDest>>)
+                new MergingVisitor<TSource, TBaseDest, TExtendedDest>(baseExpression).Visit(mergeExpression);
         }
 
         /// <summary>
