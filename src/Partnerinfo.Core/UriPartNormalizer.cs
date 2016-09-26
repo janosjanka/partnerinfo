@@ -13,7 +13,7 @@ namespace Partnerinfo
     public sealed class UriPartNormalizer : IUriPartNormalizer
     {
         /// <summary>
-        /// Default uri part normalizer.
+        /// A static uri part normalizer that helps decrease GC pressure.
         /// </summary>
         public static readonly UriPartNormalizer Default = new UriPartNormalizer();
 
@@ -24,6 +24,7 @@ namespace Partnerinfo
         /// <returns>
         /// A normalized representation of the specified <paramref name="uriPart" />.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">uriPart</exception>
         public string Normalize(string uriPart)
         {
             if (uriPart == null)
