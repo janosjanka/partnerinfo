@@ -1,4 +1,6 @@
-﻿# Prima-Verda Core
+﻿# Partnerinfo Core
+
+Partnerinfo Core implements core functionality for Partnerinfo TV.
 
 ## Design Goals
 
