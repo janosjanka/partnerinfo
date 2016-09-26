@@ -1,0 +1,11 @@
+﻿<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://tempuri.org/po.xsd" xmlns="http://tempuri.org/po.xsd" elementFormDefault="qualified">
+
+  <xs:annotation>
+    <xs:documentation xml:lang="en">
+      Copyright (c) 2016 Partnerinfo. All rights reserved.
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:element name="comment" type="xs:string" />
+
+</xs:schema>

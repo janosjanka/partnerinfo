@@ -1,0 +1,5 @@
+﻿<!-- ko foreach: { data: languages, as: 'languageInfo' } -->
+<li data-bind="css: { active: languageInfo.isActive }">
+    <a href="#" data-bind="text: languageInfo.displayName, click: $parent.changeLanguage, clickBubble: false"></a>
+</li>
+<!-- /ko -->

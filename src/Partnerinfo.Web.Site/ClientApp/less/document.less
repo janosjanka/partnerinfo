@@ -1,0 +1,25 @@
+/**
+  * @license
+  * Copyright (c) János Janka. All rights reserved.
+  * Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
+  */
+
+@import "variables.less";
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    padding-top: @navbar-height;
+    margin-bottom: @footer-height;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: @footer-height;
+    padding: (@padding-base-vertical * 2) 0;
+}

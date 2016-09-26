@@ -1,0 +1,13 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "allowJs": false,
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "skipDefaultLibCheck": true,
+    "target": "es5"
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}

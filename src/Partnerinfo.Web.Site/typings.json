@@ -1,0 +1,19 @@
+{
+  "name": "partnerinfo",
+  "resolution": {
+    "main": "ClientApp/typings"
+  },
+  "globalDependencies": {
+    "bootstrap": "github:DefinitelyTyped/DefinitelyTyped/bootstrap/bootstrap.d.ts#67557f18a898462614ed14063a54ca33a1cfab12",
+    "i18next": "github:DefinitelyTyped/DefinitelyTyped/i18next/i18next.d.ts#55c3e254e151847b8d37ca09b1a566ad4a48a66a",
+    "i18next-browser-languagedetector": "registry:dt/i18next-browser-languagedetector#0.0.14+20160805131847",
+    "i18next-xhr-backend": "registry:dt/i18next-xhr-backend#1.2.0+20160921203958",
+    "jquery": "github:DefinitelyTyped/DefinitelyTyped/jquery/jquery.d.ts#67557f18a898462614ed14063a54ca33a1cfab12",
+    "knockout": "github:DefinitelyTyped/DefinitelyTyped/knockout/knockout.d.ts#55c3e254e151847b8d37ca09b1a566ad4a48a66a",
+    "knockout-postbox": "github:DefinitelyTyped/DefinitelyTyped/knockout.postbox/knockout-postbox.d.ts#55c3e254e151847b8d37ca09b1a566ad4a48a66a",
+    "require": "github:DefinitelyTyped/DefinitelyTyped/requirejs/require.d.ts#67557f18a898462614ed14063a54ca33a1cfab12"
+  },
+  "dependencies": {
+    "es6-promise": "registry:npm/es6-promise#3.0.0+20160723033700"
+  }
+}

@@ -1,0 +1,41 @@
+﻿<nav class="navbar navbar-main navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar-collapse" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" rel="nofollow" href="/">Partnerinfo</a>
+        </div>
+        <div id="main-navbar-collapse" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a data-bind="path: '/about'">About</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                        <span data-bind="text: ko.i18n.language"></span>
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu" data-bind="component: { name: 'pi-cultures' }"></ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                        Log In
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="col-md-12" style="width: 300px;" data-bind="component: { name: 'pi-account-login' }"></li>
+                    </ul>
+                </li>
+                <li>
+                    <a rel="nofollow" href="https://www.facebook.com" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 216 216" style="width: 16px; height: 16px;">
+                            <path fill="#000" d="M204.1 0H11.9C5.3 0 0 5.3 0 11.9v192.2c0 6.6 5.3 11.9 11.9 11.9h103.5v-83.6H87.2V99.8h28.1v-24c0-27.9 17-43.1 41.9-43.1 11.9 0 22.2.9 25.2 1.3v29.2h-17.3c-13.5 0-16.2 6.4-16.2 15.9v20.8h32.3l-4.2 32.6h-28V216h55c6.6 0 11.9-5.3 11.9-11.9V11.9C216 5.3 210.7 0 204.1 0z"></path>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

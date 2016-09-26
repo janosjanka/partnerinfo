@@ -1,0 +1,45 @@
+/**
+  * @license
+  * Copyright (c) János Janka. All rights reserved.
+  * Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
+  */
+
+@import "variables.less";
+
+.theme-schema(@color-bg: #000, @color-text: @gray-light, @color-link: @link-color) {
+    background-color: @color-bg;
+    color: @color-text;
+
+    a {
+        color: @color-link;
+    }
+
+    a:hover {
+        color: lighten(@color-link, 32%);
+    }
+
+    .section-heading {
+        color: lighten(@color-text, 32%);
+    }
+
+    .thumbnail {
+        background: none;
+        border: none;
+    }
+}
+
+.theme-light {
+    .theme-schema(#fafafa, darken(@gray-light, 24%), @gray-base);
+}
+
+.theme-dark {
+    .theme-schema(#222, lighten(@gray-light, 24%), @gray-light);
+}
+
+.theme-darker {
+    .theme-schema(#111, lighten(@gray-light, 24%), @gray-lighter);
+}
+
+.theme-darkest {
+    .theme-schema(#000, lighten(@gray-light, 24%), @gray-lighter);
+}

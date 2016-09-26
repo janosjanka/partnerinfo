@@ -1,0 +1,61 @@
+/**
+  * @license
+  * Copyright (c) János Janka. All rights reserved.
+  * Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
+  */
+
+@import "variables.less";
+
+.section-styles(@padding, @title-padding) {
+    padding-top: @padding;
+    padding-bottom: @padding;
+
+    .section-heading {
+        padding-bottom: @title-padding;
+        text-align: center;
+    }
+}
+
+.section {
+    .section-styles((@padding-base-vertical) * 8, (@padding-base-vertical) * 8);
+}
+
+.section-xs {
+    .section-styles((@padding-base-vertical) * 2, (@padding-base-vertical) * 2);
+}
+
+.section-sm {
+    .section-styles((@padding-base-vertical) * 4, (@padding-base-vertical) * 4);
+}
+
+.section-lg {
+    .section-styles((@padding-base-vertical) * 16, (@padding-base-vertical) * 16);
+}
+
+h1.section-heading {
+    font-size: @font-size-h1 * 1.8;
+}
+
+h2.section-heading {
+    font-size: @font-size-h2 * 1.8;
+}
+
+h3.section-heading {
+    font-size: @font-size-h3 * 1.8;
+}
+
+h4.section-heading {
+    font-size: @font-size-h4 * 1.8;
+}
+
+h5.section-heading {
+    font-size: @font-size-h5 * 1.8;
+}
+
+h6.section-heading {
+    font-size: @font-size-h6 * 1.8;
+}
+
+.section-content {
+    font-size: 1.4em;
+}
