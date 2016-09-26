@@ -22,9 +22,9 @@ namespace Partnerinfo
         /// Prevents a default instance of the <see cref="MailAddressInfo" /> class from being created.
         /// </summary>
         /// <remarks>
-        /// The private parameterless constructor enables two-way serialization scenarios.
+        /// The parameterless constructor enables two-way serialization scenarios.
         /// </remarks>
-        private MailAddressInfo()
+        internal MailAddressInfo()
         {
         }
 

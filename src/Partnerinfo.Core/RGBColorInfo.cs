@@ -46,9 +46,9 @@ namespace Partnerinfo
         /// Initializes a new instance of the <see cref="RGBColorInfo" /> class.
         /// </summary>
         /// <remarks>
-        /// The private parameterless constructor enables two-way serialization scenarios.
+        /// The parameterless constructor enables two-way serialization scenarios.
         /// </remarks>
-        private RGBColorInfo()
+        internal RGBColorInfo()
         {
         }
 

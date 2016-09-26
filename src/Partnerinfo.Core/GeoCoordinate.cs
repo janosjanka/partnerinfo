@@ -28,9 +28,9 @@ namespace Partnerinfo
         /// Prevents a default instance of the <see cref="GeoCoordinate" /> class from being created.
         /// </summary>
         /// <remarks>
-        /// The private parameterless constructor enables two-way serialization scenarios.
+        /// The parameterless constructor enables two-way serialization scenarios.
         /// </remarks>
-        private GeoCoordinate()
+        internal GeoCoordinate()
         {
         }
 

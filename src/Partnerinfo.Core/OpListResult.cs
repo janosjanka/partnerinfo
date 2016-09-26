@@ -35,7 +35,7 @@ namespace Partnerinfo
         {
             if (data.Length == 0)
             {
-                return Create<T>();
+                return OpListResult<T>.Empty;
             }
 
             return new OpListResult<T>(data, data.Length);
@@ -44,7 +44,9 @@ namespace Partnerinfo
         /// <summary>
         /// Creates a new instance of the <see cref="OpListResult{T}" /> class or returns a cached version of the immutable object.
         /// </summary>
+        /// <typeparam name="T">The type of the items.</typeparam>
         /// <param name="data">The strongly typed list of results to return.</param>
+        /// <param name="total">The total.</param>
         /// <returns>
         /// The <see cref="OpListResult{T}" />.
         /// </returns>
@@ -52,7 +54,7 @@ namespace Partnerinfo
         {
             if (data.Length == 0 && total == 0)
             {
-                return Create<T>();
+                return OpListResult<T>.Empty;
             }
 
             return new OpListResult<T>(data, total);
@@ -61,10 +63,12 @@ namespace Partnerinfo
         /// <summary>
         /// Creates a new instance of the <see cref="OpListResult{T}" /> class or returns a cached version of the immutable object.
         /// </summary>
+        /// <typeparam name="T">The type of the items.</typeparam>
         /// <param name="data">The strongly typed list of results to return.</param>
         /// <returns>
         /// The <see cref="OpListResult{T}" />.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">data</exception>
         public static OpListResult<T> Create<T>(IEnumerable<T> data)
         {
             if (data == null)
@@ -78,10 +82,13 @@ namespace Partnerinfo
         /// <summary>
         /// Creates a new instance of the <see cref="OpListResult{T}" /> class or returns a cached version of the immutable object.
         /// </summary>
+        /// <typeparam name="T">The type of the items.</typeparam>
         /// <param name="data">The strongly typed list of results to return.</param>
+        /// <param name="total">The total.</param>
         /// <returns>
         /// The <see cref="OpListResult{T}" />.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">data</exception>
         public static OpListResult<T> Create<T>(IEnumerable<T> data, int total)
         {
             if (data == null)

@@ -27,9 +27,9 @@ namespace Partnerinfo.Contact
         /// Prevents a default instance of the <see cref="ActivityTagInfo" /> class from being created.
         /// </summary>
         /// <remarks>
-        /// The private parameterless constructor enables two-way serialization scenarios.
+        /// The parameterless constructor enables two-way serialization scenarios.
         /// </remarks>
-        private ActivityTagInfo()
+        internal ActivityTagInfo()
         {
         }
 
