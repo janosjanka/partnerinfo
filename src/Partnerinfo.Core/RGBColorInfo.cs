@@ -116,7 +116,7 @@ namespace Partnerinfo
         /// </returns>
         public override string ToString()
         {
-            return "#" + R.ToString("x2", null) + G.ToString("x2", null) + B.ToString("x2", null);
+            return $"#{R.ToString("x2", null)}{G.ToString("x2", null)}{B.ToString("x2", null)}";
         }
     }
 }
