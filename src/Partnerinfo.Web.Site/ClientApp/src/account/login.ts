@@ -43,14 +43,12 @@ class LoginViewModel {
         auth.login({
             email: this.email(),
             password: this.password()
-        }).then(
-            res => {
-                if (res.error) {
-                    alert(res.error.status);
-                    return;
-                }
-                alert("COMPLETED SUCCESSFUL.");
-            });
+        }).then(res => {
+            if (res.error) {
+                alert(res.error.status);
+                return;
+            }
+        });
     }
 
     validate(): boolean {

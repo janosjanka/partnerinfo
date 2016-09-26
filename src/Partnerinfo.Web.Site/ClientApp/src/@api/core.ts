@@ -15,7 +15,7 @@ export interface ApiError {
 }
 
 export interface ApiRequest {
-    /** This is the Prima-Verda API endpoint path that you want to call. */
+    /** This is the Partnerinfo API endpoint path that you want to call. */
     path: string;
 
     /** This is the HTTP method that you want to use for the API request. */
@@ -33,7 +33,7 @@ export interface ApiResponse<T> {
 export type ApiPromiseLike<T> = PromiseLike<ApiResponse<T>>;
 
 /**
- * The method Prima.api() lets you make calls to the API.
+ * The method PI.api() lets you make calls to the API.
  * @param options
  * @returns {Promise}
  */
