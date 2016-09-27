@@ -5,6 +5,9 @@ using System;
 
 namespace Partnerinfo.Actions
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public interface IActionLinkService
     {
         /// <summary>

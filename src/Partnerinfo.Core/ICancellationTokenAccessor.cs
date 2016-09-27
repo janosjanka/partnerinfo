@@ -6,7 +6,7 @@ using System.Threading;
 namespace Partnerinfo
 {
     /// <summary>
-    /// Represents a service that access a synchronization token can be used by API calls.
+    /// Represents a service that accesses a synchronization token can be used by API calls.
     /// </summary>
     /// <remarks>
     /// In contrast to Microsoft ASP.NET Identity design, this library does not specify a dependency on Microsoft.AspNetCore.Http.
