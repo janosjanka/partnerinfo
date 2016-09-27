@@ -5,26 +5,39 @@ using System;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace Partnerinfo
+namespace Partnerinfo.Utilities
 {
-    internal static class LinqExtensions
+    /// <summary>
+    /// Provides methods for rewriting expression trees.
+    /// </summary>
+    internal static class ExpressionUtilities
     {
         /// <summary>
         /// Merges the member initialization list of two lambda expressions into one.
         /// </summary>
         /// <typeparam name="TSource">Source type.</typeparam>
-        /// <typeparam name="TBaseDest">Resulting type of the base mapping expression. TBaseDest is
-        /// typically a super class of TExtendedDest</typeparam>
+        /// <typeparam name="TBaseDest">Resulting type of the base mapping expression. TBaseDest is typically a super class of TExtendedDest</typeparam>
         /// <typeparam name="TExtendedDest">Resulting type of the extended mapping expression.</typeparam>
-        /// <param name="baseExpression">The base mapping expression, containing a member 
-        /// initialization expression.</param>
-        /// <param name="mergeExpression">The extended mapping expression to be merged into the
-        /// base member initialization expression.</param>
-        /// <returns>Resulting expression, after the merged select expression has been applied.</returns>
+        /// <param name="baseExpression">The base mapping expression, containing a member initialization expression.</param>
+        /// <param name="mergeExpression">The extended mapping expression to be merged into the base member initialization expression.</param>
+        /// <returns>
+        /// Resulting expression, after the merged select expression has been applied.
+        /// </returns>
         public static Expression<Func<TSource, TExtendedDest>> Merge<TSource, TBaseDest, TExtendedDest>(
             this Expression<Func<TSource, TBaseDest>> baseExpression,
             Expression<Func<TSource, TExtendedDest>> mergeExpression)
         {
+            //
+            // This method can be used to merge LINQ projection expressions to include other parts of a resource in the result set, e.g.
+            // 
+            //      Expression<Func<Project, ProjectDto>> selector = project => new ProjectDto { Name = project.Name };
+            // 
+            //      if (fields.HasFlag(ProjectField.Owner))
+            //      {
+            //          selector = selector.Merge(project => new ProjectDto { Owner = project.Owner ... });
+            //      }
+            //
+
             return (Expression<Func<TSource, TExtendedDest>>)
                 new MergingVisitor<TSource, TBaseDest, TExtendedDest>(baseExpression).Visit(mergeExpression);
         }
@@ -50,7 +63,7 @@ namespace Partnerinfo
                 private readonly ParameterExpression _oldParameter;
 
                 /// <summary>
-                /// Ctor.
+                /// Initializes a new instance of the <see cref="LambdaRebindingVisitor" /> class.
                 /// </summary>
                 /// <param name="newParameter">The range vaiable of the extended expression.</param>
                 /// <param name="oldParameter">The range variable of the base expression.</param>
@@ -79,18 +92,17 @@ namespace Partnerinfo
                 }
             }
 
-            private MemberInitExpression _baseInit;
-            private ParameterExpression _baseParameter;
+            private readonly MemberInitExpression _baseInit;
+            private readonly ParameterExpression _baseParameter;
             private ParameterExpression _newParameter;
 
             /// <summary>
-            /// Ctor
+            /// Initializes a new instance of the <see cref="MergingVisitor{TSource, TBaseDest, TExtendedDest}" /> class.
             /// </summary>
-            /// <param name="baseExpression">The base expression to merge
-            /// into the member init list of the extended expression.</param>
+            /// <param name="baseExpression">The base expression to merge into the member init list of the extended expression.</param>
             public MergingVisitor(Expression<Func<TSource, TBaseDest>> baseExpression)
             {
-                var lambda = (LambdaExpression)baseExpression;
+                LambdaExpression lambda = baseExpression;
                 _baseInit = (MemberInitExpression)lambda.Body;
                 _baseParameter = lambda.Parameters[0];
             }
