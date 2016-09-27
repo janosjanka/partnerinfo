@@ -22,10 +22,10 @@ namespace Partnerinfo.Security
         public bool AccessGranted { get; }
 
         /// <summary>
-        /// Gets a value indicating whether the resource can be available on the Web.
+        /// Gets an access visibility indicating whether the resource is available on the Web.
         /// </summary>
         /// <value>
-        /// The visibility for an ACE (Access Control Entry).
+        /// The access visibility.
         /// </value>
         public AccessVisibility Visibility { get; }
 

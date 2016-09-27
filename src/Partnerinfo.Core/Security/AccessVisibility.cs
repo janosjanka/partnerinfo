@@ -4,7 +4,7 @@
 namespace Partnerinfo.Security
 {
     /// <summary>
-    /// Represents an access visibility value indicating whether a resource is available on the Web.
+    /// Represents an access visibility indicating whether a resource is available on the Web.
     /// </summary>
     public enum AccessVisibility : byte
     {
