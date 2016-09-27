@@ -1,0 +1,29 @@
+﻿// Copyright (c) János Janka. All rights reserved.
+// Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
+
+using System.Collections.Generic;
+
+namespace Partnerinfo.Actions
+{
+    /// <summary>
+    /// Represents a root (workflow) or subnode within a tree.
+    /// </summary>
+    public class ActionItem
+    {
+        /// <summary>
+        /// Gets or sets the primary key for this action.
+        /// </summary>
+        /// <value>
+        /// The primary key.
+        /// </value>
+        public int Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets the child nodes for this action.
+        /// </summary>
+        /// <value>
+        /// The child nodes.
+        /// </value>
+        public virtual ICollection<ActionItem> Children { get; } = new List<ActionItem>();
+    }
+}
