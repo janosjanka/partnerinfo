@@ -13,6 +13,7 @@ namespace Partnerinfo.Contact
     public class ContactManager : IDisposable
     {
         private bool _disposed;
+        private readonly ICancellationTokenAccessor _cancellationTokenAccessor;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ContactManager" /> class.
@@ -53,14 +54,7 @@ namespace Partnerinfo.Contact
         /// <value>
         /// The <see cref="System.Threading.CancellationToken" />.
         /// </value>
-        protected CancellationToken CancellationToken
-        {
-            get
-            {
-                // TODO: It can be cached later.
-                return (Services.GetService(typeof(ICancellationTokenAccessor)) as ICancellationTokenAccessor)?.GetToken() ?? CancellationToken.None;
-            }
-        }
+        protected CancellationToken CancellationToken => (Services?.GetService(typeof(ICancellationTokenAccessor)) as ICancellationTokenAccessor)?.GetToken() ?? CancellationToken.None;
 
         /// <summary>
         /// Creates a new contact in a store as an asynchronous operation.
