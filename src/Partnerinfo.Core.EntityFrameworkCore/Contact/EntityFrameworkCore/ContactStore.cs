@@ -17,12 +17,36 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
         private bool _disposed;
 
         /// <summary>
+        /// Gets the database context for this store.
+        /// </summary>
+        /// <value>
+        /// The database context.
+        /// </value>
+        public DbContext Context { get; }
+
+        /// <summary>
+        /// Gets or sets a flag indicating if changes should be persisted after CreateAsync, UpdateAsync and DeleteAsync are called.
+        /// </summary>
+        /// <value>
+        /// <c>true</c> if changes should be persisted after CreateAsync, UpdateAsync and DeleteAsync are called; otherwise, <c>false</c>.
+        /// </value>
+        public bool AutoSaveChanges { get; set; }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="ContactStore" /> class.
         /// </summary>
+        /// <param name="context">The context.</param>
+        /// <exception cref="System.ArgumentNullException">context</exception>
         public ContactStore(DbContext context)
         {
-        }
+            if (context == null)
+            {
+                throw new ArgumentNullException(nameof(context));
+            }
 
+            Context = context;
+        }
+        
         /// <summary>
         /// Creates a new contact in a store as an asynchronous operation.
         /// </summary>

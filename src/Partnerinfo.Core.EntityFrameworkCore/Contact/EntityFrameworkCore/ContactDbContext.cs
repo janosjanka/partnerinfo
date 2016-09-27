@@ -5,18 +5,24 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Partnerinfo.Contact.EntityFrameworkCore
 {
-    public class ContactDbContext : DbContext
+    /// <summary>
+    /// Base class for the Entity Framework database context used for contact management.
+    /// </summary>
+    /// <seealso cref="Microsoft.EntityFrameworkCore.DbContext" />
+    public sealed class ContactDbContext : DbContext
     {
         /// <summary>
-        /// Gets or sets the <see cref="Microsoft.EntityFrameworkCore.DbSet`1" /> of products.
+        /// Gets or sets the <see cref="Microsoft.EntityFrameworkCore.DbSet`1" /> of contacts.
         /// </summary>
+        /// <value>
+        /// The <see cref="Microsoft.EntityFrameworkCore.DbSet`1" /> of contacts.
+        /// </value>
         public DbSet<ContactItem> Contacts { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ContactDbContext" /> class.
         /// </summary>
         public ContactDbContext()
-            : base()
         {
         }
 

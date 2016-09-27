@@ -7,16 +7,15 @@ using Microsoft.EntityFrameworkCore;
 namespace Partnerinfo.Identity.EntityFrameworkCore
 {
     /// <summary>
-    /// Base class for the Entity Framework database context used for identity.
+    /// Base class for the Entity Framework database context used for identity management.
     /// </summary>
-    /// <seealso cref="Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext{Partnerinfo.Identity.UserItem, Partnerinfo.Identity.RoleItem, System.Int32}" />
-    public class IdentityDbContext : IdentityDbContext<UserItem, RoleItem, int>
+    /// <seealso cref="Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext{Partnerinfo.Identity.EntityFrameworkCore.UserItem, Partnerinfo.Identity.EntityFrameworkCore.RoleItem, System.Int32}" />
+    public sealed class IdentityDbContext : IdentityDbContext<UserItem, RoleItem, int>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="IdentityDbContext" /> class.
         /// </summary>
         public IdentityDbContext()
-            : base()
         {
         }
 
