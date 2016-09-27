@@ -27,18 +27,18 @@ namespace Partnerinfo.Campaign
         public CampaignOptions Options { get; set; }
 
         /// <summary>
-        /// Gets or sets the date and time, in UTC, when this contact was last modified.
+        /// Gets or sets the date and time, in UTC, when this campaign was last modified.
         /// </summary>
         /// <value>
-        /// The date and time, in UTC, when this contact was last modified.
+        /// The date and time, in UTC, when this campaign was last modified.
         /// </value>
         public DateTime ModifiedDate { get; set; } = DateTime.UtcNow;
 
         /// <summary>
-        /// Gets or sets the user identity who modified this contact.
+        /// Gets or sets the user identity who modified this campaign.
         /// </summary>
         /// <value>
-        /// The user identity who modified this contact.
+        /// The user identity who modified this campaign.
         /// </value>
         public IUserIdentity ModifiedBy { get; set; }
     }

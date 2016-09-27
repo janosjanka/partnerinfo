@@ -19,13 +19,18 @@ namespace Partnerinfo.Contact
         Sponsor = 1 << 0,
 
         /// <summary>
+        /// User-defined attributes are included in the result set.
+        /// </summary>
+        Attributes = 1 << 1,
+
+        /// <summary>
         /// Business tags belong to the contact are included in the result set.
         /// </summary>
-        BusinessTags = 1 << 1,
+        BusinessTags = 1 << 2,
 
         /// <summary>
         /// All fields are included in the result set.
         /// </summary>
-        All = Sponsor | BusinessTags
+        All = Sponsor | Attributes | BusinessTags
     }
 }

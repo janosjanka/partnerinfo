@@ -23,5 +23,13 @@ namespace Partnerinfo.Content
         /// The URI (Unique Resource Identifier).
         /// </value>
         public string Uri { get; set; }
+
+        /// <summary>
+        /// Gets or sets the mime type for this content provided by the storage.
+        /// </summary>
+        /// <value>
+        /// The mime type.
+        /// </value>
+        public string Type { get; set; }
     }
 }
