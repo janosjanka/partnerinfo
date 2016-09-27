@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 namespace Partnerinfo
 {
     /// <summary>
-    /// Represents an immutable, thread-safe, and cachable mail address as DDD value object.
+    /// Represents an immutable, thread-safe, and cachable RGB color as DDD value object.
     /// </summary>
     [JsonConverter(typeof(RGBColorInfoConverter))]
     public sealed class RGBColorInfo
