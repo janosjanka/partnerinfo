@@ -4,8 +4,7 @@
 namespace Partnerinfo.Actions
 {
     /// <summary>
-    /// Represents a <see cref="ActionNode" /> visitor that visits only the single action node
-    /// passed into its Visit method.
+    /// Represents a <see cref="ActionNode" /> visitor that visits only the single action node passed into its Visit method.
     /// </summary>
     public abstract class ActionVisitor
     {

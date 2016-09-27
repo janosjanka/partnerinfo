@@ -6,7 +6,7 @@ using System;
 namespace Partnerinfo.Actions
 {
     /// <summary>
-    /// 
+    /// Provides an abstraction for action link operations.
     /// </summary>
     public interface IActionLinkService
     {
