@@ -61,13 +61,6 @@ namespace Partnerinfo.Actions
         /// <returns>
         /// A <see cref="string" /> that represents this instance.
         /// </returns>
-        public override string ToString()
-        {
-            if (ContactId == null)
-            {
-                return $"{ActionId}/{CustomUri}";
-            }
-            return $"{ActionId}.{ContactId}/{CustomUri}";
-        }
+        public override string ToString() => ContactId == null ? $"{ActionId}/{CustomUri}" : $"{ActionId}.{ContactId}/{CustomUri}";
     }
 }

@@ -54,6 +54,6 @@ namespace Partnerinfo
         /// <returns>
         /// A <see cref="string" /> that represents this instance.
         /// </returns>
-        public override string ToString() => $"Address: {Address}, DisplayName: {DisplayName}";
+        public override string ToString() => $"{nameof(Address)}: {Address}, {nameof(DisplayName)}: {DisplayName}";
     }
 }
