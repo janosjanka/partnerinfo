@@ -116,9 +116,6 @@ namespace Partnerinfo
         /// <returns>
         /// A <see cref="string" /> that represents this instance.
         /// </returns>
-        public override string ToString()
-        {
-            return $"#{R.ToString("x2", null)}{G.ToString("x2", null)}{B.ToString("x2", null)}";
-        }
+        public override string ToString() => $"#{R.ToString("x2", null)}{G.ToString("x2", null)}{B.ToString("x2", null)}";
     }
 }

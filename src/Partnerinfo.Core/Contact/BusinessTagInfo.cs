@@ -56,5 +56,13 @@ namespace Partnerinfo.Contact
             Name = name;
             Color = color;
         }
+
+        /// <summary>
+        /// Returns a <see cref="string" /> that represents this instance.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="string" /> that represents this instance.
+        /// </returns>
+        public override string ToString() => $"Uri: {Uri}, Name: {Name}, Color: {Color}";
     }
 }

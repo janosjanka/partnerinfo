@@ -47,5 +47,13 @@ namespace Partnerinfo
             Address = address;
             DisplayName = displayName;
         }
+
+        /// <summary>
+        /// Returns a <see cref="string" /> that represents this instance.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="string" /> that represents this instance.
+        /// </returns>
+        public override string ToString() => $"Address: {Address}, DisplayName: {DisplayName}";
     }
 }
