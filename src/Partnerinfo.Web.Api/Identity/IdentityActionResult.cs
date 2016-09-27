@@ -36,7 +36,7 @@ namespace Partnerinfo.Identity
         /// information about the action that was executed and request information.</param>
         public override void ExecuteResult(ActionContext context)
         {
-            if (!_result.Succeeded)
+            if (_result?.Succeeded == false)
             {
                 var modelState = context.ModelState;
                 foreach (var error in _result.Errors)
