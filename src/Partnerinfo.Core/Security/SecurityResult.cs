@@ -6,21 +6,8 @@ namespace Partnerinfo.Security
     /// <summary>
     /// Represents the result of security operations.
     /// </summary>
-    public sealed class SecurityResult
+    public sealed class SecurityResult : OpStatusResult
     {
-        /// <summary>
-        /// A <see cref="SecurityResult" /> to refuse to take any further action. It corresponds to HTTP 403 Forbidden.
-        /// </summary>
-        public static readonly SecurityResult AccessDenied = new SecurityResult(false, AccessVisibility.Unknown);
-
-        /// <summary>
-        /// Gets or sets a value indicating whether this instance has permission.
-        /// </summary>
-        /// <value>
-        /// <c>true</c> if the access attempt was successful; otherwise, <c>false</c>.
-        /// </value>
-        public bool AccessGranted { get; }
-
         /// <summary>
         /// Gets an access visibility indicating whether the resource is available on the Web.
         /// </summary>
@@ -32,11 +19,16 @@ namespace Partnerinfo.Security
         /// <summary>
         /// Initializes a new instance of the <see cref="SecurityResult" /> class.
         /// </summary>
-        /// <param name="accessGranted"><c>true</c> if the access attempt was successful; otherwise, <c>false</c>.</param>
-        /// <param name="visibility">The visibility.</param>
-        public SecurityResult(bool accessGranted, AccessVisibility visibility)
+        public SecurityResult()
         {
-            AccessGranted = accessGranted;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SecurityResult" /> class.
+        /// </summary>
+        /// <param name="visibility">The access visibility whether the resource is available on the Web.</param>
+        public SecurityResult(AccessVisibility visibility)
+        {
             Visibility = visibility;
         }
     }
