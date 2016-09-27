@@ -12,7 +12,7 @@ namespace Partnerinfo.Utilities
     internal static class Hash
     {
         /// <summary>
-        /// Computes a new hash values combining the specified two ones.
+        /// Computes a new hash value combining the specified two ones.
         /// </summary>
         /// <param name="hash1">The hash1 to compute.</param>
         /// <param name="hash2">The hash2 to compute.</param>
@@ -25,7 +25,7 @@ namespace Partnerinfo.Utilities
         public static int Combine(int hash1, int hash2) => ((hash1 << 5) + hash1) ^ hash2;
 
         /// <summary>
-        /// Computes a new hash values combining an array of hash values of the specified items.
+        /// Computes a new hash value combining an array of hash values of the specified items.
         /// </summary>
         /// <typeparam name="T">The type of the items.</typeparam>
         /// <param name="values">The values to combine.</param>
@@ -52,7 +52,7 @@ namespace Partnerinfo.Utilities
         }
 
         /// <summary>
-        /// Computes a new hash values combining a sequence of hash values of the specified items.
+        /// Computes a new hash value combining a sequence of hash values of the specified items.
         /// </summary>
         /// <typeparam name="T">The type of the items.</typeparam>
         /// <param name="values">The values to combine.</param>
@@ -78,7 +78,7 @@ namespace Partnerinfo.Utilities
         }
 
         /// <summary>
-        /// Computes a new hash values combining a sequence of hash values of the specified strings.
+        /// Computes a new hash value combining a sequence of hash values of the specified strings.
         /// </summary>
         /// <param name="values">The values to combine.</param>
         /// <param name="stringComparer">A string comparison operation that uses specific case and culture-based or ordinal comparison rules.</param>

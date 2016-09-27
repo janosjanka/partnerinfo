@@ -92,11 +92,11 @@ namespace Partnerinfo.Contact
         public IUserIdentity ModifiedBy { get; set; }
 
         /// <summary>
-        /// Gets a collection of <see cref="ActivityTagInfo" />s to be belonging to this <see cref="ContactItem" />.
+        /// Gets a collection of <see cref="BusinessTagInfo" />s to be belonging to this <see cref="ContactItem" />.
         /// </summary>
         /// <value>
-        /// A collection of <see cref="ActivityTagInfo" />s to be belonging to this <see cref="ContactItem" />.
+        /// A collection of <see cref="BusinessTagInfo" />s to be belonging to this <see cref="ContactItem" />.
         /// </value>
-        public virtual ICollection<ActivityTagInfo> ActivityTags { get; } = new List<ActivityTagInfo>();
+        public virtual ICollection<BusinessTagInfo> BusinessTags { get; } = new List<BusinessTagInfo>();
     }
 }
