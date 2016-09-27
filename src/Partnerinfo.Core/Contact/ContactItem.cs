@@ -28,6 +28,14 @@ namespace Partnerinfo.Contact
         public string Email { get; set; }
 
         /// <summary>
+        /// Gets or sets a telephone number for the contact.
+        /// </summary>
+        /// <value>
+        /// The phone number.
+        /// </value>
+        public string PhoneNumber { get; set; }
+
+        /// <summary>
         /// Gets or sets the first name for this user.
         /// </summary>
         /// <value>
@@ -58,14 +66,6 @@ namespace Partnerinfo.Contact
         /// The birthday.
         /// </value>
         public DateTimeOffset? Birthday { get; set; }
-
-        /// <summary>
-        /// Gets or sets a telephone number for the contact.
-        /// </summary>
-        /// <value>
-        /// The phone number.
-        /// </value>
-        public string PhoneNumber { get; set; }
 
         /// <summary>
         /// Gets or sets a collection of dynamic attributes for this contact.

@@ -6,7 +6,7 @@ using System;
 namespace Partnerinfo
 {
     /// <summary>
-    /// Represents a user with minimal requirements in the identity system.
+    /// Represents a user with minimal data in the identity system.
     /// </summary>
     public interface IUserIdentity
     {
@@ -25,6 +25,14 @@ namespace Partnerinfo
         /// The email.
         /// </value>
         string Email { get; }
+
+        /// <summary>
+        /// Gets the telephone number for the user.
+        /// </summary>
+        /// <value>
+        /// The telephone number.
+        /// </value>
+        string PhoneNumber { get; }
 
         /// <summary>
         /// Gets the first name for this user.
@@ -57,13 +65,5 @@ namespace Partnerinfo
         /// The birthday.
         /// </value>
         DateTimeOffset? Birthday { get; }
-
-        /// <summary>
-        /// Gets the telephone number for the user.
-        /// </summary>
-        /// <value>
-        /// The phone number.
-        /// </value>
-        string PhoneNumber { get; }
     }
 }
