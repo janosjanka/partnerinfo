@@ -8,7 +8,7 @@ namespace Partnerinfo.Actions
     /// <summary>
     /// Represents a root (workflow) or subnode within a tree.
     /// </summary>
-    public class ActionItem
+    public class ActionNode
     {
         /// <summary>
         /// Gets or sets the primary key for this action.
@@ -24,6 +24,20 @@ namespace Partnerinfo.Actions
         /// <value>
         /// The child nodes.
         /// </value>
-        public virtual ICollection<ActionItem> Children { get; } = new List<ActionItem>();
+        public virtual ICollection<ActionNode> Children { get; } = new List<ActionNode>();
+
+        /// <summary>
+        /// Calls a visit method of the visitor; the element passes itself and its children as an argument to the visit method.
+        /// </summary>
+        /// <param name="visitor">The visitor.</param>
+        public virtual void Accept(ActionVisitor visitor)
+        {
+            visitor.Visit(this);
+
+            foreach (ActionNode childNode in Children)
+            {
+                visitor.Visit(childNode);
+            }
+        }
     }
 }
