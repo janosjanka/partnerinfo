@@ -30,7 +30,7 @@ namespace Partnerinfo
         /// <remarks>
         /// The parameterless constructor enables two-way serialization scenarios.
         /// </remarks>
-        internal GeoCoordinate()
+        private GeoCoordinate()
         {
         }
 

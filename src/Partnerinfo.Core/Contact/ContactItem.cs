@@ -9,7 +9,7 @@ namespace Partnerinfo.Contact
     /// <summary>
     /// Represents a contact with a unique identifier in the system.
     /// </summary>
-    public class ContactItem
+    public class ContactItem : IUserIdentity
     {
         /// <summary>
         /// Gets or sets the primary key for this contact.
@@ -18,6 +18,54 @@ namespace Partnerinfo.Contact
         /// The primary key.
         /// </value>
         public int Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets the email address for this contact.
+        /// </summary>
+        /// <value>
+        /// The email.
+        /// </value>
+        public string Email { get; set; }
+
+        /// <summary>
+        /// Gets or sets the first name for this user.
+        /// </summary>
+        /// <value>
+        /// The first name.
+        /// </value>
+        public string FirstName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the last name for this user.
+        /// </summary>
+        /// <value>
+        /// The last name.
+        /// </value>
+        public string LastName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the gender for this user.
+        /// </summary>
+        /// <value>
+        /// The gender.
+        /// </value>
+        public PersonGender Gender { get; set; }
+
+        /// <summary>
+        /// Gets the birthday for this user.
+        /// </summary>
+        /// <value>
+        /// The birthday.
+        /// </value>
+        public DateTimeOffset? Birthday { get; set; }
+
+        /// <summary>
+        /// Gets or sets a telephone number for the contact.
+        /// </summary>
+        /// <value>
+        /// The phone number.
+        /// </value>
+        public string PhoneNumber { get; set; }
 
         /// <summary>
         /// Gets or sets a collection of dynamic attributes for this contact.
