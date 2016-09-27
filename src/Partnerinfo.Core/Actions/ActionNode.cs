@@ -27,17 +27,12 @@ namespace Partnerinfo.Actions
         public virtual ICollection<ActionNode> Children { get; } = new List<ActionNode>();
 
         /// <summary>
-        /// Calls a visit method of the visitor; the element passes itself and its children as an argument to the visit method.
+        /// Calls a visit method of the visitor; the element passes itself as an argument to the visit method.
         /// </summary>
         /// <param name="visitor">The visitor.</param>
         public virtual void Accept(ActionVisitor visitor)
         {
             visitor.Visit(this);
-
-            foreach (ActionNode childNode in Children)
-            {
-                visitor.Visit(childNode);
-            }
         }
     }
 }
