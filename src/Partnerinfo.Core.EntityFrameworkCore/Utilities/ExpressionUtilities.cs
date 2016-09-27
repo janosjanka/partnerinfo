@@ -28,14 +28,12 @@ namespace Partnerinfo.Utilities
             Expression<Func<TSource, TExtendedDest>> mergeExpression)
         {
             //
-            // This method can be used to merge LINQ projection expressions to include other parts of a resource in the result set, e.g.
+            //  Expression<Func<Project, ProjectDto>> selector = project => new ProjectDto { Name = project.Name };
             // 
-            //      Expression<Func<Project, ProjectDto>> selector = project => new ProjectDto { Name = project.Name };
-            // 
-            //      if (fields.HasFlag(ProjectField.Owner))
-            //      {
-            //          selector = selector.Merge(project => new ProjectDto { Owner = project.Owner ... });
-            //      }
+            //  if (fields.HasFlag(ProjectField.Owner))
+            //  {
+            //      selector = selector.Merge(project => new ProjectDto { Owner = project.Owner });
+            //  }
             //
 
             return (Expression<Func<TSource, TExtendedDest>>)
