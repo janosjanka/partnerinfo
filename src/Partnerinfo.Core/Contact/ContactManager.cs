@@ -13,8 +13,7 @@ namespace Partnerinfo.Contact
     public class ContactManager : IDisposable
     {
         private bool _disposed;
-        private readonly ICancellationTokenAccessor _cancellationTokenAccessor;
-
+        
         /// <summary>
         /// Initializes a new instance of the <see cref="ContactManager" /> class.
         /// </summary>
