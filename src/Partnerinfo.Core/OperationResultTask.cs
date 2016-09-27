@@ -8,17 +8,17 @@ namespace Partnerinfo
     /// <summary>
     /// Helps cache task results.
     /// </summary>
-    internal static class OpStatusResultTask
+    internal static class OperationResultTask
     {
         /// <summary>
-        /// Gets a static success <see cref="OpStatusResult" /> as a task.
+        /// Gets a static success <see cref="OperationResult" /> as a task.
         /// </summary>
-        public static readonly Task<OpStatusResult> Success = Task.FromResult(OpStatusResult.Success);
+        public static readonly Task<OperationResult> Success = Task.FromResult(OperationResult.Success);
 
         /// <summary>
-        /// Gets a static failed <see cref="OpStatusResult" /> as a task.
+        /// Gets a static failed <see cref="OperationResult" /> as a task.
         /// </summary>
         /// <param name="errors">A list of error messages.</param>
-        public static Task<OpStatusResult> Failed(params OpStatusError[] errors) => Task.FromResult(OpStatusResult.Failed(errors));
+        public static Task<OperationResult> Failed(params OperationError[] errors) => Task.FromResult(OperationResult.Failed(errors));
     }
 }

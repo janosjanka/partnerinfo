@@ -67,10 +67,10 @@ namespace Partnerinfo.Contact
         /// </summary>
         /// <param name="contact">The contact to create in the store.</param>
         /// <returns>
-        /// A <see cref="Task{OperationResult}" /> that represents the <see cref="OpStatusResult" /> of the asynchronous query.
+        /// A <see cref="Task{OperationResult}" /> that represents the <see cref="OperationResult" /> of the asynchronous query.
         /// </returns>
         /// <exception cref="System.ArgumentNullException"></exception>
-        public virtual Task<OpStatusResult> CreateAsync(ContactItem contact)
+        public virtual Task<OperationResult> CreateAsync(ContactItem contact)
         {
             ThrowIfDisposed();
             if (contact == null)
@@ -86,10 +86,10 @@ namespace Partnerinfo.Contact
         /// </summary>
         /// <param name="contact">The contact to update in the store.</param>
         /// <returns>
-        /// A <see cref="Task{OperationResult}" /> that represents the <see cref="OpStatusResult" /> of the asynchronous query.
+        /// A <see cref="Task{OperationResult}" /> that represents the <see cref="OperationResult" /> of the asynchronous query.
         /// </returns>
         /// <exception cref="System.ArgumentNullException"></exception>
-        public virtual Task<OpStatusResult> UpdateAsync(ContactItem contact)
+        public virtual Task<OperationResult> UpdateAsync(ContactItem contact)
         {
             ThrowIfDisposed();
             if (contact == null)
@@ -105,10 +105,10 @@ namespace Partnerinfo.Contact
         /// </summary>
         /// <param name="contact">The contact to delete from the store.</param>
         /// <returns>
-        /// A <see cref="Task{OperationResult}" /> that represents the <see cref="OpStatusResult" /> of the asynchronous query.
+        /// A <see cref="Task{OperationResult}" /> that represents the <see cref="OperationResult" /> of the asynchronous query.
         /// </returns>
         /// <exception cref="System.ArgumentNullException"></exception>
-        public virtual Task<OpStatusResult> DeleteAsync(ContactItem contact)
+        public virtual Task<OperationResult> DeleteAsync(ContactItem contact)
         {
             ThrowIfDisposed();
             if (contact == null)

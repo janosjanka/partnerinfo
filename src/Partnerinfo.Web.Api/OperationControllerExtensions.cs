@@ -1,15 +1,14 @@
 ﻿// Copyright (c) János Janka. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Partnerinfo.Identity
+namespace Partnerinfo
 {
     /// <summary>
-    /// Adds extensions methods to the <see cref="Controller" /> class to make it easier to return a <see cref="OperationResult" /> with a model.
+    /// Adds extensions methods to the <see cref="Controller" /> class to make it easier to return a <see cref="Partnerinfo.OperationResult" /> with a model.
     /// </summary>
-    public static class IdentityControllerExtensions
+    public static class OperationControllerExtensions
     {
         /// <summary>
         /// Creates a <see cref="OperationActionResult" /> object that renders a view to the response.
@@ -19,9 +18,9 @@ namespace Partnerinfo.Identity
         /// <returns>
         /// The <see cref="OperationActionResult" /> result that renders a view to the response.
         /// </returns>
-        public static IdentityActionResult IdentityResult(this Controller controller, IdentityResult result)
+        public static OperationActionResult OperationResult(this Controller controller, OperationResult result)
         {
-            return IdentityResult(controller, result, null);
+            return OperationResult(controller, result, null);
         }
 
         /// <summary>
@@ -33,14 +32,14 @@ namespace Partnerinfo.Identity
         /// <returns>
         /// The <see cref="OperationActionResult" /> result that renders a view to the response.
         /// </returns>
-        public static IdentityActionResult IdentityResult(this Controller controller, IdentityResult result, object model)
+        public static OperationActionResult OperationResult(this Controller controller, OperationResult result, object model)
         {
             if (model != null)
             {
                 controller.ViewData.Model = model;
             }
 
-            return new IdentityActionResult(result);
+            return new OperationActionResult(result);
         }
    }
 }

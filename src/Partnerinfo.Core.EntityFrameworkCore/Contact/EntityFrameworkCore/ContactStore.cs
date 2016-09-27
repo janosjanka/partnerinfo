@@ -31,7 +31,7 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
         /// <returns>
         /// A <see cref="T:System.Threading.Tasks.Task`1" /> that represents the <see cref="!:OperationResult" /> of the asynchronous query.
         /// </returns>
-        public virtual Task<OpStatusResult> CreateAsync(ContactItem contact, CancellationToken cancellationToken)
+        public virtual Task<OperationResult> CreateAsync(ContactItem contact, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
@@ -44,7 +44,7 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
         /// <returns>
         /// A <see cref="T:System.Threading.Tasks.Task`1" /> that represents the <see cref="!:OperationResult" /> of the asynchronous query.
         /// </returns>
-        public virtual Task<OpStatusResult> UpdateAsync(ContactItem contact, CancellationToken cancellationToken)
+        public virtual Task<OperationResult> UpdateAsync(ContactItem contact, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
@@ -57,7 +57,7 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
         /// <returns>
         /// A <see cref="T:System.Threading.Tasks.Task`1" /> that represents the <see cref="!:OperationResult" /> of the asynchronous query.
         /// </returns>
-        public virtual Task<OpStatusResult> DeleteAsync(ContactItem contact, CancellationToken cancellationToken)
+        public virtual Task<OperationResult> DeleteAsync(ContactItem contact, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }

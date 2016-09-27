@@ -7,15 +7,15 @@ namespace Partnerinfo
 {
     /// <summary>
     /// Represents an immutable, thread-safe list of items.
-    /// Use the static <see cref="OpListResult" /> class to create a new instance of the <see cref="OpListResult{T}" /> class.
+    /// Use the static <see cref="OperationListResult" /> class to create a new instance of the <see cref="OperationListResult{T}" /> class.
     /// </summary>
     /// <typeparam name="T">The type of items.</typeparam>
-    public sealed class OpListResult<T>
+    public sealed class OperationListResult<T>
     {
         /// <summary>
-        /// Represents an empty <see cref="OpListResult{T}" /> instance.
+        /// Represents an empty <see cref="OperationListResult{T}" /> instance.
         /// </summary>
-        public static readonly OpListResult<T> Empty = new OpListResult<T>();
+        public static readonly OperationListResult<T> Empty = new OperationListResult<T>();
 
         /// <summary>
         /// Gets the strongly typed list of results to return.
@@ -34,19 +34,19 @@ namespace Partnerinfo
         public int Total { get; }
 
         /// <summary>
-        /// Prevents a default instance of the <see cref="OpListResult{T}" /> class from being created.
+        /// Prevents a default instance of the <see cref="OperationListResult{T}" /> class from being created.
         /// </summary>
-        internal OpListResult()
+        internal OperationListResult()
         {
             Data = ImmutableArray<T>.Empty;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="OpListResult{T}" /> class.
+        /// Initializes a new instance of the <see cref="OperationListResult{T}" /> class.
         /// </summary>
         /// <param name="data">The strongly typed list of results to return.</param>
         /// <param name="total">The total number of results before paging is applied.</param>
-        internal OpListResult(ImmutableArray<T> data, int total)
+        internal OperationListResult(ImmutableArray<T> data, int total)
         {
             Data = data;
             Total = total;

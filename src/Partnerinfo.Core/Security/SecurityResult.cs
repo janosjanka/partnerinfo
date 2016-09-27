@@ -6,7 +6,7 @@ namespace Partnerinfo.Security
     /// <summary>
     /// Represents the result of security operations.
     /// </summary>
-    public sealed class SecurityResult : OpStatusResult
+    public sealed class SecurityResult : OperationResult
     {
         /// <summary>
         /// Gets an access visibility indicating whether the resource is available on the Web.

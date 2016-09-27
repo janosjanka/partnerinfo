@@ -6,23 +6,23 @@ using Microsoft.AspNetCore.Mvc;
 namespace Partnerinfo
 {
     /// <summary>
-    /// An implementation of <see cref="IActionResult" /> that wraps up a <see cref="OpStatusResult" />.
-    /// Instead of constructors, use the static extension methods of the <see cref="OpStatusControllerExtensions" /> class
+    /// An implementation of <see cref="IActionResult" /> that wraps up a <see cref="OperationResult" />.
+    /// Instead of constructors, use the static extension methods of the <see cref="OperationControllerExtensions" /> class
     /// to return a new instance from an action.
     /// </summary>
     /// <seealso cref="Microsoft.AspNetCore.Mvc.ActionResult" />
-    public sealed class OpStatusActionResult : ActionResult
+    public sealed class OperationActionResult : ActionResult
     {
         /// <summary>
         /// The result of an operation.
         /// </summary>
-        private readonly OpStatusResult _result;
+        private readonly OperationResult _result;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="OpStatusActionResult" /> class.
+        /// Initializes a new instance of the <see cref="OperationActionResult" /> class.
         /// </summary>
         /// <param name="result">The operation result.</param>
-        public OpStatusActionResult(OpStatusResult result)
+        public OperationActionResult(OperationResult result)
         {
             _result = result;
         }

@@ -6,7 +6,7 @@ namespace Partnerinfo
     /// <summary>
     /// Encapsulates an error from the system.
     /// </summary>
-    public sealed class OpStatusError
+    public sealed class OperationError
     {
         /// <summary>
         /// Gets the code for this error.
@@ -25,11 +25,11 @@ namespace Partnerinfo
         public string Description { get; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="OpStatusError" /> class.
+        /// Initializes a new instance of the <see cref="OperationError" /> class.
         /// </summary>
         /// <param name="code">The code for this error.</param>
         /// <param name="description">The description for this error.</param>
-        public OpStatusError(string code, string description)
+        public OperationError(string code, string description)
         {
             Code = code;
             Description = description;

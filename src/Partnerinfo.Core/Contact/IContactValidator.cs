@@ -18,8 +18,8 @@ namespace Partnerinfo.Contact
         /// <param name="contact">The contact to validate.</param>
         /// <param name="cancellationToken">The <see cref="CancellationToken" /> used to propagate notifications that the operation should be canceled.</param>
         /// <returns>
-        /// The <see cref="Task" /> that represents the asynchronous operation, containing the <see cref="OpStatusResult" /> of the validation operation.
+        /// The <see cref="Task" /> that represents the asynchronous operation, containing the <see cref="OperationResult" /> of the validation operation.
         /// </returns>
-        Task<OpStatusResult> ValidateAsync(ContactManager manager, ContactItem contact, CancellationToken cancellationToken);
+        Task<OperationResult> ValidateAsync(ContactManager manager, ContactItem contact, CancellationToken cancellationToken);
     }
 }
