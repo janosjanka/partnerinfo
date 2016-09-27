@@ -36,7 +36,7 @@ namespace Partnerinfo.Actions
         /// Prevents a default instance of the <see cref="ActionLink" /> class from being created.
         /// </summary>
         /// <remarks>
-        /// The private parameterless constructor enables two-way serialization scenarios.
+        /// The parameterless constructor enables two-way serialization scenarios.
         /// </remarks>
         internal ActionLink()
         {

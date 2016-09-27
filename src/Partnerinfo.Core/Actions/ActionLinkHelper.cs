@@ -5,6 +5,7 @@ using System;
 using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
+using Partnerinfo.Utilities;
 
 namespace Partnerinfo.Actions
 {
@@ -42,7 +43,7 @@ namespace Partnerinfo.Actions
                 throw new ArgumentNullException(nameof(actionLink));
             }
 
-            var customUri = actionLink.CustomUri != null ? UriUtility.Normalize(actionLink.CustomUri) : default(string);
+            var customUri = actionLink.CustomUri != null ? UriUtilities.Normalize(actionLink.CustomUri) : default(string);
             var builder = new StringBuilder();
 
             builder.Append(GetChecksum(actionLink.ActionId, actionLink.ContactId, customUri));

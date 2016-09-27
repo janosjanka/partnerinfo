@@ -4,9 +4,9 @@
 using System;
 using System.Text;
 
-namespace Partnerinfo
+namespace Partnerinfo.Utilities
 {
-    internal static class UriUtility
+    internal static class UriUtilities
     {
         /// <summary>
         /// Returns a normalized representation of the specified <paramref name="uriPart" />.
