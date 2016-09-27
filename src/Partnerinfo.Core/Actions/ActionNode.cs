@@ -30,9 +30,6 @@ namespace Partnerinfo.Actions
         /// Calls a visit method of the visitor; the element passes itself as an argument to the visit method.
         /// </summary>
         /// <param name="visitor">The visitor.</param>
-        public virtual void Accept(ActionVisitor visitor)
-        {
-            visitor.Visit(this);
-        }
+        public virtual void Accept(ActionVisitor visitor) => visitor.Visit(this);
     }
 }
