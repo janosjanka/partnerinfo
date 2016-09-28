@@ -6,13 +6,13 @@
 
 import * as PI from "./core";
 
-interface LoginOptions {
+export interface LoginOptions {
     email: string;
     password: string;
 }
 
 /** Represents user data for creating a new account. */
-interface RegisterOptions {
+export interface RegisterOptions {
     email: string;
     password: string;
     firstName?: string;
@@ -26,7 +26,7 @@ interface RegisterOptions {
  * @options loginInfo
  * @returns {Promise}
  */
-function login(options: LoginOptions): PI.HttpAsyncResult<any> {
+export function login(options: LoginOptions): PI.HttpAsyncResult<any> {
     return PI.api({
         path: "account/login",
         method: PI.HttpVerb.post,
@@ -39,7 +39,7 @@ function login(options: LoginOptions): PI.HttpAsyncResult<any> {
  * @options loginInfo
  * @returns {Promise}
  */
-function register(options: RegisterOptions): PI.HttpAsyncResult<any> {
+export function register(options: RegisterOptions): PI.HttpAsyncResult<any> {
     return PI.api({
         path: "account/register",
         method: PI.HttpVerb.post,
@@ -52,7 +52,7 @@ function register(options: RegisterOptions): PI.HttpAsyncResult<any> {
  * @options loginInfo
  * @returns {Promise}
  */
-function unregister(options: LoginOptions): PI.HttpAsyncResult<any> {
+export function unregister(options: LoginOptions): PI.HttpAsyncResult<any> {
     return PI.api({
         path: "account/unregister",
         method: PI.HttpVerb.delete,
