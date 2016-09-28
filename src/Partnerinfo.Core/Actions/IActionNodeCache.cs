@@ -6,7 +6,7 @@ namespace Partnerinfo.Actions
     /// <summary>
     /// Provides an abstraction for both in-memory and distributed (Redis, AppFabric, etc.) action node caches.
     /// </summary>
-    public interface IActionItemCache
+    public interface IActionNodeCache
     {
         /// <summary>
         /// Gets the action node of key. If the key does not exist a null value is returned.
@@ -15,7 +15,7 @@ namespace Partnerinfo.Actions
         /// <returns>
         /// The action node or null.
         /// </returns>
-        ActionItem Get(string key);
+        ActionNode Get(string key);
 
         /// <summary>
         /// Sets key to hold the action node. If key already holds a value, it is overwritten.
@@ -23,7 +23,7 @@ namespace Partnerinfo.Actions
         /// </summary>
         /// <param name="key">The key for the action node to be found.</param>
         /// <param name="node">The action node to add or replace.</param>
-        void Set(string key, ActionItem node);
+        void Set(string key, ActionNode node);
 
         /// <summary>
         /// Removes the specified keys. A key is ignored if it does not exist.

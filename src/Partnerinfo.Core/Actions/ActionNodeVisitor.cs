@@ -4,15 +4,15 @@
 namespace Partnerinfo.Actions
 {
     /// <summary>
-    /// Represents a <see cref="ActionItem" /> visitor that visits only the single action node passed into its Visit method.
+    /// Represents a <see cref="ActionNode" /> visitor that visits only the single action node passed into its Visit method.
     /// </summary>
-    public abstract class ActionItemVisitor
+    public abstract class ActionNodeVisitor
     {
         /// <summary>
         /// Visits the specified action node.
         /// </summary>
         /// <param name="node">The action node to visit.</param>
-        public virtual void Visit(ActionItem node)
+        public virtual void Visit(ActionNode node)
         {
             if (node != null)
             {
