@@ -4,7 +4,7 @@
   * Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
   */
 
-import * as PI from "./core";
+import { api, HttpAsyncResponse } from "./core";
 
 export interface LoginOptions {
     email: string;
@@ -26,10 +26,10 @@ export interface RegisterOptions {
  * @options loginInfo
  * @returns {Promise}
  */
-export function login(options: LoginOptions): PI.HttpAsyncResult<any> {
-    return PI.api({
+export function loginAsync(options: LoginOptions): HttpAsyncResponse<any> {
+    return api({
         path: "account/login",
-        method: PI.HttpVerb.post,
+        method: "post",
         params: options
     });
 }
@@ -39,10 +39,10 @@ export function login(options: LoginOptions): PI.HttpAsyncResult<any> {
  * @options loginInfo
  * @returns {Promise}
  */
-export function register(options: RegisterOptions): PI.HttpAsyncResult<any> {
-    return PI.api({
+export function registerAsync(options: RegisterOptions): HttpAsyncResponse<any> {
+    return api({
         path: "account/register",
-        method: PI.HttpVerb.post,
+        method: "post",
         params: options
     });
 }
@@ -52,10 +52,10 @@ export function register(options: RegisterOptions): PI.HttpAsyncResult<any> {
  * @options loginInfo
  * @returns {Promise}
  */
-export function unregister(options: LoginOptions): PI.HttpAsyncResult<any> {
-    return PI.api({
+export function unregisterAsync(options: LoginOptions): HttpAsyncResponse<any> {
+    return api({
         path: "account/unregister",
-        method: PI.HttpVerb.delete,
+        method: "delete",
         params: options
     });
 }
