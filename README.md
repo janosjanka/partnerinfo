@@ -1,13 +1,21 @@
 # Partnerinfo (www.partnerinfo.tv)
-This repository contains a rewrite of Partnerinfo TV based on ASP.NET Core.
 
-Partnerinfo is an Online Marketing System with modern ASP.NET MVC 5 + SPA-based CMS services (client-side routing, JavaScript module engine & modules, blazing fast HTML designer for modules, styles, ...) & REST APIs. In contrast to most of similar marketing systems, it does not force you to use pre-defined, built-in, and unchangable business functions. You are totally free to define your own business workflows for your web actions, including registration (single opt-in, double opt-in, etc.), newsletters, micro sites, custom chat design, YouTube video search & playlist editor, and so on. This project aimed to cover the following areas:
+Partnerinfo is an **O**nline **M**arketing **S**ystem (campaigns, contacts, newsletters, action links, business workflows, analytics)
+with modern SPA-based CMS services (client-side routing, JavaScript modules aka components, dependency resolution, blazing fast module designer) &
+REST APIs for each part of the system.
 
-## Lightweight Workflow Engine for Web Actions & HTML Activity Designer
+In contrast to most of similar systems, it does not force you to use pre-defined (built-in) and unchangable business functions
+with a bunch of checkboxes and input controls that make your life chaotic. You are totally free to define your own business workflows
+for your web actions, including registration (single opt-in, double opt-in) and so on.
+
+This project aimed to cover the following areas:
+
+## Lightweight Workflows for Web Actions & HTML Activity Designer
 
 - Extensible workflow engine developed for fast, performance-critical web actions
 - Standard control flow & business activities (sequence, condition, redirect, schedule, subscribe, sendMail, tagging, ...)
 - HTML-based workflow activity designer for end-users
+- .NET Core does not support Windows Workflow Foundation (WF)
 
 ## Action Links
 
