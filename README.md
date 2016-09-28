@@ -27,11 +27,17 @@ to be able to measure activity of a given user, including your girl-friend :-)
 
 ## Contact Management & Tagging
 
-The system enables you to easily get visitors supporting most of market leader social media authentication systems (e.g. Facebook, Google, Microsoft, Twitter, ...) or even using custom forms. Furthermore, it contains a business tagging system which enables you to add/remove (colored) tags from your contacts and send newsletters or perform some business operation based on your business tag-based rules. For instance, when someone clicks your YouTube video on your page, you can add a business tag 'He/she has seen the 1st video' extending it with a redirect action to the next video page. No hard-coded business actions !!!
+The system enables you to easily get visitors supporting most of market leader social media authentication systems
+(e.g. Facebook, Google, Microsoft, Twitter) or even using custom forms. Furthermore, it contains a business tagging system
+which enables you to add/remove *colored* tags from your contacts and send newsletters or perform some business operation
+based on your business tag-based rules. For instance, when someone clicks your YouTube video on your page,
+you can add a business tag *'He/she has seen the 1st video'* extending it with a redirect action to the next video page.
 
 ## Newsletter Management
 
-You can send an arbitrary number of newsletters specifying a group of contacts or even business tag filters. Both token replacement and background processing are supported.
+You can send an arbitrary number of newsletters specifying a group of contacts or even business tag filters.
+Both token replacement and background processing ([HangFire](http://hangfire.io)) are supported.
+In addition, Partnerinfo uses effective partitioning strategies to process a large number of emails asynchronously.
 
 ## Content Management
 
