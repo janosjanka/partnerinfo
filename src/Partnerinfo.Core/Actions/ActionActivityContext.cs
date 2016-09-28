@@ -3,7 +3,10 @@
 
 namespace Partnerinfo.Actions
 {
-    public class ActionActivityContext
+    /// <summary>
+    /// The base class for context classes that represent the execution environment of an activity.
+    /// </summary>
+    public sealed class ActionActivityContext
     {
     }
 }
