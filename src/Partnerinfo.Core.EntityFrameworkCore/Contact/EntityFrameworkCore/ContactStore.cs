@@ -46,7 +46,7 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
 
             Context = context;
         }
-        
+
         /// <summary>
         /// Creates a new contact in a store as an asynchronous operation.
         /// </summary>
@@ -105,20 +105,11 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
         /// </summary>
         public void Dispose()
         {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
+            // Do not dispose the DbContext here because it must be performed by the caller.
+            // An ASP.NET application, which uses dependency injection with lifetime configuration, 
+            // can be crashed if the context is disposed prematurely.
 
-        /// <summary>
-        /// Releases the unmanaged resources used by the role manager and optionally releases the managed resources.
-        /// </summary>
-        /// <param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources.</param>
-        protected virtual void Dispose(bool disposing)
-        {
-            if (disposing && !_disposed)
-            {
-                _disposed = true;
-            }
+            _disposed = true;
         }
 
         /// <summary>
