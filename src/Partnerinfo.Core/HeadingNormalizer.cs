@@ -31,8 +31,10 @@ namespace Partnerinfo
                 throw new ArgumentNullException(nameof(heading));
             }
 
-            // TODO: Normalize (titlify) the specified heading. See: http://www.nytimes.com/
-            // "theories of the race: how solid is clinton’s lead" =>
+            // TODO: Normalize (titlify) the specified heading.
+            // See: http://www.nytimes.com/
+            //
+            // "  theories   of   the race: how solid   is   clinton’s lead  " =>
             // "Theories of the Race: How Solid Is Clinton’s Lead?"
 
             throw new NotImplementedException();
