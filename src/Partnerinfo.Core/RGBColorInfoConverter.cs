@@ -19,10 +19,7 @@ namespace Partnerinfo
         /// <returns>
         ///   <c>true</c> if this instance can convert the specified object type; otherwise, <c>false</c>.
         /// </returns>
-        public override bool CanConvert(Type objectType)
-        {
-            return objectType == typeof(RGBColorInfo); // RGBColorInfo is a sealed class.
-        }
+        public sealed override bool CanConvert(Type objectType) => objectType == typeof(RGBColorInfo); // RGBColorInfo is a sealed class.
 
         /// <summary>
         /// Reads the JSON representation of the object.
@@ -34,7 +31,7 @@ namespace Partnerinfo
         /// <returns>
         /// The object value.
         /// </returns>
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        public sealed override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             if (reader.TokenType == JsonToken.String)
             {
@@ -55,7 +52,7 @@ namespace Partnerinfo
         /// <param name="writer">The <see cref="T:Newtonsoft.Json.JsonWriter" /> to write to.</param>
         /// <param name="value">The value.</param>
         /// <param name="serializer">The calling serializer.</param>
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        public sealed override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             serializer.Serialize(writer, value?.ToString());
         }

@@ -32,7 +32,7 @@ namespace Partnerinfo.Campaign
         /// <value>
         /// The date and time, in UTC, when this campaign was last modified.
         /// </value>
-        public DateTime ModifiedDate { get; set; } = DateTime.UtcNow;
+        public DateTimeOffset ModifiedDate { get; set; } = DateTimeOffset.UtcNow;
 
         /// <summary>
         /// Gets or sets the user identity who modified this campaign.
