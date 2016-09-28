@@ -4,6 +4,7 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
 namespace Partnerinfo.Contact
 {
@@ -13,7 +14,8 @@ namespace Partnerinfo.Contact
     public class ContactManager : IDisposable
     {
         private bool _disposed;
-        
+        private readonly ICancellationTokenAccessor _cancellationTokenAccessor;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ContactManager" /> class.
         /// </summary>
@@ -28,7 +30,11 @@ namespace Partnerinfo.Contact
             }
 
             Store = store;
-            Services = services;
+
+            if (services != null)
+            {
+                _cancellationTokenAccessor = services.GetService(typeof(ICancellationTokenAccessor)) as ICancellationTokenAccessor;
+            }
         }
 
         /// <summary>
@@ -38,14 +44,14 @@ namespace Partnerinfo.Contact
         /// The persistence store the manager operates over.
         /// </value>
         protected internal IContactStore Store { get; set; }
-
+        
         /// <summary>
-        /// Gets or sets the services.
+        /// The <see cref="ILogger" /> used to log messages from the manager.
         /// </summary>
         /// <value>
-        /// The services.
+        /// The <see cref="ILogger" /> used to log messages from the manager.
         /// </value>
-        protected internal IServiceProvider Services { get; set; }
+        protected internal ILogger Logger { get; set; }
 
         /// <summary>
         /// Returns a <see cref="System.Threading.CancellationToken" /> using the injected <see cref="ICancellationTokenAccessor" />.
@@ -53,7 +59,7 @@ namespace Partnerinfo.Contact
         /// <value>
         /// The <see cref="System.Threading.CancellationToken" />.
         /// </value>
-        protected CancellationToken CancellationToken => (Services?.GetService(typeof(ICancellationTokenAccessor)) as ICancellationTokenAccessor)?.GetToken() ?? CancellationToken.None;
+        protected internal CancellationToken CancellationToken => _cancellationTokenAccessor?.GetToken() ?? CancellationToken.None;
 
         /// <summary>
         /// Creates a new contact in a store as an asynchronous operation.
