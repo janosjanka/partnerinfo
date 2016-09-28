@@ -111,11 +111,19 @@ namespace Partnerinfo
         }
 
         /// <summary>
+        /// Returns a hash code for this instance.
+        /// </summary>
+        /// <returns>
+        /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
+        /// </returns>
+        public sealed override int GetHashCode() => RGB;
+
+        /// <summary>
         /// Returns a <see cref="string" /> that represents this instance.
         /// </summary>
         /// <returns>
         /// A <see cref="string" /> that represents this instance.
         /// </returns>
-        public override string ToString() => $"#{R:x2}{G:x2}{B:x2}";
+        public sealed override string ToString() => $"#{R:x2}{G:x2}{B:x2}";
     }
 }

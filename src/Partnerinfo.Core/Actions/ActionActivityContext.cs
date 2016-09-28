@@ -10,6 +10,12 @@ namespace Partnerinfo.Actions
     /// </summary>
     public sealed class ActionActivityContext
     {
+        /// <summary>
+        /// Gets the <see cref="IServiceProvider" /> used to resolve services.
+        /// </summary>
+        /// <value>
+        /// The <see cref="IServiceProvider" /> used to resolve services.
+        /// </value>
         public IServiceProvider Services { get; private set; }
 
         /// <summary>
