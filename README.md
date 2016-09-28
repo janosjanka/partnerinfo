@@ -1,21 +1,19 @@
 # Partnerinfo (www.partnerinfo.tv)
 
-Partnerinfo is an **O**nline **M**arketing **S**ystem (campaigns, contacts, newsletters, action links, business workflows, analytics)
-with modern SPA-based CMS services (client-side routing, JavaScript modules aka components, dependency resolution, blazing fast module designer) &
-REST APIs for each part of the system.
+Partnerinfo is an Online Marketing & Content Management System supporting campaigns, contacts, newsletters, action links, workflows, analytics,
+client-side routing, modules aka components + full-featured module designer, dependency resolution, and REST APIs for each part of the system.
 
-In contrast to most of similar systems, it does not force you to use pre-defined (built-in) and unchangable business functions
-with a bunch of checkboxes and input controls that make your life chaotic. You are totally free to define your own business workflows
-for your web actions, including registration (single opt-in, double opt-in) and so on.
+In contrast to most of similar systems, it does not force you to use built-in and unchangable business functions with a bunch of checkbox controls.
+You can simply create and inject your own activities using [C# Roslyn compiler](https://github.com/dotnet/roslyn) and design business workflows
+in your favorite browser using pure HTML & JavaScript.
 
 This project aimed to cover the following areas:
 
 ## Lightweight Workflows for Web Actions & HTML Activity Designer
 
-- Extensible workflow engine developed for fast, performance-critical web actions
+- Pluggable business activities developed for fast, performance-critical web actions
 - Standard control flow & business activities (sequence, condition, redirect, schedule, subscribe, sendMail, tagging, ...)
-- HTML-based workflow activity designer for end-users
-- .NET Core does not support Windows Workflow Foundation (WF)
+- Workflow designer written in pure HTML & JavaScript (a marketing specialist can also use it without having to know VS or C#)
 
 ## Action Links
 
