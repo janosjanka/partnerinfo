@@ -55,6 +55,6 @@ namespace Partnerinfo
         /// <returns>
         /// A <see cref="string" /> that represents this instance.
         /// </returns>
-        public override string ToString() => $"POINT({Longitude} {Latitude})";
+        public sealed override string ToString() => $"POINT({Longitude} {Latitude})";
     }
 }

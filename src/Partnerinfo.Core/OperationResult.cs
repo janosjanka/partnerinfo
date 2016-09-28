@@ -81,9 +81,6 @@ namespace Partnerinfo
         /// If the operation was successful the ToString() will return "Succeeded" otherwise it returned
         /// "Failed : " followed by a comma delimited list of error codes from its <see cref="Errors" /> collection, if any.
         /// </remarks>
-        public override string ToString()
-        {
-            return Succeeded ? "Succeeded" : $"Failed: ${string.Join(",", Errors.Select(x => x.Code).ToArray())}";
-        }
+        public sealed override string ToString() => Succeeded ? "Succeeded" : $"Failed: ${string.Join(",", Errors.Select(x => x.Code).ToArray())}";
     }
 }

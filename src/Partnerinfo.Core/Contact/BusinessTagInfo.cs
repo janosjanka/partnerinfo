@@ -63,6 +63,6 @@ namespace Partnerinfo.Contact
         /// <returns>
         /// A <see cref="string" /> that represents this instance.
         /// </returns>
-        public override string ToString() => $"{nameof(Uri)}: {Uri}, {nameof(Name)}: {Name}, {nameof(Color)}: {Color}";
+        public sealed override string ToString() => $"{nameof(Uri)}: {Uri}, {nameof(Name)}: {Name}, {nameof(Color)}: {Color}";
     }
 }
