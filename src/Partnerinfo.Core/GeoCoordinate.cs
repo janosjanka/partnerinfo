@@ -6,6 +6,10 @@ namespace Partnerinfo
     /// <summary>
     /// Represents an immutable, thread-safe, and cachable Geo coordinate as DDD value object.
     /// </summary>
+    /// <remarks>
+    /// This type should be compatible with the DbGeography class. See:
+    /// https://msdn.microsoft.com/en-us/library/system.data.spatial.dbgeography(v=vs.110).aspx
+    /// </remarks>
     public sealed class GeoCoordinate
     {
         /// <summary>
