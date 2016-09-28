@@ -13,13 +13,17 @@ This project aimed to cover the following areas:
 
 - Pluggable business activities developed for fast, performance-critical web actions
 - Standard control flow & business activities (sequence, condition, redirect, schedule, subscribe, sendMail, tagging, ...)
-- Workflow designer written in pure HTML & JavaScript (a marketing specialist can also use it without having to know VS or C#)
+- HTML workflow designer (a marketing specialist can also use it without having to know VS or C#)
 
 ## Action Links
 
-An action link is a simple URL associated with a server-side workflow which can be called by executing a usual ASP.NET Web API action. When a user clicks a link or posts some form data performing either HTTP GET or POST requests, the engine invokes the specified workflow passing context data (identity, user agent, user data and other information) into it.
+An action link is a simple URL associated with a workflow which can be called by executing a usual ASP.NET Web API action.
+When a user clicks a link or posts some form data performing either HTTP GET or POST requests, the engine invokes the specified workflow
+passing context (user and browser) data into it and returns with a status result object. The controller action uses this result object
+to create the corresponding HTTP response message that *usually* ends with a HTTP redirect to a URL specified by a RedirectActionActivity.
 
-You can even add a custom URI segment to the end of action links to make those user-friendly or specify a contact for each action link to be able to measure activity of a given user, including your girl-friend :-)
+You can even add a custom URI segment to the end of action links to make those user-friendly or specify a contact for each action link
+to be able to measure activity of a given user, including your girl-friend :-)
 
 ## Contact Management & Tagging
 
