@@ -4,16 +4,15 @@
   * Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
   */
 
-import { api, ApiPromiseLike } from "./core";
+import * as PI from "./core";
 
-/** Represents user data for . */
-export interface LoginParams {
+interface LoginOptions {
     email: string;
     password: string;
 }
 
 /** Represents user data for creating a new account. */
-export interface RegisterParams {
+interface RegisterOptions {
     email: string;
     password: string;
     firstName?: string;
@@ -24,39 +23,39 @@ export interface RegisterParams {
 
 /**
  * Logs In using an authentication provider as a HTTP POST operation.
- * @param loginInfo
+ * @options loginInfo
  * @returns {Promise}
  */
-export function login(params: LoginParams): ApiPromiseLike<any> {
-    return api({
+function login(options: LoginOptions): PI.HttpAsyncResult<any> {
+    return PI.api({
         path: "account/login",
-        method: "post",
-        params: params
+        method: PI.HttpVerb.post,
+        params: options
     });
 }
 
 /**
  * Registers a new account as a HTTP POST operation.
- * @param loginInfo
+ * @options loginInfo
  * @returns {Promise}
  */
-export function register(params: RegisterParams): ApiPromiseLike<any> {
-    return api({
+function register(options: RegisterOptions): PI.HttpAsyncResult<any> {
+    return PI.api({
         path: "account/register",
-        method: "post",
-        params: params
+        method: PI.HttpVerb.post,
+        params: options
     });
 }
 
 /**
  * Unregisters an existing account as a HTTP POST operation.
- * @param loginInfo
+ * @options loginInfo
  * @returns {Promise}
  */
-export function unregister(params: LoginParams): ApiPromiseLike<any> {
-    return api({
+function unregister(options: LoginOptions): PI.HttpAsyncResult<any> {
+    return PI.api({
         path: "account/unregister",
-        method: "post",
-        params: params
+        method: PI.HttpVerb.delete,
+        params: options
     });
 }
