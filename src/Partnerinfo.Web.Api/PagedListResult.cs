@@ -1,7 +1,7 @@
 ﻿// Copyright (c) János Janka. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
-using System.Collections.Immutable;
+using System.Collections.Generic;
 
 namespace Partnerinfo
 {
@@ -9,7 +9,7 @@ namespace Partnerinfo
     /// Represents a collection of objects that can be used by repositories.
     /// </summary>
     /// <typeparam name="T">The type of the result.</typeparam>
-    public sealed class OperationListResultDto<T>
+    public sealed class PagedListResult<T>
     {
         /// <summary>
         /// Gets the strongly typed list of results to return.
@@ -17,7 +17,7 @@ namespace Partnerinfo
         /// <value>
         /// The strongly typed list of results to return.
         /// </value>
-        public ImmutableArray<T> Data { get; set; }
+        public IEnumerable<T> Data { get; set; }
 
         /// <summary>
         /// Gets or sets a link to the previous page of this list.

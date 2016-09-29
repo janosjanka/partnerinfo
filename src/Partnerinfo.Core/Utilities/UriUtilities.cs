@@ -16,7 +16,7 @@ namespace Partnerinfo.Utilities
         /// A normalized representation of the specified <paramref name="uriPart" />.
         /// </returns>
         /// <exception cref="System.ArgumentNullException">uriPart</exception>
-        public static string Normalize(string uriPart)
+        internal static string Normalize(string uriPart)
         {
             if (uriPart == null)
             {
