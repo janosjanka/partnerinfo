@@ -116,6 +116,6 @@ namespace Partnerinfo
         /// <returns>
         /// A <see cref="string" /> that represents this instance.
         /// </returns>
-        public sealed override string ToString() => $"#{R:x2}{G:x2}{B:x2}";
+        public sealed override string ToString() => $"#{RGB:x6}";
     }
 }
