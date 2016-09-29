@@ -3,6 +3,9 @@
 
 namespace Partnerinfo.Utilities
 {
+    /// <summary>
+    /// Helps computes Cyclic Redundancy Check (CRC) values.
+    /// </summary>
     internal static class Crc32
     {
         private static readonly uint[] s_crcTable = // CRC polynomial 0xedb88320 
@@ -53,28 +56,30 @@ namespace Partnerinfo.Utilities
         };
 
         /// <summary>
-        /// Computes a checksum for the given array of bytes.
+        /// Computes a Cyclic Redundancy Check (CRC) from the specified byte array buffer.
         /// </summary>
-        /// <param name="bytes">The bytes.</param>
+        /// <param name="buffer">A buffer of data from which the CRC is computed.</param>
         /// <returns>
-        /// The checksum.
+        /// A CRC value.
         /// </returns>
-        public static uint Compute(byte[] bytes)
+        internal static uint Compute(byte[] buffer)
         {
             uint oldCrc = 0xffffffff;
-            for (int i = bytes.Length; --i >= 0;)
+            for (int i = buffer.Length; --i >= 0;)
             {
-                oldCrc = UPDC(bytes[i], oldCrc);
+                oldCrc = UPDC(buffer[i], oldCrc);
             }
             return ~oldCrc;
         }
 
         /// <summary>
-        /// Computes a checksum for the given text.
+        /// Computes a Cyclic Redundancy Check (CRC) from the specified string.
         /// </summary>
-        /// <param name="text">The text.</param>
-        /// <returns></returns>
-        public static uint Compute(string text)
+        /// <param name="text">The text from which the CRC is computed.</param>
+        /// <returns>
+        /// A CRC value.
+        /// </returns>
+        internal static uint Compute(string text)
         {
             uint oldCrc = 0xffffffff;
             byte loByte, hiByte;
@@ -93,9 +98,6 @@ namespace Partnerinfo.Utilities
             return ~oldCrc;
         }
 
-        /// <summary>
-        /// Gets a CRC value from the CRC table.
-        /// </summary>
         private static uint UPDC(byte octet, uint crc) => s_crcTable[(crc ^ octet) & 0xff] ^ (crc >> 8);
     }
 }
