@@ -15,8 +15,8 @@ namespace Partnerinfo.Utilities
         /// <summary>
         /// Computes a new hash value combining the specified values.
         /// </summary>
-        /// <param name="hash1">The hash1 to compute.</param>
-        /// <param name="hash2">The hash2 to compute.</param>
+        /// <param name="hash1">The hash1 to add.</param>
+        /// <param name="hash2">The hash2 to add.</param>
         /// <returns>
         /// The computed hash value.
         /// </returns>
@@ -24,6 +24,29 @@ namespace Partnerinfo.Utilities
         /// http://referencesource.microsoft.com/#System.Web/Util/HashCodeCombiner.cs
         /// </remarks>
         public static int Combine(int hash1, int hash2) => ((hash1 << 5) + hash1) ^ hash2;
+
+        /// <summary>
+        /// Computes a new hash value combining the specified values.
+        /// </summary>
+        /// <param name="hash1">The hash1 to add.</param>
+        /// <param name="hash2">The hash2 to add.</param>
+        /// <param name="hash3">The hash3 to add.</param>
+        /// <returns>
+        /// The computed hash value.
+        /// </returns>
+        public static int Combine(int hash1, int hash2, int hash3) => Combine(hash1, Combine(hash1, hash3));
+
+        /// <summary>
+        /// Computes a new hash value combining the specified values.
+        /// </summary>
+        /// <param name="hash1">The hash1 to add.</param>
+        /// <param name="hash2">The hash2 to add.</param>
+        /// <param name="hash3">The hash3 to add.</param>
+        /// <param name="hash4">The hash4 to add.</param>
+        /// <returns>
+        /// The computed hash value.
+        /// </returns>
+        public static int Combine(int hash1, int hash2, int hash3, int hash4) => Combine(hash1, Combine(hash2, Combine(hash3, hash4)));
 
         /// <summary>
         /// Computes a new hash value combining an array of hash values of the specified items.

@@ -19,7 +19,7 @@ namespace Partnerinfo.Actions
         public IServiceProvider Services { get; private set; }
 
         /// <summary>
-        /// Creates an activity result passing context information to the result object.
+        /// Creates an activity result passing context information into the result object.
         /// </summary>
         /// <param name="statusCode">The status code to override.</param>
         /// <returns>

@@ -80,7 +80,7 @@ namespace Partnerinfo.Actions
         {
             if (string.IsNullOrEmpty(paramUri))
             {
-                throw new ArgumentNullException($"The {nameof(paramUri)} cannot be null or empty.");
+                throw new ArgumentNullException(nameof(paramUri));
             }
 
             var slots = paramUri.Split(new char[] { ValueSeparator }, 3, StringSplitOptions.None);
@@ -125,7 +125,7 @@ namespace Partnerinfo.Actions
         {
             if (string.IsNullOrEmpty(link))
             {
-                throw new ArgumentNullException($"The {nameof(link)} cannot be null or empty.");
+                throw new ArgumentNullException(nameof(link));
             }
 
             var uri = new Uri(ServerPaths.BaseUri, link);

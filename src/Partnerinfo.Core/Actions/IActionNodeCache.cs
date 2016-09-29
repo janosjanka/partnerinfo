@@ -26,9 +26,9 @@ namespace Partnerinfo.Actions
         void Set(string key, ActionNode node);
 
         /// <summary>
-        /// Removes the specified keys. A key is ignored if it does not exist.
+        /// Removes the specified key. A key is ignored if it does not exist.
         /// </summary>
         /// <param name="key">The key for the action node to be found.</param>
-        void Del(string key);
+        void Remove(string key);
     }
 }

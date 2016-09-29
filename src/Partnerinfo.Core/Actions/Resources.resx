@@ -119,6 +119,7 @@
   </resheader>
   <data name="InvalidLink" xml:space="preserve">
     <value>The link is not an actionlink.</value>
+    <comment>Thrown when an action link is mailformed.</comment>
   </data>
   <data name="InvalidLinkParameter" xml:space="preserve">
     <value>The link is not an actionlink.</value>

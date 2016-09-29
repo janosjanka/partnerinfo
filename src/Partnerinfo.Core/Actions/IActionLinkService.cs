@@ -49,8 +49,8 @@ namespace Partnerinfo.Actions
         ActionLink DecodeLink(string link);
 
         /// <summary>
-        /// In a specified input string, replaces all actionlink parameter
-        /// with another actionlink parameter returned by a callback function.
+        /// In a specified input string, replaces each action link parameter
+        /// with another action link parameter returned by a callback function.
         /// </summary>
         /// <param name="input">The string to search for a match.</param>
         /// <param name="callback">A custom method that examines each match and returns either the original matched

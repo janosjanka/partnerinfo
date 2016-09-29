@@ -16,7 +16,7 @@ namespace Partnerinfo
         /// <value>
         /// The primary key.
         /// </value>
-        int Id { get; }
+        int Id { get; set; }
 
         /// <summary>
         /// Gets the email address for this user.
@@ -24,7 +24,7 @@ namespace Partnerinfo
         /// <value>
         /// The email.
         /// </value>
-        string Email { get; }
+        string Email { get; set; }
 
         /// <summary>
         /// Gets the telephone number for the user.
@@ -32,7 +32,7 @@ namespace Partnerinfo
         /// <value>
         /// The telephone number.
         /// </value>
-        string PhoneNumber { get; }
+        string PhoneNumber { get; set; }
 
         /// <summary>
         /// Gets the first name for this user.
@@ -40,7 +40,7 @@ namespace Partnerinfo
         /// <value>
         /// The first name.
         /// </value>
-        string FirstName { get; }
+        string FirstName { get; set; }
 
         /// <summary>
         /// Gets the last name for this user.
@@ -48,7 +48,7 @@ namespace Partnerinfo
         /// <value>
         /// The last name.
         /// </value>
-        string LastName { get; }
+        string LastName { get; set; }
 
         /// <summary>
         /// Gets the gender for this user.
@@ -56,7 +56,7 @@ namespace Partnerinfo
         /// <value>
         /// The gender.
         /// </value>
-        PersonGender Gender { get; }
+        PersonGender Gender { get; set; }
 
         /// <summary>
         /// Gets the birthday for this user.
@@ -64,6 +64,6 @@ namespace Partnerinfo
         /// <value>
         /// The birthday.
         /// </value>
-        DateTimeOffset? Birthday { get; }
+        DateTimeOffset? Birthday { get; set; }
     }
 }

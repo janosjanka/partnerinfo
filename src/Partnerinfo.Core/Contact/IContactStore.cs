@@ -2,7 +2,6 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
 using System;
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -22,9 +21,9 @@ namespace Partnerinfo.Contact
         /// <param name="limit">The number of rows to return, after processing the offset clause.</param>
         /// <param name="cancellationToken">A token to observe while waiting for the task to complete.</param>
         /// <returns>
-        /// A <see cref="Task{IList{ContactItem}}" /> that contains the contacts according to the specified filter parameters.
+        /// A <see cref="Task{OperationListResult{ContactItem}}" /> that contains the contacts according to the specified filter parameters.
         /// </returns>
-        Task<IList<ContactItem>> GetAllAsync(ContactField fields, ContactSortOrder sortOrder, int offset, int limit, CancellationToken cancellationToken);
+        Task<OperationListResult<ContactItem>> GetAllAsync(ContactField fields, ContactSortOrder sortOrder, int offset, int limit, CancellationToken cancellationToken);
 
         /// <summary>
         /// Creates a new contact in a store as an asynchronous operation.
