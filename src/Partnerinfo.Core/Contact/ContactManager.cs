@@ -77,6 +77,7 @@ namespace Partnerinfo.Contact
                 throw new ArgumentNullException(nameof(contact));
             }
 
+            // TODO: Implement a SaveChangesAsync method with validation.
             return Store.CreateAsync(contact, CancellationToken);
         }
 
@@ -96,6 +97,7 @@ namespace Partnerinfo.Contact
                 throw new ArgumentNullException(nameof(contact));
             }
 
+            // TODO: Implement a SaveChangesAsync method with validation.
             return Store.UpdateAsync(contact, CancellationToken);
         }
 
@@ -131,6 +133,22 @@ namespace Partnerinfo.Contact
         {
             ThrowIfDisposed();
             return Store.FindByIdAsync(id, fields, CancellationToken);
+        }
+
+        /// <summary>
+        /// Retrieves a collection of contacts with the given filter parameters as an asynchronous operation.
+        /// </summary>
+        /// <param name="fields">The fields to be included in the result set.</param>
+        /// <param name="sortOrder">Specifies how items in a list are sorted.</param>
+        /// <param name="offset">The number of rows to skip, before starting to return rows from the query expression.</param>
+        /// <param name="limit">The number of rows to return, after processing the offset clause.</param>
+        /// <returns>
+        /// A <see cref="Task{OperationListResult{ContactItem}}" /> that contains the contacts according to the specified filter parameters.
+        /// </returns>
+        public virtual Task<OperationListResult<ContactItem>> FindAllAsync(ContactField fields, ContactSortOrder sortOrder, int offset, int limit)
+        {
+            ThrowIfDisposed();
+            return Store.FindAllAsync(fields, sortOrder, offset, limit, CancellationToken);
         }
 
         /// <summary>

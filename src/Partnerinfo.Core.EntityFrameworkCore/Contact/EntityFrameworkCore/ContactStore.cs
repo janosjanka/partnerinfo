@@ -49,22 +49,6 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
         }
 
         /// <summary>
-        /// Retrieves a collection of contacts with the given filter parameters as an asynchronous operation.
-        /// </summary>
-        /// <param name="fields">The fields to be included in the result set.</param>
-        /// <param name="sortOrder">Specifies how items in a list are sorted.</param>
-        /// <param name="offset">The number of rows to skip, before starting to return rows from the query expression.</param>
-        /// <param name="limit">The number of rows to return, after processing the offset clause.</param>
-        /// <param name="cancellationToken">A token to observe while waiting for the task to complete.</param>
-        /// <returns>
-        /// A <see cref="Task{OperationListResult{ContactItem}}" /> that contains the contacts according to the specified filter parameters.
-        /// </returns>
-        public virtual Task<OperationListResult<ContactItem>> GetAllAsync(ContactField fields, ContactSortOrder sortOrder, int offset, int limit, CancellationToken cancellationToken)
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
         /// Creates a new contact in a store as an asynchronous operation.
         /// </summary>
         /// <param name="contact">The contact to create in the store.</param>
@@ -113,6 +97,22 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
         /// A task that represents the asynchronous operation.
         /// </returns>
         public virtual Task<ContactItem> FindByIdAsync(int id, ContactField fields, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Retrieves a collection of contacts with the given filter parameters as an asynchronous operation.
+        /// </summary>
+        /// <param name="fields">The fields to be included in the result set.</param>
+        /// <param name="sortOrder">Specifies how items in a list are sorted.</param>
+        /// <param name="offset">The number of rows to skip, before starting to return rows from the query expression.</param>
+        /// <param name="limit">The number of rows to return, after processing the offset clause.</param>
+        /// <param name="cancellationToken">A token to observe while waiting for the task to complete.</param>
+        /// <returns>
+        /// A <see cref="Task{OperationListResult{ContactItem}}" /> that contains the contacts according to the specified filter parameters.
+        /// </returns>
+        public virtual Task<OperationListResult<ContactItem>> FindAllAsync(ContactField fields, ContactSortOrder sortOrder, int offset, int limit, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
