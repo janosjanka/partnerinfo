@@ -13,6 +13,6 @@ namespace Partnerinfo
         /// <summary>
         /// TODO: It is now hard-coded.
         /// </summary>
-        public static readonly Uri BaseUri = new Uri("http://partnerinfo-localhost.tv");
+        public static readonly Uri BaseUri = new Uri("http://localhost:5000");
     }
 }

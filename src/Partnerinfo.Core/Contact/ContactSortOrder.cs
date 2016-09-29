@@ -3,6 +3,9 @@
 
 namespace Partnerinfo.Contact
 {
+    /// <summary>
+    /// Specifies how contacts in a list are sorted.
+    /// </summary>
     public enum ContactSortOrder
     {
         /// <summary>

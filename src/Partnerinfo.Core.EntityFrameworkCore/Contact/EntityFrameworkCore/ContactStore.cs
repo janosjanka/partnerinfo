@@ -2,6 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -45,6 +46,22 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
             }
 
             Context = context;
+        }
+
+        /// <summary>
+        /// Retrieves a collection of contacts with the given filter parameters as an asynchronous operation.
+        /// </summary>
+        /// <param name="fields">The fields to be included in the result set.</param>
+        /// <param name="sortOrder">Specifies how items in a list are sorted.</param>
+        /// <param name="offset">The number of rows to skip, before starting to return rows from the query expression.</param>
+        /// <param name="limit">The number of rows to return, after processing the offset clause.</param>
+        /// <param name="cancellationToken">A token to observe while waiting for the task to complete.</param>
+        /// <returns>
+        /// A <see cref="Task{IList{ContactItem}}" /> that contains the contacts according to the specified filter parameters.
+        /// </returns>
+        public virtual Task<IList<ContactItem>> GetAllAsync(ContactField fields, ContactSortOrder sortOrder, int offset, int limit, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>
