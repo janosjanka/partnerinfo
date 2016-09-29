@@ -43,9 +43,10 @@ namespace Partnerinfo.Actions
         /// </returns>
         public ActionActivityResult CreateResult(ActionActivityStatusCode statusCode) => new ActionActivityResult
         {
-            StatusCode = statusCode,
             User = User,
-            Contact = Contact
+            Contact = Contact,
+            Services = Services,
+            StatusCode = statusCode
         };
     }
 }

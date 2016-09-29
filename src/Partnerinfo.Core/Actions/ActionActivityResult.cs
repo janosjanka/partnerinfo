@@ -1,6 +1,8 @@
 ﻿// Copyright (c) János Janka. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
+using System;
+
 namespace Partnerinfo.Actions
 {
     /// <summary>
@@ -23,6 +25,14 @@ namespace Partnerinfo.Actions
         /// The contact.
         /// </value>
         public IUserIdentity Contact { get; internal set; }
+
+        /// <summary>
+        /// Gets the <see cref="IServiceProvider" /> used to resolve services.
+        /// </summary>
+        /// <value>
+        /// The <see cref="IServiceProvider" /> used to resolve services.
+        /// </value>
+        public IServiceProvider Services { get; internal set; }
 
         /// <summary>
         /// Gets the string that contains the redirect URL.
