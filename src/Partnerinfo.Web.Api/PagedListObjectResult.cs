@@ -15,6 +15,7 @@ namespace Partnerinfo
     /// will produce a <see cref="StatusCodes.Status200OK" /> response if negotiation and formatting succeed.
     /// </summary>
     /// <typeparam name="T">The type of items.</typeparam>
+    /// <seealso cref="Microsoft.AspNetCore.Mvc.ObjectResult" />
     public sealed class PagedListObjectResult<T> : ObjectResult
     {
         private readonly string _routeName;
@@ -29,8 +30,8 @@ namespace Partnerinfo
         /// <param name="data">The content value to negotiate and format in the entity body.</param>
         /// <param name="offset">The number of rows to skip, before starting to return rows from the query expression.</param>
         /// <param name="limit">The number of rows to return, after processing the offset clause.</param>
-        /// <exception cref="System.ArgumentNullException">data</exception>
-        public PagedListObjectResult(string routeName, ICollection<T> data, int offset, int limit) : base(null)
+        public PagedListObjectResult(string routeName, ICollection<T> data, int offset, int limit)
+            : base(null)
         {
             Debug.Assert(routeName != null);
             Debug.Assert(data != null);
@@ -53,6 +54,10 @@ namespace Partnerinfo
             var urlHelper = context.HttpContext.RequestServices.GetRequiredService<IUrlHelper>();
 
             Debug.Assert(urlHelper != null);
+
+            // When you query a collection of items from a DB store,
+            // use 'limit + 1' to be able calculate the next page of lists
+            // without having to calculate the total number of results before paging is applied.
 
             var value = new PagedListResult<T> { Data = _data.Count > _limit ? _data.Take(_limit) : _data };
 
