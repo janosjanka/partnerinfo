@@ -55,9 +55,10 @@ namespace Partnerinfo
 
             Debug.Assert(urlHelper != null);
 
-            // When you query a collection of items from a DB store,
-            // use 'limit + 1' to be able calculate the next page of lists
-            // without having to calculate the total number of results before paging is applied.
+            // When you query a collection of items from a DB store, use 'limit + 1' to be able
+            // to calculate the next page of lists without having to calculate the total number of results.
+            // Of course, this method just works with offset/limit paging strategy which is also supported by
+            // Microsoft SQL Server 2012. See: https://technet.microsoft.com/en-us/library/gg699618(v=sql.110).aspx
 
             var value = new PagedListResult<T> { Data = _data.Count > _limit ? _data.Take(_limit) : _data };
 
