@@ -36,7 +36,7 @@ namespace Partnerinfo.Actions
         /// The link.
         /// </returns>
         /// <exception cref="System.ArgumentNullException">actionLink</exception>
-        public static string UrlTokenEncode(ActionLink actionLink)
+        internal static string UrlTokenEncode(ActionLink actionLink)
         {
             if (actionLink == null)
             {
@@ -76,7 +76,7 @@ namespace Partnerinfo.Actions
         /// <exception cref="System.ArgumentNullException">paramUri</exception>
         /// <exception cref="System.InvalidOperationException">
         /// </exception>
-        public static ActionLink UrlTokenDecode(string paramUri, string customUri = null)
+        internal static ActionLink UrlTokenDecode(string paramUri, string customUri = null)
         {
             if (string.IsNullOrEmpty(paramUri))
             {
@@ -106,7 +106,7 @@ namespace Partnerinfo.Actions
         /// <returns>
         /// The encoded link.
         /// </returns>
-        public static string CreateLink(ActionLink actionLink, bool absolute)
+        internal static string CreateLink(ActionLink actionLink, bool absolute)
         {
             var uri = new Uri(ServerPaths.BaseUri, s_routePrefix + UrlTokenEncode(actionLink));
             return absolute ? uri.AbsoluteUri : uri.AbsolutePath;
@@ -121,7 +121,7 @@ namespace Partnerinfo.Actions
         /// </returns>
         /// <exception cref="System.ArgumentNullException">link</exception>
         /// <exception cref="System.InvalidOperationException"></exception>
-        public static ActionLink DecodeLink(string link)
+        internal static ActionLink DecodeLink(string link)
         {
             if (string.IsNullOrEmpty(link))
             {
@@ -154,7 +154,7 @@ namespace Partnerinfo.Actions
         /// The processed input text.
         /// </returns>
         /// <exception cref="System.ArgumentNullException">input or callback</exception>
-        public static string ReplaceLinks(string input, Action<ActionLink> callback)
+        internal static string ReplaceLinks(string input, Action<ActionLink> callback)
         {
             if (input == null)
             {
