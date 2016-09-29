@@ -11,6 +11,22 @@ namespace Partnerinfo.Actions
     public sealed class ActionActivityContext
     {
         /// <summary>
+        /// Gets the user associated with the executing action.
+        /// </summary>
+        /// <value>
+        /// The user.
+        /// </value>
+        public IUserIdentity User { get; private set; }
+
+        /// <summary>
+        /// Gets the contact associated with the executing action.
+        /// </summary>
+        /// <value>
+        /// The contact.
+        /// </value>
+        public IUserIdentity Contact { get; private set; }
+
+        /// <summary>
         /// Gets the <see cref="IServiceProvider" /> used to resolve services.
         /// </summary>
         /// <value>
@@ -25,12 +41,11 @@ namespace Partnerinfo.Actions
         /// <returns>
         /// The result object.
         /// </returns>
-        public ActionActivityResult CreateResult(ActionActivityStatusCode statusCode)
+        public ActionActivityResult CreateResult(ActionActivityStatusCode statusCode) => new ActionActivityResult
         {
-            return new ActionActivityResult
-            {
-                StatusCode = statusCode
-            };
-        }
+            StatusCode = statusCode,
+            User = User,
+            Contact = Contact
+        };
     }
 }

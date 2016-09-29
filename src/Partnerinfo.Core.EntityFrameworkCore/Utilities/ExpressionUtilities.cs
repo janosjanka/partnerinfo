@@ -23,7 +23,7 @@ namespace Partnerinfo.Utilities
         /// <returns>
         /// Resulting expression, after the merged select expression has been applied.
         /// </returns>
-        public static Expression<Func<TSource, TExtendedDest>> Merge<TSource, TBaseDest, TExtendedDest>(
+        internal static Expression<Func<TSource, TExtendedDest>> Merge<TSource, TBaseDest, TExtendedDest>(
             this Expression<Func<TSource, TBaseDest>> baseExpression,
             Expression<Func<TSource, TExtendedDest>> mergeExpression)
         {

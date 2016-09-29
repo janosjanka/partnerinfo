@@ -9,15 +9,23 @@ namespace Partnerinfo.Actions
     public sealed class ActionActivityResult
     {
         /// <summary>
-        /// Gets the status code for this action activity.
+        /// Gets the system user associated with the executing action.
         /// </summary>
         /// <value>
-        /// The status code.
+        /// The system user.
         /// </value>
-        public ActionActivityStatusCode StatusCode { get; internal set; }
+        public IUserIdentity User { get; internal set; }
 
         /// <summary>
-        /// Gets the string that contains the redirect URL..
+        /// Gets the contact associated with the executing action.
+        /// </summary>
+        /// <value>
+        /// The contact.
+        /// </value>
+        public IUserIdentity Contact { get; internal set; }
+
+        /// <summary>
+        /// Gets the string that contains the redirect URL.
         /// </summary>
         /// <value>
         /// The redirect URL.
@@ -25,19 +33,11 @@ namespace Partnerinfo.Actions
         public string ReturnUrl { get; internal set; }
 
         /// <summary>
-        /// Prevents a default instance of the <see cref="ActionActivityResult" /> class from being created.
+        /// Gets the status code for this action activity.
         /// </summary>
-        internal ActionActivityResult()
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ActionActivityResult" /> class.
-        /// </summary>
-        /// <param name="statusCode">The status code.</param>
-        internal ActionActivityResult(ActionActivityStatusCode statusCode)
-        {
-            StatusCode = statusCode;
-        }
+        /// <value>
+        /// The status code.
+        /// </value>
+        public ActionActivityStatusCode StatusCode { get; internal set; }
     }
 }
