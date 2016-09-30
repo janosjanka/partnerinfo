@@ -6,7 +6,7 @@ using System.Diagnostics;
 namespace Partnerinfo.Actions
 {
     /// <summary>
-    /// Represents an action with its metadata that can be used by .
+    /// Represents an action with its metadata that can be used by Managed Extensibility Framework (MEF).
     /// </summary>
     /// <remarks>
     /// This library does not specify a dependency on Microsoft.Composition. You can use fluent API
