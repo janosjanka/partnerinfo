@@ -16,26 +16,12 @@ namespace Partnerinfo.Actions
     internal sealed class ActionActivityDescriptor
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ActionActivityDescriptor" /> class.
-        /// </summary>
-        /// <param name="activity">The activity.</param>
-        /// <param name="metadata">The metadata.</param>
-        public ActionActivityDescriptor(IActionActivity activity, ActionActivityMetadata metadata)
-        {
-            Debug.Assert(activity != null);
-            Debug.Assert(metadata != null);
-
-            Activity = activity;
-            Metadata = metadata;
-        }
-
-        /// <summary>
         /// Gets the action activity.
         /// </summary>
         /// <value>
         /// The action activity.
         /// </value>
-        public IActionActivity Activity { get; }
+        internal IActionActivity Activity { get; }
 
         /// <summary>
         /// Gets the action activity metadata that belongs to the action.
@@ -43,6 +29,20 @@ namespace Partnerinfo.Actions
         /// <value>
         /// The action activity metadata.
         /// </value>
-        public ActionActivityMetadata Metadata { get; }
+        internal ActionActivityMetadata Metadata { get; }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ActionActivityDescriptor" /> class.
+        /// </summary>
+        /// <param name="activity">The activity.</param>
+        /// <param name="metadata">The metadata.</param>
+        internal ActionActivityDescriptor(IActionActivity activity, ActionActivityMetadata metadata)
+        {
+            Debug.Assert(activity != null);
+            Debug.Assert(metadata != null);
+
+            Activity = activity;
+            Metadata = metadata;
+        }
     }
 }

@@ -16,6 +16,22 @@ namespace Partnerinfo.Actions
     public sealed class ActionActivityMetadata
     {
         /// <summary>
+        /// Gets the type of the action that usually represents an operation. E.g. Schedule, SendMail, ...
+        /// </summary>
+        /// <value>
+        /// The type.
+        /// </value>
+        public string Type { get; }
+
+        /// <summary>
+        /// Gets or sets the name of the action that describes what this action activity does.
+        /// </summary>
+        /// <value>
+        /// The name.
+        /// </value>
+        public string Name { get; }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="ActionActivityMetadata" /> class.
         /// </summary>
         /// <param name="type">The type of the action that usually represents an operation.</param>
@@ -35,21 +51,5 @@ namespace Partnerinfo.Actions
             Type = type;
             Name = name;
         }
-
-        /// <summary>
-        /// Gets the type of the action that usually represents an operation. E.g. Schedule, SendMail, ...
-        /// </summary>
-        /// <value>
-        /// The type.
-        /// </value>
-        public string Type { get; }
-
-        /// <summary>
-        /// Gets or sets the name of the action that describes what this action activity does.
-        /// </summary>
-        /// <value>
-        /// The name.
-        /// </value>
-        public string Name { get; }
     }
 }
