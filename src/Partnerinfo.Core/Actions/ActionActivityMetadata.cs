@@ -9,7 +9,9 @@ namespace Partnerinfo.Actions
     /// Represents meta data about an action that can be used by Managed Extensibility Framework (MEF).
     /// </summary>
     /// <remarks>
-    /// More details: https://msdn.microsoft.com/en-us/library/ee155691%28v=vs.110%29.aspx?f=255&MSPPError=-2147217396
+    /// This library does not specify a dependency on Microsoft.Composition. You can use fluent API
+    /// instead of [Export] attributes to configure your MEF plugins without having to add a reference
+    /// to the MEF library in your activity libraries.
     /// </remarks>
     public sealed class ActionActivityMetadata
     {
