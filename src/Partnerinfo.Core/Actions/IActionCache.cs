@@ -6,7 +6,7 @@ namespace Partnerinfo.Actions
     /// <summary>
     /// Provides an abstraction for both in-memory and distributed (Redis, AppFabric, etc.) action node caches.
     /// </summary>
-    public interface IActionNodeCache
+    public interface IActionCache
     {
         /// <summary>
         /// Gets the action node of key. If the key does not exist a null value is returned.
