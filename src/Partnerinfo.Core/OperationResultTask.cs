@@ -13,12 +13,12 @@ namespace Partnerinfo
         /// <summary>
         /// Gets a static success <see cref="OperationResult" /> as a task.
         /// </summary>
-        public static readonly Task<OperationResult> Success = Task.FromResult(OperationResult.Success);
+        internal static readonly Task<OperationResult> Success = Task.FromResult(OperationResult.Success);
 
         /// <summary>
         /// Gets a static failed <see cref="OperationResult" /> as a task.
         /// </summary>
         /// <param name="errors">A list of error messages.</param>
-        public static Task<OperationResult> Failed(params OperationError[] errors) => Task.FromResult(OperationResult.Failed(errors));
+        internal static Task<OperationResult> Failed(params OperationError[] errors) => Task.FromResult(OperationResult.Failed(errors));
     }
 }
