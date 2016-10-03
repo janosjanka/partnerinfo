@@ -23,7 +23,7 @@ class ColorPicker {
     constructor(params: ColorPickerParams) {
         this.palette = params.palette || ColorPicker.defaultPalette;
         this.color = params.color;
-        this.colorValue = ko.unwrap(params.color);
+        this.colorValue = ko.unwrap(params.color); // Helps increase performance but has a side-effect: OneTime binding.
     }
 
     /** Raised when the user clicks on the list element. */
