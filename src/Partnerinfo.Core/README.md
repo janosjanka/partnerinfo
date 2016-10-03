@@ -30,7 +30,7 @@ Partnerinfo (PI) Core defines core interfaces and functionality.
 	  The aggregate root guarantees the consistency of changes being made within the aggregate by forbidding
 	  external objects from holding references to its members.
     - **Domain Event**: A domain object that defines an event (something that happens). A domain event is an event that domain experts care about.
-    - **Service***: When an operation does not conceptually belong to any object. Following the natural contours of the problem,
+    - **Service**: When an operation does not conceptually belong to any object. Following the natural contours of the problem,
       you can implement these operations in services.
     - **Repository**: Methods for retrieving domain objects should delegate to a specialized Repository object such that
       alternative storage implementations may be easily interchanged.
