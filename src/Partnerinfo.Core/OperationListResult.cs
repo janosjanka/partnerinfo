@@ -33,7 +33,7 @@ namespace Partnerinfo
         /// </returns>
         public static OperationListResult<T> Create<T>(ImmutableArray<T> data)
         {
-            if (data.Length == 0)
+            if (data.IsDefaultOrEmpty)
             {
                 return OperationListResult<T>.Empty;
             }
@@ -52,7 +52,7 @@ namespace Partnerinfo
         /// </returns>
         public static OperationListResult<T> Create<T>(ImmutableArray<T> data, int total)
         {
-            if (data.Length == 0 && total == 0)
+            if (data.IsDefaultOrEmpty && total == 0)
             {
                 return OperationListResult<T>.Empty;
             }
