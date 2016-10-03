@@ -6,13 +6,8 @@ using System.Diagnostics;
 namespace Partnerinfo.Actions
 {
     /// <summary>
-    /// Represents an action with its metadata that can be used by Managed Extensibility Framework (MEF).
+    /// Represents an action with its metadata that can be used to cache plugins imported by Managed Extensibility Framework (MEF).
     /// </summary>
-    /// <remarks>
-    /// This library does not specify a dependency on Microsoft.Composition. You can use fluent API
-    /// instead of [Export] attributes to configure your MEF plugins without having to add a reference
-    /// to the MEF library in your activity libraries.
-    /// </remarks>
     internal sealed class ActionActivityDescriptor
     {
         /// <summary>
