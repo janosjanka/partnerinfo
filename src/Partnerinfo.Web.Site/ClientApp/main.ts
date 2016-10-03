@@ -14,7 +14,7 @@ import "./lib/knockout-loader";
 import "./lib/knockout-i18n";
 import "./lib/knockout-ui";
 
-// Load and register the <prima-app> component.
+// Load and register the <pi-app> component.
 ko.components.register("pi-app", require("./src/app").default);
 
 // Initialize Knockout validation before binding data.
