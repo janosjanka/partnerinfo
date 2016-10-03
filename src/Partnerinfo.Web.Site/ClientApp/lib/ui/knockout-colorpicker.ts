@@ -27,7 +27,7 @@ class ColorPicker {
     }
 
     /** Raised when the user clicks on the list element. */
-    onListClick(viewModel: ColorPicker, event: MouseEvent) {
+    onClick(viewModel: ColorPicker, event: MouseEvent) {
         if (ko.isWriteableObservable(viewModel.color)) {
             // Event bubbling helps us to avoid attaching expensive event handlers
             // to each color item. You can simply get the current color using
