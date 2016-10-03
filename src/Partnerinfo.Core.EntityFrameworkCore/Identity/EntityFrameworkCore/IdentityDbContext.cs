@@ -54,8 +54,8 @@ namespace Partnerinfo.Identity.EntityFrameworkCore
                 b.Property(u => u.Gender).HasColumnName($"{nameof(UserItem.Gender)}Id");
                 b.Property(u => u.Birthday).HasColumnType("date");
 
-                b.HasIndex(u => u.NormalizedEmail).HasName($"IX_{nameof(UserItem.NormalizedEmail)}").IsUnique();
                 b.HasIndex(u => u.NormalizedUserName).HasName($"IX_{nameof(UserItem.NormalizedUserName)}").IsUnique();
+                b.HasIndex(u => u.NormalizedEmail).HasName($"IX_{nameof(UserItem.NormalizedEmail)}");
 
                 b.ToTable("Users");
             });
