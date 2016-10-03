@@ -42,13 +42,38 @@ namespace Partnerinfo.Identity.EntityFrameworkCore
 
             builder.HasDefaultSchema("Identity");
 
-            builder.Entity<UserItem>().ToTable("Users");
+            builder.Entity<UserItem>(b =>
+            {
+                b.Property(u => u.Email).HasMaxLength(256);
+                b.Property(u => u.UserName).HasMaxLength(256);
+                b.Property(u => u.NormalizedEmail).HasMaxLength(256);
+                b.Property(u => u.NormalizedUserName).HasMaxLength(256);
+                b.Property(u => u.FirstName).HasMaxLength(64);
+                b.Property(u => u.LastName).HasMaxLength(64);
+                b.Property(u => u.Gender).HasColumnName($"{nameof(UserItem.Gender)}Id");
+                b.Property(u => u.Birthday).HasColumnType("date");
+
+                b.HasIndex(u => u.NormalizedEmail).HasName($"IX_{nameof(UserItem.NormalizedEmail)}").IsUnique();
+                b.HasIndex(u => u.NormalizedUserName).HasName($"IX_{nameof(UserItem.NormalizedUserName)}").IsUnique();
+
+                b.ToTable("Users");
+            });
+
             builder.Entity<IdentityUserClaim<int>>().ToTable("UserClaims");
             builder.Entity<IdentityUserLogin<int>>().ToTable("UserLogins");
             builder.Entity<IdentityUserRole<int>>().ToTable("UserRoles");
             builder.Entity<IdentityUserToken<int>>().ToTable("UserTokens");
 
-            builder.Entity<RoleItem>().ToTable("Roles");
+            builder.Entity<RoleItem>(b =>
+            {
+                b.Property(r => r.Name).HasMaxLength(256);
+                b.Property(r => r.NormalizedName).HasMaxLength(256);
+
+                b.HasIndex(r => r.NormalizedName).HasName($"IX_{nameof(RoleItem.NormalizedName)}").IsUnique();
+
+                b.ToTable("Roles");
+            });
+
             builder.Entity<IdentityRoleClaim<int>>().ToTable("RoleClaims");
         }
     }
