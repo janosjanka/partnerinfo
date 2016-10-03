@@ -14,6 +14,11 @@ import "./lib/knockout-loader";
 import "./lib/knockout-i18n";
 import "./lib/knockout-ui";
 
+// Using deferred updates ensures that computed observables and bindings are updated only after their dependencies are stable.
+// Even if an observable might go through multiple intermediate values, only the latest value is used to update its dependencies.
+// http://knockoutjs.com/documentation/deferred-updates.html
+ko.options.deferUpdates = true;
+
 // Load and register the <pi-app> component.
 ko.components.register("pi-app", require("./src/app").default);
 
