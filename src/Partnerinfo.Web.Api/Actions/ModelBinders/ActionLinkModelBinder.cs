@@ -37,10 +37,10 @@ namespace Partnerinfo.Actions.ModelBinders
             Debug.Assert(service != null);
             Debug.Assert(bindingContext.ModelType == typeof(ActionLink));
 
-            var paramUri = bindingContext.ValueProvider.GetValue("paramUri").FirstValue;
+            string paramUri = bindingContext.ValueProvider.GetValue("paramUri").FirstValue;
             if (paramUri != null)
             {
-                var customUri = bindingContext.ValueProvider.GetValue("customUri").FirstValue;
+                string customUri = bindingContext.ValueProvider.GetValue("customUri").FirstValue;
                 bindingContext.Model = service.UrlTokenDecode(paramUri, customUri);
             }
 
