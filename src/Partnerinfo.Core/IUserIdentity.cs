@@ -11,7 +11,7 @@ namespace Partnerinfo
     public interface IUserIdentity
     {
         /// <summary>
-        /// Gets the primary key for this user.
+        /// Gets the primary key for this user provided by a storage provider.
         /// </summary>
         /// <value>
         /// The primary key.
@@ -19,7 +19,7 @@ namespace Partnerinfo
         int Id { get; set; }
 
         /// <summary>
-        /// Gets the email address for this user.
+        /// Gets the email address for this user provided by a storage provider.
         /// </summary>
         /// <value>
         /// The email.
@@ -27,7 +27,7 @@ namespace Partnerinfo
         string Email { get; set; }
 
         /// <summary>
-        /// Gets the telephone number for the user.
+        /// Gets the telephone number for the user provided by a storage provider.
         /// </summary>
         /// <value>
         /// The telephone number.
@@ -35,7 +35,7 @@ namespace Partnerinfo
         string PhoneNumber { get; set; }
 
         /// <summary>
-        /// Gets the first name for this user.
+        /// Gets the first name for this user provided by a storage provider.
         /// </summary>
         /// <value>
         /// The first name.
@@ -43,7 +43,15 @@ namespace Partnerinfo
         string FirstName { get; set; }
 
         /// <summary>
-        /// Gets the last name for this user.
+        /// Gets the middle name for this user provided by a storage provider.
+        /// </summary>
+        /// <value>
+        /// The middle name.
+        /// </value>
+        string MiddleName { get; set; }
+
+        /// <summary>
+        /// Gets the last name for this user provided by a storage provider.
         /// </summary>
         /// <value>
         /// The last name.
@@ -51,7 +59,7 @@ namespace Partnerinfo
         string LastName { get; set; }
 
         /// <summary>
-        /// Gets the gender for this user.
+        /// Gets the gender for this user provided by a storage provider.
         /// </summary>
         /// <value>
         /// The gender.
@@ -59,7 +67,7 @@ namespace Partnerinfo
         PersonGender Gender { get; set; }
 
         /// <summary>
-        /// Gets the birthday for this user.
+        /// Gets the birthday for this user provided by a storage provider.
         /// </summary>
         /// <value>
         /// The birthday.

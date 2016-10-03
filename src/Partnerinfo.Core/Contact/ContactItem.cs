@@ -12,7 +12,7 @@ namespace Partnerinfo.Contact
     public class ContactItem : IUserIdentity
     {
         /// <summary>
-        /// Gets or sets the primary key for this contact.
+        /// Gets or sets the primary key for this contact provided by a storage provider.
         /// </summary>
         /// <value>
         /// The primary key.
@@ -20,7 +20,7 @@ namespace Partnerinfo.Contact
         public int Id { get; set; }
 
         /// <summary>
-        /// Gets or sets the email address for this contact.
+        /// Gets or sets the email address for this contact provided by a storage provider.
         /// </summary>
         /// <value>
         /// The email.
@@ -28,7 +28,7 @@ namespace Partnerinfo.Contact
         public string Email { get; set; }
 
         /// <summary>
-        /// Gets or sets a telephone number for the contact.
+        /// Gets or sets the phone number for this contact provided by a storage provider.
         /// </summary>
         /// <value>
         /// The phone number.
@@ -36,7 +36,7 @@ namespace Partnerinfo.Contact
         public string PhoneNumber { get; set; }
 
         /// <summary>
-        /// Gets or sets the first name for this user.
+        /// Gets or sets the first name for this contact provided by a storage provider.
         /// </summary>
         /// <value>
         /// The first name.
@@ -44,7 +44,15 @@ namespace Partnerinfo.Contact
         public string FirstName { get; set; }
 
         /// <summary>
-        /// Gets or sets the last name for this user.
+        /// Gets or sets the first name for this contact provided by a storage provider.
+        /// </summary>
+        /// <value>
+        /// The first name.
+        /// </value>
+        public string MiddleName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the last name for this contact provided by a storage provider.
         /// </summary>
         /// <value>
         /// The last name.
@@ -52,7 +60,7 @@ namespace Partnerinfo.Contact
         public string LastName { get; set; }
 
         /// <summary>
-        /// Gets or sets the gender for this user.
+        /// Gets or sets the gender for this contact provided by a storage provider.
         /// </summary>
         /// <value>
         /// The gender.
@@ -60,7 +68,7 @@ namespace Partnerinfo.Contact
         public PersonGender Gender { get; set; }
 
         /// <summary>
-        /// Gets the birthday for this user.
+        /// Gets the birthday for this contact provided by a storage provider.
         /// </summary>
         /// <value>
         /// The birthday.
@@ -68,7 +76,7 @@ namespace Partnerinfo.Contact
         public DateTimeOffset? Birthday { get; set; }
 
         /// <summary>
-        /// Gets or sets a collection of dynamic attributes for this contact.
+        /// Gets or sets a collection of dynamic attributes for this contact provided by a storage provider.
         /// </summary>
         /// <value>
         /// A collection of dynamic attributes.

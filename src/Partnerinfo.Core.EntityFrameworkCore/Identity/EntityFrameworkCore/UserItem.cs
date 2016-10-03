@@ -21,6 +21,14 @@ namespace Partnerinfo.Identity.EntityFrameworkCore
         public string FirstName { get; set; }
 
         /// <summary>
+        /// Gets or sets the middle name for this user.
+        /// </summary>
+        /// <value>
+        /// The middle name.
+        /// </value>
+        public string MiddleName { get; set; }
+
+        /// <summary>
         /// Gets or sets the last name for this user.
         /// </summary>
         /// <value>
