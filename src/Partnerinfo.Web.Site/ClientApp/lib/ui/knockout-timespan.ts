@@ -59,17 +59,17 @@ class TimeSpan {
             return;
         }
         this._listening = false;
-        var time = this.toObject();
-        var rem = time.seconds % 60;
-        time.minutes += (time.seconds - rem) / 60;
-        time.seconds = rem;
-        rem = time.minutes % 60;
-        time.hours += (time.minutes - rem) / 60;
-        time.minutes = rem;
-        rem = time.hours % 24;
-        time.days += (time.hours - rem) / 24;
-        time.hours = rem;
-        this.setValues(time.days, time.hours, time.minutes, time.seconds);
+        let [days, hours, minutes, seconds] = this.getValues();
+        let rem = seconds % 60;
+        minutes += (seconds - rem) / 60;
+        seconds = rem;
+        rem = minutes % 60;
+        hours += (minutes - rem) / 60;
+        minutes = rem;
+        rem = hours % 24;
+        days += (hours - rem) / 24;
+        hours = rem;
+        this.setValues(days, hours, minutes, seconds);
         this.value(this.toString());
         this._listening = true;
     }
@@ -83,8 +83,13 @@ class TimeSpan {
         this.setValues(asNumber(slots[0]), asNumber(slots[1]), asNumber(slots[2]), asNumber(slots[3]));
     }
 
+    /** Gets all the time components using a tuple { days, hours, minutes, seconds }. */
+    getValues(): [number, number, number, number] {
+        return [this.days(), this.hours(), this.minutes(), this.seconds()];
+    }
+
     /**
-     * Updates all the time components using the specified values.
+     * Sets all the time components using the specified values.
      * @param days     The days component of the time interval.
      * @param hours    The hours component of the time interval.
      * @param minutes  The minutes component of the time interval.
@@ -97,20 +102,10 @@ class TimeSpan {
         this.seconds(seconds);
     }
 
-    /** Converts this time span to native JS object. */
-    toObject(): { days: number, hours: number, minutes: number, seconds: number } {
-        return {
-            days: this.days(),
-            hours: this.hours(),
-            minutes: this.minutes(),
-            seconds: this.seconds()
-        };
-    }
-
     /** Converts this time span to string. */
     toString(): string {
-        const time = this.toObject();
-        return `${time.days}:${time.hours}:${time.minutes}:${time.seconds}`;
+        const [days, hours, minutes, seconds] = this.getValues();
+        return `${days}:${hours}:${minutes}:${seconds}`;
     }
 
     /** Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources. */
