@@ -1,12 +1,11 @@
-﻿/**
-  * @license
-  * Copyright (c) János Janka. All rights reserved.
-  * Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
-  */
+﻿// Copyright (c) János Janka. All rights reserved.
+// Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
 /**
- * Returns the Unicode Normalization Form (UNF) of a given string.
+ * Returns the Unicode Normalization Form (UNF) of the specified string.
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/normalize
+ * @param str The string to normalize.
+ * @returns {String}
  */
 export function normalize(str: string): string {
     const charMap = [
