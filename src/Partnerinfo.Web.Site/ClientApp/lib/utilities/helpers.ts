@@ -9,8 +9,9 @@
  * @param callback  A callback you want to execute after delay milliseconds.
  * @param delay     The number of milliseconds (thousandths of a second) that the function call should be delayed by.
  * @param immediate If true, trigger the function on the leading edge, instead of the trailing.
+ * @returns {Function}
  */
-export function debounce(callback: Function, delay: number = 0, immediate: boolean = false) {
+export function debounce(callback: Function, delay: number = 0, immediate: boolean = false): Function {
     let timeout: number;
     return function () {
         const args = arguments;
