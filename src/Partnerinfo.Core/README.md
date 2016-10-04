@@ -6,8 +6,7 @@ Partnerinfo (PI) Core defines core interfaces and functionality.
    validation libraries, plugin models, and so on. As a result, you should never add a reference to one of these
    libraries in this class library. Keep it clean and simple focusing on data and business operations.
 
-2. Do not use reflection and other meta data readers even if you can cache information about types and members.
-   Fortunately, .NET Core organized them out from the core library. Use fluent APIs instead of christmas tree-like
+2. Do not use reflection and other meta data readers. Use fluent APIs instead of christmas tree-like
    attributes for everything, including validation, MEF, EF, etc. Performance is much better than using a bunch of attributes.
 
 3. [Composition over inheritance](https://en.wikipedia.org/wiki/Composition_over_inheritance)
