@@ -7,6 +7,6 @@ define business processes in a comfortable way.
 
 1. Anyone can write custom activities and inject those into the system using a plug-in model, such as Managed Extensibility Framework (MEF).
 2. Actions can be used in both workflow activities or standalone modules. Altough Workflow Foundation supports reliability and recovery
-   but also makes the application platform-agnostic. [Workflow Foundation and System.Xaml are not supported on .NET Core](https://github.com/dotnet/corefx/issues/2394) for the time being.
+   but also makes the application platform-dependent. [Workflow Foundation and System.Xaml are not supported on .NET Core](https://github.com/dotnet/corefx/issues/2394) for the time being.
 3. Response time must be very fast because of million clicks on action links on the Web.
    Performance is a critical factor for an online marketing system.
