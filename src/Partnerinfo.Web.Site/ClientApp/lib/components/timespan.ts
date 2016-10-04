@@ -28,6 +28,7 @@ class TimeSpan {
     hours: KnockoutObservable<number>;
     minutes: KnockoutObservable<number>;
     seconds: KnockoutObservable<number>;
+
     value: KnockoutObservable<string>;
 
     /**
