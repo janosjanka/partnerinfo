@@ -59,5 +59,5 @@ class ColorPicker {
 
 export default {
     viewModel: ColorPicker,
-    template: require("./knockout-colorpicker.html")
+    template: require("./colorpicker.html")
 };

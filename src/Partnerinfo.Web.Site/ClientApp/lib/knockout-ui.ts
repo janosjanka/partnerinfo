@@ -6,9 +6,9 @@
 
 import * as ko from "knockout";
 
-import colorPicker from "./ui/knockout-colorpicker";
-import timeSpan from "./ui/knockout-timespan";
-import validationErrors from "./ui/knockout-validationerrors";
+import colorPicker from "./components/colorpicker";
+import timeSpan from "./components/timespan";
+import validationErrors from "./components/validationerrors";
 
 ko.components.register("ui-colorpicker", colorPicker);
 ko.components.register("ui-timespan", timeSpan);

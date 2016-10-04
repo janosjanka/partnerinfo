@@ -123,5 +123,5 @@ class TimeSpan {
 
 export default {
     viewModel: TimeSpan,
-    template: require("./knockout-timespan.html")
+    template: require("./timespan.html")
 };

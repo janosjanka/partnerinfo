@@ -26,5 +26,5 @@ class ValidationErrors {
 
 export default {
     viewModel: ValidationErrors,
-    template: require("./knockout-validationerrors.html")
+    template: require("./validationerrors.html")
 };
