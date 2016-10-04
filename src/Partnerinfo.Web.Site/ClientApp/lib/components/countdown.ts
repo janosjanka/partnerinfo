@@ -5,12 +5,12 @@ import * as ko from "knockout";
 
 /** A set of key/value pairs to configure a TimeSpan control. */
 interface CountdownParams {
+    value: Date | KnockoutObservable<Date>;
     complete: Function;
-    endDate: Date | number;
 }
 
 export class Countdown {
-    private _endDate: number;
+    private _valueInTicks: number;
     private _complete: Function;
 
     days: KnockoutObservable<number>;
@@ -23,10 +23,8 @@ export class Countdown {
      * @param {any} A set of key/value pairs to configure the TimeSpan control
      */
     constructor(params: CountdownParams) {
-        const timePartOptions = { countdownTimeFormat: 2 };
-
+        this._valueInTicks = ko.unwrap(params.value).getTime();
         this._complete = params.complete;
-        this._endDate = +ko.unwrap(params.endDate);
 
         this.days = ko.observable<number>(0);
         this.hours = ko.observable<number>(0);
@@ -37,7 +35,7 @@ export class Countdown {
     }
 
     private countdown(): void {
-        let amount = this._endDate - Date.now();
+        let amount = this._valueInTicks - Date.now();
         if (amount < 0) {
             this._complete();
             return;
