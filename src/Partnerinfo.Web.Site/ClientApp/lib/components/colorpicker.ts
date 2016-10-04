@@ -6,19 +6,21 @@
 
 import * as ko from "knockout";
 
+type RGBColor = KnockoutObservable<string> | string;
+
 /** A set of key/value pairs to configure a Color Picker control. */
 interface ColorPickerParams {
     /** An array of RGB color values. */
     palette: ArrayLike<string>;
     /** An [observable] color to update. */
-    color: string | KnockoutObservable<string>;
+    color: RGBColor;
 }
 
 /** A lightweight Color Picker control exposes a variety of color settings. */
 class ColorPicker {
     private static s_defaultPalette: ArrayLike<string>;
     palette: ArrayLike<string>;
-    color: KnockoutObservable<string> | string;
+    color: RGBColor;
     colorValue: string;
 
     /** Initializes a new instance of the ColorPicker control. */
