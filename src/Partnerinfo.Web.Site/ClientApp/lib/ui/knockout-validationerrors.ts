@@ -6,15 +6,17 @@
 
 import * as ko from "knockout";
 
-/** Defines a set of key/value pairs to configure a ValidationErrors control. */
+type ErrorMessageArray = ArrayLike<any> | KnockoutObservableArray<any>;
+
+/** A set of key/value pairs to configure a ValidationErrors control. */
 interface ValidationErrorsParams {
-    /** An [observable] array of validation error message objects or strings. */
-    errors: ArrayLike<any> | KnockoutObservableArray<any>;
+    /** An [observable] array of validation error messages. */
+    errors: ErrorMessageArray;
 }
 
 class ValidationErrors {
     /** An [observable] array of validation error message objects or strings. */
-    errors: ArrayLike<any> | KnockoutObservableArray<any>;
+    errors: ErrorMessageArray;
 
     /** Initializes a new instance of the ValidationErrors control. */
     constructor(params: ValidationErrorsParams) {

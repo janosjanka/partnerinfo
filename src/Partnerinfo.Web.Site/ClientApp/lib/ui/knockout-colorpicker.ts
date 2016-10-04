@@ -6,9 +6,11 @@
 
 import * as ko from "knockout";
 
-/** Defines a set of key/value pairs to configure a Color Picker control. */
+/** A set of key/value pairs to configure a Color Picker control. */
 interface ColorPickerParams {
+    /** An array of RGB color values. */
     palette: ArrayLike<string>;
+    /** An [observable] color to update. */
     color: string | KnockoutObservable<string>;
 }
 
@@ -16,7 +18,7 @@ interface ColorPickerParams {
 class ColorPicker {
     private static s_defaultPalette: ArrayLike<string>;
     palette: ArrayLike<string>;
-    color: string | KnockoutObservable<string>;
+    color: KnockoutObservable<string> | string;
     colorValue: string;
 
     /** Initializes a new instance of the ColorPicker control. */
@@ -27,7 +29,7 @@ class ColorPicker {
     }
 
     /** Raised when the user clicks on the list element. */
-    onListClick(viewModel: ColorPicker, event: MouseEvent) {
+    onListClick(viewModel: ColorPicker, event: MouseEvent): boolean | void {
         if (ko.isWriteableObservable(viewModel.color)) {
             // Event bubbling helps us to avoid attaching expensive event handlers
             // to each color item. You can simply get the current color using
@@ -37,7 +39,7 @@ class ColorPicker {
     }
 
     /** Gets a static instance of the default color palette. */
-    static get defaultPalette() {
+    static get defaultPalette(): ArrayLike<string> {
         return (ColorPicker.s_defaultPalette = ColorPicker.s_defaultPalette || [
             "#000000",
             "#660000", "#990000", "#cc0000", "#ff0000", "#ff9999",
