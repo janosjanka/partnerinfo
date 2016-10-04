@@ -9,7 +9,7 @@ namespace Partnerinfo
     /// Represents a collection of objects that can be used by repositories.
     /// </summary>
     /// <typeparam name="T">The type of the result.</typeparam>
-    public sealed class PagedListResult<T>
+    public sealed class ListResultModel<T>
     {
         /// <summary>
         /// Gets the strongly typed list of results to return.

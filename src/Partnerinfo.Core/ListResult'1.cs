@@ -7,15 +7,15 @@ namespace Partnerinfo
 {
     /// <summary>
     /// Represents an immutable, thread-safe list of items.
-    /// Use the static <see cref="OperationListResult" /> class to create a new instance of the <see cref="OperationListResult{T}" /> class.
+    /// Use the static <see cref="ListResult" /> class to create a new instance of the <see cref="ListResult{T}" /> class.
     /// </summary>
     /// <typeparam name="T">The type of items.</typeparam>
-    public sealed class OperationListResult<T>
+    public sealed class ListResult<T>
     {
         /// <summary>
-        /// Represents an empty <see cref="OperationListResult{T}" /> instance.
+        /// Represents an empty <see cref="ListResult{T}" /> instance.
         /// </summary>
-        public static readonly OperationListResult<T> Empty = new OperationListResult<T>();
+        public static readonly ListResult<T> Empty = new ListResult<T>();
 
         /// <summary>
         /// Gets the strongly typed list of results to return.
@@ -34,19 +34,19 @@ namespace Partnerinfo
         public int Total { get; }
 
         /// <summary>
-        /// Prevents a default instance of the <see cref="OperationListResult{T}" /> class from being created.
+        /// Prevents a default instance of the <see cref="ListResult{T}" /> class from being created.
         /// </summary>
-        internal OperationListResult()
+        internal ListResult()
         {
             Data = ImmutableArray<T>.Empty;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="OperationListResult{T}" /> class.
+        /// Initializes a new instance of the <see cref="ListResult{T}" /> class.
         /// </summary>
         /// <param name="data">The strongly typed list of results to return.</param>
         /// <param name="total">The total number of results before paging is applied.</param>
-        internal OperationListResult(ImmutableArray<T> data, int total)
+        internal ListResult(ImmutableArray<T> data, int total)
         {
             Data = data;
             Total = total;

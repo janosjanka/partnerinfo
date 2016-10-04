@@ -143,9 +143,9 @@ namespace Partnerinfo.Contact
         /// <param name="offset">The number of rows to skip, before starting to return rows from the query expression.</param>
         /// <param name="limit">The number of rows to return, after processing the offset clause.</param>
         /// <returns>
-        /// A <see cref="Task{OperationListResult{ContactItem}}" /> that contains the contacts according to the specified filter parameters.
+        /// A <see cref="Task{ListResult{ContactItem}}" /> that contains the contacts according to the specified filter parameters.
         /// </returns>
-        public virtual Task<OperationListResult<ContactItem>> FindAllAsync(ContactField fields, ContactSortOrder sortOrder, int offset, int limit)
+        public virtual Task<ListResult<ContactItem>> FindAllAsync(ContactField fields, ContactSortOrder sortOrder, int offset, int limit)
         {
             ThrowIfDisposed();
             return Store.FindAllAsync(fields, sortOrder, offset, limit, CancellationToken);

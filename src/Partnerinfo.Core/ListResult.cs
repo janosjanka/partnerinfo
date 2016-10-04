@@ -8,68 +8,68 @@ using System.Collections.Immutable;
 namespace Partnerinfo
 {
     /// <summary>
-    /// A static factory class to create new instances of the generic <see cref="OperationListResult{T}" /> class
+    /// A static factory class to create new instances of the generic <see cref="ListResult{T}" /> class
     /// using type inference or deduction on methods. These factory methods also enable us to cache
     /// immutable instances decreasing GC pressure.
     /// </summary>
-    public static class OperationListResult
+    public static class ListResult
     {
         /// <summary>
-        /// Creates a new instance of the <see cref="OperationListResult{T}" /> class or returns a cached version of the immutable object.
+        /// Creates a new instance of the <see cref="ListResult{T}" /> class or returns a cached version of the immutable object.
         /// </summary>
         /// <typeparam name="T">The type of the items.</typeparam>
         /// <returns>
-        /// The <see cref="OperationListResult{T}" />.
+        /// The <see cref="ListResult{T}" />.
         /// </returns>
-        public static OperationListResult<T> Create<T>() => OperationListResult<T>.Empty;
+        public static ListResult<T> Create<T>() => ListResult<T>.Empty;
 
         /// <summary>
-        /// Creates a new instance of the <see cref="OperationListResult{T}" /> class or returns a cached version of the immutable object.
+        /// Creates a new instance of the <see cref="ListResult{T}" /> class or returns a cached version of the immutable object.
         /// </summary>
         /// <typeparam name="T">The type of the items.</typeparam>
         /// <param name="data">The strongly typed list of results to return.</param>
         /// <returns>
-        /// The <see cref="OperationListResult{T}" />.
+        /// The <see cref="ListResult{T}" />.
         /// </returns>
-        public static OperationListResult<T> Create<T>(ImmutableArray<T> data)
+        public static ListResult<T> Create<T>(ImmutableArray<T> data)
         {
             if (data.IsDefaultOrEmpty)
             {
-                return OperationListResult<T>.Empty;
+                return ListResult<T>.Empty;
             }
 
-            return new OperationListResult<T>(data, data.Length);
+            return new ListResult<T>(data, data.Length);
         }
 
         /// <summary>
-        /// Creates a new instance of the <see cref="OperationListResult{T}" /> class or returns a cached version of the immutable object.
+        /// Creates a new instance of the <see cref="ListResult{T}" /> class or returns a cached version of the immutable object.
         /// </summary>
         /// <typeparam name="T">The type of the items.</typeparam>
         /// <param name="data">The strongly typed list of results to return.</param>
         /// <param name="total">The total.</param>
         /// <returns>
-        /// The <see cref="OperationListResult{T}" />.
+        /// The <see cref="ListResult{T}" />.
         /// </returns>
-        public static OperationListResult<T> Create<T>(ImmutableArray<T> data, int total)
+        public static ListResult<T> Create<T>(ImmutableArray<T> data, int total)
         {
             if (data.IsDefaultOrEmpty && total == 0)
             {
-                return OperationListResult<T>.Empty;
+                return ListResult<T>.Empty;
             }
 
-            return new OperationListResult<T>(data, total);
+            return new ListResult<T>(data, total);
         }
 
         /// <summary>
-        /// Creates a new instance of the <see cref="OperationListResult{T}" /> class or returns a cached version of the immutable object.
+        /// Creates a new instance of the <see cref="ListResult{T}" /> class or returns a cached version of the immutable object.
         /// </summary>
         /// <typeparam name="T">The type of the items.</typeparam>
         /// <param name="data">The strongly typed list of results to return.</param>
         /// <returns>
-        /// The <see cref="OperationListResult{T}" />.
+        /// The <see cref="ListResult{T}" />.
         /// </returns>
         /// <exception cref="System.ArgumentNullException">data</exception>
-        public static OperationListResult<T> Create<T>(IEnumerable<T> data)
+        public static ListResult<T> Create<T>(IEnumerable<T> data)
         {
             if (data == null)
             {
@@ -80,16 +80,16 @@ namespace Partnerinfo
         }
 
         /// <summary>
-        /// Creates a new instance of the <see cref="OperationListResult{T}" /> class or returns a cached version of the immutable object.
+        /// Creates a new instance of the <see cref="ListResult{T}" /> class or returns a cached version of the immutable object.
         /// </summary>
         /// <typeparam name="T">The type of the items.</typeparam>
         /// <param name="data">The strongly typed list of results to return.</param>
         /// <param name="total">The total.</param>
         /// <returns>
-        /// The <see cref="OperationListResult{T}" />.
+        /// The <see cref="ListResult{T}" />.
         /// </returns>
         /// <exception cref="System.ArgumentNullException">data</exception>
-        public static OperationListResult<T> Create<T>(IEnumerable<T> data, int total)
+        public static ListResult<T> Create<T>(IEnumerable<T> data, int total)
         {
             if (data == null)
             {
