@@ -27,76 +27,76 @@ namespace Partnerinfo
         /// Creates a new instance of the <see cref="ListResult{T}" /> class or returns a cached version of the immutable object.
         /// </summary>
         /// <typeparam name="T">The type of the items.</typeparam>
-        /// <param name="data">The strongly typed list of results to return.</param>
+        /// <param name="items">The strongly typed list of results to return.</param>
         /// <returns>
         /// The <see cref="ListResult{T}" />.
         /// </returns>
-        public static ListResult<T> Create<T>(ImmutableArray<T> data)
+        public static ListResult<T> Create<T>(ImmutableArray<T> items)
         {
-            if (data.IsDefaultOrEmpty)
+            if (items.IsDefaultOrEmpty)
             {
                 return ListResult<T>.Empty;
             }
 
-            return new ListResult<T>(data, data.Length);
+            return new ListResult<T>(items, items.Length);
         }
 
         /// <summary>
         /// Creates a new instance of the <see cref="ListResult{T}" /> class or returns a cached version of the immutable object.
         /// </summary>
         /// <typeparam name="T">The type of the items.</typeparam>
-        /// <param name="data">The strongly typed list of results to return.</param>
+        /// <param name="items">The strongly typed list of results to return.</param>
         /// <param name="total">The total number of results before paging is applied.</param>
         /// <returns>
         /// The <see cref="ListResult{T}" />.
         /// </returns>
-        public static ListResult<T> Create<T>(ImmutableArray<T> data, int total)
+        public static ListResult<T> Create<T>(ImmutableArray<T> items, int total)
         {
-            if (data.IsDefaultOrEmpty && total == 0)
+            if (items.IsDefaultOrEmpty && total == 0)
             {
                 return ListResult<T>.Empty;
             }
 
-            return new ListResult<T>(data, total);
+            return new ListResult<T>(items, total);
         }
 
         /// <summary>
         /// Creates a new instance of the <see cref="ListResult{T}" /> class or returns a cached version of the immutable object.
         /// </summary>
         /// <typeparam name="T">The type of the items.</typeparam>
-        /// <param name="data">The strongly typed list of results to return.</param>
+        /// <param name="items">The strongly typed list of results to return.</param>
         /// <returns>
         /// The <see cref="ListResult{T}" />.
         /// </returns>
         /// <exception cref="System.ArgumentNullException">data</exception>
-        public static ListResult<T> Create<T>(IEnumerable<T> data)
+        public static ListResult<T> Create<T>(IEnumerable<T> items)
         {
-            if (data == null)
+            if (items == null)
             {
-                throw new ArgumentNullException(nameof(data));
+                throw new ArgumentNullException(nameof(items));
             }
 
-            return Create(data.ToImmutableArray());
+            return Create(items.ToImmutableArray());
         }
 
         /// <summary>
         /// Creates a new instance of the <see cref="ListResult{T}" /> class or returns a cached version of the immutable object.
         /// </summary>
         /// <typeparam name="T">The type of the items.</typeparam>
-        /// <param name="data">The strongly typed list of results to return.</param>
+        /// <param name="items">The strongly typed list of results to return.</param>
         /// <param name="total">The total number of results before paging is applied.</param>
         /// <returns>
         /// The <see cref="ListResult{T}" />.
         /// </returns>
         /// <exception cref="System.ArgumentNullException">data</exception>
-        public static ListResult<T> Create<T>(IEnumerable<T> data, int total)
+        public static ListResult<T> Create<T>(IEnumerable<T> items, int total)
         {
-            if (data == null)
+            if (items == null)
             {
-                throw new ArgumentNullException(nameof(data));
+                throw new ArgumentNullException(nameof(items));
             }
 
-            return Create(data.ToImmutableArray(), total);
+            return Create(items.ToImmutableArray(), total);
         }
     }
 }

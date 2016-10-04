@@ -2,7 +2,6 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
 using System.Collections.Immutable;
-using System.Diagnostics;
 
 namespace Partnerinfo
 {
@@ -45,14 +44,11 @@ namespace Partnerinfo
         /// <summary>
         /// Initializes a new instance of the <see cref="ListResult{T}" /> class.
         /// </summary>
-        /// <param name="data">The strongly typed list of results to return.</param>
+        /// <param name="items">The strongly typed list of results to return.</param>
         /// <param name="total">The total number of results before paging is applied.</param>
-        internal ListResult(ImmutableArray<T> data, int total)
+        internal ListResult(ImmutableArray<T> items, int total)
         {
-            Debug.Assert(!data.IsDefault);
-            Debug.Assert(total >= 0);
-
-            Items = data;
+            Items = items;
             Total = total;
         }
     }
