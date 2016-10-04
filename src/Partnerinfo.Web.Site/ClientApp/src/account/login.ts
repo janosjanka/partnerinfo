@@ -12,8 +12,8 @@ class LoginViewModel {
     validationErrors: KnockoutValidationErrors;
     submitText: KnockoutComputed<string>;
 
+    /** Initializes a new instance of the LoginViewModel class. */
     constructor() {
-
         this.email = ko.observable<string>().extend({
             displayName: "shared:account.login.email",
             description: "shared:account.login.emailDescription",
@@ -22,7 +22,6 @@ class LoginViewModel {
                 params: ko.i18n.t("shared:account.login.emailRequired")
             }
         });
-
         this.password = ko.observable<string>().extend({
             displayName: "shared:account.login.password",
             description: "shared:account.login.passwordDescription",
@@ -31,11 +30,11 @@ class LoginViewModel {
                 params: ko.i18n.t("shared:account.login.passwordRequired")
             }
         });
-
         this.validationErrors = koValidation.group(this);
         this.submitText = ko.i18n.t("shared:account.login.submit");
     }
 
+    /** Submits login data. */
     submit(): void {
         if (!this.validate()) {
             return;
@@ -43,13 +42,10 @@ class LoginViewModel {
         auth.loginAsync({
             email: this.email(),
             password: this.password()
-        }).then(res => {
-            if (res.error) {
-                // TODO: Do something with it...
-            }
         });
     }
 
+    /** Validates this object and returns true if that is valid. */
     validate(): boolean {
         this.validationErrors.showAllMessages();
         return this.validationErrors().length === 0;
