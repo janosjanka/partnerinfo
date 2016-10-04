@@ -7,7 +7,7 @@ function asNumber(n: any) {
     return n === undefined ? 0 : +n;
 }
 
-/** Defines a set of key/value pairs to configure a Time Span control. */
+/** A set of key/value pairs to configure a TimeSpan control. */
 interface TimeSpanParams {
     value: KnockoutObservable<string>;
 }

@@ -16,6 +16,7 @@ interface ColorPickerParams {
 /** A lightweight Color Picker control exposes a variety of color settings. */
 class ColorPicker {
     private static s_defaultPalette: ArrayLike<string>;
+
     palette: ArrayLike<string>;
     color: RGBColor;
     colorValue: string;

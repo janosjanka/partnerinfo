@@ -4,6 +4,7 @@
 import * as ko from "knockout";
 
 import typeahead from "./bindingHandlers/typeahead";
+
 import colorPicker from "./components/colorpicker";
 import timeSpan from "./components/timespan";
 import validationErrors from "./components/validationerrors";
