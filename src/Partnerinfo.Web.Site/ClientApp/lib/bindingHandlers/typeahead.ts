@@ -8,11 +8,11 @@
   * Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
   */
 
-/*
+/// <reference path="typeahead.d.ts" />
 import * as $ from "jquery";
 import * as ko from "knockout";
 
-ko.bindingHandlers.typeahead = {
+export default {
     after: ["value"],
 
     init(element: Element, valueAccessor: () => any, allBindings: KnockoutAllBindingsAccessor): void {
@@ -20,7 +20,7 @@ ko.bindingHandlers.typeahead = {
         const options = valueAccessor();
         const dataSource = options.dataSource || {};
         const value = allBindings.get("value") || options.value;
-
+        /*
         $element.typeahead({
             highlight: options.highlight !== false,
             hint: options.hint !== false,
@@ -45,10 +45,10 @@ ko.bindingHandlers.typeahead = {
                 limit: dataSource.limit,
                 display: dataSource.display,
                 templates: dataSource.templates
-        });
-
+            });
+        */
         ko.isWriteableObservable(value) && $element
-            .bind("typeahead:change typeahead:select", (e, suggestion) => {
+            .bind("typeahead:change typeahead:select", (/* e, suggestion */) => {
                 // Typehead automatically updates the input control so we can use
                 // the mapped value (display option) instead of raw object graph (suggestion)
                 // to notify Knockout about changes. An input control always works only with simple strings not complex objects.
@@ -74,4 +74,3 @@ ko.bindingHandlers.typeahead = {
         }
     }
 };
-*/

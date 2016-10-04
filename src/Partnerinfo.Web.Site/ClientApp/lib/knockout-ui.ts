@@ -6,10 +6,15 @@
 
 import * as ko from "knockout";
 
+import typeahead from "./bindingHandlers/typeahead";
 import colorPicker from "./components/colorpicker";
 import timeSpan from "./components/timespan";
 import validationErrors from "./components/validationerrors";
 
+// Register binding handlers.
+ko.bindingHandlers.typeahead = typeahead;
+
+// Register components.
 ko.components.register("ui-colorpicker", colorPicker);
 ko.components.register("ui-timespan", timeSpan);
 ko.components.register("ui-validationerrors", validationErrors);
