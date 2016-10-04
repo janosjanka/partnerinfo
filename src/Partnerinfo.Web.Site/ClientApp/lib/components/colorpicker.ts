@@ -7,25 +7,25 @@ type RGBColor = KnockoutObservable<string> | string;
 
 /** A set of key/value pairs to configure a Color Picker control. */
 interface ColorPickerParams {
-    /** An array of RGB color values. */
-    palette: ArrayLike<string>;
     /** An [observable] color to update. */
     color: RGBColor;
+    /** An array of RGB color values. */
+    palette: ArrayLike<string>;
 }
 
 /** A lightweight Color Picker control exposes a variety of color settings. */
 class ColorPicker {
     private static s_defaultPalette: ArrayLike<string>;
 
-    palette: ArrayLike<string>;
     color: RGBColor;
     colorValue: string;
+    palette: ArrayLike<string>;
 
     /** Initializes a new instance of the ColorPicker control. */
     constructor(params: ColorPickerParams) {
-        this.palette = params.palette || ColorPicker.defaultPalette;
         this.color = params.color;
         this.colorValue = ko.unwrap(params.color); // Helps increase performance but has a side-effect: OneTime binding.
+        this.palette = params.palette || ColorPicker.defaultPalette;
     }
 
     /** Raised when the user clicks on the list element. */
