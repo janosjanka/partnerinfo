@@ -2,6 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
 using System.Collections.Immutable;
+using System.Diagnostics;
 
 namespace Partnerinfo
 {
@@ -48,6 +49,9 @@ namespace Partnerinfo
         /// <param name="total">The total number of results before paging is applied.</param>
         internal ListResult(ImmutableArray<T> items, int total)
         {
+            Debug.Assert(!items.IsDefault);
+            Debug.Assert(total >= 0);
+
             Items = items;
             Total = total;
         }

@@ -68,7 +68,7 @@ namespace Partnerinfo
         /// <returns>
         /// The <see cref="ListResult{T}" />.
         /// </returns>
-        /// <exception cref="System.ArgumentNullException">data</exception>
+        /// <exception cref="System.ArgumentNullException">items</exception>
         public static ListResult<T> Create<T>(IEnumerable<T> items)
         {
             if (items == null)
@@ -88,7 +88,7 @@ namespace Partnerinfo
         /// <returns>
         /// The <see cref="ListResult{T}" />.
         /// </returns>
-        /// <exception cref="System.ArgumentNullException">data</exception>
+        /// <exception cref="System.ArgumentNullException">items</exception>
         public static ListResult<T> Create<T>(IEnumerable<T> items, int total)
         {
             if (items == null)
