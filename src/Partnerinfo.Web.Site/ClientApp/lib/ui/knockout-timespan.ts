@@ -5,7 +5,6 @@
   */
 
 import * as ko from "knockout";
-import "../knockout-i18n";
 
 function asNumber(n: any) {
     return n === undefined ? 0 : +n;
@@ -13,7 +12,6 @@ function asNumber(n: any) {
 
 /** Defines a set of key/value pairs to configure a Time Span control. */
 interface TimeSpanParams {
-    strings: TimeSpanStrings;
     value: KnockoutObservable<string>;
 }
 
@@ -25,13 +23,13 @@ class TimeSpan {
     private _h: KnockoutSubscription;
     private _m: KnockoutSubscription;
     private _s: KnockoutSubscription;
-    
+
     days: KnockoutObservable<number>;
     hours: KnockoutObservable<number>;
     minutes: KnockoutObservable<number>;
     seconds: KnockoutObservable<number>;
     value: KnockoutObservable<string>;
-    
+
     /**
      * Initializes a new instance of the TimeSpan class.
      * @param params A set of key/value pairs to configure the TimeSpan control.
@@ -39,11 +37,11 @@ class TimeSpan {
     constructor(params: TimeSpanParams) {
         this._disposed = false;
         this._listening = true;
-        
-        this.days = ko.observable<number>();
-        this.hours = ko.observable<number>();
-        this.minutes = ko.observable<number>();
-        this.seconds = ko.observable<number>();
+
+        this.days = ko.observable<number>().extend({ displayName: "controls:timespan.days" });
+        this.hours = ko.observable<number>().extend({ displayName: "controls:timespan.hours" });
+        this.minutes = ko.observable<number>().extend({ displayName: "controls:timespan.minutes" });
+        this.seconds = ko.observable<number>().extend({ displayName: "controls:timespan.seconds" });
 
         this.value = params.value;
 
