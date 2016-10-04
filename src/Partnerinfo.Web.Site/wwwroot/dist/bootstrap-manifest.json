@@ -1,11 +1,11 @@
 {
-  "name": "bootstrap_88b55bb8822d5b108219",
+  "name": "bootstrap_8b4da1f627ed22796424",
   "content": {
     "./node_modules/jquery/dist/jquery.js": 1,
     "./node_modules/i18next/dist/commonjs/logger.js": 2,
     "./node_modules/i18next/dist/commonjs/EventEmitter.js": 4,
     "./node_modules/i18next/dist/commonjs/utils.js": 5,
-    "./node_modules/knockout/build/output/knockout-latest.debug.js": 6,
+    "./node_modules/knockout/build/output/knockout-latest.debug.js": 7,
     "./node_modules/i18next/dist/commonjs/compatibility/v1.js": 8,
     "./node_modules/i18next/dist/commonjs/postProcessor.js": 9,
     "./node_modules/bootstrap/dist/js/npm.js": 10,
