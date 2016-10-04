@@ -2,6 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
 using System.Collections.Immutable;
+using System.Diagnostics;
 
 namespace Partnerinfo
 {
@@ -23,7 +24,7 @@ namespace Partnerinfo
         /// <value>
         /// The strongly typed list of results to return.
         /// </value>
-        public ImmutableArray<T> Data { get; }
+        public ImmutableArray<T> Items { get; }
 
         /// <summary>
         /// Gets the total number of results before paging is applied.
@@ -38,7 +39,7 @@ namespace Partnerinfo
         /// </summary>
         internal ListResult()
         {
-            Data = ImmutableArray<T>.Empty;
+            Items = ImmutableArray<T>.Empty;
         }
 
         /// <summary>
@@ -48,7 +49,10 @@ namespace Partnerinfo
         /// <param name="total">The total number of results before paging is applied.</param>
         internal ListResult(ImmutableArray<T> data, int total)
         {
-            Data = data;
+            Debug.Assert(!data.IsDefault);
+            Debug.Assert(total >= 0);
+
+            Items = data;
             Total = total;
         }
     }

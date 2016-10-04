@@ -46,7 +46,7 @@ namespace Partnerinfo
         /// </summary>
         /// <typeparam name="T">The type of the items.</typeparam>
         /// <param name="data">The strongly typed list of results to return.</param>
-        /// <param name="total">The total.</param>
+        /// <param name="total">The total number of results before paging is applied.</param>
         /// <returns>
         /// The <see cref="ListResult{T}" />.
         /// </returns>
@@ -84,7 +84,7 @@ namespace Partnerinfo
         /// </summary>
         /// <typeparam name="T">The type of the items.</typeparam>
         /// <param name="data">The strongly typed list of results to return.</param>
-        /// <param name="total">The total.</param>
+        /// <param name="total">The total number of results before paging is applied.</param>
         /// <returns>
         /// The <see cref="ListResult{T}" />.
         /// </returns>
