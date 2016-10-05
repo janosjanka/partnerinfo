@@ -12,6 +12,12 @@ import * as ko from "knockout";
 export default {
     after: ["value"],
 
+    /**
+     * This will be called when the binding is first applied to an element.
+     * @param element       The DOM element involved in this binding
+     * @param valueAccessor A JavaScript function that you can call to get the current model property that is involved in this binding.
+     * @param allBindings   A JavaScript object that you can use to access all the model values bound to this DOM element.
+     */
     init(element: Element, valueAccessor: () => any, allBindings: KnockoutAllBindingsAccessor): void {
         const $element = $(element);
         const options = valueAccessor();
@@ -48,7 +54,7 @@ export default {
             .bind("typeahead:change typeahead:select", (/* e, suggestion */) => {
                 // Typehead automatically updates the input control so we can use
                 // the mapped value (display option) instead of raw object graph (suggestion)
-                // to notify Knockout about changes. An input control always works only with simple strings not complex objects.
+                // to notify Knockout about changes.
                 // value(suggestion);
                 value($element.val());
             });
@@ -60,14 +66,13 @@ export default {
         });
     },
 
+    /**
+     * This will be called once when the binding is first applied to an element and again whenever the associated observable changes value.
+     * @param element       The DOM element involved in this binding
+     * @param valueAccessor A JavaScript function that you can call to get the current model property that is involved in this binding.
+     * @param allBindings   A JavaScript object that you can use to access all the model values bound to this DOM element.
+     */
     update(element: Element, valueAccessor: () => any, allBindings: KnockoutAllBindingsAccessor): void {
-        /// <signature>
-        /// <summary>This will be called once when the binding is first applied to an element
-        /// and again whenever the associated observable changes value.
-        /// Update the DOM element based on the supplied values here.</summary>
-        /// </signature>
-        if (!allBindings.has("value")) {
-            $(element).val(ko.unwrap(valueAccessor().value));
-        }
+        !allBindings.has("value") && $(element).val(ko.unwrap(valueAccessor().value));
     }
 };
