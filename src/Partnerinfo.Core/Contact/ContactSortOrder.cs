@@ -21,6 +21,6 @@ namespace Partnerinfo.Contact
         /// <summary>
         /// Items are ordered alphabetically by name.
         /// </summary>
-        Name = 2
+        Email = 2
     }
 }

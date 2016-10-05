@@ -6,12 +6,12 @@ using System.Collections.Generic;
 namespace Partnerinfo.Actions
 {
     /// <summary>
-    /// Represents a root (workflow) or subnode within a tree.
+    /// Represents an action node in the system.
     /// </summary>
     public class ActionNode
     {
         /// <summary>
-        /// Gets or sets the primary key for this action.
+        /// Gets or sets the primary key for this action provided by the storage.
         /// </summary>
         /// <value>
         /// The primary key.
@@ -19,7 +19,15 @@ namespace Partnerinfo.Actions
         public int Id { get; set; }
 
         /// <summary>
-        /// Gets or sets the child nodes for this action.
+        /// Gets or sets the name for this action provided by the storage.
+        /// </summary>
+        /// <value>
+        /// The name.
+        /// </value>
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the child nodes for this action provided by the storage.
         /// </summary>
         /// <value>
         /// The child nodes.

@@ -2,7 +2,6 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
 using System;
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -18,10 +17,10 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
         private bool _disposed;
 
         /// <summary>
-        /// Gets the database context for this store.
+        /// Gets or sets the <see cref="Microsoft.EntityFrameworkCore.DbSet`1" /> of contacts.
         /// </summary>
         /// <value>
-        /// The database context.
+        /// The <see cref="Microsoft.EntityFrameworkCore.DbSet`1" /> of contacts.
         /// </value>
         public DbContext Context { get; }
 
@@ -32,6 +31,14 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
         /// <c>true</c> if changes should be persisted after CreateAsync, UpdateAsync and DeleteAsync are called; otherwise, <c>false</c>.
         /// </value>
         public bool AutoSaveChanges { get; set; }
+
+        /// <summary>
+        /// Gets or sets the <see cref="DbSet{ContactItem}" /> of contacts.
+        /// </summary>
+        /// <value>
+        /// The <see cref="DbSet{ContactItem}" /> of contacts.
+        /// </value>
+        protected DbSet<ContactItem> Contacts => Context.Set<ContactItem>();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ContactStore" /> class.
@@ -58,6 +65,12 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
         /// </returns>
         public virtual Task<OperationResult> CreateAsync(ContactItem contact, CancellationToken cancellationToken)
         {
+            ThrowIfDisposed();
+            if (contact == null)
+            {
+                throw new ArgumentNullException(nameof(contact));
+            }
+
             throw new NotImplementedException();
         }
 
@@ -71,6 +84,12 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
         /// </returns>
         public virtual Task<OperationResult> UpdateAsync(ContactItem contact, CancellationToken cancellationToken)
         {
+            ThrowIfDisposed();
+            if (contact == null)
+            {
+                throw new ArgumentNullException(nameof(contact));
+            }
+
             throw new NotImplementedException();
         }
 
@@ -84,6 +103,12 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
         /// </returns>
         public virtual Task<OperationResult> DeleteAsync(ContactItem contact, CancellationToken cancellationToken)
         {
+            ThrowIfDisposed();
+            if (contact == null)
+            {
+                throw new ArgumentNullException(nameof(contact));
+            }
+
             throw new NotImplementedException();
         }
 
@@ -98,6 +123,8 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
         /// </returns>
         public virtual Task<ContactItem> FindByIdAsync(int id, ContactField fields, CancellationToken cancellationToken)
         {
+            ThrowIfDisposed();
+
             throw new NotImplementedException();
         }
 
@@ -112,9 +139,16 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
         /// <returns>
         /// A <see cref="Task{ListResult{ContactItem}}" /> that contains the contacts according to the specified filter parameters.
         /// </returns>
-        public virtual Task<ListResult<ContactItem>> FindAllAsync(ContactField fields, ContactSortOrder sortOrder, int offset, int limit, CancellationToken cancellationToken)
+        public virtual async Task<ListResult<ContactItem>> FindAllAsync(ContactField fields, ContactSortOrder sortOrder, int offset, int limit, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            ThrowIfDisposed();
+            
+            return ListResult.Create(await Contacts
+                .AsNoTracking()
+                .OrderBy(sortOrder)
+                .Offset(offset, limit)
+                .Select(fields)
+                .ToArrayAsync(cancellationToken), 0);
         }
 
         /// <summary>
