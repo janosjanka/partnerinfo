@@ -44,7 +44,7 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
                 return query.OrderBy(c => c.Email);
             }
 
-            return query.OrderBy(c => c.Id);
+            return query.OrderBy(c => c.Id); // Required for Skip/Take.
         }
 
         /// <summary>
