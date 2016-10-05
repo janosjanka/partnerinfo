@@ -4,9 +4,13 @@
 using System;
 using System.Linq;
 using System.Linq.Expressions;
+using Partnerinfo.Utilities;
 
 namespace Partnerinfo.Contact.EntityFrameworkCore
 {
+    /// <summary>
+    /// Defines extension methods for <see cref="IQueryable{ContactItem}" />.
+    /// </summary>
     internal static class ContactQueries
     {
         /// <summary>
@@ -46,16 +50,26 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
         /// <summary>
         /// Projects each item of a sequence into a new form.
         /// </summary>
-        public static IQueryable<ContactItem> Select(this IQueryable<ContactItem> query, ContactField fields)
+        internal static IQueryable<ContactItem> Select(this IQueryable<ContactItem> query, ContactField fields)
         {
-            Expression<Func<ContactItem, ContactItem>> selector = e => new ContactItem
+            Expression<Func<ContactItem, ContactItem>> selector = c => new ContactItem
             {
-                Id = e.Id
+                Id = c.Id
             };
 
             if (fields.HasFlag(ContactField.Sponsor))
             {
+                selector = selector.Merge(c => new ContactItem { });
+            }
 
+            if (fields.HasFlag(ContactField.Attributes))
+            {
+                selector = selector.Merge(c => new ContactItem { });
+            }
+
+            if (fields.HasFlag(ContactField.BusinessTags))
+            {
+                selector = selector.Merge(c => new ContactItem { });
             }
 
             return query.Select(selector);
