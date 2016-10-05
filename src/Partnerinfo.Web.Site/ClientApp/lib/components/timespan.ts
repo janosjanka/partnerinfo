@@ -36,10 +36,29 @@ class TimeSpan {
         this._disposed = false;
         this._listening = true;
 
-        this.days = ko.observable<number>().extend({ displayName: "controls:timespan.days" });
-        this.hours = ko.observable<number>().extend({ displayName: "controls:timespan.hours" });
-        this.minutes = ko.observable<number>().extend({ displayName: "controls:timespan.minutes" });
-        this.seconds = ko.observable<number>().extend({ displayName: "controls:timespan.seconds" });
+        this.days = ko.observable<number>()
+            .extend({
+                displayName: "controls:timespan.days",
+                min: 0
+            });
+        this.hours = ko.observable<number>()
+            .extend({
+                displayName: "controls:timespan.hours",
+                min: 0,
+                max: 23
+            });
+        this.minutes = ko.observable<number>()
+            .extend({
+                displayName: "controls:timespan.minutes",
+                min: 0,
+                max: 59
+            });
+        this.seconds = ko.observable<number>()
+            .extend({
+                displayName: "controls:timespan.seconds",
+                min: 0,
+                max: 59
+            });
 
         this.value = params.value;
 
