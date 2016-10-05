@@ -10,14 +10,10 @@ import * as $ from "jquery";
 import * as ko from "knockout";
 
 export default {
+    /** An array of binding names must be applied to an element before it. */
     after: ["value"],
 
-    /**
-     * This will be called when the binding is first applied to an element.
-     * @param element       The DOM element involved in this binding
-     * @param valueAccessor A JavaScript function that you can call to get the current model property that is involved in this binding.
-     * @param allBindings   A JavaScript object that you can use to access all the model values bound to this DOM element.
-     */
+    /** This will be called when the binding is first applied to an element. */
     init(element: Element, valueAccessor: () => any, allBindings: KnockoutAllBindingsAccessor): void {
         const $element = $(element);
         const options = valueAccessor();
@@ -52,10 +48,9 @@ export default {
         */
         ko.isWriteableObservable(value) && $element
             .bind("typeahead:change typeahead:select", (/* e, suggestion */) => {
-                // Typehead automatically updates the input control so we can use
-                // the mapped value (display option) instead of raw object graph (suggestion)
-                // to notify Knockout about changes.
-                // value(suggestion);
+                // Typehead automatically updates the input element so we can use
+                // the mapped value (display option) instead of the raw object graph (suggestion)
+                // to notify KO about these changes.
                 value($element.val());
             });
 
@@ -66,12 +61,7 @@ export default {
         });
     },
 
-    /**
-     * This will be called once when the binding is first applied to an element and again whenever the associated observable changes value.
-     * @param element       The DOM element involved in this binding
-     * @param valueAccessor A JavaScript function that you can call to get the current model property that is involved in this binding.
-     * @param allBindings   A JavaScript object that you can use to access all the model values bound to this DOM element.
-     */
+    /** This will be called once when the binding is first applied to an element and again whenever the associated observable changes value. */
     update(element: Element, valueAccessor: () => any, allBindings: KnockoutAllBindingsAccessor): void {
         !allBindings.has("value") && $(element).val(ko.unwrap(valueAccessor().value));
     }
