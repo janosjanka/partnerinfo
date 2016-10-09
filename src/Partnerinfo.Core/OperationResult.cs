@@ -22,27 +22,35 @@ namespace Partnerinfo
         private readonly List<OperationError> _errors = new List<OperationError>();
 
         /// <summary>
-        /// Flag indicating whether if the operation succeeded or not.
+        /// Gets a value indicating whether the operation was succeeded or not.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if succeeded; otherwise, <c>false</c>.
+        /// </value>
         public bool Succeeded { get; private set; }
 
         /// <summary>
-        /// An <see cref="IEnumerable{T}" /> of <see cref="OperationError" />s containing an errors
-        /// that occurred during the identity operation.
+        /// An <see cref="IEnumerable{T}" /> of <see cref="OperationError" />s containing errors that occurred during the operation.
         /// </summary>
+        /// <value>
+        /// An <see cref="IEnumerable{T}" /> of <see cref="OperationError" />s.
+        /// </value>
         public IEnumerable<OperationError> Errors => _errors;
 
         /// <summary>
-        /// Returns an <see cref="OperationResult" /> indicating a successful identity operation.
+        /// Returns an <see cref="OperationResult" /> indicating a successful operation.
         /// </summary>
+        /// <value>
+        /// An <see cref="OperationResult" />.
+        /// </value>
         public static OperationResult Success => s_success;
 
         /// <summary>
-        /// Creates an <see cref="OperationResult" /> indicating a failed identity operation, with a list of <paramref name="errors" /> if applicable.
+        /// Creates an <see cref="OperationResult" /> indicating a failed operation, with a list of <paramref name="errors" /> if applicable.
         /// </summary>
         /// <param name="errors">An optional array of <see cref="OperationError" />s which caused the operation to fail.</param>
         /// <returns>
-        /// An <see cref="OperationResult" /> indicating a failed identity operation, with a list of <paramref name="errors" /> if applicable.
+        /// An <see cref="OperationResult" /> indicating a failed operation, with a list of <paramref name="errors" /> if applicable.
         /// </returns>
         public static OperationResult Failed(params OperationError[] errors)
         {
@@ -55,11 +63,11 @@ namespace Partnerinfo
         }
 
         /// <summary>
-        /// Creates an <see cref="OperationResult" /> indicating a failed identity operation, with a list of <paramref name="errors" /> if applicable.
+        /// Creates an <see cref="OperationResult" /> indicating a failed operation, with a list of <paramref name="errors" /> if applicable.
         /// </summary>
         /// <param name="errors">An optional array of <see cref="string" />s which caused the operation to fail.</param>
         /// <returns>
-        /// An <see cref="OperationResult" /> indicating a failed identity operation, with a list of <paramref name="errors" /> if applicable.
+        /// An <see cref="OperationResult" /> indicating a failed operation, with a list of <paramref name="errors" /> if applicable.
         /// </returns>
         public static OperationResult Failed(params string[] errors)
         {
@@ -77,10 +85,6 @@ namespace Partnerinfo
         /// <returns>
         /// A string representation of the current <see cref="OperationResult" /> object.
         /// </returns>
-        /// <remarks>
-        /// If the operation was successful the ToString() will return "Succeeded" otherwise it returned
-        /// "Failed : " followed by a comma delimited list of error codes from its <see cref="Errors" /> collection, if any.
-        /// </remarks>
         public sealed override string ToString() => Succeeded ? "Succeeded" : $"Failed: ${string.Join(", ", Errors.Select(x => x.Code).ToArray())}";
     }
 }
