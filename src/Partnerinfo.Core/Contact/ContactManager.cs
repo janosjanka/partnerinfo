@@ -17,6 +17,30 @@ namespace Partnerinfo.Contact
         private readonly ICancellationTokenAccessor _cancellationTokenAccessor;
 
         /// <summary>
+        /// Gets or sets the persistence store the manager operates over.
+        /// </summary>
+        /// <value>
+        /// The persistence store the manager operates over.
+        /// </value>
+        protected internal IContactStore Store { get; set; }
+
+        /// <summary>
+        /// The <see cref="ILogger" /> used to log messages from the manager.
+        /// </summary>
+        /// <value>
+        /// The <see cref="ILogger" /> used to log messages from the manager.
+        /// </value>
+        protected internal ILogger Logger { get; set; }
+
+        /// <summary>
+        /// Returns a <see cref="System.Threading.CancellationToken" /> using the injected <see cref="ICancellationTokenAccessor" />.
+        /// </summary>
+        /// <value>
+        /// The <see cref="System.Threading.CancellationToken" />.
+        /// </value>
+        protected internal CancellationToken CancellationToken => _cancellationTokenAccessor?.GetToken() ?? CancellationToken.None;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="ContactManager" /> class.
         /// </summary>
         /// <param name="store">The persistence store the manager will operate over.</param>
@@ -36,30 +60,6 @@ namespace Partnerinfo.Contact
                 _cancellationTokenAccessor = services.GetService(typeof(ICancellationTokenAccessor)) as ICancellationTokenAccessor;
             }
         }
-
-        /// <summary>
-        /// Gets or sets the persistence store the manager operates over.
-        /// </summary>
-        /// <value>
-        /// The persistence store the manager operates over.
-        /// </value>
-        protected internal IContactStore Store { get; set; }
-        
-        /// <summary>
-        /// The <see cref="ILogger" /> used to log messages from the manager.
-        /// </summary>
-        /// <value>
-        /// The <see cref="ILogger" /> used to log messages from the manager.
-        /// </value>
-        protected internal ILogger Logger { get; set; }
-
-        /// <summary>
-        /// Returns a <see cref="System.Threading.CancellationToken" /> using the injected <see cref="ICancellationTokenAccessor" />.
-        /// </summary>
-        /// <value>
-        /// The <see cref="System.Threading.CancellationToken" />.
-        /// </value>
-        protected internal CancellationToken CancellationToken => _cancellationTokenAccessor?.GetToken() ?? CancellationToken.None;
 
         /// <summary>
         /// Creates a new contact in a store as an asynchronous operation.
