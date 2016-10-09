@@ -5,7 +5,7 @@ import * as ko from "knockout";
 
 /** A set of key/value pairs to configure a TimeSpan control. */
 interface CountdownParams {
-    value: Date | KnockoutObservable<Date>;
+    value: KnockoutObservable<Date> | Date;
     complete: Function;
 }
 
