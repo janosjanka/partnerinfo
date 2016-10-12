@@ -138,7 +138,7 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
         /// <param name="limit">The number of rows to return, after processing the offset clause.</param>
         /// <param name="cancellationToken">A token to observe while waiting for the task to complete.</param>
         /// <returns>
-        /// A <see cref="Task{ListResult{ContactItem}}" /> that contains the contacts according to the specified filter parameters.
+        /// A <see cref="Task{ImmutableArray{ContactItem}}" /> that contains the contacts according to the specified filter parameters.
         /// </returns>
         public virtual async Task<ImmutableArray<ContactItem>> FindAllAsync(ContactField fields, ContactSortOrder sortOrder, int offset, int limit, CancellationToken cancellationToken)
         {
