@@ -2,6 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
 using System;
+using System.Collections.Immutable;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -64,6 +65,6 @@ namespace Partnerinfo.Contact
         /// <returns>
         /// A <see cref="Task{ListResult{ContactItem}}" /> that contains the contacts according to the specified filter parameters.
         /// </returns>
-        Task<ListResult<ContactItem>> FindAllAsync(ContactField fields, ContactSortOrder sortOrder, int offset, int limit, CancellationToken cancellationToken);
+        Task<ImmutableArray<ContactItem>> FindAllAsync(ContactField fields, ContactSortOrder sortOrder, int offset, int limit, CancellationToken cancellationToken);
     }
 }
