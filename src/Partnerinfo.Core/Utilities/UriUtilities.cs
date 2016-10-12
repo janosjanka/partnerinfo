@@ -30,22 +30,19 @@ namespace Partnerinfo.Utilities
                 .Normalize(NormalizationForm.FormKD)
                 .ToLower();
 
-            // Remove both non-standard and non-friendly URI characters. E.g.
-            // "Janka  János Zoltán   " => "janka-janos-zoltan"
-            // "  janka-jános   Zoltán" => "janka-janos-zoltan"
-            // " 0123456789-ok.4555HA~" => "0123456789-ok.4555ha~"
             var uriPartSep = true;
             var uriBuilder = new StringBuilder(normalizedUri.Length);
             for (var i = 0; i < normalizedUri.Length; ++i)
             {
+                // Remove both non-standard and non-friendly URI characters.
                 char ch = normalizedUri[i];
                 if (ch >= 'a' && ch <= 'z' || ch >= '0' && ch <= '9' ||
-                    ch == '-' || ch == '.' || ch == '_' || ch == '~')
+                    ch == '.' || ch == '_' || ch == '~')
                 {
                     uriBuilder.Append(ch);
                     uriPartSep = false;
                 }
-                else if (!uriPartSep && char.IsWhiteSpace(ch))
+                else if (!uriPartSep && (ch == '-' || char.IsWhiteSpace(ch)))
                 {
                     uriBuilder.Append('-');
                     uriPartSep = true;
