@@ -6,6 +6,9 @@ using System.Text;
 
 namespace Partnerinfo.Utilities
 {
+    /// <summary>
+    /// Helps normalize URI parts (segments) removing non-friendly URI characters.
+    /// </summary>
     internal static class UriUtilities
     {
         /// <summary>
@@ -30,25 +33,24 @@ namespace Partnerinfo.Utilities
                 .Normalize(NormalizationForm.FormKD)
                 .ToLower();
 
+            // Remove both non-standard and non-friendly URI characters.
             var uriPartSep = true;
             var uriBuilder = new StringBuilder(normalizedUri.Length);
             for (var i = 0; i < normalizedUri.Length; ++i)
             {
-                // Remove both non-standard and non-friendly URI characters.
                 char ch = normalizedUri[i];
-                if (ch >= 'a' && ch <= 'z' || ch >= '0' && ch <= '9' ||
-                    ch == '.' || ch == '_' || ch == '~')
+                if (ch >= 'a' && ch <= 'z' || ch >= '0' && ch <= '9' || ch == '.')
                 {
                     uriBuilder.Append(ch);
                     uriPartSep = false;
                 }
-                else if (!uriPartSep && (ch == '-' || char.IsWhiteSpace(ch)))
+                else if (!uriPartSep && (ch == '-' || ch == '_' || char.IsWhiteSpace(ch)))
                 {
                     uriBuilder.Append('-');
                     uriPartSep = true;
                 }
             }
             return uriBuilder.ToString();
-        }
+        }        
     }
 }
