@@ -15,7 +15,7 @@ namespace Partnerinfo
             var normalizer = new UriPartNormalizer();
 
             // Act
-            var result = normalizer.Normalize("- Hello __ - __  Janka [!-!] János  ---  Zoltán.1984   ");
+            var result = normalizer.Normalize(" - Hello  -  Janka  [! - !]  János  ---  Zoltán.1984_12~ok   ");
 
             // Assert
             Assert.True(Uri.IsWellFormedUriString(result, UriKind.Relative));
@@ -28,10 +28,10 @@ namespace Partnerinfo
             var normalizer = new UriPartNormalizer();
 
             // Act
-            var result = normalizer.Normalize("- Hello __ - __ Janka [!-!] János  ---  Zoltán.1984   ");
+            var result = normalizer.Normalize(" - Hello  -  Janka  [! - !]  János  ---  Zoltán.1984_12~ok   ");
 
             // Assert
-            Assert.Equal("hello-__-__-janka-janos-zoltan.1984", result, StringComparer.Ordinal);
+            Assert.Equal("hello-janka-janos-zoltan-1984-12-ok", result, StringComparer.Ordinal);
         }
     }
 }

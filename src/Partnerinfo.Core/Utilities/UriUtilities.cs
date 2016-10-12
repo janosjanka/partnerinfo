@@ -39,13 +39,13 @@ namespace Partnerinfo.Utilities
             for (var i = 0; i < normalizedUri.Length; ++i)
             {
                 char ch = normalizedUri[i];
-                if (ch >= 'a' && ch <= 'z' || ch >= '0' && ch <= '9' ||
-                    ch == '_' || ch == '.' || ch == '~')
+                if (ch >= 'a' && ch <= 'z' || ch >= '0' && ch <= '9')
                 {
                     uriBuilder.Append(ch);
                     uriPartSep = false;
                 }
-                else if (!uriPartSep && (ch == '-' || char.IsWhiteSpace(ch)))
+                // These are valid (RFC) URI characters but we treat them as separators.
+                else if (!uriPartSep && (ch == '-' || ch == '_' || ch == '.' || ch == '~' || char.IsWhiteSpace(ch)))
                 {
                     uriBuilder.Append('-');
                     uriPartSep = true;
