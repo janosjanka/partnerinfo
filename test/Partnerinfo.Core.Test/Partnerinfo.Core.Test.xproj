@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\...\build\Targets\Partnerinfo.DotNet.props" />
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>5115484e-f85c-48d6-8794-06ff9e0c1aeb</ProjectGuid>
+  </PropertyGroup>
+</Project>
