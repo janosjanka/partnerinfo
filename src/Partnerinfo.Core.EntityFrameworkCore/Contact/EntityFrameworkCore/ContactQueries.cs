@@ -20,15 +20,7 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
         {
             return query.Where(c => c.Id == id);
         }
-
-        /// <summary>
-        /// Filters a sequences of items based on predicates.
-        /// </summary>
-        internal static IQueryable<ContactItem> Offset(this IQueryable<ContactItem> query, int offset, int limit)
-        {
-            return query.Skip(offset).Take(limit);
-        }
-
+        
         /// <summary>
         /// Sorts the items of a sequence according to a key.
         /// </summary>

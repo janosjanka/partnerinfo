@@ -3,6 +3,7 @@
 
 using System;
 using System.Collections.Immutable;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -126,7 +127,10 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
         {
             ThrowIfDisposed();
 
-            throw new NotImplementedException();
+            return Contacts
+                .Where(id)
+                .Select(fields)
+                .FirstOrDefaultAsync(cancellationToken);
         }
 
         /// <summary>
@@ -143,11 +147,12 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
         public virtual async Task<ImmutableArray<ContactItem>> FindAllAsync(ContactField fields, ContactSortOrder sortOrder, int offset, int limit, CancellationToken cancellationToken)
         {
             ThrowIfDisposed();
-            
+
             return (await Contacts
                 .AsNoTracking()
                 .OrderBy(sortOrder)
-                .Offset(offset, limit)
+                .Skip(offset)
+                .Take(limit)
                 .Select(fields)
                 .ToArrayAsync(cancellationToken))
                 .ToImmutableArray();
