@@ -39,18 +39,19 @@ namespace Partnerinfo.Utilities
             for (var i = 0; i < normalizedUri.Length; ++i)
             {
                 char ch = normalizedUri[i];
-                if (ch >= 'a' && ch <= 'z' || ch >= '0' && ch <= '9' || ch == '.')
+                if (ch >= 'a' && ch <= 'z' || ch >= '0' && ch <= '9' ||
+                    ch == '_' || ch == '.' || ch == '~')
                 {
                     uriBuilder.Append(ch);
                     uriPartSep = false;
                 }
-                else if (!uriPartSep && (ch == '-' || ch == '_' || char.IsWhiteSpace(ch)))
+                else if (!uriPartSep && (ch == '-' || char.IsWhiteSpace(ch)))
                 {
                     uriBuilder.Append('-');
                     uriPartSep = true;
                 }
             }
             return uriBuilder.ToString();
-        }        
+        }
     }
 }
