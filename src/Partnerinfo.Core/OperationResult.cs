@@ -9,7 +9,7 @@ namespace Partnerinfo
     /// <summary>
     /// Represents the result of an operation.
     /// </summary>
-    public class OperationResult
+    public sealed class OperationResult
     {
         /// <summary>
         /// A static success <see cref="OperationResult" />.
