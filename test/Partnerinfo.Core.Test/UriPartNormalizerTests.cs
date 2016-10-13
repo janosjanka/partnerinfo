@@ -9,28 +9,18 @@ namespace Partnerinfo
     public class UriPartNormalizerTests
     {
         [Fact]
-        public void ShouldReturnValidUri()
+        public void ValidateNormalizedUri()
         {
-            // Setup
             var normalizer = new UriPartNormalizer();
-
-            // Act
             var result = normalizer.Normalize(" - Hello  -  Janka  [! - !]  János  ---  Zoltán.1984_12~ok   ");
-
-            // Assert
             Assert.True(Uri.IsWellFormedUriString(result, UriKind.Relative));
         }
 
         [Fact]
         public void ShouldReturnFriendlyUri()
         {
-            // Setup
             var normalizer = new UriPartNormalizer();
-
-            // Act
             var result = normalizer.Normalize(" - Hello  -  Janka  [! - !]  János  ---  Zoltán.1984_12~ok   ");
-
-            // Assert
             Assert.Equal("hello-janka-janos-zoltan-1984-12-ok", result, StringComparer.Ordinal);
         }
     }

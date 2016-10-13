@@ -63,23 +63,6 @@ namespace Partnerinfo
         }
 
         /// <summary>
-        /// Creates an <see cref="OperationResult" /> indicating a failed operation, with a list of <paramref name="errors" /> if applicable.
-        /// </summary>
-        /// <param name="errors">An optional array of <see cref="string" />s which caused the operation to fail.</param>
-        /// <returns>
-        /// An <see cref="OperationResult" /> indicating a failed operation, with a list of <paramref name="errors" /> if applicable.
-        /// </returns>
-        public static OperationResult Failed(params string[] errors)
-        {
-            var result = new OperationResult { Succeeded = false };
-            if (errors != null)
-            {
-                result._errors.AddRange(errors.Select(error => new OperationError("Unknown", error)));
-            }
-            return result;
-        }
-
-        /// <summary>
         /// Converts the value of the current <see cref="OperationResult" /> object to its equivalent string representation.
         /// </summary>
         /// <returns>
