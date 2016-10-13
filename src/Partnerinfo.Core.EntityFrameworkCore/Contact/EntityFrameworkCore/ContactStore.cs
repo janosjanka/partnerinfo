@@ -2,7 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
 using System;
-using System.Collections.Immutable;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -176,18 +176,17 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
         /// <returns>
         /// A <see cref="Task{ImmutableArray{ContactItem}}" /> that contains the contacts according to the specified filter parameters.
         /// </returns>
-        public virtual async Task<ImmutableArray<ContactItem>> FindAllAsync(ContactField fields, ContactSortOrder sortOrder, int offset, int limit, CancellationToken cancellationToken)
+        public virtual async Task<IList<ContactItem>> FindAllAsync(ContactField fields, ContactSortOrder sortOrder, int offset, int limit, CancellationToken cancellationToken)
         {
             ThrowIfDisposed();
 
-            return (await Contacts
+            return await Contacts
                 .AsNoTracking()
                 .OrderBy(sortOrder)
                 .Skip(offset)
                 .Take(limit)
                 .Select(fields)
-                .ToArrayAsync(cancellationToken))
-                .ToImmutableArray();
+                .ToListAsync(cancellationToken);
         }
 
         /// <summary>

@@ -3,7 +3,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Collections.Immutable;
 
 namespace Partnerinfo.Utilities
 {
@@ -59,33 +58,6 @@ namespace Partnerinfo.Utilities
         internal static int CombineAll<T>(T[] values)
         {
             if (values.Length == 0)
-            {
-                return 0;
-            }
-
-            var hashCode = 0;
-            for (var i = 0; i < values.Length; ++i)
-            {
-                T value = values[i];
-                if (value != null)
-                {
-                    hashCode = Combine(value.GetHashCode(), hashCode);
-                }
-            }
-            return hashCode;
-        }
-
-        /// <summary>
-        /// Computes a new hash value combining an immutable array of hash values of the specified items.
-        /// </summary>
-        /// <typeparam name="T">The type of the items.</typeparam>
-        /// <param name="values">The values to include.</param>
-        /// <returns>
-        /// The computed hash value.
-        /// </returns>
-        internal static int CombineAll<T>(ImmutableArray<T> values)
-        {
-            if (values.IsDefaultOrEmpty)
             {
                 return 0;
             }
