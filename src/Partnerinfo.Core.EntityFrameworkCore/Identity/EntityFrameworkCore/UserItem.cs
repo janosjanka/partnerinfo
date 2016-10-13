@@ -13,12 +13,28 @@ namespace Partnerinfo.Identity.EntityFrameworkCore
     public class UserItem : IdentityUser<int>, IUserIdentity
     {
         /// <summary>
-        /// Gets the full name for the user provided by a storage provider.
+        /// Gets or sets the first name for this contact provided by a storage provider.
         /// </summary>
         /// <value>
-        /// The full name.
+        /// The first name.
         /// </value>
-        public PersonNameInfo Name { get; } = PersonNameInfo.Empty;
+        public string FirstName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the first name for this contact provided by a storage provider.
+        /// </summary>
+        /// <value>
+        /// The first name.
+        /// </value>
+        public string MiddleName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the last name for this contact provided by a storage provider.
+        /// </summary>
+        /// <value>
+        /// The last name.
+        /// </value>
+        public string LastName { get; set; }
 
         /// <summary>
         /// Gets or sets the gender for this user.

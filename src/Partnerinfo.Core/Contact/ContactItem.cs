@@ -37,12 +37,28 @@ namespace Partnerinfo.Contact
         public string PhoneNumber { get; set; }
 
         /// <summary>
-        /// Gets the full name for the user provided by a storage provider.
+        /// Gets or sets the first name for this contact provided by a storage provider.
         /// </summary>
         /// <value>
-        /// The full name.
+        /// The first name.
         /// </value>
-        public PersonNameInfo Name { get; } = PersonNameInfo.Empty;
+        public string FirstName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the first name for this contact provided by a storage provider.
+        /// </summary>
+        /// <value>
+        /// The first name.
+        /// </value>
+        public string MiddleName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the last name for this contact provided by a storage provider.
+        /// </summary>
+        /// <value>
+        /// The last name.
+        /// </value>
+        public string LastName { get; set; }
 
         /// <summary>
         /// Gets or sets the gender for this contact provided by a storage provider.
@@ -83,14 +99,6 @@ namespace Partnerinfo.Contact
         /// The user identity who modified this contact.
         /// </value>
         public IUserIdentity ModifiedBy { get; set; }
-
-        /// <summary>
-        /// Gets or sets a random value that must change whenever a user identity is persisted to the store.
-        /// </summary>
-        /// <value>
-        /// The concurrency stamp.
-        /// </value>
-        public string ConcurrencyStamp { get; set; } = Guid.NewGuid().ToString();
 
         /// <summary>
         /// Gets a collection of <see cref="BusinessTagInfo" />s to be belonging to this <see cref="ContactItem" />.
