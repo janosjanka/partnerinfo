@@ -35,28 +35,12 @@ namespace Partnerinfo
         string PhoneNumber { get; set; }
 
         /// <summary>
-        /// Gets the first name for this user provided by a storage provider.
+        /// Gets the full name for the user provided by a storage provider.
         /// </summary>
         /// <value>
-        /// The first name.
+        /// The full name.
         /// </value>
-        string FirstName { get; set; }
-
-        /// <summary>
-        /// Gets the middle name for this user provided by a storage provider.
-        /// </summary>
-        /// <value>
-        /// The middle name.
-        /// </value>
-        string MiddleName { get; set; }
-
-        /// <summary>
-        /// Gets the last name for this user provided by a storage provider.
-        /// </summary>
-        /// <value>
-        /// The last name.
-        /// </value>
-        string LastName { get; set; }
+        PersonNameInfo Name { get; }
 
         /// <summary>
         /// Gets the gender for this user provided by a storage provider.

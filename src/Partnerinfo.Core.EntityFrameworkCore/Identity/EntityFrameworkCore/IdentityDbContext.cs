@@ -48,9 +48,9 @@ namespace Partnerinfo.Identity.EntityFrameworkCore
                 b.Property(u => u.NormalizedUserName).HasMaxLength(256);
                 b.Property(u => u.Email).HasMaxLength(256);
                 b.Property(u => u.NormalizedEmail).HasMaxLength(256);
-                b.Property(u => u.FirstName).HasMaxLength(64);
-                b.Property(u => u.MiddleName).HasMaxLength(64);
-                b.Property(u => u.LastName).HasMaxLength(64);
+                b.Property(u => u.Name.FirstName).HasMaxLength(64);
+                b.Property(u => u.Name.MiddleName).HasMaxLength(64);
+                b.Property(u => u.Name.LastName).HasMaxLength(64);
                 b.Property(u => u.Gender).HasColumnName($"{nameof(UserItem.Gender)}Id");
                 b.Property(u => u.Birthday).HasColumnType("date");
 
