@@ -72,6 +72,6 @@ namespace Partnerinfo
         /// <value>
         /// The birthday.
         /// </value>
-        DateTimeOffset? Birthday { get; set; }
+        DateTime? Birthday { get; set; }
     }
 }

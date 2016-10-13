@@ -74,7 +74,7 @@ namespace Partnerinfo.Contact
         /// <value>
         /// The birthday.
         /// </value>
-        public DateTimeOffset? Birthday { get; set; }
+        public DateTime? Birthday { get; set; }
 
         /// <summary>
         /// Gets or sets a collection of dynamic attributes for this contact provided by a storage provider.

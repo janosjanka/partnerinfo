@@ -9,11 +9,12 @@ namespace Partnerinfo.Identity.EntityFrameworkCore
     /// <summary>
     /// Represents a user in the identity system.
     /// </summary>
+    /// <seealso cref="Partnerinfo.IUserIdentity" />
     /// <seealso cref="Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUser{System.Int32}" />
     public class UserItem : IdentityUser<int>, IUserIdentity
     {
         /// <summary>
-        /// Gets or sets the first name for this contact provided by a storage provider.
+        /// Gets or sets the first name for this user provided by a storage provider.
         /// </summary>
         /// <value>
         /// The first name.
@@ -21,7 +22,7 @@ namespace Partnerinfo.Identity.EntityFrameworkCore
         public string FirstName { get; set; }
 
         /// <summary>
-        /// Gets or sets the first name for this contact provided by a storage provider.
+        /// Gets or sets the first name for this user provided by a storage provider.
         /// </summary>
         /// <value>
         /// The first name.
@@ -29,7 +30,7 @@ namespace Partnerinfo.Identity.EntityFrameworkCore
         public string MiddleName { get; set; }
 
         /// <summary>
-        /// Gets or sets the last name for this contact provided by a storage provider.
+        /// Gets or sets the last name for this user provided by a storage provider.
         /// </summary>
         /// <value>
         /// The last name.
@@ -37,7 +38,7 @@ namespace Partnerinfo.Identity.EntityFrameworkCore
         public string LastName { get; set; }
 
         /// <summary>
-        /// Gets or sets the gender for this user.
+        /// Gets or sets the gender for this user provided by a storage provider.
         /// </summary>
         /// <value>
         /// The gender.
@@ -45,11 +46,11 @@ namespace Partnerinfo.Identity.EntityFrameworkCore
         public PersonGender Gender { get; set; }
 
         /// <summary>
-        /// Gets the birthday for this user.
+        /// Gets the birthday for this user provided by a storage provider.
         /// </summary>
         /// <value>
         /// The birthday.
         /// </value>
-        public DateTimeOffset? Birthday { get; set; }
+        public DateTime? Birthday { get; set; }
     }
 }
