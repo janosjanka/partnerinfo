@@ -10,7 +10,7 @@ namespace Partnerinfo
     /// Converts a <see cref="RGBColorInfo" /> object to and from JSON.
     /// </summary>
     /// <seealso cref="Newtonsoft.Json.JsonConverter" />
-    internal sealed class RGBColorInfoConverter : JsonConverter
+    internal sealed class RGBColorInfoJsonConverter : JsonConverter
     {
         /// <summary>
         /// Determines whether this instance can convert the specified object type.

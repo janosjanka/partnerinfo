@@ -9,7 +9,7 @@ namespace Partnerinfo
     /// <summary>
     /// Represents an immutable, thread-safe, and cachable RGB color as DDD value object.
     /// </summary>
-    [JsonConverter(typeof(RGBColorInfoConverter))]
+    [JsonConverter(typeof(RGBColorInfoJsonConverter))]
     public sealed class RGBColorInfo
     {
         /// <summary>
