@@ -19,6 +19,14 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
         private bool _disposed;
 
         /// <summary>
+        /// Gets or sets a flag indicating if changes should be persisted after CreateAsync, UpdateAsync and DeleteAsync are called.
+        /// </summary>
+        /// <value>
+        /// <c>true</c> if changes should be persisted after CreateAsync, UpdateAsync and DeleteAsync are called; otherwise, <c>false</c>.
+        /// </value>
+        public bool AutoSaveChanges { get; set; }
+
+        /// <summary>
         /// Gets or sets the <see cref="Microsoft.EntityFrameworkCore.DbSet`1" /> of contacts.
         /// </summary>
         /// <value>
@@ -27,12 +35,12 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
         public DbContext Context { get; }
 
         /// <summary>
-        /// Gets or sets a flag indicating if changes should be persisted after CreateAsync, UpdateAsync and DeleteAsync are called.
+        /// Gets or sets the <see cref="OperationErrorDescriber" /> for any error that occurred with the current operation.
         /// </summary>
         /// <value>
-        /// <c>true</c> if changes should be persisted after CreateAsync, UpdateAsync and DeleteAsync are called; otherwise, <c>false</c>.
+        /// The error describer.
         /// </value>
-        public bool AutoSaveChanges { get; set; }
+        public OperationErrorDescriber ErrorDescriber { get; }
 
         /// <summary>
         /// Gets or sets the <see cref="DbSet{ContactItem}" /> of contacts.
@@ -46,8 +54,9 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
         /// Initializes a new instance of the <see cref="ContactStore" /> class.
         /// </summary>
         /// <param name="context">The context.</param>
+        /// <param name="errorDescriber">The <see cref="OperationErrorDescriber" />.</param>
         /// <exception cref="System.ArgumentNullException">context</exception>
-        public ContactStore(DbContext context)
+        public ContactStore(DbContext context, OperationErrorDescriber errorDescriber = null)
         {
             if (context == null)
             {
@@ -55,6 +64,7 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
             }
 
             Context = context;
+            ErrorDescriber = errorDescriber ?? new OperationErrorDescriber();
         }
 
         /// <summary>
@@ -65,7 +75,7 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
         /// <returns>
         /// A <see cref="T:System.Threading.Tasks.Task`1" /> that represents the <see cref="!:OperationResult" /> of the asynchronous query.
         /// </returns>
-        public virtual Task<OperationResult> CreateAsync(ContactItem contact, CancellationToken cancellationToken)
+        public virtual async Task<OperationResult> CreateAsync(ContactItem contact, CancellationToken cancellationToken)
         {
             ThrowIfDisposed();
             if (contact == null)
@@ -73,7 +83,9 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
                 throw new ArgumentNullException(nameof(contact));
             }
 
-            throw new NotImplementedException();
+            Context.Add(contact);
+            await SaveChangesAsync(cancellationToken);
+            return OperationResult.Success;
         }
 
         /// <summary>
@@ -84,7 +96,7 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
         /// <returns>
         /// A <see cref="T:System.Threading.Tasks.Task`1" /> that represents the <see cref="!:OperationResult" /> of the asynchronous query.
         /// </returns>
-        public virtual Task<OperationResult> UpdateAsync(ContactItem contact, CancellationToken cancellationToken)
+        public virtual async Task<OperationResult> UpdateAsync(ContactItem contact, CancellationToken cancellationToken)
         {
             ThrowIfDisposed();
             if (contact == null)
@@ -92,7 +104,18 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
                 throw new ArgumentNullException(nameof(contact));
             }
 
-            throw new NotImplementedException();
+            Context.Attach(contact);
+            contact.ConcurrencyStamp = Guid.NewGuid().ToString();
+            Context.Update(contact);
+            try
+            {
+                await SaveChangesAsync(cancellationToken);
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                return OperationResult.Failed(ErrorDescriber.ConcurrencyFailure());
+            }
+            return OperationResult.Success;
         }
 
         /// <summary>
@@ -103,7 +126,7 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
         /// <returns>
         /// A <see cref="T:System.Threading.Tasks.Task`1" /> that represents the <see cref="!:OperationResult" /> of the asynchronous query.
         /// </returns>
-        public virtual Task<OperationResult> DeleteAsync(ContactItem contact, CancellationToken cancellationToken)
+        public virtual async Task<OperationResult> DeleteAsync(ContactItem contact, CancellationToken cancellationToken)
         {
             ThrowIfDisposed();
             if (contact == null)
@@ -111,7 +134,16 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
                 throw new ArgumentNullException(nameof(contact));
             }
 
-            throw new NotImplementedException();
+            Context.Remove(contact);
+            try
+            {
+                await SaveChangesAsync(cancellationToken);
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                return OperationResult.Failed(ErrorDescriber.ConcurrencyFailure());
+            }
+            return OperationResult.Success;
         }
 
         /// <summary>
@@ -179,6 +211,21 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
             if (_disposed)
             {
                 throw new ObjectDisposedException(GetType().Name);
+            }
+        }
+
+        /// <summary>
+        /// Saves the current store.
+        /// </summary>
+        /// <param name="cancellationToken">The <see cref="CancellationToken" /> used to propagate notifications that the operation should be canceled.</param>
+        /// <returns>
+        /// The <see cref="Task" /> that represents the asynchronous operation.
+        /// </returns>
+        private async Task SaveChangesAsync(CancellationToken cancellationToken)
+        {
+            if (AutoSaveChanges)
+            {
+                await Context.SaveChangesAsync(cancellationToken);
             }
         }
     }
