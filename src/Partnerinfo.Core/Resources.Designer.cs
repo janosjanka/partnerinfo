@@ -60,7 +60,7 @@ namespace Partnerinfo {
         }
         
         /// <summary>
-        ///    Looks up a localized string similar to Optimistic concurrency failure, object has been modified..
+        ///    Looks up a localized string similar to Concurrency failure. In the meantime, data has been modified by someone else..
         /// </summary>
         public static string ConcurrencyFailure {
             get {
