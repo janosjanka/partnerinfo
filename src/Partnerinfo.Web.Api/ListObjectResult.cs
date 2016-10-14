@@ -4,7 +4,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -48,13 +47,12 @@ namespace Partnerinfo
         }
 
         /// <summary>
-        /// Creates an <see cref="T:System.Net.Http.HttpResponseMessage" /> asynchronously.
+        /// Executes the result operation of the action method synchronously. This method is called by MVC to process
+        /// the result of an action method.
         /// </summary>
-        /// <param name="context">The context.</param>
-        /// <returns>
-        /// A task that, when completed, contains the <see cref="T:System.Net.Http.HttpResponseMessage" />.
-        /// </returns>
-        public override Task ExecuteResultAsync(ActionContext context)
+        /// <param name="context">The context in which the result is executed. The context information includes
+        /// information about the action that was executed and request information.</param>
+        public override void ExecuteResult(ActionContext context)
         {
             var urlHelper = context.HttpContext.RequestServices.GetRequiredService<IUrlHelper>();
 
@@ -65,10 +63,7 @@ namespace Partnerinfo
             // Of course, this method just works with offset/limit paging strategy which is also supported by
             // Microsoft SQL Server 2012. See: https://technet.microsoft.com/en-us/library/gg699618(v=sql.110).aspx
 
-            var result = new ListResult
-            {
-                Data = _count > _limit ? _data.Take(_limit) : _data
-            };
+            var result = new ListResult { Data = _count > _limit ? _data.Take(_limit) : _data };
 
             if (_offset > 0)
             {
@@ -85,7 +80,7 @@ namespace Partnerinfo
 
             Value = result;
 
-            return base.ExecuteResultAsync(context);
+            base.ExecuteResult(context);
         }
     }
 }

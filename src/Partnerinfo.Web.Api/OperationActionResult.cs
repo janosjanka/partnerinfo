@@ -6,12 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 namespace Partnerinfo
 {
     /// <summary>
-    /// An implementation of <see cref="IActionResult" /> that wraps up a <see cref="OperationResult" />.
+    /// An implementation of <see cref="ObjectResult" /> that wraps up a <see cref="OperationResult" /> supporting content negotiation.
     /// Instead of constructors, use the static extension methods of the <see cref="OperationControllerExtensions" /> class
     /// to return a new instance from an action.
     /// </summary>
-    /// <seealso cref="Microsoft.AspNetCore.Mvc.ActionResult" />
-    public sealed class OperationActionResult : ActionResult
+    /// <seealso cref="Microsoft.AspNetCore.Mvc.ObjectResult" />
+    public sealed class OperationActionResult : ObjectResult
     {
         /// <summary>
         /// The result of an operation.
@@ -22,7 +22,9 @@ namespace Partnerinfo
         /// Initializes a new instance of the <see cref="OperationActionResult" /> class.
         /// </summary>
         /// <param name="result">The operation result.</param>
-        public OperationActionResult(OperationResult result)
+        /// <param name="value">The value.</param>
+        public OperationActionResult(OperationResult result, object value)
+            : base(value)
         {
             _result = result;
         }
@@ -45,6 +47,6 @@ namespace Partnerinfo
             }
 
             base.ExecuteResult(context);
-        }
+        }        
     }
 }
