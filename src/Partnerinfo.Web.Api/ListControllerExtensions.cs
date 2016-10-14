@@ -7,18 +7,18 @@ using Microsoft.AspNetCore.Mvc;
 namespace Partnerinfo
 {
     /// <summary>
-    /// Adds extensions methods to the <see cref="Controller" /> class to make it easier to return a <see cref="ListObjectResult{T}" /> with a model.
+    /// Adds extensions methods to the <see cref="Controller" /> class to make it easier to return a <see cref="ListObjectResult" /> with a model.
     /// </summary>
     public static class ListControllerExtensions
     {
         /// <summary>
         /// Creates a <see cref="OperationActionResult" /> object that renders a view to the response.
         /// </summary>
-        /// <param name="controller">The controller.</param>
+        /// <param name="controller">The controller to extend.</param>
         /// <param name="routeName">Name of the route.</param>
-        /// <param name="data">The data.</param>
-        /// <param name="offset">The offset.</param>
-        /// <param name="limit">The limit.</param>
+        /// <param name="data">The content value to negotiate and format in the entity body.</param>
+        /// <param name="offset">The number of rows to skip, before starting to return rows from the query expression.</param>
+        /// <param name="limit">The number of rows to return, after processing the offset clause.</param>
         /// <returns>
         /// The <see cref="OperationActionResult" /> result that renders a view to the response.
         /// </returns>

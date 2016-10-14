@@ -6,7 +6,6 @@ namespace Partnerinfo
     /// <summary>
     /// Represents a collection of objects that can be used by repositories.
     /// </summary>
-    /// <typeparam name="T">The type of the result.</typeparam>
     public sealed class ListPagingResult
     {
         /// <summary>

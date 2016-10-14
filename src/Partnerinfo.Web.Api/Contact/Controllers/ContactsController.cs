@@ -59,7 +59,6 @@ namespace Partnerinfo.Contact.Controllers
             }
 
             var contacts = await _contactManager.FindAllAsync(options);
-
             return this.ListResult("Contacts.GetAll", contacts, options.Paging.Offset, options.Paging.Limit);
         }
     }

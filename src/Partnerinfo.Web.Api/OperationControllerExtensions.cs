@@ -13,7 +13,7 @@ namespace Partnerinfo
         /// <summary>
         /// Creates a <see cref="OperationActionResult" /> object that renders a view to the response.
         /// </summary>
-        /// <param name="controller">The controller.</param>
+        /// <param name="controller">The controller to extend.</param>
         /// <param name="result">The result.</param>
         /// <returns>
         /// The <see cref="OperationActionResult" /> result that renders a view to the response.
@@ -26,7 +26,7 @@ namespace Partnerinfo
         /// <summary>
         /// Creates a <see cref="OperationActionResult" /> object that renders a view to the response.
         /// </summary>
-        /// <param name="controller">The controller.</param>
+        /// <param name="controller">The controller to extend.</param>
         /// <param name="result">The result.</param>
         /// <param name="model">The model.</param>
         /// <returns>
