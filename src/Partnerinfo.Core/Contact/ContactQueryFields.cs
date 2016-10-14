@@ -17,28 +17,23 @@ namespace Partnerinfo.Contact
         None = 0,
 
         /// <summary>
-        /// Calculates the total number of results before paging is applied.
+        /// User-defined attributes are included in the result set.
         /// </summary>
-        Total = 1 << 0,
+        Attributes = 1 << 0,
 
         /// <summary>
         /// The sponsor is included in the result set.
         /// </summary>
         Sponsor = 1 << 1,
-
-        /// <summary>
-        /// User-defined attributes are included in the result set.
-        /// </summary>
-        Attributes = 1 << 2,
-
+                
         /// <summary>
         /// Business tags belong to the contact are included in the result set.
         /// </summary>
-        BusinessTags = 1 << 3,
+        BusinessTags = 1 << 2,
 
         /// <summary>
         /// All fields are included in the result set.
         /// </summary>
-        All = Total | Sponsor | Attributes | BusinessTags
+        All = Attributes | Sponsor | BusinessTags
     }
 }

@@ -102,6 +102,14 @@ namespace Partnerinfo.Contact
         public DateTimeOffset ModifiedDate { get; set; } = DateTimeOffset.UtcNow;
 
         /// <summary>
+        /// Gets or sets the sponsor who invited this contact to join.
+        /// </summary>
+        /// <value>
+        /// The sponsor.
+        /// </value>
+        public IUserIdentity Sponsor { get; set; }
+
+        /// <summary>
         /// Gets a collection of <see cref="BusinessTagInfo" />s to be belonging to this <see cref="ContactItem" />.
         /// </summary>
         /// <value>
