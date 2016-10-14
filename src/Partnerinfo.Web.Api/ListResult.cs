@@ -9,7 +9,7 @@ namespace Partnerinfo
     /// Represents a collection of objects that can be used by repositories.
     /// </summary>
     /// <typeparam name="T">The type of the result.</typeparam>
-    public sealed class ListResultModel<T>
+    public sealed class ListResult<T>
     {
         /// <summary>
         /// Gets the strongly typed list of results to return.
@@ -20,19 +20,11 @@ namespace Partnerinfo
         public IEnumerable<T> Data { get; set; }
 
         /// <summary>
-        /// Gets or sets a link to the previous page of this list.
+        /// Gets or sets the paging.
         /// </summary>
         /// <value>
-        /// The link.
+        /// The paging.
         /// </value>
-        public string PrevLink { get; set; }
-
-        /// <summary>
-        /// Gets or sets a link to the next page of this list.
-        /// </summary>
-        /// <value>
-        /// The link.
-        /// </value>
-        public string NextLink { get; set; }
+        public ListPagingResult Paging { get; set; }
     }
 }

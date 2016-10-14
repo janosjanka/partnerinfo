@@ -24,7 +24,7 @@ namespace Partnerinfo
         private readonly int _limit;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ListResultModel{T}" /> class with the values provided.
+        /// Initializes a new instance of the <see cref="ListResult{T}" /> class with the values provided.
         /// </summary>
         /// <param name="routeName">Name of the route.</param>
         /// <param name="data">The content value to negotiate and format in the entity body.</param>
@@ -60,22 +60,25 @@ namespace Partnerinfo
             // Of course, this method just works with offset/limit paging strategy which is also supported by
             // Microsoft SQL Server 2012. See: https://technet.microsoft.com/en-us/library/gg699618(v=sql.110).aspx
 
-            var value = new ListResultModel<T> { Data = _data.Count > _limit ? _data.Take(_limit) : _data };
+            var result = new ListResult<T>
+            {
+                Data = _data.Count > _limit ? _data.Take(_limit) : _data
+            };
 
             if (_offset > 0)
             {
                 int prevOffset = _offset - _limit;
                 context.RouteData.Values["offset"] = prevOffset <= 0 ? 0 : prevOffset;
-                value.PrevLink = urlHelper.Link(_routeName, context.RouteData.Values);
+                result.Paging.Previous = urlHelper.Link(_routeName, context.RouteData.Values);
             }
 
             if (_data.Count > _limit)
             {
                 context.RouteData.Values["offset"] = _offset + _limit;
-                value.NextLink = urlHelper.Link(_routeName, context.RouteData.Values);
+                result.Paging.Next = urlHelper.Link(_routeName, context.RouteData.Values);
             }
 
-            Value = value;
+            Value = result;
 
             return base.ExecuteResultAsync(context);
         }
