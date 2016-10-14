@@ -24,6 +24,24 @@ namespace Partnerinfo.Contact.Controllers
         }
 
         /// <summary>
+        /// Deletes the asynchronous.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
+        [HttpDelete("{id:int}")]
+        public async Task<IActionResult> DeleteAsync(int id)
+        {
+            var contact = await _contactManager.FindByIdAsync(id, ContactQueryFields.None);
+            if (contact == null)
+            {
+                return NotFound();
+            }
+
+            var result = await _contactManager.DeleteAsync(contact);
+            return this.OperationResult(result);
+        }
+
+        /// <summary>
         /// Finds a contact with the given primary key value as an asynchronous HTTP GET operation.
         /// </summary>
         /// <param name="id">The primary key for the item to be found.</param>
