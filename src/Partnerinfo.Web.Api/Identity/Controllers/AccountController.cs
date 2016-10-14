@@ -1,9 +1,7 @@
 ﻿// Copyright (c) János Janka. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Partnerinfo.Identity.EntityFrameworkCore;
 
 namespace Partnerinfo.Identity.Controllers
 {
@@ -13,15 +11,15 @@ namespace Partnerinfo.Identity.Controllers
     [Route("api/[controller]")]
     public sealed class AccountController : Controller
     {
-        private readonly UserManager<UserItem> _userManager;
-        private readonly SignInManager<UserItem> _signInManager;
+        private readonly UserManager _userManager;
+        private readonly SignInManager _signInManager;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AccountController" /> class.
         /// </summary>
         /// <param name="userManager">Provides the APIs for managing user in a persistence store.</param>
         /// <param name="signInManager">Provides the APIs for user sign in.</param>
-        public AccountController(UserManager<UserItem> userManager, SignInManager<UserItem> signInManager)
+        public AccountController(UserManager userManager, SignInManager signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;

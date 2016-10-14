@@ -28,7 +28,7 @@ namespace Partnerinfo.Contact.Controllers
         /// </summary>
         /// <param name="options">The query options to use for searching contacts.</param>
         /// <returns>
-        /// A <see cref="Task{IActionResult{ContactItem}}" /> that contains the contacts according to the specified filter parameters.
+        /// A <see cref="Task{IActionResult}" /> that contains the contacts according to the specified filter parameters.
         /// </returns>
         [Route("", Name = "Contacts.GetAll")]
         public async Task<IActionResult> GetAllAsync([FromQuery] ContactQueryOptions options)
@@ -42,13 +42,14 @@ namespace Partnerinfo.Contact.Controllers
         }
 
         /// <summary>
-        /// Retrieves a collection of contacts with the given filter parameters as an asynchronous HTTP GET operation.
+        /// Finds a contact with the given primary key value as an asynchronous HTTP GET operation.
         /// </summary>
-        /// <param name="options">The query options to use for searching contacts.</param>
+        /// <param name="id">The primary key for the item to be found.</param>
+        /// <param name="fields">The fields to be included in the result set.</param>
         /// <returns>
-        /// A <see cref="Task{IActionResult{ContactItem}}" /> that contains the contacts according to the specified filter parameters.
+        /// A <see cref="Task{IActionResult}" /> that contains the contact according to the specified filter parameters.
         /// </returns>
-        [Route("", Name = "Contacts.GetById")]
+        [Route("{id:int}", Name = "Contacts.GetById")]
         public async Task<IActionResult> GetByIdAsync(int id, ContactQueryFields fields)
         {
             var contact = await _contactManager.FindByIdAsync(id, fields);

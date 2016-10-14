@@ -122,10 +122,10 @@ namespace Partnerinfo.Contact
         }
 
         /// <summary>
-        /// Finds a contact with the given primary key value.
+        /// Finds a contact with the given primary key value as an asynchronous operation.
         /// </summary>
         /// <param name="id">The primary key for the item to be found.</param>
-        /// <param name="fields">The fields.</param>
+        /// <param name="fields">The fields to be included in the result set.</param>
         /// <param name="cancellationToken">A token to observe while waiting for the task to complete.</param>
         /// <returns>
         /// A task that represents the asynchronous operation.
