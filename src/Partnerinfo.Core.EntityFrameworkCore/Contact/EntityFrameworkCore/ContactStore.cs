@@ -185,6 +185,7 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
 
             return await Contacts
                 .AsNoTracking()
+                .Where(options.Text)
                 .OrderBy(options.SortOrder)
                 .Paging(options.Paging)
                 .Select(options.Fields)

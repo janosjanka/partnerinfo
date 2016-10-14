@@ -37,8 +37,27 @@ namespace Partnerinfo.Contact.Controllers
             {
                 return BadRequest();
             }
-            
+
             return Ok(await _contactManager.FindAllAsync(options));
+        }
+
+        /// <summary>
+        /// Retrieves a collection of contacts with the given filter parameters as an asynchronous HTTP GET operation.
+        /// </summary>
+        /// <param name="options">The query options to use for searching contacts.</param>
+        /// <returns>
+        /// A <see cref="Task{IActionResult{ContactItem}}" /> that contains the contacts according to the specified filter parameters.
+        /// </returns>
+        [Route("", Name = "Contacts.GetById")]
+        public async Task<IActionResult> GetByIdAsync(int id, ContactQueryFields fields)
+        {
+            var contact = await _contactManager.FindByIdAsync(id, fields);
+            if (contact == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(contact);
         }
     }
 }

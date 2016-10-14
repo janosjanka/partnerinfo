@@ -22,6 +22,19 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
         }
 
         /// <summary>
+        /// Filters a sequences of items based on predicates.
+        /// </summary>
+        internal static IQueryable<ContactItem> Where(this IQueryable<ContactItem> query, string text)
+        {
+            if (text == null)
+            {
+                return query;
+            }
+
+            return query.Where(c => c.Email.Contains(text) || c.FirstName.Contains(text) || c.LastName.Contains(text));
+        }
+
+        /// <summary>
         /// Sorts the items of a sequence according to a key.
         /// </summary>
         internal static IQueryable<ContactItem> OrderBy(this IQueryable<ContactItem> query, ContactQuerySortOrder orderBy)
@@ -44,7 +57,12 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
         /// </summary>
         internal static IQueryable<ContactItem> Paging(this IQueryable<ContactItem> query, ContactQueryPaging paging)
         {
-            return paging == null ? query : query.Skip(paging.Offset).Take(paging.Limit);
+            if (paging == null)
+            {
+                return query;
+            }
+
+            return query.Skip(paging.Offset).Take(paging.Limit);
         }
 
         /// <summary>

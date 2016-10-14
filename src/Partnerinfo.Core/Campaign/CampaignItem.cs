@@ -19,12 +19,12 @@ namespace Partnerinfo.Campaign
         public int Id { get; set; }
 
         /// <summary>
-        /// Gets or sets a set of key/value pairs that configure this campaign.
+        /// Gets or sets the user identity who modified this campaign.
         /// </summary>
         /// <value>
-        /// A set of key/value pairs.
+        /// The user identity who modified this campaign.
         /// </value>
-        public CampaignOptions Options { get; set; }
+        public IUserIdentity ModifiedBy { get; set; }
 
         /// <summary>
         /// Gets or sets the date and time, in UTC, when this campaign was last modified.
@@ -33,13 +33,5 @@ namespace Partnerinfo.Campaign
         /// The date and time, in UTC, when this campaign was last modified.
         /// </value>
         public DateTimeOffset ModifiedDate { get; set; } = DateTimeOffset.UtcNow;
-
-        /// <summary>
-        /// Gets or sets the user identity who modified this campaign.
-        /// </summary>
-        /// <value>
-        /// The user identity who modified this campaign.
-        /// </value>
-        public IUserIdentity ModifiedBy { get; set; }
     }
 }
