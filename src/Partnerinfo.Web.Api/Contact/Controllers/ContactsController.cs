@@ -24,10 +24,61 @@ namespace Partnerinfo.Contact.Controllers
         }
 
         /// <summary>
-        /// Deletes the asynchronous.
+        /// Creates a new contact in a store as an asynchronous HTTP POST operation.
         /// </summary>
-        /// <param name="id">The identifier.</param>
-        /// <returns></returns>
+        /// <param name="contact">The contact to create in the store.</param>
+        /// <returns>
+        /// A <see cref="Task{IActionResult}" /> that contains the result of an action method.
+        /// </returns>
+        [HttpPost]
+        public async Task<IActionResult> CreateAsync(ContactItem contact)
+        {
+            var result = await _contactManager.CreateAsync(contact);
+            if (!result.Succeeded)
+            {
+                return this.OperationError(result);
+            }
+
+            return CreatedAtAction(nameof(GetByIdAsync), contact);
+        }
+
+        /// <summary>
+        /// Updates a contact in a store as an asynchronous HTTP PUT operation.
+        /// </summary>
+        /// <param name="id">The primary key for the item to be found.</param>
+        /// <returns>
+        /// A <see cref="Task{IActionResult}" /> that contains the result of an action method.
+        /// </returns>
+        [HttpPut("{id:int}")]
+        public async Task<IActionResult> UpdateAsync(int id)
+        {
+            var contact = await _contactManager.FindByIdAsync(id, ContactQueryFields.None);
+            if (contact == null)
+            {
+                return NotFound();
+            }
+
+            if (await TryUpdateModelAsync(contact) == false)
+            {
+                return BadRequest();
+            }
+
+            var result = await _contactManager.UpdateAsync(contact);
+            if (!result.Succeeded)
+            {
+                return this.OperationError(result);
+            }
+
+            return Ok(contact);
+        }
+
+        /// <summary>
+        /// Deletes a contact from the store as an asynchronous HTTP DELETE operation.
+        /// </summary>
+        /// <param name="id">The primary key for the item to be found.</param>
+        /// <returns>
+        /// A <see cref="Task{IActionResult}" /> that contains the result of an action method.
+        /// </returns>
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
@@ -52,9 +103,9 @@ namespace Partnerinfo.Contact.Controllers
         /// <param name="id">The primary key for the item to be found.</param>
         /// <param name="fields">The fields to be included in the result set.</param>
         /// <returns>
-        /// A <see cref="Task{IActionResult}" /> that contains the contact according to the specified filter parameters.
+        /// A <see cref="Task{IActionResult}" /> that contains the result of an action method.
         /// </returns>
-        [HttpGet("{id:int}", Name = "Contacts.GetById")]
+        [HttpGet("{id:int}")]
         public async Task<IActionResult> GetByIdAsync(int id, ContactQueryFields fields)
         {
             var contact = await _contactManager.FindByIdAsync(id, fields);
@@ -71,9 +122,8 @@ namespace Partnerinfo.Contact.Controllers
         /// </summary>
         /// <param name="model">The query options to use for searching contacts.</param>
         /// <returns>
-        /// A <see cref="Task{IActionResult}" /> that contains the contacts according to the specified filter parameters.
+        /// A <see cref="Task{IActionResult}" /> that contains the result of an action method.
         /// </returns>
-        [HttpGet("", Name = "Contacts.GetAll")]
         public async Task<IActionResult> GetAllAsync([FromQuery] ContactQueryOptions model)
         {
             if (model == null || !ModelState.IsValid)

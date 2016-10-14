@@ -19,7 +19,7 @@ namespace Partnerinfo.Contact
         /// <param name="contact">The contact to create in the store.</param>
         /// <param name="cancellationToken">The <see cref="CancellationToken" /> used to propagate notifications that the operation should be canceled.</param>
         /// <returns>
-        /// A <see cref="Task{OpStatusResult}" /> that represents the <see cref="OperationResult" /> of the asynchronous query.
+        /// A <see cref="Task{OperationResult}" /> that represents the <see cref="OperationResult" /> of the asynchronous query.
         /// </returns>
         Task<OperationResult> CreateAsync(ContactItem contact, CancellationToken cancellationToken);
 
@@ -29,7 +29,7 @@ namespace Partnerinfo.Contact
         /// <param name="contact">The contact to update in the store.</param>
         /// <param name="cancellationToken">The <see cref="CancellationToken" /> used to propagate notifications that the operation should be canceled.</param>
         /// <returns>
-        /// A <see cref="Task{OpStatusResult}" /> that represents the <see cref="OperationResult" /> of the asynchronous query.
+        /// A <see cref="Task{OperationResult}" /> that represents the <see cref="OperationResult" /> of the asynchronous query.
         /// </returns>
         Task<OperationResult> UpdateAsync(ContactItem contact, CancellationToken cancellationToken);
 
@@ -39,7 +39,7 @@ namespace Partnerinfo.Contact
         /// <param name="contact">The contact to delete from the store.</param>
         /// <param name="cancellationToken">The <see cref="CancellationToken" /> used to propagate notifications that the operation should be canceled.</param>
         /// <returns>
-        /// A <see cref="Task{OpStatusResult}" /> that represents the <see cref="OperationResult" /> of the asynchronous query.
+        /// A <see cref="Task{OperationResult}" /> that represents the <see cref="OperationResult" /> of the asynchronous query.
         /// </returns>
         Task<OperationResult> DeleteAsync(ContactItem contact, CancellationToken cancellationToken);
 

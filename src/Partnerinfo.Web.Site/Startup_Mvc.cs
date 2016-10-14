@@ -60,7 +60,7 @@ namespace Partnerinfo
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Index}");
 
                 // Matches any other request that doesn't appear to have a filename extension (defined as 'having a dot in the last URI segment').
                 // This means you'll correctly get 404s for /some/dir/non-existent-image.png instead of returning the SPA HTML.

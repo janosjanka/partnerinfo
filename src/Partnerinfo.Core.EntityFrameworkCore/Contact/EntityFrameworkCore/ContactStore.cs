@@ -75,6 +75,7 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
         /// <returns>
         /// A <see cref="T:System.Threading.Tasks.Task`1" /> that represents the <see cref="!:OperationResult" /> of the asynchronous query.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">contact</exception>
         public virtual async Task<OperationResult> CreateAsync(ContactItem contact, CancellationToken cancellationToken)
         {
             ThrowIfDisposed();
