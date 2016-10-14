@@ -1,6 +1,8 @@
 ﻿// Copyright (c) János Janka. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
+using System.Collections.Generic;
+
 namespace Partnerinfo
 {
     /// <summary>
@@ -14,7 +16,7 @@ namespace Partnerinfo
         /// <value>
         /// The strongly typed list of results to return.
         /// </value>
-        public object Data { get; set; }
+        public IEnumerable<object> Data { get; set; }
 
         /// <summary>
         /// Gets or sets a link to the previous page of this list.
