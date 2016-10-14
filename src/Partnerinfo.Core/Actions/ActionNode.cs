@@ -49,7 +49,7 @@ namespace Partnerinfo.Actions
         /// <value>
         /// The child nodes.
         /// </value>
-        public virtual ICollection<ActionNode> Children { get; } = new List<ActionNode>();
+        public ICollection<ActionNode> Children { get; } = new List<ActionNode>();
 
         /// <summary>
         /// Calls a visit method of the visitor; the element passes itself as an argument to the visit method.

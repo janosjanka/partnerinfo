@@ -115,6 +115,6 @@ namespace Partnerinfo.Contact
         /// <value>
         /// A collection of <see cref="BusinessTagInfo" />s to be belonging to this <see cref="ContactItem" />.
         /// </value>
-        public virtual ICollection<BusinessTagInfo> BusinessTags { get; } = new List<BusinessTagInfo>();
+        public ICollection<BusinessTagInfo> BusinessTags { get; } = new List<BusinessTagInfo>();
     }
 }
