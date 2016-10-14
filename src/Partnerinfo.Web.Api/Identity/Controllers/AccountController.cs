@@ -17,10 +17,10 @@ namespace Partnerinfo.Identity.Controllers
         private readonly SignInManager<UserItem> _signInManager;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="HomeController" /> class.
+        /// Initializes a new instance of the <see cref="AccountController" /> class.
         /// </summary>
-        /// <param name="userManager">The user manager.</param>
-        /// <param name="signInManager">The sign in manager.</param>
+        /// <param name="userManager">Provides the APIs for managing user in a persistence store.</param>
+        /// <param name="signInManager">Provides the APIs for user sign in.</param>
         public AccountController(UserManager<UserItem> userManager, SignInManager<UserItem> signInManager)
         {
             _userManager = userManager;
