@@ -8,16 +8,19 @@ namespace Partnerinfo
     /// <summary>
     /// Adds extensions methods to the <see cref="Controller" /> class to make it easier to return a <see cref="Partnerinfo.OperationResult" /> with a model.
     /// </summary>
-    public static class OperationControllerExtensions
+    public static class OperationErrorControllerExtensions
     {
         /// <summary>
-        /// Creates a <see cref="OperationActionResult" /> object that renders a view to the response.
+        /// Creates a <see cref="OperationErrorResult" /> object that renders a view to the response.
         /// </summary>
         /// <param name="controller">The controller to extend.</param>
         /// <param name="result">The result.</param>
         /// <returns>
-        /// The <see cref="OperationActionResult" /> result that renders a view to the response.
+        /// The <see cref="OperationErrorResult" /> result that renders a view to the response.
         /// </returns>
-        public static OperationActionResult OperationError(this Controller controller, OperationResult result) => new OperationActionResult(result);
+        public static OperationErrorResult OperationError(this Controller controller, OperationResult result)
+        {
+            return new OperationErrorResult(result);
+        }
     }
 }

@@ -8,11 +8,11 @@ namespace Partnerinfo
 {
     /// <summary>
     /// An implementation of <see cref="ActionResult" /> that wraps up a <see cref="ActionResult" />.
-    /// Instead of constructors, use the static extension methods of the <see cref="OperationControllerExtensions" /> class
+    /// Instead of constructors, use the static extension methods of the <see cref="OperationErrorControllerExtensions" /> class
     /// to return a new instance from an action.
     /// </summary>
     /// <seealso cref="Microsoft.AspNetCore.Mvc.ActionResult" />
-    public sealed class OperationErrorActionResult : ActionResult
+    public sealed class OperationErrorResult : ActionResult
     {
         /// <summary>
         /// The result of an operation.
@@ -20,10 +20,10 @@ namespace Partnerinfo
         private readonly OperationResult _result;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="OperationErrorActionResult" /> class.
+        /// Initializes a new instance of the <see cref="OperationErrorResult" /> class.
         /// </summary>
         /// <param name="result">The operation result.</param>
-        public OperationErrorActionResult(OperationResult result)
+        public OperationErrorResult(OperationResult result)
         {
             Debug.Assert(result != null);
             Debug.Assert(!result.Succeeded, "Do not use this result to return with an OK result.");

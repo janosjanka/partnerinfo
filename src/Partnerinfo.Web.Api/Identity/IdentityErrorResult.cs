@@ -9,11 +9,11 @@ namespace Partnerinfo.Identity
 {
     /// <summary>
     /// An implementation of <see cref="ActionResult" /> that wraps up a <see cref="IdentityResult" />.
-    /// Instead of constructors, use the static extension methods of the <see cref="IdentityControllerExtensions" /> class
+    /// Instead of constructors, use the static extension methods of the <see cref="IdentityErrorControllerExtensions" /> class
     /// to return a new instance from an action.
     /// </summary>
     /// <seealso cref="Microsoft.AspNetCore.Mvc.ActionResult" />
-    public sealed class IdentityErrorActionResult : ActionResult
+    public sealed class IdentityErrorResult : ActionResult
     {
         /// <summary>
         /// The result of an operation.
@@ -21,10 +21,10 @@ namespace Partnerinfo.Identity
         private readonly IdentityResult _result;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="IdentityErrorActionResult" /> class.
+        /// Initializes a new instance of the <see cref="IdentityErrorResult" /> class.
         /// </summary>
         /// <param name="result">The operation result.</param>
-        public IdentityErrorActionResult(IdentityResult result)
+        public IdentityErrorResult(IdentityResult result)
         {
             Debug.Assert(result != null);
             Debug.Assert(!result.Succeeded, "Do not use this result to return with an OK result.");

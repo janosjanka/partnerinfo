@@ -8,7 +8,7 @@ namespace Partnerinfo
     /// <summary>
     /// Represents a collection of objects that can be used by repositories.
     /// </summary>
-    public sealed class ListResult
+    public sealed class OkListResultValue
     {
         /// <summary>
         /// Gets the strongly typed list of results to return.

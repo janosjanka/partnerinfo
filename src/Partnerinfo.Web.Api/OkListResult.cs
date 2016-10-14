@@ -10,7 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace Partnerinfo
 {
     /// <summary>
-    /// An <see cref="ListObjectResult" /> that when executed performs content negotiation, formats the entity body, and
+    /// An <see cref="OkListResult" /> that when executed performs content negotiation, formats the entity body, and
     /// will produce a <see cref="StatusCodes.Status200OK" /> response if negotiation and formatting succeed.
     /// </summary>
     /// <remarks>
@@ -18,7 +18,7 @@ namespace Partnerinfo
     /// To do this, the simplest solution is to use the <see cref="IEnumerable{T}" /> covariant interface.
     /// </remarks>
     /// <seealso cref="Microsoft.AspNetCore.Mvc.OkObjectResult" />
-    public sealed class ListObjectResult : OkObjectResult
+    public sealed class OkListResult : OkObjectResult
     {
         private readonly string _routeName;
         private readonly IEnumerable<object> _data;
@@ -27,13 +27,13 @@ namespace Partnerinfo
         private readonly int _limit;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ListResult" /> class with the values provided.
+        /// Initializes a new instance of the <see cref="OkListResultValue" /> class with the values provided.
         /// </summary>
         /// <param name="routeName">Name of the route.</param>
         /// <param name="data">The content value to negotiate and format in the entity body.</param>
         /// <param name="offset">The number of rows to skip, before starting to return rows from the query expression.</param>
         /// <param name="limit">The number of rows to return, after processing the offset clause.</param>
-        public ListObjectResult(string routeName, IEnumerable<object> data, int offset, int limit)
+        public OkListResult(string routeName, IEnumerable<object> data, int offset, int limit)
             : base(null)
         {
             Debug.Assert(routeName != null);
@@ -63,7 +63,7 @@ namespace Partnerinfo
             // Of course, this method just works with offset/limit paging strategy which is also supported by
             // Microsoft SQL Server 2012. See: https://technet.microsoft.com/en-us/library/gg699618(v=sql.110).aspx
 
-            var result = new ListResult { Data = _count > _limit ? _data.Take(_limit) : _data };
+            var result = new OkListResultValue { Data = _count > _limit ? _data.Take(_limit) : _data };
 
             if (_offset > 0)
             {
