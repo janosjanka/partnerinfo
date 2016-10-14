@@ -32,17 +32,8 @@ namespace Partnerinfo
         /// Initializes a new instance of the <see cref="MailAddressInfo" /> class.
         /// </summary>
         /// <param name="address">A <see cref="string" /> that contains an e-mail address.</param>
-        public MailAddressInfo(string address)
-        {
-            Address = address;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MailAddressInfo" /> class.
-        /// </summary>
-        /// <param name="address">A <see cref="string" /> that contains an e-mail address.</param>
         /// <param name="displayName">A <see cref="string" /> that contains the name associated with address.</param>
-        public MailAddressInfo(string address, string displayName)
+        public MailAddressInfo(string address, string displayName = null)
         {
             Address = address;
             DisplayName = displayName;
