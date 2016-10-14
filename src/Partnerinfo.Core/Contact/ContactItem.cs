@@ -3,6 +3,7 @@
 
 using System;
 using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 
 namespace Partnerinfo.Contact
 {
@@ -75,6 +76,14 @@ namespace Partnerinfo.Contact
         /// The birthday.
         /// </value>
         public DateTime? Birthday { get; set; }
+
+        /// <summary>
+        /// Gets or sets a set of key/value pairs for this contact provided by a storage provider.
+        /// </summary>
+        /// <value>
+        /// A set of key/value pairs.
+        /// </value>
+        public JObject Attributes { get; set; }
 
         /// <summary>
         /// Gets or sets the user identity who modified this contact.
