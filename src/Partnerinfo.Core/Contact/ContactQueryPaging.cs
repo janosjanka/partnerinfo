@@ -14,7 +14,7 @@ namespace Partnerinfo.Contact
         /// <value>
         /// The offset.
         /// </value>
-        public int Offset { get; set; } = 0;
+        public int Offset { get; set; } = 1;
 
         /// <summary>
         /// Gets or sets the number of rows to return, after processing the offset clause.
