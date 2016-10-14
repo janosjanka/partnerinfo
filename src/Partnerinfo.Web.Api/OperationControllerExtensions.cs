@@ -41,5 +41,5 @@ namespace Partnerinfo
 
             return new OperationActionResult(result);
         }
-   }
+    }
 }

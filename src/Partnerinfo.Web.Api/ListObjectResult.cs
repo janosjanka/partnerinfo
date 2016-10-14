@@ -11,26 +11,26 @@ using Microsoft.Extensions.DependencyInjection;
 namespace Partnerinfo
 {
     /// <summary>
-    /// An <see cref="ListObjectResult{T}" /> that when executed performs content negotiation, formats the entity body, and
+    /// An <see cref="ListObjectResult" /> that when executed performs content negotiation, formats the entity body, and
     /// will produce a <see cref="StatusCodes.Status200OK" /> response if negotiation and formatting succeed.
     /// </summary>
-    /// <typeparam name="T">The type of items.</typeparam>
-    /// <seealso cref="Microsoft.AspNetCore.Mvc.ObjectResult" />
-    public sealed class ListObjectResult<T> : OkObjectResult
+    /// <seealso cref="Microsoft.AspNetCore.Mvc.OkObjectResult" />
+    public sealed class ListObjectResult : OkObjectResult
     {
         private readonly string _routeName;
-        private readonly ICollection<T> _data;
+        private readonly IEnumerable<object> _data;
+        private readonly int _count;
         private readonly int _offset;
         private readonly int _limit;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ListResult{T}" /> class with the values provided.
+        /// Initializes a new instance of the <see cref="ListResult" /> class with the values provided.
         /// </summary>
         /// <param name="routeName">Name of the route.</param>
         /// <param name="data">The content value to negotiate and format in the entity body.</param>
         /// <param name="offset">The number of rows to skip, before starting to return rows from the query expression.</param>
         /// <param name="limit">The number of rows to return, after processing the offset clause.</param>
-        public ListObjectResult(string routeName, ICollection<T> data, int offset, int limit)
+        public ListObjectResult(string routeName, IEnumerable<object> data, int offset, int limit)
             : base(null)
         {
             Debug.Assert(routeName != null);
@@ -38,6 +38,7 @@ namespace Partnerinfo
 
             _routeName = routeName;
             _data = data;
+            _count = data.Count();
             _offset = offset;
             _limit = limit;
         }
@@ -60,9 +61,9 @@ namespace Partnerinfo
             // Of course, this method just works with offset/limit paging strategy which is also supported by
             // Microsoft SQL Server 2012. See: https://technet.microsoft.com/en-us/library/gg699618(v=sql.110).aspx
 
-            var result = new ListResult<T>
+            var result = new ListResult
             {
-                Data = _data.Count > _limit ? _data.Take(_limit) : _data,
+                Data = _count > _limit ? _data.Take(_limit) : _data,
                 Paging = new ListPagingResult()
             };
 
@@ -73,7 +74,7 @@ namespace Partnerinfo
                 result.Paging.Previous = urlHelper.Link(_routeName, context.RouteData.Values);
             }
 
-            if (_data.Count > _limit)
+            if (_count > _limit)
             {
                 context.RouteData.Values["offset"] = _offset + _limit;
                 result.Paging.Next = urlHelper.Link(_routeName, context.RouteData.Values);
