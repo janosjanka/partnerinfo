@@ -47,7 +47,7 @@ namespace Partnerinfo.Contact
         /// <param name="store">The persistence store the manager will operate over.</param>
         /// <param name="services">The <see cref="IServiceProvider" /> used to resolve services.</param>
         /// <exception cref="System.ArgumentNullException">store</exception>
-        public ContactManager(IContactStore store, IServiceProvider services)
+        public ContactManager(IContactStore store, IServiceProvider services = null)
         {
             if (store == null)
             {
