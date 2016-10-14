@@ -15,7 +15,7 @@ namespace Partnerinfo.Identity
     /// Provides the APIs for managing user in a persistence store.
     /// </summary>
     /// <seealso cref="Microsoft.AspNetCore.Identity.UserManager{Partnerinfo.Identity.EntityFrameworkCore.UserItem}" />
-    public sealed class UserManager : UserManager<UserItem>
+    public sealed class UserManager : UserManager<UserItem>, IUserManager
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="UserManager" /> class.

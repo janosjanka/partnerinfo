@@ -11,15 +11,15 @@ namespace Partnerinfo.Identity.Controllers
     [Route("api/[controller]")]
     public sealed class AccountController : Controller
     {
-        private readonly UserManager _userManager;
-        private readonly SignInManager _signInManager;
+        private readonly IUserManager _userManager;
+        private readonly ISignInManager _signInManager;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AccountController" /> class.
         /// </summary>
         /// <param name="userManager">Provides the APIs for managing user in a persistence store.</param>
         /// <param name="signInManager">Provides the APIs for user sign in.</param>
-        public AccountController(UserManager userManager, SignInManager signInManager)
+        public AccountController(IUserManager userManager, ISignInManager signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
