@@ -187,8 +187,8 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
             return await Contacts
                 .AsNoTracking()
                 .OrderBy(options.SortOrder)
-                .Skip(options.Paging.Offset)
-                .Take(options.Paging.Limit)
+                .Skip(options.Offset)
+                .Take(options.Limit)
                 .Select(options.Fields)
                 .ToListAsync(cancellationToken);
         }

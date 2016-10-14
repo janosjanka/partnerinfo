@@ -25,11 +25,19 @@ namespace Partnerinfo.Contact
         public ContactQuerySortOrder SortOrder { get; set; } = ContactQuerySortOrder.Recent;
 
         /// <summary>
-        /// Gets or sets the paging.
+        /// Gets or sets the number of rows to skip, before starting to return rows from the query expression.
         /// </summary>
         /// <value>
-        /// The paging.
+        /// The offset.
         /// </value>
-        public ContactQueryPaging Paging { get; } = new ContactQueryPaging();
+        public int Offset { get; set; }
+
+        /// <summary>
+        /// Gets or sets the number of rows to return, after processing the offset clause.
+        /// </summary>
+        /// <value>
+        /// The limit.
+        /// </value>
+        public int Limit { get; set; }
     }
 }
