@@ -4,7 +4,7 @@
 namespace Partnerinfo
 {
     /// <summary>
-    /// Service to enable localization for application facing identity errors.
+    /// Service to enable localization for application facing operation errors.
     /// </summary>
     public class OperationErrorDescriber
     {
