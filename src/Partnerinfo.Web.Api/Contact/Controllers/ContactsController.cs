@@ -39,7 +39,7 @@ namespace Partnerinfo.Contact.Controllers
                 return this.OperationError(result);
             }
 
-            return CreatedAtAction(nameof(GetByIdAsync), contact);
+            return CreatedAtAction(nameof(FindByIdAsync), contact);
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace Partnerinfo.Contact.Controllers
         /// A <see cref="Task{IActionResult}" /> that contains the result of an action method.
         /// </returns>
         [HttpGet("{id:int}")]
-        public async Task<IActionResult> GetByIdAsync(int id, ContactQueryFields fields)
+        public async Task<IActionResult> FindByIdAsync(int id, ContactQueryFields fields)
         {
             var contact = await _contactManager.FindByIdAsync(id, fields);
             if (contact == null)
@@ -124,7 +124,8 @@ namespace Partnerinfo.Contact.Controllers
         /// <returns>
         /// A <see cref="Task{IActionResult}" /> that contains the result of an action method.
         /// </returns>
-        public async Task<IActionResult> GetAllAsync([FromQuery] ContactQueryOptions model)
+        [HttpGet]
+        public async Task<IActionResult> FindAllAsync([FromQuery] ContactQueryOptions model)
         {
             if (model == null || !ModelState.IsValid)
             {
