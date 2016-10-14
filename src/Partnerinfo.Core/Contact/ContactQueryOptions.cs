@@ -22,15 +22,23 @@ namespace Partnerinfo.Contact
         /// <value>
         /// The sort order.
         /// </value>
-        public ContactQuerySortOrder SortOrder { get; set; }
+        public ContactQuerySortOrder OrderBy { get; set; }
 
         /// <summary>
-        /// Gets or sets how many items in a list are included.
+        /// Gets or sets the number of rows to skip, before starting to return rows from the query expression.
         /// </summary>
         /// <value>
-        /// The paging.
+        /// The number of rows to skip.
         /// </value>
-        public ContactQueryPaging Paging { get; set; }
+        public int Offset { get; set; }
+
+        /// <summary>
+        /// Gets or sets the number of rows to return, after processing the offset clause.
+        /// </summary>
+        /// <value>
+        /// The number of rows to return.
+        /// </value>
+        public int Limit { get; set; }
 
         /// <summary>
         /// Gets or sets which contact fields to search for.

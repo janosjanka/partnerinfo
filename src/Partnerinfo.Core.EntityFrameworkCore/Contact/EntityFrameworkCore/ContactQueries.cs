@@ -53,19 +53,6 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
         }
 
         /// <summary>
-        /// Limits the number of the items of a sequence.
-        /// </summary>
-        internal static IQueryable<ContactItem> Paging(this IQueryable<ContactItem> query, ContactQueryPaging paging)
-        {
-            if (paging == null)
-            {
-                return query;
-            }
-
-            return query.Skip(paging.Offset).Take(paging.Limit);
-        }
-
-        /// <summary>
         /// Projects each item of a sequence into a new form.
         /// </summary>
         internal static IQueryable<ContactItem> Select(this IQueryable<ContactItem> query, ContactQueryFields fields)

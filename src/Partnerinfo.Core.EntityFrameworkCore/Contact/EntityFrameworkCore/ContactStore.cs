@@ -3,6 +3,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -186,8 +187,9 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
             return await Contacts
                 .AsNoTracking()
                 .Where(options.Text)
-                .OrderBy(options.SortOrder)
-                .Paging(options.Paging)
+                .OrderBy(options.OrderBy)
+                .Skip(options.Offset)
+                .Take(options.Limit)
                 .Select(options.Fields)
                 .ToListAsync(cancellationToken);
         }

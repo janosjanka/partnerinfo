@@ -63,21 +63,20 @@ namespace Partnerinfo
 
             var result = new ListResult
             {
-                Data = _count > _limit ? _data.Take(_limit) : _data,
-                Paging = new ListPagingResult()
+                Data = _count > _limit ? _data.Take(_limit) : _data
             };
 
             if (_offset > 0)
             {
                 int prevOffset = _offset - _limit;
                 context.RouteData.Values["offset"] = prevOffset <= 0 ? 0 : prevOffset;
-                result.Paging.Previous = urlHelper.Link(_routeName, context.RouteData.Values);
+                result.PrevLink = urlHelper.Link(_routeName, context.RouteData.Values);
             }
 
             if (_count > _limit)
             {
                 context.RouteData.Values["offset"] = _offset + _limit;
-                result.Paging.Next = urlHelper.Link(_routeName, context.RouteData.Values);
+                result.NextLink = urlHelper.Link(_routeName, context.RouteData.Values);
             }
 
             Value = result;
