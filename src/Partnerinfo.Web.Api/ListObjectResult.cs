@@ -14,6 +14,10 @@ namespace Partnerinfo
     /// An <see cref="ListObjectResult" /> that when executed performs content negotiation, formats the entity body, and
     /// will produce a <see cref="StatusCodes.Status200OK" /> response if negotiation and formatting succeed.
     /// </summary>
+    /// <remarks>
+    /// We do not use generic types for API results to decrease code size but we need LINQ to ensure the corresponding number of items.
+    /// To do this, the simplest solution is to use the <see cref="IEnumerable{T}" /> covariant interface.
+    /// </remarks>
     /// <seealso cref="Microsoft.AspNetCore.Mvc.OkObjectResult" />
     public sealed class ListObjectResult : OkObjectResult
     {
@@ -38,7 +42,7 @@ namespace Partnerinfo
 
             _routeName = routeName;
             _data = data;
-            _count = data.Count();
+            _count = data.Count(); // https://github.com/dotnet/corefx/blob/master/src/System.Linq/src/System/Linq/Count.cs (Optimized)
             _offset = offset;
             _limit = limit;
         }
