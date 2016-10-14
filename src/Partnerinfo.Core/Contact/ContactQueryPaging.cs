@@ -4,7 +4,7 @@
 namespace Partnerinfo.Contact
 {
     /// <summary>
-    /// 
+    /// Specifies how many contacts in a list are included.
     /// </summary>
     public sealed class ContactQueryPaging
     {
@@ -14,14 +14,14 @@ namespace Partnerinfo.Contact
         /// <value>
         /// The offset.
         /// </value>
-        public int Offset { get; set; }
-        
+        public int Offset { get; set; } = 0;
+
         /// <summary>
         /// Gets or sets the number of rows to return, after processing the offset clause.
         /// </summary>
         /// <value>
         /// The limit.
         /// </value>
-        public int Limit { get; set; }
+        public int Limit { get; set; } = 50;
     }
 }

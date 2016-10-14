@@ -20,7 +20,7 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
         {
             return query.Where(c => c.Id == id);
         }
-        
+
         /// <summary>
         /// Sorts the items of a sequence according to a key.
         /// </summary>
@@ -37,6 +37,14 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
             }
 
             return query.OrderBy(c => c.Id); // Required for Skip/Take.
+        }
+
+        /// <summary>
+        /// Limits the number of the items of a sequence.
+        /// </summary>
+        internal static IQueryable<ContactItem> Paging(this IQueryable<ContactItem> query, ContactQueryPaging paging)
+        {
+            return paging == null ? query : query.Skip(paging.Offset).Take(paging.Limit);
         }
 
         /// <summary>
