@@ -24,14 +24,14 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
         /// <summary>
         /// Sorts the items of a sequence according to a key.
         /// </summary>
-        internal static IQueryable<ContactItem> OrderBy(this IQueryable<ContactItem> query, ContactSortOrder orderBy)
+        internal static IQueryable<ContactItem> OrderBy(this IQueryable<ContactItem> query, ContactQuerySortOrder orderBy)
         {
-            if (orderBy == ContactSortOrder.Recent)
+            if (orderBy == ContactQuerySortOrder.Recent)
             {
                 return query.OrderByDescending(c => c.ModifiedDate);
             }
 
-            if (orderBy == ContactSortOrder.Email)
+            if (orderBy == ContactQuerySortOrder.Email)
             {
                 return query.OrderBy(c => c.Email);
             }
@@ -42,24 +42,24 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
         /// <summary>
         /// Projects each item of a sequence into a new form.
         /// </summary>
-        internal static IQueryable<ContactItem> Select(this IQueryable<ContactItem> query, ContactField fields)
+        internal static IQueryable<ContactItem> Select(this IQueryable<ContactItem> query, ContactQueryFields fields)
         {
             Expression<Func<ContactItem, ContactItem>> selector = c => new ContactItem
             {
                 Id = c.Id
             };
 
-            if (fields.HasFlag(ContactField.Sponsor))
+            if (fields.HasFlag(ContactQueryFields.Sponsor))
             {
                 selector = selector.Merge(c => new ContactItem { });
             }
 
-            if (fields.HasFlag(ContactField.Attributes))
+            if (fields.HasFlag(ContactQueryFields.Attributes))
             {
                 selector = selector.Merge(c => new ContactItem { });
             }
 
-            if (fields.HasFlag(ContactField.BusinessTags))
+            if (fields.HasFlag(ContactQueryFields.BusinessTags))
             {
                 selector = selector.Merge(c => new ContactItem { });
             }

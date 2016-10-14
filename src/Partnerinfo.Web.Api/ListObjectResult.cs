@@ -16,7 +16,7 @@ namespace Partnerinfo
     /// </summary>
     /// <typeparam name="T">The type of items.</typeparam>
     /// <seealso cref="Microsoft.AspNetCore.Mvc.ObjectResult" />
-    public sealed class ListObjectResult<T> : ObjectResult
+    public sealed class ListObjectResult<T> : OkObjectResult
     {
         private readonly string _routeName;
         private readonly ICollection<T> _data;
@@ -62,7 +62,8 @@ namespace Partnerinfo
 
             var result = new ListResult<T>
             {
-                Data = _data.Count > _limit ? _data.Take(_limit) : _data
+                Data = _data.Count > _limit ? _data.Take(_limit) : _data,
+                Paging = new ListPagingResult()
             };
 
             if (_offset > 0)

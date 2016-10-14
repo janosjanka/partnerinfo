@@ -157,7 +157,7 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
         /// <returns>
         /// A <see cref="T:System.Threading.Tasks.Task`1" /> that represents the <see cref="T:Partnerinfo.Contact.ContactItem" /> of the asynchronous query.
         /// </returns>
-        public virtual Task<ContactItem> FindByIdAsync(int id, ContactField fields, CancellationToken cancellationToken)
+        public virtual Task<ContactItem> FindByIdAsync(int id, ContactQueryFields fields, CancellationToken cancellationToken)
         {
             ThrowIfDisposed();
 
@@ -170,24 +170,26 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
         /// <summary>
         /// Retrieves a collection of contacts with the given filter parameters as an asynchronous operation.
         /// </summary>
-        /// <param name="fields">The fields to be included in the result set.</param>
-        /// <param name="sortOrder">Specifies how items in a list are sorted.</param>
-        /// <param name="offset">The number of rows to skip, before starting to return rows from the query expression.</param>
-        /// <param name="limit">The number of rows to return, after processing the offset clause.</param>
+        /// <param name="options">The query options to use for searching contacts.</param>
         /// <param name="cancellationToken">The <see cref="T:System.Threading.CancellationToken" /> used to propagate notifications that the operation should be canceled.</param>
         /// <returns>
         /// A <see cref="T:System.Threading.Tasks.Task`1" /> that contains the contacts according to the specified filter parameters.
         /// </returns>
-        public virtual async Task<IList<ContactItem>> FindAllAsync(ContactField fields, ContactSortOrder sortOrder, int offset, int limit, CancellationToken cancellationToken)
+        /// <exception cref="System.ArgumentNullException">options</exception>
+        public virtual async Task<IList<ContactItem>> FindAllAsync(ContactQueryOptions options, CancellationToken cancellationToken)
         {
             ThrowIfDisposed();
+            if (options == null)
+            {
+                throw new ArgumentNullException(nameof(options));
+            }
 
             return await Contacts
                 .AsNoTracking()
-                .OrderBy(sortOrder)
-                .Skip(offset)
-                .Take(limit)
-                .Select(fields)
+                .OrderBy(options.SortOrder)
+                .Skip(options.Paging.Offset)
+                .Take(options.Paging.Limit)
+                .Select(options.Fields)
                 .ToListAsync(cancellationToken);
         }
 

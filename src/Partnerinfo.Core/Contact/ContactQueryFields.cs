@@ -5,8 +5,11 @@ using System;
 
 namespace Partnerinfo.Contact
 {
+    /// <summary>
+    /// Specifies parameters to use in a search of <see cref="ContactItem" /> objects.
+    /// </summary>
     [Flags]
-    public enum ContactField
+    public enum ContactQueryFields
     {
         /// <summary>
         /// No extra fields included in the result set.

@@ -52,19 +52,16 @@ namespace Partnerinfo.Contact
         /// <returns>
         /// A <see cref="Task{ContactItem}" /> that represents the <see cref="ContactItem" /> of the asynchronous query.
         /// </returns>
-        Task<ContactItem> FindByIdAsync(int id, ContactField fields, CancellationToken cancellationToken);
+        Task<ContactItem> FindByIdAsync(int id, ContactQueryFields fields, CancellationToken cancellationToken);
 
         /// <summary>
         /// Retrieves a collection of contacts with the given filter parameters as an asynchronous operation.
         /// </summary>
-        /// <param name="fields">The fields to be included in the result set.</param>
-        /// <param name="sortOrder">Specifies how items in a list are sorted.</param>
-        /// <param name="offset">The number of rows to skip, before starting to return rows from the query expression.</param>
-        /// <param name="limit">The number of rows to return, after processing the offset clause.</param>
+        /// <param name="options">The query options to use for searching contacts.</param>
         /// <param name="cancellationToken">The <see cref="CancellationToken" /> used to propagate notifications that the operation should be canceled.</param>
         /// <returns>
         /// A <see cref="Task{IList{ContactItem}}" /> that contains the contacts according to the specified filter parameters.
         /// </returns>
-        Task<IList<ContactItem>> FindAllAsync(ContactField fields, ContactSortOrder sortOrder, int offset, int limit, CancellationToken cancellationToken);
+        Task<IList<ContactItem>> FindAllAsync(ContactQueryOptions options, CancellationToken cancellationToken);
     }
 }
