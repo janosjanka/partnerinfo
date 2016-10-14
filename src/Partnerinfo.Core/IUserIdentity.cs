@@ -8,10 +8,13 @@ namespace Partnerinfo
     /// <summary>
     /// Represents a user with minimal data in the identity system.
     /// </summary>
+    /// <remarks>
+    /// <see href="https://github.com/aspnet/Identity/blob/dev/src/Microsoft.AspNetCore.Identity.EntityFrameworkCore/IdentityUser.cs">Microsoft.AspNetCore.Identity.EntityFrameworkCore</see>
+    /// </remarks>
     public interface IUserIdentity
     {
         /// <summary>
-        /// Gets the primary key for this user provided by a storage provider.
+        /// Gets or sets the primary key for this user provided by a storage provider.
         /// </summary>
         /// <value>
         /// The primary key.
@@ -19,7 +22,7 @@ namespace Partnerinfo
         int Id { get; set; }
 
         /// <summary>
-        /// Gets the email address for this user provided by a storage provider.
+        /// Gets or sets the email address for this user provided by a storage provider.
         /// </summary>
         /// <value>
         /// The email.
@@ -27,10 +30,10 @@ namespace Partnerinfo
         string Email { get; set; }
 
         /// <summary>
-        /// Gets the telephone number for the user provided by a storage provider.
+        /// Gets or sets the phone number for the user provided by a storage provider.
         /// </summary>
         /// <value>
-        /// The telephone number.
+        /// The phone number.
         /// </value>
         string PhoneNumber { get; set; }
 
@@ -59,7 +62,7 @@ namespace Partnerinfo
         string LastName { get; set; }
 
         /// <summary>
-        /// Gets the gender for this user provided by a storage provider.
+        /// Gets or sets the gender for this user provided by a storage provider.
         /// </summary>
         /// <value>
         /// The gender.
@@ -67,7 +70,7 @@ namespace Partnerinfo
         PersonGender Gender { get; set; }
 
         /// <summary>
-        /// Gets the birthday for this user provided by a storage provider.
+        /// Gets or sets the birthday for this user provided by a storage provider.
         /// </summary>
         /// <value>
         /// The birthday.

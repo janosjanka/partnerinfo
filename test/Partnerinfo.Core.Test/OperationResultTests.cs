@@ -8,23 +8,20 @@ namespace Partnerinfo
 {
     public class OperationResultTests
     {
-        public class IdentityResultTest
+        [Fact]
+        public void VerifyDefaultConstructor()
         {
-            [Fact]
-            public void VerifyDefaultConstructor()
-            {
-                var result = new OperationResult();
-                Assert.False(result.Succeeded);
-                Assert.Equal(0, result.Errors.Count());
-            }
+            var result = new OperationResult();
+            Assert.False(result.Succeeded);
+            Assert.Equal(0, result.Errors.Count());
+        }
 
-            [Fact]
-            public void NullFailedUsesEmptyErrors()
-            {
-                var result = OperationResult.Failed();
-                Assert.False(result.Succeeded);
-                Assert.Equal(0, result.Errors.Count());
-            }
+        [Fact]
+        public void NullFailedUsesEmptyErrors()
+        {
+            var result = OperationResult.Failed();
+            Assert.False(result.Succeeded);
+            Assert.Equal(0, result.Errors.Count());
         }
     }
 }

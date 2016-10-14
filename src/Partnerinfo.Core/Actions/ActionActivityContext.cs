@@ -35,11 +35,11 @@ namespace Partnerinfo.Actions
         public IServiceProvider Services { get; private set; }
 
         /// <summary>
-        /// Creates an activity result passing context information into the result object.
+        /// Creates an <see cref="ActionActivityResult" /> copying context information to that.
         /// </summary>
         /// <param name="statusCode">The status code to override.</param>
         /// <returns>
-        /// The result object.
+        /// The activity result object.
         /// </returns>
         public ActionActivityResult CreateResult(ActionActivityStatusCode statusCode) => new ActionActivityResult
         {
