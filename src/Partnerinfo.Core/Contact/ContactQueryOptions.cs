@@ -17,14 +17,6 @@ namespace Partnerinfo.Contact
         public string Text { get; set; }
 
         /// <summary>
-        /// Gets or sets which contact fields to search for.
-        /// </summary>
-        /// <value>
-        /// The fields.
-        /// </value>
-        public ContactQueryFields Fields { get; set; }
-
-        /// <summary>
         /// Gets or sets how items in a list are sorted.
         /// </summary>
         /// <value>
@@ -39,5 +31,13 @@ namespace Partnerinfo.Contact
         /// The paging.
         /// </value>
         public ContactQueryPaging Paging { get; set; }
+
+        /// <summary>
+        /// Gets or sets which contact fields to search for.
+        /// </summary>
+        /// <value>
+        /// The fields.
+        /// </value>
+        public ContactQueryFields Fields { get; set; }
     }
 }

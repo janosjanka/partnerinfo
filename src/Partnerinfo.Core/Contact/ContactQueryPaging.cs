@@ -12,16 +12,16 @@ namespace Partnerinfo.Contact
         /// Gets or sets the number of rows to skip, before starting to return rows from the query expression.
         /// </summary>
         /// <value>
-        /// The offset.
+        /// The number of rows to skip.
         /// </value>
-        public int Offset { get; set; } = 1;
+        public int Offset { get; set; }
 
         /// <summary>
         /// Gets or sets the number of rows to return, after processing the offset clause.
         /// </summary>
         /// <value>
-        /// The limit.
+        /// The number of rows to return.
         /// </value>
-        public int Limit { get; set; } = 50;
+        public int Limit { get; set; }
     }
 }
