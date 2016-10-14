@@ -48,7 +48,7 @@ namespace Partnerinfo.Contact
         /// </summary>
         /// <param name="id">The primary key for the item to be found.</param>
         /// <param name="fields">The fields to be included in the result set.</param>
-        /// <param name="cancellationToken">A token to observe while waiting for the task to complete.</param>
+        /// <param name="cancellationToken">The <see cref="CancellationToken" /> used to propagate notifications that the operation should be canceled.</param>
         /// <returns>
         /// A <see cref="Task{ContactItem}" /> that represents the <see cref="ContactItem" /> of the asynchronous query.
         /// </returns>
@@ -61,9 +61,9 @@ namespace Partnerinfo.Contact
         /// <param name="sortOrder">Specifies how items in a list are sorted.</param>
         /// <param name="offset">The number of rows to skip, before starting to return rows from the query expression.</param>
         /// <param name="limit">The number of rows to return, after processing the offset clause.</param>
-        /// <param name="cancellationToken">A token to observe while waiting for the task to complete.</param>
+        /// <param name="cancellationToken">The <see cref="CancellationToken" /> used to propagate notifications that the operation should be canceled.</param>
         /// <returns>
-        /// A <see cref="Task{ImmutableArray{ContactItem}}" /> that contains the contacts according to the specified filter parameters.
+        /// A <see cref="Task{IList{ContactItem}}" /> that contains the contacts according to the specified filter parameters.
         /// </returns>
         Task<IList<ContactItem>> FindAllAsync(ContactField fields, ContactSortOrder sortOrder, int offset, int limit, CancellationToken cancellationToken);
     }

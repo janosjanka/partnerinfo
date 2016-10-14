@@ -9,14 +9,6 @@ namespace Partnerinfo.Content
     public class ContentItem
     {
         /// <summary>
-        /// Gets or sets the primary key for this content provided by the storage.
-        /// </summary>
-        /// <value>
-        /// The primary key.
-        /// </value>
-        public int Id { get; set; }
-
-        /// <summary>
         /// Gets or sets the URI (Unique Resource Identifier) for this content provided by the storage.
         /// </summary>
         /// <value>

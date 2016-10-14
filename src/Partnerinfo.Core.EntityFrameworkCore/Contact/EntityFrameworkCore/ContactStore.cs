@@ -94,8 +94,9 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
         /// <param name="contact">The contact to update in the store.</param>
         /// <param name="cancellationToken">The <see cref="T:System.Threading.CancellationToken" /> used to propagate notifications that the operation should be canceled.</param>
         /// <returns>
-        /// A <see cref="T:System.Threading.Tasks.Task`1" /> that represents the <see cref="!:OperationResult" /> of the asynchronous query.
+        /// A <see cref="T:System.Threading.Tasks.Task`1" /> that represents the <see cref="T:Partnerinfo.OperationResult" /> of the asynchronous query.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">contact</exception>
         public virtual async Task<OperationResult> UpdateAsync(ContactItem contact, CancellationToken cancellationToken)
         {
             ThrowIfDisposed();
@@ -124,8 +125,9 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
         /// <param name="contact">The contact to delete from the store.</param>
         /// <param name="cancellationToken">The <see cref="T:System.Threading.CancellationToken" /> used to propagate notifications that the operation should be canceled.</param>
         /// <returns>
-        /// A <see cref="T:System.Threading.Tasks.Task`1" /> that represents the <see cref="!:OperationResult" /> of the asynchronous query.
+        /// A <see cref="T:System.Threading.Tasks.Task`1" /> that represents the <see cref="T:Partnerinfo.OperationResult" /> of the asynchronous query.
         /// </returns>
+        /// <exception cref="System.ArgumentNullException">contact</exception>
         public virtual async Task<OperationResult> DeleteAsync(ContactItem contact, CancellationToken cancellationToken)
         {
             ThrowIfDisposed();
@@ -147,13 +149,13 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
         }
 
         /// <summary>
-        /// Finds a contact with the given primary key value.
+        /// Finds a contact with the given primary key value as an asynchronous operation.
         /// </summary>
         /// <param name="id">The primary key for the item to be found.</param>
-        /// <param name="fields">The fields.</param>
-        /// <param name="cancellationToken">A token to observe while waiting for the task to complete.</param>
+        /// <param name="fields">The fields to be included in the result set.</param>
+        /// <param name="cancellationToken">The <see cref="T:System.Threading.CancellationToken" /> used to propagate notifications that the operation should be canceled.</param>
         /// <returns>
-        /// A task that represents the asynchronous operation.
+        /// A <see cref="T:System.Threading.Tasks.Task`1" /> that represents the <see cref="T:Partnerinfo.Contact.ContactItem" /> of the asynchronous query.
         /// </returns>
         public virtual Task<ContactItem> FindByIdAsync(int id, ContactField fields, CancellationToken cancellationToken)
         {
@@ -172,9 +174,9 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
         /// <param name="sortOrder">Specifies how items in a list are sorted.</param>
         /// <param name="offset">The number of rows to skip, before starting to return rows from the query expression.</param>
         /// <param name="limit">The number of rows to return, after processing the offset clause.</param>
-        /// <param name="cancellationToken">A token to observe while waiting for the task to complete.</param>
+        /// <param name="cancellationToken">The <see cref="T:System.Threading.CancellationToken" /> used to propagate notifications that the operation should be canceled.</param>
         /// <returns>
-        /// A <see cref="Task{ImmutableArray{ContactItem}}" /> that contains the contacts according to the specified filter parameters.
+        /// A <see cref="T:System.Threading.Tasks.Task`1" /> that contains the contacts according to the specified filter parameters.
         /// </returns>
         public virtual async Task<IList<ContactItem>> FindAllAsync(ContactField fields, ContactSortOrder sortOrder, int offset, int limit, CancellationToken cancellationToken)
         {

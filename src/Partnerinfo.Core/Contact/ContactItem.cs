@@ -77,14 +77,6 @@ namespace Partnerinfo.Contact
         public DateTime? Birthday { get; set; }
 
         /// <summary>
-        /// Gets or sets a collection of dynamic attributes for this contact provided by a storage provider.
-        /// </summary>
-        /// <value>
-        /// A collection of dynamic attributes.
-        /// </value>
-        public ContactAttributes Attributes { get; set; }
-
-        /// <summary>
         /// Gets or sets the date and time, in UTC, when this contact was last modified.
         /// </summary>
         /// <value>
