@@ -19,9 +19,9 @@ namespace Partnerinfo.Identity
         /// <returns>
         /// The <see cref="OperationActionResult" /> result that renders a view to the response.
         /// </returns>
-        public static IdentityActionResult IdentityResult(this Controller controller, IdentityResult result)
+        public static IdentityActionResult IdentityError(this Controller controller, IdentityResult result)
         {
-            return IdentityResult(controller, result, null);
+            return IdentityError(controller, result, null);
         }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace Partnerinfo.Identity
         /// <returns>
         /// The <see cref="OperationActionResult" /> result that renders a view to the response.
         /// </returns>
-        public static IdentityActionResult IdentityResult(this Controller controller, IdentityResult result, object model)
+        public static IdentityActionResult IdentityError(this Controller controller, IdentityResult result, object model)
         {
             if (model != null)
             {

@@ -1,17 +1,18 @@
 ﻿// Copyright (c) János Janka. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
+using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Partnerinfo
 {
     /// <summary>
-    /// An implementation of <see cref="ObjectResult" /> that wraps up a <see cref="OperationResult" /> supporting content negotiation.
+    /// An implementation of <see cref="ActionResult" /> that wraps up a <see cref="ActionResult" />.
     /// Instead of constructors, use the static extension methods of the <see cref="OperationControllerExtensions" /> class
     /// to return a new instance from an action.
     /// </summary>
-    /// <seealso cref="Microsoft.AspNetCore.Mvc.ObjectResult" />
-    public sealed class OperationActionResult : ObjectResult
+    /// <seealso cref="Microsoft.AspNetCore.Mvc.ActionResult" />
+    public sealed class OperationErrorActionResult : ActionResult
     {
         /// <summary>
         /// The result of an operation.
@@ -19,13 +20,14 @@ namespace Partnerinfo
         private readonly OperationResult _result;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="OperationActionResult" /> class.
+        /// Initializes a new instance of the <see cref="OperationErrorActionResult" /> class.
         /// </summary>
         /// <param name="result">The operation result.</param>
-        /// <param name="value">The value.</param>
-        public OperationActionResult(OperationResult result, object value)
-            : base(value)
+        public OperationErrorActionResult(OperationResult result)
         {
+            Debug.Assert(result != null);
+            Debug.Assert(!result.Succeeded, "Do not use this result to return with an OK result.");
+
             _result = result;
         }
 
@@ -37,16 +39,13 @@ namespace Partnerinfo
         /// information about the action that was executed and request information.</param>
         public override void ExecuteResult(ActionContext context)
         {
-            if (_result?.Succeeded == false)
+            var modelState = context.ModelState;
+            foreach (var error in _result.Errors)
             {
-                var modelState = context.ModelState;
-                foreach (var error in _result.Errors)
-                {
-                    modelState.AddModelError(error.Code, error.Description);
-                }
+                modelState.AddModelError(error.Code, error.Description);
             }
 
             base.ExecuteResult(context);
-        }        
+        }
     }
 }

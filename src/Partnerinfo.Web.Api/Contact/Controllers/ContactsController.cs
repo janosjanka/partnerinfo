@@ -38,7 +38,12 @@ namespace Partnerinfo.Contact.Controllers
             }
 
             var result = await _contactManager.DeleteAsync(contact);
-            return this.OperationResult(result);
+            if (!result.Succeeded)
+            {
+                return this.OperationError(result);
+            }
+
+            return NoContent();
         }
 
         /// <summary>

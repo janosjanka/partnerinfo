@@ -1,18 +1,19 @@
 ﻿// Copyright (c) János Janka. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
+using System.Diagnostics;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Partnerinfo.Identity
 {
     /// <summary>
-    /// An implementation of <see cref="IActionResult" /> that wraps up a <see cref="IdentityResult" />.
+    /// An implementation of <see cref="ActionResult" /> that wraps up a <see cref="IdentityResult" />.
     /// Instead of constructors, use the static extension methods of the <see cref="IdentityControllerExtensions" /> class
     /// to return a new instance from an action.
     /// </summary>
     /// <seealso cref="Microsoft.AspNetCore.Mvc.ActionResult" />
-    public sealed class IdentityActionResult : ActionResult
+    public sealed class IdentityErrorActionResult : ActionResult
     {
         /// <summary>
         /// The result of an operation.
@@ -20,11 +21,14 @@ namespace Partnerinfo.Identity
         private readonly IdentityResult _result;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="IdentityActionResult" /> class.
+        /// Initializes a new instance of the <see cref="IdentityErrorActionResult" /> class.
         /// </summary>
         /// <param name="result">The operation result.</param>
-        public IdentityActionResult(IdentityResult result)
+        public IdentityErrorActionResult(IdentityResult result)
         {
+            Debug.Assert(result != null);
+            Debug.Assert(!result.Succeeded, "Do not use this result to return with an OK result.");
+
             _result = result;
         }
 
@@ -36,13 +40,10 @@ namespace Partnerinfo.Identity
         /// information about the action that was executed and request information.</param>
         public override void ExecuteResult(ActionContext context)
         {
-            if (_result?.Succeeded == false)
+            var modelState = context.ModelState;
+            foreach (var error in _result.Errors)
             {
-                var modelState = context.ModelState;
-                foreach (var error in _result.Errors)
-                {
-                    modelState.AddModelError(error.Code, error.Description);
-                }
+                modelState.AddModelError(error.Code, error.Description);
             }
 
             base.ExecuteResult(context);
