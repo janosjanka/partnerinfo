@@ -43,7 +43,7 @@ namespace Partnerinfo.Actions
                 throw new ArgumentNullException(nameof(actionLink));
             }
 
-            var customUri = actionLink.CustomUri != null ? UriUtilities.Normalize(actionLink.CustomUri) : default(string);
+            var customUri = actionLink.CustomUri != null ? UriUtilities.NormalizePath(actionLink.CustomUri) : default(string);
             var builder = new StringBuilder();
 
             builder.Append(GetChecksum(actionLink.ActionId, actionLink.ContactId, customUri));

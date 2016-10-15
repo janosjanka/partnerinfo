@@ -8,21 +8,21 @@ namespace Partnerinfo
     /// <summary>
     /// Provides an implementation for normalizing URIs.
     /// </summary>
-    /// <seealso cref="Partnerinfo.IUriNormalizer" />
-    public sealed class UriNormalizer : IUriNormalizer
+    /// <seealso cref="Partnerinfo.IUriPathNormalizer" />
+    public sealed class UriPathNormalizer : IUriPathNormalizer
     {
         /// <summary>
         /// A static uri part normalizer that helps decrease GC pressure.
         /// </summary>
-        public static readonly UriNormalizer Default = new UriNormalizer();
+        public static readonly UriPathNormalizer Default = new UriPathNormalizer();
 
         /// <summary>
-        /// Returns a normalized representation of the specified <paramref name="uri" />.
+        /// Returns a normalized representation of the specified <paramref name="path" />.
         /// </summary>
-        /// <param name="uri">The uri to normalize.</param>
+        /// <param name="path">The path to normalize.</param>
         /// <returns>
-        /// A normalized representation of the specified <paramref name="uri" />.
+        /// A normalized representation of the specified <paramref name="path" />.
         /// </returns>
-        public string Normalize(string uri) => UriUtilities.Normalize(uri);
+        public string Normalize(string path) => UriUtilities.NormalizePath(path);
     }
 }
