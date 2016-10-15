@@ -17,13 +17,12 @@ namespace Partnerinfo
         public static readonly UriNormalizer Default = new UriNormalizer();
 
         /// <summary>
-        /// Returns a normalized representation of the specified <paramref name="uriPart" />.
+        /// Returns a normalized representation of the specified <paramref name="uri" />.
         /// </summary>
-        /// <param name="uriPart">The uri to normalize.</param>
+        /// <param name="uri">The uri to normalize.</param>
         /// <returns>
-        /// A normalized representation of the specified <paramref name="uriPart" />.
+        /// A normalized representation of the specified <paramref name="uri" />.
         /// </returns>
-        /// <exception cref="System.ArgumentNullException">uriPart</exception>
-        public string Normalize(string uriPart) => UriUtilities.Normalize(uriPart);
+        public string Normalize(string uri) => UriUtilities.Normalize(uri);
     }
 }

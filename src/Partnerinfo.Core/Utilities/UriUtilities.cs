@@ -12,23 +12,23 @@ namespace Partnerinfo.Utilities
     internal static class UriUtilities
     {
         /// <summary>
-        /// Returns a normalized representation of the specified <paramref name="uriPart" />.
+        /// Returns a normalized representation of the specified <paramref name="uri" />.
         /// </summary>
-        /// <param name="uriPart">The uri to normalize.</param>
+        /// <param name="uri">The uri to normalize.</param>
         /// <returns>
-        /// A normalized representation of the specified <paramref name="uriPart" />.
+        /// A normalized representation of the specified <paramref name="uri" />.
         /// </returns>
         /// <exception cref="System.ArgumentNullException">uriPart</exception>
-        internal static string Normalize(string uriPart)
+        internal static string Normalize(string uri)
         {
-            if (uriPart == null)
+            if (uri == null)
             {
-                throw new ArgumentNullException(nameof(uriPart));
+                throw new ArgumentNullException(nameof(uri));
             }
 
             // Remove all leading and trailing white-space characters and normalize 
             // the given URI part using full compatibility decomposition (FormKD).
-            string normalizedUri = uriPart
+            string normalizedUri = uri
                 .Trim()
                 .Normalize(NormalizationForm.FormKD)
                 .ToLower();
