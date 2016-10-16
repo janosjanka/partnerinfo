@@ -6,7 +6,7 @@ namespace Partnerinfo.Security
     /// <summary>
     /// Represents an access visibility indicating whether a resource is available on the Web.
     /// </summary>
-    public enum AccessVisibility : byte
+    public enum AccessVisibility
     {
         /// <summary>
         /// Indicates that the visibility is not being used.
