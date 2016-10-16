@@ -6,12 +6,13 @@ using Xunit;
 
 namespace Partnerinfo
 {
-    public class OperationResultTests
+    public sealed class OperationResultTests
     {
         [Fact]
         public void VerifyDefaultConstructor()
         {
             var result = new OperationResult();
+
             Assert.False(result.Succeeded);
             Assert.Equal(0, result.Errors.Count());
         }
@@ -20,6 +21,7 @@ namespace Partnerinfo
         public void NullFailedUsesEmptyErrors()
         {
             var result = OperationResult.Failed();
+
             Assert.False(result.Succeeded);
             Assert.Equal(0, result.Errors.Count());
         }

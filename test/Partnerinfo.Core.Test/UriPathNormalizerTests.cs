@@ -6,22 +6,24 @@ using Xunit;
 
 namespace Partnerinfo
 {
-    public class UriPathNormalizerTests
+    public sealed class UriPathNormalizerTests
     {
         [Fact]
         public void ValidateNormalizedUri()
         {
             var normalizer = new UriPathNormalizer();
             var result = normalizer.Normalize(" - Hello  -  Janka  [! - !]  János  ---  Zoltán.1984_12~ok   ");
+
             Assert.True(Uri.IsWellFormedUriString(result, UriKind.Relative));
         }
 
         [Fact]
-        public void ShouldReturnFriendlyUri()
+        public void ContainsFriendlyChars()
         {
             var normalizer = new UriPathNormalizer();
             var result = normalizer.Normalize(" - Hello  -  Janka  [! - !]  János  ---  Zoltán.1984_12~ok   ");
-            Assert.Equal("hello-janka-janos-zoltan-1984-12-ok", result, StringComparer.Ordinal);
+
+            Assert.Matches("[-a-z0-9]+", result);
         }
     }
 }

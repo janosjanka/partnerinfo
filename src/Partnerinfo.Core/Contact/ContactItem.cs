@@ -83,7 +83,7 @@ namespace Partnerinfo.Contact
         /// <value>
         /// A set of key/value pairs.
         /// </value>
-        public JObject Attributes { get; set; }
+        public ContactAttributeCollection Attributes { get; set; }
 
         /// <summary>
         /// Gets or sets the user identity who modified this contact.

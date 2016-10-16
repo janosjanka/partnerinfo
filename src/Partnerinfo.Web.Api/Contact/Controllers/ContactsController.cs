@@ -2,6 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Partnerinfo.Contact.Controllers
@@ -26,20 +27,21 @@ namespace Partnerinfo.Contact.Controllers
         /// <summary>
         /// Creates a new contact in a store as an asynchronous HTTP POST operation.
         /// </summary>
-        /// <param name="contact">The contact to create in the store.</param>
+        /// <param name="model">The contact to create in the store.</param>
         /// <returns>
         /// A <see cref="Task{IActionResult}" /> that contains the result of an action method.
         /// </returns>
         [HttpPost]
-        public async Task<IActionResult> CreateAsync(ContactItem contact)
+        [ProducesResponseType(typeof(ContactItem), StatusCodes.Status201Created)]
+        public async Task<IActionResult> CreateAsync(ContactItem model)
         {
-            var result = await _contactManager.CreateAsync(contact);
+            var result = await _contactManager.CreateAsync(model);
             if (!result.Succeeded)
             {
                 return this.OperationError(result);
             }
 
-            return CreatedAtAction(nameof(FindByIdAsync), contact);
+            return CreatedAtAction(nameof(FindByIdAsync), model);
         }
 
         /// <summary>
@@ -50,6 +52,7 @@ namespace Partnerinfo.Contact.Controllers
         /// A <see cref="Task{IActionResult}" /> that contains the result of an action method.
         /// </returns>
         [HttpPut("{id:int}")]
+        [ProducesResponseType(typeof(ContactItem), StatusCodes.Status200OK)]
         public async Task<IActionResult> UpdateAsync(int id)
         {
             var contact = await _contactManager.FindByIdAsync(id, ContactQueryFields.None);
@@ -106,6 +109,7 @@ namespace Partnerinfo.Contact.Controllers
         /// A <see cref="Task{IActionResult}" /> that contains the result of an action method.
         /// </returns>
         [HttpGet("{id:int}")]
+        [ProducesResponseType(typeof(ContactItem), StatusCodes.Status200OK)]
         public async Task<IActionResult> FindByIdAsync(int id, ContactQueryFields fields)
         {
             var contact = await _contactManager.FindByIdAsync(id, fields);
@@ -125,6 +129,7 @@ namespace Partnerinfo.Contact.Controllers
         /// A <see cref="Task{IActionResult}" /> that contains the result of an action method.
         /// </returns>
         [HttpGet]
+        [ProducesResponseType(typeof(OkListResultValue), StatusCodes.Status200OK)]
         public async Task<IActionResult> FindAllAsync([FromQuery] ContactQueryOptions model)
         {
             if (model == null || !ModelState.IsValid)
