@@ -12,7 +12,7 @@ namespace Partnerinfo
     public sealed class UriPathNormalizer : IUriPathNormalizer
     {
         /// <summary>
-        /// A static uri part normalizer that helps decrease GC pressure.
+        /// The default <see cref="UriPathNormalizer" />.
         /// </summary>
         public static readonly UriPathNormalizer Default = new UriPathNormalizer();
 
