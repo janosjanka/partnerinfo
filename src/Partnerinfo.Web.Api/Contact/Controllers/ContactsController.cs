@@ -10,7 +10,7 @@ namespace Partnerinfo.Contact.Controllers
     /// <summary>
     /// Provides methods that respond to HTTP requests that are made to an ASP.NET MVC Web site.
     /// </summary>
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     public sealed class ContactsController : Controller
     {
         private readonly ContactManager _contactManager;
