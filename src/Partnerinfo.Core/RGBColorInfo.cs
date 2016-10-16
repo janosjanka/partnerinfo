@@ -10,7 +10,7 @@ namespace Partnerinfo
     /// Represents an immutable, thread-safe, and cachable RGB color as DDD value object.
     /// </summary>
     [JsonConverter(typeof(RGBColorInfoJsonConverter))]
-    public sealed class RGBColorInfo
+    public sealed class RGBColorInfo : IEquatable<RGBColorInfo>
     {
         /// <summary>
         /// Gets or sets the red component for this color.
@@ -109,6 +109,32 @@ namespace Partnerinfo
                 }
             }
         }
+
+        /// <summary>
+        /// Indicates whether the current object is equal to another object of the same type.
+        /// </summary>
+        /// <param name="other">An object to compare with this object.</param>
+        /// <returns>
+        /// true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.
+        /// </returns>
+        public bool Equals(RGBColorInfo other) => RGB == other?.RGB;
+
+        /// <summary>
+        /// Determines whether the specified <see cref="System.Object" />, is equal to this instance.
+        /// </summary>
+        /// <param name="obj">The <see cref="System.Object" /> to compare with this instance.</param>
+        /// <returns>
+        ///   <c>true</c> if the specified <see cref="System.Object" /> is equal to this instance; otherwise, <c>false</c>.
+        /// </returns>
+        public sealed override bool Equals(object obj) => Equals(obj as RGBColorInfo);
+
+        /// <summary>
+        /// Returns a hash code for this instance.
+        /// </summary>
+        /// <returns>
+        /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
+        /// </returns>
+        public sealed override int GetHashCode() => RGB.GetHashCode();
 
         /// <summary>
         /// Returns a <see cref="string" /> that represents this instance.
