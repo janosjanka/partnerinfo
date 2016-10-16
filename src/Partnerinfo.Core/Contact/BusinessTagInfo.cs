@@ -29,7 +29,7 @@ namespace Partnerinfo.Contact
         /// <remarks>
         /// The parameterless constructor enables two-way serialization scenarios.
         /// </remarks>
-        private BusinessTagInfo()
+        internal BusinessTagInfo()
         {
         }
 

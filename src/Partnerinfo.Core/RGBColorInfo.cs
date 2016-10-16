@@ -50,7 +50,7 @@ namespace Partnerinfo
         /// <remarks>
         /// The parameterless constructor enables two-way serialization scenarios.
         /// </remarks>
-        private RGBColorInfo()
+        internal RGBColorInfo()
         {
         }
 
