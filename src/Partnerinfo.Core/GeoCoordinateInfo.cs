@@ -10,7 +10,7 @@ namespace Partnerinfo
     /// This type should be compatible with the DbGeography class. See:
     /// https://msdn.microsoft.com/en-us/library/system.data.spatial.dbgeography(v=vs.110).aspx
     /// </remarks>
-    public sealed class GeoCoordinate
+    public sealed class GeoCoordinateInfo
     {
         /// <summary>
         /// Gets or sets the longitude geographic coordinate that specifies the east-west position of a point on the Earth's surface.
@@ -29,21 +29,21 @@ namespace Partnerinfo
         public double? Latitude { get; private set; }
 
         /// <summary>
-        /// Prevents a default instance of the <see cref="GeoCoordinate" /> class from being created.
+        /// Prevents a default instance of the <see cref="GeoCoordinateInfo" /> class from being created.
         /// </summary>
         /// <remarks>
         /// The parameterless constructor enables two-way serialization scenarios.
         /// </remarks>
-        private GeoCoordinate()
+        private GeoCoordinateInfo()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GeoCoordinate" /> class.
+        /// Initializes a new instance of the <see cref="GeoCoordinateInfo" /> class.
         /// </summary>
         /// <param name="longitude">The longitude is a geographic coordinate that specifies the east-west position of a point on the Earth's surface.</param>
         /// <param name="latitude">The latitude is a geographic coordinate that specifies the north-south position of a point on the Earth's surface.</param>
-        public GeoCoordinate(double? longitude, double? latitude)
+        public GeoCoordinateInfo(double? longitude, double? latitude)
         {
             Longitude = longitude;
             Latitude = latitude;
