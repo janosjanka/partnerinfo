@@ -26,7 +26,7 @@ namespace Partnerinfo
         public T Value { get; }
 
         /// <summary>
-        /// Initializes a new instance to the specified value.
+        /// Initializes a new instance of the <see cref="Optional{T}" /> struct.
         /// </summary>
         /// <param name="value">The value.</param>
         public Optional(T value)
@@ -36,7 +36,7 @@ namespace Partnerinfo
         }
 
         /// <summary>
-        /// Creates a new object initialized to a specified value.
+        /// Performs an implicit conversion from <see cref="T" /> to <see cref="Optional{T}" />.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>
