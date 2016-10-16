@@ -24,14 +24,14 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
         /// <summary>
         /// Filters a sequences of items based on predicates.
         /// </summary>
-        internal static IQueryable<ContactItem> Where(this IQueryable<ContactItem> query, Optional<string> text)
+        internal static IQueryable<ContactItem> Where(this IQueryable<ContactItem> query, string text)
         {
-            if (!text.HasValue)
+            if (text == null)
             {
                 return query;
             }
 
-            return query.Where(c => c.Email.Contains(text.Value) || c.FirstName.Contains(text.Value) || c.LastName.Contains(text.Value));
+            return query.Where(c => c.Email.Contains(text) || c.FirstName.Contains(text) || c.LastName.Contains(text));
         }
 
         /// <summary>

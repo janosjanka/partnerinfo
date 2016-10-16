@@ -30,7 +30,7 @@ namespace Partnerinfo.Contact
         /// <value>
         /// The number of rows to skip.
         /// </value>
-        public int Offset { get; set; } = 0;
+        public int Offset { get; set; }
 
         /// <summary>
         /// Gets or sets the number of rows to return, after processing the offset clause.
@@ -38,7 +38,7 @@ namespace Partnerinfo.Contact
         /// <value>
         /// The number of rows to return.
         /// </value>
-        public int Limit { get; set; } = 50;
+        public int Limit { get; set; }
 
         /// <summary>
         /// Gets or sets which contact fields to search for.

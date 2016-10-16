@@ -19,7 +19,7 @@ namespace Partnerinfo.Contact
         Recent = 1,
 
         /// <summary>
-        /// Items are ordered alphabetically by name.
+        /// Items are ordered alphabetically by email.
         /// </summary>
         Email = 2
     }

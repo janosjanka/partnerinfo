@@ -26,6 +26,14 @@ namespace Partnerinfo.Contact
         protected internal IContactStore Store { get; set; }
 
         /// <summary>
+        /// Gets or sets the <see cref="OperationErrorDescriber" /> for any error that occurred with the current operation.
+        /// </summary>
+        /// <value>
+        /// The error describer.
+        /// </value>
+        protected internal OperationErrorDescriber ErrorDescriber { get; set; }
+
+        /// <summary>
         /// The <see cref="ILogger" /> used to log messages from the manager.
         /// </summary>
         /// <value>
@@ -45,9 +53,10 @@ namespace Partnerinfo.Contact
         /// Initializes a new instance of the <see cref="ContactManager" /> class.
         /// </summary>
         /// <param name="store">The persistence store the manager will operate over.</param>
+        /// <param name="errors">The <see cref="OperationErrorDescriber" /> used to provider error messages.</param>
         /// <param name="services">The <see cref="IServiceProvider" /> used to resolve services.</param>
         /// <exception cref="System.ArgumentNullException">store</exception>
-        public ContactManager(IContactStore store, IServiceProvider services = null)
+        public ContactManager(IContactStore store, OperationErrorDescriber errors, IServiceProvider services = null)
         {
             if (store == null)
             {
@@ -55,6 +64,7 @@ namespace Partnerinfo.Contact
             }
 
             Store = store;
+            ErrorDescriber = errors;
 
             if (services != null)
             {
