@@ -4,21 +4,18 @@
 namespace Partnerinfo
 {
     /// <summary>
-    /// Represents an optional value.
+    /// Represents an optional value that can be used to express your intention instead of using nulls.
     /// </summary>
-    /// <typeparam name="T">The type</typeparam>
+    /// <typeparam name="T">The underlying value type of the <see cref="Optional{T}" /> generic type.</typeparam>
     public struct Optional<T>
     {
-        private readonly bool _hasValue;
-        private readonly T _value;
-
         /// <summary>
         /// Gets a value indicating whether the current object has a value.
         /// </summary>
         /// <value>
         ///   <c>true</c> if this instance has value; otherwise, <c>false</c>.
         /// </value>
-        public bool HasValue => _hasValue;
+        public bool HasValue { get; }
 
         /// <summary>
         /// Gets the value of the current object.
@@ -26,7 +23,7 @@ namespace Partnerinfo
         /// <value>
         /// The value.
         /// </value>
-        public T Value => _value;
+        public T Value { get; }
 
         /// <summary>
         /// Initializes a new instance to the specified value.
@@ -34,8 +31,8 @@ namespace Partnerinfo
         /// <param name="value">The value.</param>
         public Optional(T value)
         {
-            _hasValue = true;
-            _value = value;
+            HasValue = true;
+            Value = value;
         }
 
         /// <summary>
