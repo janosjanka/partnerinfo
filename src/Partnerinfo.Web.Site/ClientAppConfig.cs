@@ -1,12 +1,12 @@
 ﻿// Copyright (c) János Janka. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
-namespace Partnerinfo.TagHelpers
+namespace Partnerinfo
 {
     /// <summary>
-    /// Represents strongly typed knockout application parameters for <see cref="Microsoft.AspNetCore.Razor.TagHelpers.ITagHelper" />.
+    /// Represents strongly typed global configuration settings for client-side.
     /// </summary>
-    public sealed class ApplicationParams
+    public sealed class ClientAppConfig
     {
         /// <summary>
         /// Gets or sets the name of the culture cookie.
