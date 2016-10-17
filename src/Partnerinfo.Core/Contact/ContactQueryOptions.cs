@@ -22,7 +22,7 @@ namespace Partnerinfo.Contact
         /// <value>
         /// The sort order.
         /// </value>
-        public ContactQuerySortOrder OrderBy { get; set; }
+        public ContactQuerySortOrder OrderBy { get; set; } = ContactQuerySortOrder.None;
 
         /// <summary>
         /// Gets or sets the number of rows to skip, before starting to return rows from the query expression.
@@ -30,7 +30,7 @@ namespace Partnerinfo.Contact
         /// <value>
         /// The number of rows to skip.
         /// </value>
-        public int Offset { get; set; }
+        public int Offset { get; set; } = 0;
 
         /// <summary>
         /// Gets or sets the number of rows to return, after processing the offset clause.
@@ -38,7 +38,7 @@ namespace Partnerinfo.Contact
         /// <value>
         /// The number of rows to return.
         /// </value>
-        public int Limit { get; set; }
+        public int Limit { get; set; } = 50;
 
         /// <summary>
         /// Gets or sets which contact fields to search for.
@@ -46,6 +46,6 @@ namespace Partnerinfo.Contact
         /// <value>
         /// The fields.
         /// </value>
-        public ContactQueryFields Fields { get; set; }
+        public ContactQueryFields Fields { get; set; } = ContactQueryFields.None;
     }
 }

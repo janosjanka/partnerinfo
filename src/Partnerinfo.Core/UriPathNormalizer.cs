@@ -13,7 +13,7 @@ namespace Partnerinfo
     public sealed class UriPathNormalizer : IUriPathNormalizer
     {
         /// <summary>
-        /// The default <see cref="UriPathNormalizer" />.
+        /// A static instance of the <see cref="UriPathNormalizer" /> class. This is a read-only field.
         /// </summary>
         public static readonly UriPathNormalizer Default = new UriPathNormalizer();
 
