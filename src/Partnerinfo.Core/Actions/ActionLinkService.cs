@@ -17,7 +17,16 @@ namespace Partnerinfo.Actions
     {
         private const char RootPrefixChar = 'a';
         private const char ValueSeparator = '.';
+
+        /// <summary>
+        /// Represents a prefix for a URI path.
+        /// </summary>
         private static readonly string s_routePrefix = $"{RootPrefixChar}{ValueSeparator}";
+
+        /// <summary>
+        /// An internal value that is used to generate a CRC checksum.
+        /// </summary>
+        private static readonly byte[] s_salt = { 66, 75, 54, 48, 49, 50, 48, 49, 74, 74, 53, 57, 48, 53, 48, 53 };
 
         /// <summary>
         /// A regular expression that helps deserialize link parameters.
@@ -28,9 +37,23 @@ namespace Partnerinfo.Actions
             RegexOptions.Singleline | RegexOptions.ExplicitCapture | RegexOptions.Compiled);
 
         /// <summary>
-        /// An internal value that is used to generate a CRC checksum.
+        /// The URI path normalizer
         /// </summary>
-        private static readonly byte[] s_salt = { 66, 75, 54, 48, 49, 50, 48, 49, 74, 74, 53, 57, 48, 53, 48, 53 };
+        private IUriPathNormalizer _uriPathNormalizer;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ActionLinkService" /> class.
+        /// </summary>
+        /// <param name="uriPathNormalizer">The URI path normalizer.</param>
+        public ActionLinkService(IUriPathNormalizer uriPathNormalizer)
+        {
+            if (uriPathNormalizer == null)
+            {
+                throw new ArgumentNullException(nameof(uriPathNormalizer));
+            }
+
+            _uriPathNormalizer = uriPathNormalizer;
+        }
 
         /// <summary>
         /// Creates a new action link parameters that can be shared on the Web.
@@ -47,7 +70,7 @@ namespace Partnerinfo.Actions
                 throw new ArgumentNullException(nameof(actionLink));
             }
 
-            var customUri = actionLink.CustomUri != null ? UriUtilities.NormalizePath(actionLink.CustomUri) : default(string);
+            var customUri = actionLink.CustomUri != null ? _uriPathNormalizer.Normalize(actionLink.CustomUri) : default(string);
             var builder = new StringBuilder();
 
             builder.Append(GetChecksum(actionLink.ActionId, actionLink.ContactId, customUri));
