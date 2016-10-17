@@ -37,7 +37,7 @@ namespace Partnerinfo.Actions.ModelBinders
             Debug.Assert(service != null);
             Debug.Assert(bindingContext.ModelType == typeof(ActionLink));
 
-            string paramUri = bindingContext.ValueProvider.GetValue("paramUri").FirstValue;
+            string paramUri = bindingContext.ValueProvider.GetValue("paramUri").FirstValue; // ValueProviderResult is a struct in ASP.NET Core.
             if (paramUri != null)
             {
                 string customUri = bindingContext.ValueProvider.GetValue("customUri").FirstValue;
