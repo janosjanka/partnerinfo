@@ -54,7 +54,7 @@ namespace Partnerinfo
         /// <param name="serializer">The calling serializer.</param>
         public sealed override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            serializer.Serialize(writer, value?.ToString());
+            serializer.Serialize(writer, value?.ToString(), typeof(string));
         }
     }
 }

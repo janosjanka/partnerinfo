@@ -13,23 +13,35 @@ namespace Partnerinfo
     public sealed class RGBColorInfo : IEquatable<RGBColorInfo>
     {
         /// <summary>
-        /// Gets or sets the red component for this color.
+        /// Gets the red component for this color.
         /// </summary>
+        /// <value>
+        /// The red component.
+        /// </value>
         public byte R { get; private set; }
 
         /// <summary>
-        /// Gets or sets the green component for this color.
+        /// Gets the green component for this color.
         /// </summary>
+        /// <value>
+        /// The green component.
+        /// </value>
         public byte G { get; private set; }
 
         /// <summary>
-        /// Gets or sets the blue component for this color.
+        /// Gets the blue component for this color.
         /// </summary>
+        /// <value>
+        /// The blue component.
+        /// </value>
         public byte B { get; private set; }
 
         /// <summary>
-        /// Gets or sets the color of this <see cref="RGBColorInfo" />.
+        /// Gets the RGB value using all the components for this color.
         /// </summary>
+        /// <value>
+        /// The RGB value.
+        /// </value>
         public int RGB
         {
             get
