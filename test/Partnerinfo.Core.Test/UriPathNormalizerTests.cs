@@ -8,11 +8,13 @@ namespace Partnerinfo
 {
     public sealed class UriPathNormalizerTests
     {
+        private const string Text = " -- Hello  -  Janka  [! - !]  János  ---  Zoltán.1984_12~ok --  ";
+
         [Fact]
         public void ValidateNormalizedUri()
         {
             var normalizer = new UriPathNormalizer();
-            var result = normalizer.Normalize(" - Hello  -  Janka  [! - !]  János  ---  Zoltán.1984_12~ok   ");
+            var result = normalizer.Normalize(Text);
 
             Assert.True(Uri.IsWellFormedUriString(result, UriKind.Relative));
         }
@@ -21,9 +23,18 @@ namespace Partnerinfo
         public void ContainsFriendlyChars()
         {
             var normalizer = new UriPathNormalizer();
-            var result = normalizer.Normalize(" - Hello  -  Janka  [! - !]  János  ---  Zoltán.1984_12~ok   ");
+            var result = normalizer.Normalize(Text);
 
             Assert.Matches("[-a-z0-9]+", result);
+        }
+
+        [Fact]
+        public void ContainsOneSeparator()
+        {
+            var normalizer = new UriPathNormalizer();
+            var result = normalizer.Normalize(Text);
+
+            Assert.DoesNotContain("--", result);
         }
     }
 }
