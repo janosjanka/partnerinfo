@@ -47,7 +47,7 @@ i18next
         detection: {
             order: ["cookie"],
             caches: ["cookie"],
-            lookupCookie: "PV-CLR"
+            lookupCookie: "PI-CLR"
         },
         fallbackLng: "en-GB",
         load: "currentOnly",
