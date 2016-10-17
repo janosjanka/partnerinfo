@@ -54,7 +54,7 @@ export default {
                 value($element.val());
             });
 
-        ko.utils.domNodeDisposal.addDisposeCallback(element, function () {
+        ko.utils.domNodeDisposal.addDisposeCallback(element, () => {
             // This will be called when the element is removed by Knockout or
             // if some other part of your code calls ko.removeNode(element)
             $element.typeahead("destroy");

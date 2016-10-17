@@ -1,15 +1,14 @@
 ﻿// Copyright (c) János Janka. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
-import { api, HttpAsyncResponse } from "./core";
+import * as core from "./core";
 
-export interface LoginOptions {
+export interface LoginRequest {
     email: string;
     password: string;
 }
 
-/** Represents user data for creating a new account. */
-export interface RegisterOptions {
+export interface RegisterRequest {
     email: string;
     password: string;
     firstName?: string;
@@ -20,11 +19,12 @@ export interface RegisterOptions {
 
 /**
  * Logs In using an authentication provider as a HTTP POST operation.
- * @options loginInfo
+ *
+ * @options options
  * @returns {Promise}
  */
-export function loginAsync(options: LoginOptions): HttpAsyncResponse<any> {
-    return api({
+export function loginAsync(options: LoginRequest): core.HttpResponse<any> {
+    return core.api({
         path: "account/login",
         method: "post",
         params: options
@@ -33,11 +33,12 @@ export function loginAsync(options: LoginOptions): HttpAsyncResponse<any> {
 
 /**
  * Registers a new account as a HTTP POST operation.
- * @options loginInfo
+ *
+ * @options options
  * @returns {Promise}
  */
-export function registerAsync(options: RegisterOptions): HttpAsyncResponse<any> {
-    return api({
+export function registerAsync(options: RegisterRequest): core.HttpResponse<any> {
+    return core.api({
         path: "account/register",
         method: "post",
         params: options
@@ -46,13 +47,14 @@ export function registerAsync(options: RegisterOptions): HttpAsyncResponse<any> 
 
 /**
  * Unregisters an existing account as a HTTP POST operation.
- * @options loginInfo
+ *
+ * @options options
  * @returns {Promise}
  */
-export function unregisterAsync(options: LoginOptions): HttpAsyncResponse<any> {
-    return api({
+export function unregisterAsync(options: LoginRequest): core.HttpResponse<any> {
+    return core.api({
         path: "account/unregister",
-        method: "delete",
+        method: "post",
         params: options
     });
 }

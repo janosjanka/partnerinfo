@@ -3,43 +3,63 @@
 
 import { Promise } from "es6-promise";
 
-function noop() { };
-
 const httpRoute = "/api";
 
-/** Represents a HTTP request message. */
-export interface HttpRequest {
-    /** This is the Partnerinfo API endpoint path that you want to call. */
-    path: string;
-    /** This is the HTTP method that you want to use for the API request. */
-    method?: "get" | "post" | "put" | "delete" | "copy" | "move";
-    /** This is an object consisting of any parameters that you want to pass into your API call. */
-    params?: any;
-}
+/**
+ * Encapsulates an error from the system.
+ */
+export interface HttpErrorInfo {
 
-/** Encapsulates an error from the system. */
-export interface HttpError {
-    /** Gets the code for this error. */
+    /**
+     * Gets the code for this error.
+     */
     code: string;
-    /** Gets the description for this error. */
+
+    /**
+     * Gets the description for this error.
+     */
     description: string;
+
 }
 
-/** Represents a HTTP response message. */
+/**
+ * Represents a HTTP request message.
+ */
+export interface HttpRequest {
+
+    /**
+     * This is the Partnerinfo API endpoint path that you want to call.
+     */
+    path: string;
+
+    /**
+     * This is the HTTP method that you want to use for the API request.
+     */
+    method?: "get" | "post" | "put" | "delete" | "copy" | "move";
+
+    /** 
+     * This is an object consisting of any parameters that you want to pass into your API call.
+     */
+    params?: any;
+
+}
+
+/**
+ * Represents a HTTP response message.
+ */
 export interface HttpResponse<T> {
     data?: T;
-    error?: HttpError;
+    error?: HttpErrorInfo;
 }
 
-/** Represents a HTTP response message as the result of an asynchronous XHR request. */
-export type HttpAsyncResponse<T> = PromiseLike<HttpResponse<T>>;
+function noop() { };
 
 /**
  * The method PI.api() lets you make calls to the API.
- * @param options
- * @returns {Promise}
+ *
+ * @param options A set of key/value pairs that configure a new HTTP request.
  */
-export function api<T>(options: HttpRequest): HttpAsyncResponse<T> {
+export function api<T>(options: HttpRequest): PromiseLike<T> {
     let req: XMLHttpRequest;
     let canceled = false;
     return new Promise<T>(
