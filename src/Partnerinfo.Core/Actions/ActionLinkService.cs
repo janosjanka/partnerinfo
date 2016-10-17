@@ -9,7 +9,11 @@ using Partnerinfo.Utilities;
 
 namespace Partnerinfo.Actions
 {
-    internal static class ActionLinkHelper
+    /// <summary>
+    /// Provides an implementation for action link operations.
+    /// </summary>
+    /// <seealso cref="Partnerinfo.Actions.IActionLinkService" />
+    public class ActionLinkService : IActionLinkService
     {
         private const char RootPrefixChar = 'a';
         private const char ValueSeparator = '.';
@@ -36,7 +40,7 @@ namespace Partnerinfo.Actions
         /// The link.
         /// </returns>
         /// <exception cref="System.ArgumentNullException">actionLink</exception>
-        internal static string UrlTokenEncode(ActionLink actionLink)
+        public virtual string UrlTokenEncode(ActionLink actionLink)
         {
             if (actionLink == null)
             {
@@ -76,7 +80,7 @@ namespace Partnerinfo.Actions
         /// <exception cref="System.ArgumentNullException">paramUri</exception>
         /// <exception cref="System.InvalidOperationException">
         /// </exception>
-        internal static ActionLink UrlTokenDecode(string paramUri, string customUri = null)
+        public virtual ActionLink UrlTokenDecode(string paramUri, string customUri = null)
         {
             if (string.IsNullOrEmpty(paramUri))
             {
@@ -106,7 +110,7 @@ namespace Partnerinfo.Actions
         /// <returns>
         /// The encoded link.
         /// </returns>
-        internal static string CreateLink(ActionLink actionLink, bool absolute)
+        public virtual string CreateLink(ActionLink actionLink, bool absolute)
         {
             var uri = new Uri(ServerPaths.BaseUri, s_routePrefix + UrlTokenEncode(actionLink));
             return absolute ? uri.AbsoluteUri : uri.AbsolutePath;
@@ -121,7 +125,7 @@ namespace Partnerinfo.Actions
         /// </returns>
         /// <exception cref="System.ArgumentNullException">link</exception>
         /// <exception cref="System.InvalidOperationException"></exception>
-        internal static ActionLink DecodeLink(string link)
+        public virtual ActionLink DecodeLink(string link)
         {
             if (string.IsNullOrEmpty(link))
             {
@@ -154,7 +158,7 @@ namespace Partnerinfo.Actions
         /// The processed input text.
         /// </returns>
         /// <exception cref="System.ArgumentNullException">input or callback</exception>
-        internal static string ReplaceLinks(string input, Action<ActionLink> callback)
+        public virtual string ReplaceLinks(string input, Action<ActionLink> callback)
         {
             if (input == null)
             {

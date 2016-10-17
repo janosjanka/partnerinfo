@@ -10,7 +10,7 @@ namespace Partnerinfo.Contact.Controllers
     /// <summary>
     /// Provides methods that respond to HTTP requests that are made to an ASP.NET MVC Web site.
     /// </summary>
-    [Route("api/v1/[controller]")]
+    [Route("api/[controller]")]
     public sealed class ContactsController : Controller
     {
         private readonly ContactManager _contactManager;
@@ -27,21 +27,21 @@ namespace Partnerinfo.Contact.Controllers
         /// <summary>
         /// Creates a new contact in a store as an asynchronous HTTP POST operation.
         /// </summary>
-        /// <param name="model">The contact to create in the store.</param>
+        /// <param name="contact">The contact to create in the store.</param>
         /// <returns>
         /// A <see cref="Task{IActionResult}" /> that contains the result of an action method.
         /// </returns>
         [HttpPost]
         [ProducesResponseType(typeof(ContactItem), StatusCodes.Status201Created)]
-        public async Task<IActionResult> CreateAsync(ContactItem model)
+        public async Task<IActionResult> CreateAsync(ContactItem contact)
         {
-            var result = await _contactManager.CreateAsync(model);
+            var result = await _contactManager.CreateAsync(contact);
             if (!result.Succeeded)
             {
                 return this.OperationError(result);
             }
 
-            return CreatedAtAction(nameof(FindByIdAsync), model);
+            return CreatedAtAction(nameof(FindByIdAsync), contact);
         }
 
         /// <summary>
@@ -124,21 +124,21 @@ namespace Partnerinfo.Contact.Controllers
         /// <summary>
         /// Retrieves a collection of contacts with the given filter parameters as an asynchronous HTTP GET operation.
         /// </summary>
-        /// <param name="model">The query options to use for searching contacts.</param>
+        /// <param name="options">The query options to use for searching contacts.</param>
         /// <returns>
         /// A <see cref="Task{IActionResult}" /> that contains the result of an action method.
         /// </returns>
         [HttpGet]
         [ProducesResponseType(typeof(OkListResultValue), StatusCodes.Status200OK)]
-        public async Task<IActionResult> FindAllAsync([FromQuery] ContactQueryOptions model)
+        public async Task<IActionResult> FindAllAsync([FromQuery] ContactQueryOptions options)
         {
-            if (model == null || !ModelState.IsValid)
+            if (options == null || !ModelState.IsValid)
             {
                 return BadRequest();
             }
 
-            var contacts = await _contactManager.FindAllAsync(model);
-            return this.OkList("Contacts.GetAll", contacts, model.Offset, model.Limit);
+            var contacts = await _contactManager.FindAllAsync(options);
+            return this.OkList("Contacts.GetAll", contacts, options.Offset, options.Limit);
         }
     }
 }
