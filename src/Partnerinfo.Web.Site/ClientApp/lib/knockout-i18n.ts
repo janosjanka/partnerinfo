@@ -14,36 +14,29 @@ const language = ko.observable<string>();
     set language(value: string) {
         i18next.changeLanguage(value, err => !err && language(value));
     },
+
     get languages(): string[] {
         return i18next.languages;
     },
+
     t: (key: string, options?: I18next.TranslationOptions): KnockoutComputed<string> =>
         ko.pureComputed<string>(() => language() ? i18next.t(key, options) : "")
 };
 
-ko.extenders.i18nOptions =
-    (target: any, i18nOptions: I18next.TranslationOptions): any => {
-        target.i18nOptions = i18nOptions;
-        return target;
-    };
+ko.extenders.i18nOptions = (target: any, i18nOptions: I18next.TranslationOptions): any => {
+    target.i18nOptions = i18nOptions;
+    return target;
+};
 
-ko.extenders.displayName =
-    (target: any, displayName: string): any => {
-        target.displayName = ko.i18n.t(displayName, target.i18nOptions);
-        return target;
-    };
+ko.extenders.displayName = (target: any, displayName: string): any => {
+    target.displayName = ko.i18n.t(displayName, target.i18nOptions);
+    return target;
+};
 
-ko.extenders.description =
-    (target: any, description: string): any => {
-        target.description = ko.i18n.t(description, target.i18nOptions);
-        return target;
-    };
+ko.extenders.description = (target: any, description: string): any => {
+    target.description = ko.i18n.t(description, target.i18nOptions);
+    return target;
+};
 
-ko.extenders.placeholder =
-    (target: any, placeholder: string): any => {
-        target.placeholder = ko.i18n.t(placeholder, target.i18nOptions);
-        return target;
-    };
-
-// Updates the observable when the language changes by a direct API call.
+// This will notify all localizable dependencies about changes. 
 i18next.on("languageChanged", lng => language(lng));

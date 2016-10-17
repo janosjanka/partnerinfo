@@ -30,6 +30,7 @@ class TimeSpan {
 
     /**
      * Initializes a new instance of the TimeSpan class.
+     *
      * @param params A set of key/value pairs to configure the TimeSpan control.
      */
     constructor(params: TimeSpanParams) {
@@ -93,6 +94,7 @@ class TimeSpan {
 
     /**
      * Loads time values from the specified string.
+     *
      * @param value A string that contains time values.
      */
     loadFromString(value: string): void {
@@ -107,6 +109,7 @@ class TimeSpan {
 
     /**
      * Sets all the time components using the specified values.
+     *
      * @param days     The days component of the time interval.
      * @param hours    The hours component of the time interval.
      * @param minutes  The minutes component of the time interval.

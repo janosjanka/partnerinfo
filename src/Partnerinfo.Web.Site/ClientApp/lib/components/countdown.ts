@@ -20,6 +20,7 @@ export class Countdown {
 
     /**
      * Initializes a new instance of the Countdown class.
+     *
      * @param {any} A set of key/value pairs to configure the TimeSpan control
      */
     constructor(params: CountdownParams) {

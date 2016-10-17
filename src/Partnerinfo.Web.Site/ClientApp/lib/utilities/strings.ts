@@ -4,8 +4,8 @@
 /**
  * Returns the Unicode Normalization Form (UNF) of the specified string.
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/normalize
+ *
  * @param str The string to normalize.
- * @returns {String}
  */
 export function normalize(str: string): string {
     const map = [
