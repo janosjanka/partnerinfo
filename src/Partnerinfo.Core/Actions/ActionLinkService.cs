@@ -37,7 +37,7 @@ namespace Partnerinfo.Actions
             RegexOptions.Singleline | RegexOptions.ExplicitCapture | RegexOptions.Compiled);
 
         /// <summary>
-        /// The URI path normalizer
+        /// The URI path normalizer.
         /// </summary>
         private IUriPathNormalizer _uriPathNormalizer;
 
