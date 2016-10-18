@@ -106,8 +106,8 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
                 throw new ArgumentNullException(nameof(contact));
             }
 
-            var entry = Context.Attach(contact);
-            entry.Property("ConcurrencyStamp").CurrentValue = Guid.NewGuid();
+            Context.Attach(contact);
+            contact.ConcurrencyStamp = Guid.NewGuid().ToString();
             Context.Update(contact);
             try
             {

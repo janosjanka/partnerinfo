@@ -101,6 +101,17 @@ namespace Partnerinfo.Contact
         public DateTimeOffset ModifiedDate { get; set; } = DateTimeOffset.UtcNow;
 
         /// <summary>
+        /// Gets or sets a random value that should change whenever a contact is persisted to the store.
+        /// </summary>
+        /// <value>
+        /// The concurrency stamp.
+        /// </value>
+        /// <remarks>
+        /// <see href="https://github.com/aspnet/Identity/blob/dev/src/Microsoft.AspNetCore.Identity.EntityFrameworkCore/IdentityUser.cs#L113">ASP.NET Identity User Sample</see>
+        /// </remarks>
+        public string ConcurrencyStamp { get; set; } = Guid.NewGuid().ToString("N");
+
+        /// <summary>
         /// Gets or sets the sponsor who invited this contact to join.
         /// </summary>
         /// <value>

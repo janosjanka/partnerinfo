@@ -1,7 +1,6 @@
 ﻿// Copyright (c) János Janka. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
-using System;
 using Microsoft.EntityFrameworkCore;
 
 namespace Partnerinfo.Contact.EntityFrameworkCore
@@ -49,7 +48,9 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
             builder.Entity<ContactItem>(b =>
             {
                 // Shadow properties
-                b.Property(typeof(Guid), "ConcurrencyStamp").IsConcurrencyToken().HasDefaultValueSql("newid()");
+                //b.Property(typeof(Guid), "ConcurrencyStamp").IsConcurrencyToken().HasDefaultValueSql("newid()");
+
+                b.Property(p => p.ConcurrencyStamp).HasMaxLength(64).IsConcurrencyToken();
             });
         }
     }
