@@ -40,6 +40,7 @@ class LoginViewModel {
 
     /** Submits login data. */
     submit(): void {
+        this.validate();
         /*
         this.validate() && PI.Identity.loginAsync({
             email: this.email(),

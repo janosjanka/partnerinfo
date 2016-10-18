@@ -9,7 +9,7 @@ namespace Partnerinfo.TagHelpers
     /// <summary>
     /// Represents a tag helper for rendering a knockout component.
     /// </summary>
-    [HtmlTargetElement("component", Attributes = nameof(Name) + "," + nameof(Params))]
+    [HtmlTargetElement("ko-component", Attributes = nameof(Name) + "," + nameof(Params))]
     public sealed class ComponentTagHelper : TagHelper
     {
         private readonly IJsonHelper _jsonHelper;
@@ -34,10 +34,10 @@ namespace Partnerinfo.TagHelpers
         /// Initializes a new instance of the <see cref="ComponentTagHelper" /> class.
         /// </summary>
         /// <param name="jsonHelper">The JSON helper.</param>
-        public ComponentTagHelper(IJsonHelper jsonHelper)
-        {
-            _jsonHelper = jsonHelper;
-        }
+        //public ComponentTagHelper(IJsonHelper jsonHelper)
+        //{
+        //    _jsonHelper = jsonHelper;
+        //}
 
         /// <summary>
         /// Synchronously executes the <see cref="T:Microsoft.AspNetCore.Razor.TagHelpers.TagHelper" /> with the given <paramref name="context" /> and
@@ -47,9 +47,9 @@ namespace Partnerinfo.TagHelpers
         /// <param name="output">A stateful HTML element used to generate an HTML tag.</param>
         public sealed override void Process(TagHelperContext context, TagHelperOutput output)
         {
-            output.PreElement.SetHtmlContent($"<!-- ko component: {{ name: '{Name}', params: {(Params == null ? null : _jsonHelper.Serialize(Params))} }} -->");
-            output.PostElement.SetHtmlContent("<!-- /ko -->");
-            output.TagName = null;
+            //output.PreElement.SetHtmlContent($"<!-- ko component: {{ name: '{Name}', params: {(Params == null ? null : _jsonHelper.Serialize(Params))} }} -->");
+            //output.PostElement.SetHtmlContent("<!-- /ko -->");
+            //output.TagName = null;
         }
     }
 }
