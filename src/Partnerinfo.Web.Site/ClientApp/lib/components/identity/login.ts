@@ -5,7 +5,7 @@ import * as ko from "knockout";
 import * as koValidation from "knockout.validation";
 import * as i18n from "i18next";
 
-import AccountService from "../../services/identity/account";
+import { LoginOptions, AccountService } from "../../services/identity";
 
 interface LoginParams {
     service: AccountService,
