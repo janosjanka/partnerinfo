@@ -5,6 +5,8 @@ import * as ko from "knockout";
 import * as koValidation from "knockout.validation";
 import * as i18n from "i18next";
 
+import * as identityAccount from "../../services/identity/account";
+
 interface LoginParams {
     email?: string;
     password?: string;
@@ -40,13 +42,11 @@ class LoginViewModel {
 
     /** Submits login data. */
     submit(): void {
-        this.validate();
-        /*
-        this.validate() && PI.Identity.loginAsync({
+
+        this.validate() && identityAccount.login({
             email: this.email(),
             password: this.password()
         });
-        */
     }
 
     /** Gets a value indicating whether this object is valid. */
