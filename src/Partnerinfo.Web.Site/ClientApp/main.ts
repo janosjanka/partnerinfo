@@ -11,7 +11,7 @@ import "./lib/knockout-loader";
 import "./lib/knockout-i18n";
 import "./lib/knockout-ui";
 
-import AppComponent from "./src/app";
+import appComponent from "./src/app";
 
 // Using deferred updates ensures that computed observables and bindings are updated only after their dependencies are stable.
 // Even if an observable might go through multiple intermediate values, only the latest value is used to update its dependencies.
@@ -19,7 +19,7 @@ import AppComponent from "./src/app";
 ko.options.deferUpdates = true;
 
 // Load and register the <pi-app> component.
-ko.components.register("pi-app", AppComponent);
+ko.components.register("pi-app", appComponent);
 
 // Initialize Knockout validation before binding data.
 // https://github.com/Knockout-Contrib/Knockout-Validation/wiki/Configuration

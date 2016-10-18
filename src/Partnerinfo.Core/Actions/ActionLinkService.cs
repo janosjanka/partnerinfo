@@ -26,7 +26,10 @@ namespace Partnerinfo.Actions
         /// <summary>
         /// An internal value that is used to generate a CRC checksum.
         /// </summary>
-        private static readonly byte[] s_salt = { 66, 75, 54, 48, 49, 50, 48, 49, 74, 74, 53, 57, 48, 53, 48, 53 };
+        /// <remarks>
+        /// It should be replaced or generated for each project or even action later.
+        /// </remarks>
+        private static readonly byte[] s_salt = { 06, 14, 57, 49, 45, 17, 03, 32, 24, 51, 82, 59, 10, 54, 39, 87 };
 
         /// <summary>
         /// A regular expression that helps deserialize link parameters.
