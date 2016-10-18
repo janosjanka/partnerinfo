@@ -3,7 +3,7 @@
 
 import * as ko from "knockout";
 
-import typeahead from "./bindingHandlers/typeahead";
+import typeahead from "./bindinghandlers/typeahead";
 
 import colorPicker from "./components/colorpicker";
 import timeSpan from "./components/timespan";
