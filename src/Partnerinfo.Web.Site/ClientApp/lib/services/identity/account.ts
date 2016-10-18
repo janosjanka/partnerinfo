@@ -4,13 +4,13 @@
 import * as PI from "../core";
 
 /** Used to log in a user to the system. **/
-export interface LoginOptions {
+interface LoginOptions {
     email: string;
     password: string;
 }
 
 /** Used to register a new user to the system. */
-export interface RegisterOptions {
+interface RegisterOptions {
     email: string;
     password: string;
     firstName?: string;
@@ -23,7 +23,7 @@ export interface RegisterOptions {
 export class AccountService {
 
     /** Logs in using an authentication provider as a HTTP POST operation. */
-    login(options: LoginOptions): PromiseLike<void> {
+    login(options: LoginOptions): PI.ApiResult<void> {
         return PI.api<void>({
             path: "account/login",
             method: "post",
@@ -32,7 +32,7 @@ export class AccountService {
     }
 
     /** Registers a new account as a HTTP POST operation. */
-    register(options: RegisterOptions): PromiseLike<void> {
+    register(options: RegisterOptions): PI.ApiResult<void> {
         return PI.api<void>({
             path: "account/register",
             method: "post",
@@ -41,7 +41,7 @@ export class AccountService {
     }
 
     /** Unregisters an existing account as a HTTP POST operation. */
-    unregister(options: LoginOptions): PromiseLike<void> {
+    unregister(options: LoginOptions): PI.ApiResult<void> {
         return PI.api<void>({
             path: "account/unregister",
             method: "post",

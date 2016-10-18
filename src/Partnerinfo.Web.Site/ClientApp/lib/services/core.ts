@@ -3,21 +3,12 @@
 
 import { Promise } from "es6-promise";
 
+function noop() { };
+
 const httpRoute = "/api";
 
-/** Encapsulates an error from the system. */
-export interface ApiErrorInfo {
-
-    /** Gets the code for this error. */
-    code: string;
-
-    /** Gets the description for this error. */
-    description: string;
-
-}
-
 /** Represents a HTTP request message. */
-export interface ApiOptions {
+interface ApiOptions {
 
     /** This is the Partnerinfo API endpoint path that you want to call. */
     path: string;
@@ -30,25 +21,37 @@ export interface ApiOptions {
 
 }
 
+/** Encapsulates an error from the system. */
+interface ApiError {
+
+    /** Gets the code for this error. */
+    code: string;
+
+    /** Gets the description for this error. */
+    description: string;
+
+}
+
 /** Represents a HTTP response message. */
-export interface ApiResult<T> {
+interface ApiData<T> {
 
     /** Data received from the server. */
     data?: T;
 
-    /** Gets a collection of error messages. */
-    error?: ArrayLike<ApiErrorInfo>;
+    /** A collection of error messages. */
+    errors?: ArrayLike<ApiError>;
 
 }
 
-function noop() { };
+/** Encapsulates a HTTP response message. */
+export type ApiResult<T> = PromiseLike<ApiData<T>>;
 
 /**
  * The method PI.api() lets you make calls to the API.
  *
  * @param options A set of key/value pairs that configure a new HTTP request.
  */
-export function api<T>(options: ApiOptions): PromiseLike<T> {
+export function api<T>(options: ApiOptions): ApiResult<T> {
     let req: XMLHttpRequest;
     let canceled = false;
     return new Promise<T>(
