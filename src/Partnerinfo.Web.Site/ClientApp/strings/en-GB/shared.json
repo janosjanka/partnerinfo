@@ -1,0 +1,13 @@
+﻿{
+  "account": {
+    "login": {
+      "email": "Email",
+      "emailDescription": "Email",
+      "emailRequired": "Your email address is required.",
+      "password": "Password",
+      "passwordDescription": "Password",
+      "passwordRequired": "Password is required.",
+      "submit": "Log In"
+    }
+  }
+}

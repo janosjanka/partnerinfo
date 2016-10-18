@@ -1,0 +1,13 @@
+﻿{
+  "account": {
+    "login": {
+      "email": "Email",
+      "emailDescription": "Email",
+      "emailRequired": "Az email címedre szükség van!",
+      "password": "Jelszó",
+      "passwordDescription": "Jelszó",
+      "passwordRequired": "Jelszóra szükség van.",
+      "submit": "Bejelentkezés"
+    }
+  }
+}
