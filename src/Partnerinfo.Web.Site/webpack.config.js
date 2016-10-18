@@ -9,7 +9,7 @@ const webpackConfigRelease = require("./webpack.config.release");
 
 const isDevEnv = process.env.ASPNETCORE_ENVIRONMENT === "Development";
 const srcFolder = "ClientApp";
-const outFolder = "release";
+const outFolder = "dist";
 
 module.exports = webpackMerge({
     resolve: {
