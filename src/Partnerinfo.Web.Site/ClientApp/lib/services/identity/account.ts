@@ -1,16 +1,16 @@
 ﻿// Copyright (c) János Janka. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
-import * as PI from "../core";
+import { http, HttpAsyncResult } from "../core";
 
 /** Used to log in a user to the system. **/
-interface LoginOptions {
+export interface LoginOptions {
     email: string;
     password: string;
 }
 
 /** Used to register a new user to the system. */
-interface RegisterOptions {
+export interface RegisterOptions {
     email: string;
     password: string;
     firstName?: string;
@@ -23,8 +23,8 @@ interface RegisterOptions {
 export class AccountService {
 
     /** Logs in using an authentication provider as a HTTP POST operation. */
-    login(options: LoginOptions): PI.ApiResult<void> {
-        return PI.api<void>({
+    login(options: LoginOptions): HttpAsyncResult<void> {
+        return http<void>({
             path: "account/login",
             method: "post",
             params: options
@@ -32,8 +32,8 @@ export class AccountService {
     }
 
     /** Registers a new account as a HTTP POST operation. */
-    register(options: RegisterOptions): PI.ApiResult<void> {
-        return PI.api<void>({
+    register(options: RegisterOptions): HttpAsyncResult<void> {
+        return http<void>({
             path: "account/register",
             method: "post",
             params: options
@@ -41,8 +41,8 @@ export class AccountService {
     }
 
     /** Unregisters an existing account as a HTTP POST operation. */
-    unregister(options: LoginOptions): PI.ApiResult<void> {
-        return PI.api<void>({
+    unregister(options: LoginOptions): HttpAsyncResult<void> {
+        return http<void>({
             path: "account/unregister",
             method: "post",
             params: options

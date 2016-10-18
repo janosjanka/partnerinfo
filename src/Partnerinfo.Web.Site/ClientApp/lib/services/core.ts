@@ -8,7 +8,7 @@ function noop() { };
 const httpRoute = "/api";
 
 /** Represents a HTTP request message. */
-interface ApiOptions {
+interface HttpOptions {
 
     /** This is the Partnerinfo API endpoint path that you want to call. */
     path: string;
@@ -22,7 +22,7 @@ interface ApiOptions {
 }
 
 /** Encapsulates an error from the system. */
-interface ApiError {
+interface HttpError {
 
     /** Gets the code for this error. */
     code: string;
@@ -33,25 +33,25 @@ interface ApiError {
 }
 
 /** Represents a HTTP response message. */
-interface ApiData<T> {
+interface HttpResult<T> {
 
     /** Data received from the server. */
     data?: T;
 
     /** A collection of error messages. */
-    errors?: ArrayLike<ApiError>;
+    errors?: ArrayLike<HttpError>;
 
 }
 
 /** Encapsulates a HTTP response message. */
-export type ApiResult<T> = PromiseLike<ApiData<T>>;
+export type HttpAsyncResult<T> = PromiseLike<HttpResult<T>>;
 
 /**
  * The method PI.api() lets you make calls to the API.
  *
  * @param options A set of key/value pairs that configure a new HTTP request.
  */
-export function api<T>(options: ApiOptions): ApiResult<T> {
+export function http<T>(options: HttpOptions): HttpAsyncResult<T> {
     let req: XMLHttpRequest;
     let canceled = false;
     return new Promise<T>(
