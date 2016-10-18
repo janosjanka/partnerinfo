@@ -67,7 +67,6 @@ namespace Partnerinfo
             {
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
-                app.UseBrowserLink();
                 app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
                 {
                     // This watches for any changes you make to source files on disk (e.g., .ts/.html/.sass/etc. files),
