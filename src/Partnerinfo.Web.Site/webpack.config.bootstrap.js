@@ -9,7 +9,7 @@ const webpackExtractLESS = new webpackExtractText("[name].css");
 
 const isDevEnv = process.env.ASPNETCORE_ENVIRONMENT === "Development";
 const srcFolder = "ClientApp";
-const outFolder = "dist";
+const outFolder = "release";
 
 module.exports = {
     resolve: {
