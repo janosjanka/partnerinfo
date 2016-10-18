@@ -22,7 +22,7 @@ export interface RegisterOptions {
 /** This class is the entry point for Account Management. */
 export class AccountService {
 
-    /** Logs In using an authentication provider as a HTTP POST operation. */
+    /** Logs in using an authentication provider as a HTTP POST operation. */
     login(options: LoginOptions): PromiseLike<void> {
         return PI.api<void>({
             path: "account/login",
