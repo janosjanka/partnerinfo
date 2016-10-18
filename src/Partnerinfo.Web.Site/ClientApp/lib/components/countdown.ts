@@ -63,3 +63,8 @@ export class Countdown {
         }, 1000);
     }
 }
+
+export default {
+    viewModel: Countdown,
+    template: require("./countdown.html")
+};
