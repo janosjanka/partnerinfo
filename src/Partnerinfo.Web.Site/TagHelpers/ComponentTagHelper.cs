@@ -47,7 +47,7 @@ namespace Partnerinfo.TagHelpers
         /// <param name="output">A stateful HTML element used to generate an HTML tag.</param>
         public sealed override void Process(TagHelperContext context, TagHelperOutput output)
         {
-            output.PreElement.SetHtmlContent($"<!-- ko component: {{ name: '{Name}', params: {_jsonHelper.Serialize(Params)} }} -->");
+            output.PreElement.SetHtmlContent($"<!-- ko component: {{ name: '{Name}', params: {(Params == null ? null : _jsonHelper.Serialize(Params))} }} -->");
             output.PostElement.SetHtmlContent("<!-- /ko -->");
             output.TagName = null;
         }
