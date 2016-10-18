@@ -40,10 +40,12 @@ class LoginViewModel {
 
     /** Submits login data. */
     submit(): void {
+        /*
         this.validate() && PI.Identity.loginAsync({
             email: this.email(),
             password: this.password()
         });
+        */
     }
 
     /** Gets a value indicating whether this object is valid. */

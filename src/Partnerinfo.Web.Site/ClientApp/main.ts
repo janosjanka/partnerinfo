@@ -1,6 +1,6 @@
 ﻿// Copyright (c) János Janka. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
-
+/*
 import * as i18next from "i18next";
 import * as i18nextBLD from "i18next-browser-languagedetector";
 import * as i18nextXHR from "i18next-xhr-backend";
@@ -59,7 +59,7 @@ i18next
         // TODO: Shared resources should be rendered at startup.
         ko.applyBindings();
     });
-
+*/
 // Basic hot reloading support. Automatically reloads and restarts the Knockout app each time
 // you modify source files. This will not preserve any application state other than the URL.
 declare var module: any;

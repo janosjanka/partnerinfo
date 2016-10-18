@@ -9,20 +9,20 @@
   ],
   "dependencies": {
     "bootstrap": "^3.3.7",
-    "es6-promise": "^3.3.1",
-    "i18next": "^3.4.3",
-    "i18next-browser-languagedetector": "^1.0.0",
+    "es6-promise": "^4.0.5",
+    "i18next": "^3.4.4",
+    "i18next-browser-languagedetector": "^1.0.1",
     "i18next-xhr-backend": "^1.2.0",
     "jquery": "^3.1.1",
     "knockout": "^3.4.0",
     "knockout.validation": "^2.0.3",
     "knockout-bootstrap": "^0.2.0",
     "knockout-postbox": "^0.5.2",
-    "ko-component-router": "^3.10.9",
+    "ko-component-router": "^3.11.1",
     "one-com-knockout-projections": "^1.6.0"
   },
   "devDependencies": {
-    "aspnet-webpack": "^1.0.13",
+    "aspnet-webpack": "^1.0.21",
     "bundle-loader": "^0.5.4",
     "css-loader": "^0.25.0",
     "extract-text-webpack-plugin": "^1.0.1",
@@ -32,12 +32,12 @@
     "less-loader": "^2.2.3",
     "raw-loader": "^0.5.1",
     "tslint": "^3.15.1",
-    "ts-loader": "^0.8.2",
+    "ts-loader": "^0.9.4",
     "typescript": "^2.0.3",
     "typings": "^1.4.0",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.2",
-    "webpack-hot-middleware": "^2.12.2",
+    "webpack-hot-middleware": "^2.13.0",
     "webpack-merge": "^0.14.1"
   }
 }

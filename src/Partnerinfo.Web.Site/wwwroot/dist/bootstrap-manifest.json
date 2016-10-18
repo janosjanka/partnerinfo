@@ -1,5 +1,5 @@
 {
-  "name": "bootstrap_8265c5a73e399dac1fd0",
+  "name": "bootstrap_f1691c8e0cfdbf83d312",
   "content": {
     "./node_modules/jquery/dist/jquery.js": 1,
     "./node_modules/i18next/dist/commonjs/logger.js": 3,
@@ -46,12 +46,13 @@
     "./node_modules/i18next/dist/commonjs/i18next.js": 45,
     "./node_modules/i18next/dist/commonjs/index.js": 46,
     "./node_modules/i18next/index.js": 47,
-    "./node_modules/knockout-bootstrap/src/knockout-bootstrap.js": 48,
-    "./node_modules/knockout-postbox/build/knockout-postbox.js": 49,
-    "./node_modules/knockout.validation/dist/knockout.validation.js": 50,
-    "./node_modules/ko-component-router/dist/ko-component-router.js": 51,
-    "./node_modules/process/browser.js": 52,
-    "./node_modules/webpack/buildin/amd-define.js": 53,
-    "./node_modules/webpack/buildin/module.js": 54
+    "./node_modules/knockout-bootstrap/node_modules/jquery/dist/jquery.js": 48,
+    "./node_modules/knockout-bootstrap/src/knockout-bootstrap.js": 49,
+    "./node_modules/knockout-postbox/build/knockout-postbox.js": 50,
+    "./node_modules/knockout.validation/dist/knockout.validation.js": 51,
+    "./node_modules/ko-component-router/dist/ko-component-router.js": 52,
+    "./node_modules/process/browser.js": 53,
+    "./node_modules/webpack/buildin/amd-define.js": 54,
+    "./node_modules/webpack/buildin/module.js": 55
   }
 }
