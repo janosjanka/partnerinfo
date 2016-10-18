@@ -39,7 +39,7 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
         /// Configures the schema needed for the identity framework.
         /// </summary>
         /// <param name="builder">The builder being used to construct the model for this context.</param>
-        protected sealed override void OnModelCreating(ModelBuilder builder)
+        protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
 
