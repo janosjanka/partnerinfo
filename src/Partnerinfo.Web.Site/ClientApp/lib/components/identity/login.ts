@@ -4,23 +4,23 @@
 import * as ko from "knockout";
 import * as koValidation from "knockout.validation";
 import * as i18n from "i18next";
-import * as identity from "../../services/identity/account";
+
+import { LoginOptions, AccountService } from "../../services/identity/account";
 
 interface LoginParams {
-    service: identity.AccountService,
-    email?: string;
-    password?: string;
+    service: AccountService,
+    options: LoginOptions
 }
 
 class LoginViewModel {
-    service: identity.AccountService;
+    service: AccountService;
     email: KnockoutObservable<string>;
     password: KnockoutObservable<string>;
     validationErrors: KnockoutValidationErrors;
 
-    /** Initializes a new instance of the LoginViewModel class. */
-    constructor(params: LoginParams = { service: new identity.AccountService() }) {
-        this.email = ko.observable<string>(params.email)
+    constructor(params: LoginParams) {
+        this.service = params.service;
+        this.email = ko.observable<string>(params.options && params.options.email)
             .extend({
                 displayName: "shared:account.login.email",
                 description: "shared:account.login.emailDescription",
@@ -29,7 +29,7 @@ class LoginViewModel {
                     params: ko.i18n.t("shared:account.login.emailRequired")
                 }
             });
-        this.password = ko.observable<string>(params.password)
+        this.password = ko.observable<string>(params.options && params.options.password)
             .extend({
                 displayName: "shared:account.login.password",
                 description: "shared:account.login.passwordDescription",

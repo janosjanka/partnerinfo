@@ -21,9 +21,7 @@ export interface RegisterOptions {
 
 export class AccountService {
 
-    /**
-     * Logs In using an authentication provider as a HTTP POST operation.
-     */
+    /** Logs In using an authentication provider as a HTTP POST operation. */
     login(options: LoginOptions): PromiseLike<any> {
         return api({
             path: "account/login",
@@ -32,9 +30,7 @@ export class AccountService {
         });
     }
 
-    /**
-     * Registers a new account as a HTTP POST operation.
-     */
+    /** Registers a new account as a HTTP POST operation. */
     register(options: RegisterOptions): PromiseLike<any> {
         return api({
             path: "account/register",
@@ -43,9 +39,7 @@ export class AccountService {
         });
     }
 
-    /**
-     * Unregisters an existing account as a HTTP POST operation.
-     */
+    /** Unregisters an existing account as a HTTP POST operation. */
     unregister(options: LoginOptions): PromiseLike<any> {
         return api({
             path: "account/unregister",
