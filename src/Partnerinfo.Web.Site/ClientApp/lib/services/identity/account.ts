@@ -3,12 +3,14 @@
 
 import { api } from "../core";
 
-interface LoginOptions {
+/** Used to log in a user to the system. **/
+export interface LoginOptions {
     email: string;
     password: string;
 }
 
-interface RegisterOptions {
+/** Used to register a new user to the system. */
+export interface RegisterOptions {
     email: string;
     password: string;
     firstName?: string;
@@ -17,35 +19,39 @@ interface RegisterOptions {
     birthday?: Date;
 }
 
-/**
- * Logs In using an authentication provider as a HTTP POST operation.
- */
-export function login(options: LoginOptions): PromiseLike<any> {
-    return api({
-        path: "account/login",
-        method: "post",
-        params: options
-    });
-}
+export class AccountService {
 
-/**
- * Registers a new account as a HTTP POST operation.
- */
-export function register(options: RegisterOptions): PromiseLike<any> {
-    return api({
-        path: "account/register",
-        method: "post",
-        params: options
-    });
-}
+    /**
+     * Logs In using an authentication provider as a HTTP POST operation.
+     */
+    login(options: LoginOptions): PromiseLike<any> {
+        return api({
+            path: "account/login",
+            method: "post",
+            params: options
+        });
+    }
 
-/**
- * Unregisters an existing account as a HTTP POST operation.
- */
-export function unregister(options: LoginOptions): PromiseLike<any> {
-    return api({
-        path: "account/unregister",
-        method: "post",
-        params: options
-    });
+    /**
+     * Registers a new account as a HTTP POST operation.
+     */
+    register(options: RegisterOptions): PromiseLike<any> {
+        return api({
+            path: "account/register",
+            method: "post",
+            params: options
+        });
+    }
+
+    /**
+     * Unregisters an existing account as a HTTP POST operation.
+     */
+    unregister(options: LoginOptions): PromiseLike<any> {
+        return api({
+            path: "account/unregister",
+            method: "post",
+            params: options
+        });
+    }
+
 }
