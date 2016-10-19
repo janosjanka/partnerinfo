@@ -3,7 +3,6 @@
 
 import * as ko from "knockout";
 
-/** A set of key/value pairs to configure a ValidationErrors control. */
 interface ValidationErrorsParams {
     /** An observable array of validation error messages. */
     errors: KnockoutObservableArray<any>;

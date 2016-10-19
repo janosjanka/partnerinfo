@@ -5,7 +5,6 @@ import * as ko from "knockout";
 
 type RGBColor = KnockoutObservable<string> | string;
 
-/** A set of key/value pairs to configure a Color Picker control. */
 interface ColorPickerParams {
     /** An [observable] color value to update. */
     value: RGBColor;

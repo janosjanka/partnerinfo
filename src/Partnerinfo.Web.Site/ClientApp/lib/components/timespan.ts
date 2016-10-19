@@ -3,12 +3,12 @@
 
 import * as ko from "knockout";
 
-function asNumber(n: any) {
+function asNumber(n: any): number {
     return n === undefined ? 0 : +n;
 }
 
-/** A set of key/value pairs to configure a TimeSpan control. */
 interface TimeSpanParams {
+    /** The value that will be updated by the component automatically. */
     value: KnockoutObservable<string>;
 }
 
