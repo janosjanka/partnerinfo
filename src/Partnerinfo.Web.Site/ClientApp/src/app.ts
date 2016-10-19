@@ -5,12 +5,13 @@ import "bootstrap";
 import * as ko from "knockout";
 import "ko-component-router";
 
+import appNavBar from "./app-navbar";
+import appFooter from "./app-footer";
+
+import cultures from "./shared/cultures";
+
 import identityLogin from "../lib/components/identity/login";
 import identityRegister from "../lib/components/identity/register";
-
-import cultures from "./cultures";
-import navbar from "./navbar";
-import footer from "./footer";
 
 interface RouteInfo {
     name: KnockoutComputed<string>;
@@ -35,16 +36,16 @@ class AppViewModel {
         // to be split into separate files that are then loaded on demand.
         // For docs, see https://github.com/webpack/bundle-loader.
 
+        ko.components.register("pi-app-navbar", appNavBar);
+        ko.components.register("pi-app-footer", appFooter);
+
+        ko.components.register("pi-cultures", cultures);
+
         ko.components.register("pi-identity-login", identityLogin);
         ko.components.register("pi-identity-register", identityRegister);
 
-        ko.components.register("pi-navbar", navbar);
-        ko.components.register("pi-footer", footer);
-        ko.components.register("pi-cultures", cultures);
-
-        ko.components.register("pi-home", require("bundle?lazy!./home/index"));
-        ko.components.register("pi-about", require("bundle?lazy!./about/index"));
-        ko.components.register("pi-account", require("bundle?lazy!./account/index"));
+        ko.components.register("pi-home", require("bundle?lazy!./shared/home"));
+        ko.components.register("pi-about", require("bundle?lazy!./shared/about"));
     }
 
     dispose() {
