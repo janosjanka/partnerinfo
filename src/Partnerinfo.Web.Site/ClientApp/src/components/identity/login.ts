@@ -5,11 +5,11 @@ import * as ko from "knockout";
 import * as koValidation from "knockout.validation";
 import * as i18n from "i18next";
 
-import { LoginOptions, AccountService } from "../../services/identity/account";
+import { LoginModel, AccountService } from "../../services/identity/account";
 
 interface LoginParams {
     service?: AccountService,
-    options?: LoginOptions
+    options?: LoginModel
 }
 
 /** Used to log in a user to the system. */
@@ -19,7 +19,6 @@ class LoginViewModel implements Validable, Serializable {
     password: KnockoutObservable<string>;
     validationErrors: KnockoutValidationErrors;
 
-    /** Initializes a new instance of the LoginViewModel class. */
     constructor(params: LoginParams = {}) {
         this.service = params.service || AccountService.default;
 
@@ -62,7 +61,7 @@ class LoginViewModel implements Validable, Serializable {
     }
 
     /** Serializes this object to a native JS object. */
-    toObject(): LoginOptions {
+    toObject(): LoginModel {
         return {
             email: this.email(),
             password: this.password()

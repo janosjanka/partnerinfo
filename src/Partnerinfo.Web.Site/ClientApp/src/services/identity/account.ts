@@ -4,13 +4,13 @@
 import { http, HttpAsyncResult } from "../core";
 
 /** Used to log in a user to the system. **/
-export interface LoginOptions {
+export interface LoginModel {
     email: string;
     password: string;
 }
 
 /** Used to register a new user to the system. */
-export interface RegisterOptions {
+export interface RegisterModel {
     email: string;
     password: string;
     firstName?: string;
@@ -26,29 +26,29 @@ export class AccountService {
     static readonly default: AccountService = new AccountService();
 
     /** Logs in using an authentication provider as a HTTP POST operation. */
-    login(options: LoginOptions): HttpAsyncResult<void> {
+    login(model: LoginModel): HttpAsyncResult<void> {
         return http<void>({
             path: "account/login",
             method: "post",
-            params: options
+            params: model
         });
     }
 
     /** Registers a new account as a HTTP POST operation. */
-    register(options: RegisterOptions): HttpAsyncResult<void> {
+    register(model: RegisterModel): HttpAsyncResult<void> {
         return http<void>({
             path: "account/register",
             method: "post",
-            params: options
+            params: model
         });
     }
 
     /** Unregisters an existing account as a HTTP POST operation. */
-    unregister(options: LoginOptions): HttpAsyncResult<void> {
+    unregister(model: LoginModel): HttpAsyncResult<void> {
         return http<void>({
             path: "account/unregister",
             method: "post",
-            params: options
+            params: model
         });
     }
 

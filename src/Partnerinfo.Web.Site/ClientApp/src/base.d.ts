@@ -23,7 +23,7 @@ interface Validable {
 
 }
 
-/** Allows an object to control its own serialization and deserialization. */
+/** Allows an object to control its own serialization. */
 interface Serializable {
 
     /** Serializes this object to a native JS object. */
