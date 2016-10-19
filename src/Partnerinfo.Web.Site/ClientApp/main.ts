@@ -7,9 +7,7 @@ import * as i18nextXHR from "i18next-xhr-backend";
 import * as ko from "knockout";
 import * as koValidation from "knockout.validation";
 
-import "./src/base";
-
-import appComponent from "./src/components/app";
+import appComponent from "./src/app";
 
 // Using deferred updates ensures that computed observables and bindings are updated only after their dependencies are stable.
 // Even if an observable might go through multiple intermediate values, only the latest value is used to update its dependencies.
