@@ -12,7 +12,7 @@ interface TimeSpanParams {
     value: KnockoutObservable<string>;
 }
 
-class TimeSpan {
+class TimeSpan implements Disposable {
     private _disposed: boolean;
     private _listening: boolean;
 

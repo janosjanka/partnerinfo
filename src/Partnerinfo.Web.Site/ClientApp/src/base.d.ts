@@ -2,7 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
 /** Provides a mechanism for releasing unmanaged resources. */
-interface IDisposable {
+interface Disposable {
 
     /** Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources. */
     dispose(): void;
@@ -10,7 +10,7 @@ interface IDisposable {
 }
 
 /** Provides a way for an object to be invalidated. */
-interface IValidable {
+interface Validable {
 
     /** A bindable array of validation errors. */
     validationErrors: KnockoutValidationErrors;
@@ -24,7 +24,7 @@ interface IValidable {
 }
 
 /** Allows an object to control its own serialization and deserialization. */
-interface ISerializable {
+interface Serializable {
 
     /** Serializes this object to a native JS object. */
     toObject(): Object;
