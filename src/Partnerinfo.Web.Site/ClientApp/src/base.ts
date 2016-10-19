@@ -7,16 +7,25 @@ import "./extenders/i18n";
 
 import typeahead from "./bindingHandlers/typeahead";
 
-import "./components/webpack-loader";
+import webPackLoader from "./components/webpack-loader";
 import colorPicker from "./components/controls/colorpicker";
 import countdown from "./components/controls/countdown";
 import timeSpan from "./components/controls/timespan";
 import validationErrors from "./components/controls/validationerrors";
 
-// Registers KO extenders.
+//
+// Register KO loaders.
+//
+ko.components.loaders.unshift(webPackLoader);
+
+//
+// Register KO extenders.
+//
 ko.bindingHandlers.typeahead = typeahead;
 
+//
 // Register KO components.
+//
 ko.components.register("colorpicker", colorPicker);
 ko.components.register("countdown", countdown);
 ko.components.register("timespan", timeSpan);
