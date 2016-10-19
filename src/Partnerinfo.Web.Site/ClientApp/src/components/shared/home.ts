@@ -5,5 +5,5 @@ class HomeViewModel { }
 
 export default {
     viewModel: HomeViewModel,
-    template: require("./index.html")
+    template: require("./home.html")
 };

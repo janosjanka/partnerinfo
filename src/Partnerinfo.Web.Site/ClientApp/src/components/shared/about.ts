@@ -5,5 +5,5 @@ class AboutViewModel { }
 
 export default {
     viewModel: AboutViewModel,
-    template: require("./index.html")
+    template: require("./about.html")
 };

@@ -5,5 +5,5 @@ class AppFooterViewModel { }
 
 export default {
     viewModel: AppFooterViewModel,
-    template: require("./footer.html")
+    template: require("./app-footer.html")
 };

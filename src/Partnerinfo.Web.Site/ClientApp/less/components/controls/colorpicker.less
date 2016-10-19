@@ -1,20 +1,20 @@
 ﻿// Copyright (c) János Janka. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
-@import "../variables.less";
-@import "../mixins.less";
+@import "../../variables.less";
+@import "../../mixins.less";
 
 //
 // ColorPicker
 // -----------------------------------------------------------------------------
 
-.colorpicker {
+.pi-colorpicker {
     margin: 0;
     padding: 0;
     list-style-type: none;
 }
 
-.colorpicker > li {
+.pi-colorpicker > li {
     float: left;
     margin: 0;
     padding: 0;
@@ -27,12 +27,12 @@
     transition: transform ease-in 0.1s;
 }
 
-.colorpicker > li.notset {
+.pi-colorpicker > li.notset {
     border: 2px dashed #777;
 }
 
-.colorpicker > li:hover,
-.colorpicker > li.selected {
+.pi-colorpicker > li:hover,
+.pi-colorpicker > li.selected {
     border-color: #777;
     -moz-transform: scale(1.5);
     -ms-transform: scale(1.5);

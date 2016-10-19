@@ -5,5 +5,5 @@ class AppNavBarViewModel { }
 
 export default {
     viewModel: AppNavBarViewModel,
-    template: require("./navbar.html")
+    template: require("./app-navbar.html")
 };

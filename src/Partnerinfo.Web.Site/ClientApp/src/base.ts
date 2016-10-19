@@ -26,7 +26,7 @@ ko.bindingHandlers.typeahead = typeahead;
 //
 // Register KO components.
 //
-ko.components.register("colorpicker", colorPicker);
-ko.components.register("countdown", countdown);
-ko.components.register("timespan", timeSpan);
-ko.components.register("validationerrors", validationErrors);
+ko.components.register("pi-colorpicker", colorPicker);
+ko.components.register("pi-countdown", countdown);
+ko.components.register("pi-timespan", timeSpan);
+ko.components.register("pi-validationerrors", validationErrors);
