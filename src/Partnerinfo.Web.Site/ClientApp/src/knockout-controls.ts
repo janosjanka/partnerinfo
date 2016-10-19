@@ -5,10 +5,10 @@ import * as ko from "knockout";
 
 import typeahead from "./bindingHandlers/typeahead";
 
-import colorPicker from "./components/colorpicker";
-import countdown from "./components/countdown";
-import timeSpan from "./components/timespan";
-import validationErrors from "./components/validationerrors";
+import colorPicker from "./components/controls/colorpicker";
+import countdown from "./components/controls/countdown";
+import timeSpan from "./components/controls/timespan";
+import validationErrors from "./components/controls/validationerrors";
 
 // Register binding handlers.
 ko.bindingHandlers.typeahead = typeahead;

@@ -10,8 +10,8 @@ import appFooter from "./app-footer";
 
 import cultures from "./shared/cultures";
 
-import identityLogin from "../lib/components/identity/login";
-import identityRegister from "../lib/components/identity/register";
+import identityLogin from "./identity/login";
+import identityRegister from "./identity/register";
 
 interface RouteInfo {
     name: KnockoutComputed<string>;
