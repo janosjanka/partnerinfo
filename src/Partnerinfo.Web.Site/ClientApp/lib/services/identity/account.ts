@@ -22,6 +22,9 @@ export interface RegisterOptions {
 /** This class is the entry point for Account Management. */
 export class AccountService {
 
+    /** A static instance of the service. This field is read-only. */
+    static readonly default: AccountService = new AccountService();
+
     /** Logs in using an authentication provider as a HTTP POST operation. */
     login(options: LoginOptions): HttpAsyncResult<void> {
         return http<void>({

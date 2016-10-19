@@ -8,8 +8,8 @@ import * as i18n from "i18next";
 import { LoginOptions, AccountService } from "../../services/identity/account";
 
 interface LoginParams {
-    service: AccountService,
-    options: LoginOptions
+    service?: AccountService,
+    options?: LoginOptions
 }
 
 /** Used to log in a user to the system. */
@@ -20,8 +20,9 @@ class LoginViewModel {
     validationErrors: KnockoutValidationErrors;
 
     /** Initializes a new instance of the LoginViewModel class. */
-    constructor(params: LoginParams) {
-        this.service = params.service;
+    constructor(params: LoginParams = {}) {
+        this.service = params.service || AccountService.default;
+
         this.email = ko.observable<string>(params.options && params.options.email)
             .extend({
                 displayName: "shared:account.login.email",
@@ -40,6 +41,7 @@ class LoginViewModel {
                     params: ko.i18n.t("shared:account.login.passwordRequired")
                 }
             });
+
         this.validationErrors = koValidation.group(this);
     }
 
@@ -52,7 +54,7 @@ class LoginViewModel {
     }
 
     /** Gets a value indicating whether this object is valid. */
-    get isValid() {
+    get isValid(): boolean {
         return this.validationErrors().length === 0;
     }
 

@@ -5,16 +5,15 @@ import "bootstrap";
 import * as ko from "knockout";
 import "ko-component-router";
 
+import identityLogin from "../lib/components/identity/login";
+import identityRegister from "../lib/components/identity/register";
+
 import cultures from "./cultures";
 import navbar from "./navbar";
 import footer from "./footer";
-import accountLogin from "./account/login";
-import accountRegister from "./account/register";
 
 interface RouteInfo {
-    /** Gets the localized name for a route entry. */
     name: KnockoutComputed<string>;
-    /** Route info */
     route: { path: string, component: string | Function }
 }
 
@@ -35,11 +34,13 @@ class AppViewModel {
         // The optional 'bundle?lazy!' prefix is a Webpack feature that causes the referenced modules
         // to be split into separate files that are then loaded on demand.
         // For docs, see https://github.com/webpack/bundle-loader.
+
+        ko.components.register("pi-identity-login", identityLogin);
+        ko.components.register("pi-identity-register", identityRegister);
+
         ko.components.register("pi-navbar", navbar);
         ko.components.register("pi-footer", footer);
         ko.components.register("pi-cultures", cultures);
-        ko.components.register("pi-account-login", accountLogin);
-        ko.components.register("pi-account-register", accountRegister);
 
         ko.components.register("pi-home", require("bundle?lazy!./home/index"));
         ko.components.register("pi-about", require("bundle?lazy!./about/index"));

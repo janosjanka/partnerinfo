@@ -6,7 +6,7 @@ namespace Partnerinfo
     /// <summary>
     /// Represents strongly typed global configuration settings for client-side.
     /// </summary>
-    public sealed class ClientAppConfig
+    public sealed class ClientAppOptions
     {
         /// <summary>
         /// Gets or sets the name of the culture cookie.
