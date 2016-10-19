@@ -13,7 +13,7 @@ interface LoginParams {
 }
 
 /** Used to log in a user to the system. */
-class LoginViewModel implements Validable {
+class LoginViewModel implements Validable, Serializable {
     service: AccountService;
     email: KnockoutObservable<string>;
     password: KnockoutObservable<string>;
@@ -47,10 +47,7 @@ class LoginViewModel implements Validable {
 
     /** Submits login data. */
     submit(): void {
-        this.validate() && this.service.login({
-            email: this.email(),
-            password: this.password()
-        });
+        this.validate() && this.service.login(this.toObject());
     }
 
     /** Gets a value indicating whether this object is valid. */
@@ -62,6 +59,14 @@ class LoginViewModel implements Validable {
     validate(): boolean {
         this.validationErrors.showAllMessages();
         return this.isValid;
+    }
+
+    /** Serializes this object to a native JS object. */
+    toObject(): LoginOptions {
+        return {
+            email: this.email(),
+            password: this.password()
+        };
     }
 }
 
