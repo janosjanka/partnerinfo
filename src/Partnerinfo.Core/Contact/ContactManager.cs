@@ -12,6 +12,10 @@ namespace Partnerinfo.Contact
     /// <summary>
     /// Provides the APIs for managing contacts in a persistence store.
     /// </summary>
+    /// <remarks>
+    /// This class uses the facade pattern to reduce dependencies of outside code and wrap
+    /// a collection of contact APIs with a single well-readable API. It is also persistence-ignorant.
+    /// </remarks>
     public class ContactManager : IDisposable
     {
         private bool _disposed;
@@ -53,18 +57,22 @@ namespace Partnerinfo.Contact
         /// Initializes a new instance of the <see cref="ContactManager" /> class.
         /// </summary>
         /// <param name="store">The persistence store the manager will operate over.</param>
-        /// <param name="errors">The <see cref="OperationErrorDescriber" /> used to provider error messages.</param>
+        /// <param name="errorDescriber">The <see cref="OperationErrorDescriber" /> used to provider error messages.</param>
         /// <param name="services">The <see cref="IServiceProvider" /> used to resolve services.</param>
         /// <exception cref="System.ArgumentNullException">store</exception>
-        public ContactManager(IContactStore store, OperationErrorDescriber errors, IServiceProvider services = null)
+        public ContactManager(IContactStore store, OperationErrorDescriber errorDescriber, IServiceProvider services = null)
         {
             if (store == null)
             {
                 throw new ArgumentNullException(nameof(store));
             }
+            if (errorDescriber == null)
+            {
+                throw new ArgumentNullException(nameof(errorDescriber));
+            }
 
             Store = store;
-            ErrorDescriber = errors;
+            ErrorDescriber = errorDescriber;
 
             if (services != null)
             {
