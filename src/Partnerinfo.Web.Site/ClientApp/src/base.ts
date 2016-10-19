@@ -25,8 +25,10 @@ ko.bindingHandlers.typeahead = typeahead;
 
 //
 // Register KO components.
+//   ui- => Standard UI components
+//   pi- => Application components
 //
-ko.components.register("pi-colorpicker", colorPicker);
-ko.components.register("pi-countdown", countdown);
-ko.components.register("pi-timespan", timeSpan);
-ko.components.register("pi-validationerrors", validationErrors);
+ko.components.register("ui-colorpicker", colorPicker);
+ko.components.register("ui-countdown", countdown);
+ko.components.register("ui-timespan", timeSpan);
+ko.components.register("ui-validationerrors", validationErrors);
