@@ -13,7 +13,7 @@ interface LoginParams {
 }
 
 /** Used to log in a user to the system. */
-class LoginViewModel {
+class LoginViewModel implements IValidable {
     service: AccountService;
     email: KnockoutObservable<string>;
     password: KnockoutObservable<string>;
