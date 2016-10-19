@@ -4,19 +4,19 @@
 import * as ko from "knockout";
 
 import "./extenders/i18n";
-import "./extenders/loader";
 
 import typeahead from "./bindingHandlers/typeahead";
 
+import "./components/webpack-loader";
 import colorPicker from "./components/controls/colorpicker";
 import countdown from "./components/controls/countdown";
 import timeSpan from "./components/controls/timespan";
 import validationErrors from "./components/controls/validationerrors";
 
-// Register binding handlers.
+// Registers KO extenders.
 ko.bindingHandlers.typeahead = typeahead;
 
-// Register components.
+// Register KO components.
 ko.components.register("colorpicker", colorPicker);
 ko.components.register("countdown", countdown);
 ko.components.register("timespan", timeSpan);
