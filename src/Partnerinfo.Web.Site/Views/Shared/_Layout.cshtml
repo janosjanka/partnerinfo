@@ -12,9 +12,6 @@
 <body>
     @RenderBody()
     <script src="~/dist/bootstrap.js" asp-append-version="true"></script>
-    <script>
-        window.PI = @Json.Serialize(new ClientAppOptions());
-    </script>
     @RenderSection("scripts", false)
 </body>
 </html>
