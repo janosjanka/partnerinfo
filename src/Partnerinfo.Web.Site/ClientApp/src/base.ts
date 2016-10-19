@@ -10,6 +10,8 @@ import typeahead from "./bindingHandlers/typeahead";
 import webPackLoader from "./components/webpack-loader";
 import colorPicker from "./components/controls/colorpicker";
 import countdown from "./components/controls/countdown";
+import cultures from "./components/controls/cultures";
+
 import timeSpan from "./components/controls/timespan";
 import validationErrors from "./components/controls/validationerrors";
 
@@ -30,5 +32,6 @@ ko.bindingHandlers.typeahead = typeahead;
 //
 ko.components.register("ui-colorpicker", colorPicker);
 ko.components.register("ui-countdown", countdown);
+ko.components.register("ui-cultures", cultures);
 ko.components.register("ui-timespan", timeSpan);
 ko.components.register("ui-validationerrors", validationErrors);

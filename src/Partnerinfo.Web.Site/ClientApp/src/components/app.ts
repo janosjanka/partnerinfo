@@ -8,8 +8,6 @@ import "ko-component-router";
 import appNavBar from "./app-navbar";
 import appFooter from "./app-footer";
 
-import cultures from "./shared/cultures";
-
 import identityLogin from "./identity/login";
 import identityRegister from "./identity/register";
 
@@ -38,8 +36,6 @@ class AppViewModel {
 
         ko.components.register("pi-app-navbar", appNavBar);
         ko.components.register("pi-app-footer", appFooter);
-
-        ko.components.register("pi-cultures", cultures);
 
         ko.components.register("pi-identity-login", identityLogin);
         ko.components.register("pi-identity-register", identityRegister);
