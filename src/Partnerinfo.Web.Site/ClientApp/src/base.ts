@@ -3,6 +3,9 @@
 
 import * as ko from "knockout";
 
+import "./extenders/i18n";
+import "./extenders/loader";
+
 import typeahead from "./bindingHandlers/typeahead";
 
 import colorPicker from "./components/controls/colorpicker";

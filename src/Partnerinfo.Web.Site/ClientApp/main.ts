@@ -7,9 +7,7 @@ import * as i18nextXHR from "i18next-xhr-backend";
 import * as ko from "knockout";
 import * as koValidation from "knockout.validation";
 
-import "./src/knockout-loader";
-import "./src/knockout-i18n";
-import "./src/knockout-controls";
+import "./src/base";
 
 import appComponent from "./src/components/app";
 
