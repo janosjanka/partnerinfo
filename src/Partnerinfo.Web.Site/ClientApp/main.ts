@@ -7,15 +7,12 @@ import * as i18nextXHR from "i18next-xhr-backend";
 import * as ko from "knockout";
 import * as koValidation from "knockout.validation";
 
-import appComponent from "./src/app";
+import app from "./src/app";
 
 // Using deferred updates ensures that computed observables and bindings are updated only after their dependencies are stable.
 // Even if an observable might go through multiple intermediate values, only the latest value is used to update its dependencies.
 // http://knockoutjs.com/documentation/deferred-updates.html
 ko.options.deferUpdates = true;
-
-// Load and register the <pi-app> component.
-ko.components.register("pi-app", appComponent);
 
 // Initialize Knockout validation before binding data.
 // https://github.com/Knockout-Contrib/Knockout-Validation/wiki/Configuration
@@ -30,6 +27,9 @@ koValidation.init({
     insertMessages: true,
     parseInputAttributes: false
 });
+
+// Load and register the <pi-app> component.
+ko.components.register("pi-app", app);
 
 // Initialize i18next localization services with
 // browser culture detection and XHR json loader.

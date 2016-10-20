@@ -5,51 +5,41 @@ import "bootstrap";
 import * as ko from "knockout";
 import "ko-component-router";
 
-import appNavBar from "./app-navbar";
-import appFooter from "./app-footer";
-
+import navbar from "./shared/navbar";
+import footer from "./shared/footer";
 import identityLogin from "./identity/login";
 import identityRegister from "./identity/register";
 
-interface RouteInfo {
-    name: KnockoutComputed<string>;
-    route: { path: string, component: string | Function }
-}
-
-const appRoutes = {
-    "/": "pi-home",
-    "/about": "pi-about",
-    "/account": "pi-account"
-};
-
-class AppViewModel {
+class AppViewModel implements Disposable {
     /** A set of key/value pairs that configure component routing for KnockoutJS. */
     routes: Object;
 
     constructor() {
-        this.routes = appRoutes;
+        this.routes = {
+            "/": "pi-home",
+            "/about": "pi-about"
+        };
 
         // Load and register all the KO components needed to handle the routes.
         // The optional 'bundle?lazy!' prefix is a Webpack feature that causes the referenced modules
         // to be split into separate files that are then loaded on demand.
         // For docs, see https://github.com/webpack/bundle-loader.
 
-        ko.components.register("pi-app-navbar", appNavBar);
-        ko.components.register("pi-app-footer", appFooter);
+        ko.components.register("pi-navbar", navbar);
+        ko.components.register("pi-footer", footer);
+        ko.components.register("pi-home", require("bundle?lazy!./shared/home"));
+        ko.components.register("pi-about", require("bundle?lazy!./shared/about"));
 
         ko.components.register("pi-identity-login", identityLogin);
         ko.components.register("pi-identity-register", identityRegister);
-
-        ko.components.register("pi-home", require("bundle?lazy!./shared/home"));
-        ko.components.register("pi-about", require("bundle?lazy!./shared/about"));
     }
 
-    dispose() {
+    dispose(): void {
         // To support hot module replacement, this method unregisters the router and KO components.
         // In production scenarios where hot module replacement is disabled, this would not be invoked.
         Object.getOwnPropertyNames((ko.components as any)._allRegisteredComponents)
             .forEach(componentName => {
-                if (componentName.indexOf("pi-") >= 0) {
+                if (componentName.indexOf("pi-") === 0) {
                     ko.components.unregister(componentName);
                 }
             });
