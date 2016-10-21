@@ -13,6 +13,17 @@ namespace Partnerinfo.Actions.ModelBinders
     /// <seealso cref="Microsoft.AspNetCore.Mvc.ModelBinding.IModelBinder" />
     public sealed class ActionLinkModelBinder : IModelBinder
     {
+        private readonly IActionLinkService _service;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ActionLinkModelBinder"/> class.
+        /// </summary>
+        /// <param name="service">The action link service.</param>
+        public ActionLinkModelBinder(IActionLinkService service)
+        {
+            _service = service;
+        }
+
         /// <summary>
         /// Attempts to bind a model.
         /// </summary>
@@ -32,16 +43,13 @@ namespace Partnerinfo.Actions.ModelBinders
         /// </returns>
         public Task BindModelAsync(ModelBindingContext bindingContext)
         {
-            var service = bindingContext.HttpContext.RequestServices.GetService(typeof(IActionLinkService)) as IActionLinkService;
-
-            Debug.Assert(service != null);
             Debug.Assert(bindingContext.ModelType == typeof(ActionLink));
 
             string paramUri = bindingContext.ValueProvider.GetValue("paramUri").FirstValue; // ValueProviderResult is a struct in ASP.NET Core.
             if (paramUri != null)
             {
                 string customUri = bindingContext.ValueProvider.GetValue("customUri").FirstValue;
-                bindingContext.Model = service.UrlTokenDecode(paramUri, customUri);
+                bindingContext.Model = _service.UrlTokenDecode(paramUri, customUri);
             }
 
             return Task.CompletedTask;
