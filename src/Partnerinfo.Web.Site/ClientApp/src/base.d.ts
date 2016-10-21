@@ -30,3 +30,11 @@ interface Serializable {
     toObject(): Object;
 
 }
+
+/** Defines a provider for progress updates. */
+interface Progress<T> {
+
+    /** Reports a progress update. */
+    report(value: T): void;
+
+}

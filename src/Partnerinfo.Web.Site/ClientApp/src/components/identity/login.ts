@@ -19,6 +19,7 @@ class LoginViewModel implements Validable, Serializable {
     password: KnockoutObservable<string>;
     validationErrors: KnockoutValidationErrors;
 
+    /** Initializes a new instance of the class. */
     constructor(params: LoginParams = {}) {
         this.service = params.service || AccountService.default;
 
@@ -41,7 +42,7 @@ class LoginViewModel implements Validable, Serializable {
                 }
             });
 
-        this.validationErrors = koValidation.group(this);
+        this.validationErrors = koValidation.group([this.email, this.password]);
     }
 
     /** Submits login data. */
