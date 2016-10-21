@@ -16,7 +16,7 @@ namespace Partnerinfo.Actions.ModelBinders
         private readonly IActionLinkService _service;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ActionLinkModelBinder"/> class.
+        /// Initializes a new instance of the <see cref="ActionLinkModelBinder" /> class.
         /// </summary>
         /// <param name="service">The action link service.</param>
         public ActionLinkModelBinder(IActionLinkService service)
