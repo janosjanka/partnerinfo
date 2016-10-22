@@ -3,11 +3,9 @@
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Partnerinfo.Identity.EntityFrameworkCore;
 
 namespace Partnerinfo
 {
@@ -23,13 +21,10 @@ namespace Partnerinfo
         /// For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
         /// </summary>
         /// <param name="services">Specifies the contract for a collection of service descriptors.</param>
-        public void ConfigureIdentityServices(IServiceCollection services)
+        public void ConfigureEntityFrameworkServices(IServiceCollection services)
         {
-            services
-                .AddDbContext<IdentityDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]))
-                .AddIdentity<UserItem, RoleItem>()
-                .AddEntityFrameworkStores<IdentityDbContext, int>()
-                .AddDefaultTokenProviders();
+            services.AddEntityFramework();
+            services.AddEntityFrameworkSqlServer();
         }
 
         /// <summary>
@@ -38,22 +33,8 @@ namespace Partnerinfo
         /// <param name="app">Defines a class that provides the mechanisms to configure an application's request  pipeline.</param>
         /// <param name="env">Provides information about the web hosting environment an application is running in.</param>
         /// <param name="logFactory">Represents a type used to configure the logging system.</param>
-        public void ConfigureIdentity(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory logFactory)
+        public void ConfigureEntityFramework(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory logFactory)
         {
-            // For more details on creating database during deployment see http://go.microsoft.com/fwlink/?LinkID=615859
-            //if (!env.IsDevelopment())
-            {
-                try
-                {
-                    using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
-                    {
-                        serviceScope.ServiceProvider.GetService<IdentityDbContext>().Database.Migrate();
-                    }
-                }
-                catch { }
-            }
-
-            app.UseIdentity();
         }
     }
 }

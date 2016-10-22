@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Partnerinfo
@@ -20,7 +21,7 @@ namespace Partnerinfo
     /// <seealso cref="Microsoft.AspNetCore.Mvc.OkObjectResult" />
     public sealed class OkListResult : OkObjectResult
     {
-        private readonly string _routeName;
+        private readonly IUrlHelper _urlHelper;
         private readonly IEnumerable<object> _data;
         private readonly int _count;
         private readonly int _offset;
@@ -29,17 +30,19 @@ namespace Partnerinfo
         /// <summary>
         /// Initializes a new instance of the <see cref="OkListResultValue" /> class with the values provided.
         /// </summary>
-        /// <param name="routeName">Name of the route.</param>
+        /// <param name="urlHelper">The URL helper that helps generate links..</param>
         /// <param name="data">The content value to negotiate and format in the entity body.</param>
         /// <param name="offset">The number of rows to skip, before starting to return rows from the query expression.</param>
         /// <param name="limit">The number of rows to return, after processing the offset clause.</param>
-        public OkListResult(string routeName, IEnumerable<object> data, int offset, int limit)
+        public OkListResult(IUrlHelper urlHelper, IEnumerable<object> data, int offset, int limit)
             : base(null)
         {
-            Debug.Assert(routeName != null);
+            Debug.Assert(urlHelper != null);
             Debug.Assert(data != null);
+            Debug.Assert(offset >= 0);
+            Debug.Assert(limit > 0);
 
-            _routeName = routeName;
+            _urlHelper = urlHelper;
             _data = data;
             _count = data.Count(); // https://github.com/dotnet/corefx/blob/master/src/System.Linq/src/System/Linq/Count.cs (Optimized)
             _offset = offset;
@@ -54,10 +57,6 @@ namespace Partnerinfo
         /// information about the action that was executed and request information.</param>
         public override void ExecuteResult(ActionContext context)
         {
-            var urlHelper = context.HttpContext.RequestServices.GetRequiredService<IUrlHelper>();
-
-            Debug.Assert(urlHelper != null);
-
             // When you query a collection of items from a DB store, use 'limit + 1' to be able
             // to calculate the next page of lists without having to calculate the total number of results.
             // Of course, this method just works with offset/limit paging strategy which is also supported by
@@ -67,15 +66,17 @@ namespace Partnerinfo
 
             if (_offset > 0)
             {
+                // Create a link pointing to the previous page.
                 int prevOffset = _offset - _limit;
                 context.RouteData.Values["offset"] = prevOffset <= 0 ? 0 : prevOffset;
-                result.PrevLink = urlHelper.Link(_routeName, context.RouteData.Values);
+                result.PrevLink = _urlHelper.Link("", context.RouteData.Values);
             }
 
             if (_count > _limit)
             {
+                // Create a link pointing to the next page.
                 context.RouteData.Values["offset"] = _offset + _limit;
-                result.NextLink = urlHelper.Link(_routeName, context.RouteData.Values);
+                result.NextLink = _urlHelper.Link("", context.RouteData.Values);
             }
 
             Value = result;

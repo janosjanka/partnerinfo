@@ -46,8 +46,10 @@ namespace Partnerinfo
         /// <param name="services">Specifies the contract for a collection of service descriptors.</param>
         public void ConfigureServices(IServiceCollection services)
         {
+            ConfigureEntityFrameworkServices(services);
             ConfigureLocalizationServices(services);
             ConfigureIdentityServices(services);
+            ConfigureContactServices(services);
             ConfigureAuthServices(services);
             ConfigureMvcServices(services);
         }
@@ -83,8 +85,10 @@ namespace Partnerinfo
             // Enables static file serving for the current request path.
             app.UseStaticFiles();
 
+            ConfigureEntityFramework(app, env, logFactory);
             ConfigureLocalization(app, env, logFactory);
             ConfigureIdentity(app, env, logFactory);
+            ConfigureContact(app, env, logFactory);
             ConfigureAuth(app, env, logFactory);
             ConfigureMvc(app, env, logFactory);
         }

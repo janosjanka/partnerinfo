@@ -2,6 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Partnerinfo.Contact.EntityFrameworkCore
 {
@@ -47,10 +48,33 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
 
             builder.Entity<ContactItem>(b =>
             {
-                // Shadow properties
-                //b.Property(typeof(Guid), "ConcurrencyStamp").IsConcurrencyToken().HasDefaultValueSql("newid()");
+                // Shadow properties       
+                b.Property(typeof(int?), "SponsorId");
+                //b.Property(typeof(int?), "ModifiedById");
 
+                // Visible properties
                 b.Property(p => p.ConcurrencyStamp).HasMaxLength(64).IsConcurrencyToken();
+
+                // Keys & Indexes
+                b.HasKey(p => p.Id);
+                // b.HasAlternateKey(p => p.Uri);
+                // b.HasIndex(p => p.Uri).IsUnique();
+
+                // Relationships
+                b.HasOne(typeof(ContactItem), nameof(ContactItem.Sponsor))
+                    .WithOne()
+                    .OnDelete(DeleteBehavior.SetNull);
+
+                // TODO: This is just a test now.
+                b.Ignore(p => p.Attributes);
+                b.Ignore(p => p.ModifiedBy);
+                b.Ignore(p => p.BusinessTags);
+
+                //b.HasOne(typeof(Identity.EntityFrameworkCore.UserItem), nameof(ContactItem.ModifiedBy))
+                //    .WithOne()
+                //    .OnDelete(DeleteBehavior.Restrict);
+
+                b.ToTable("Contacts");
             });
         }
     }
