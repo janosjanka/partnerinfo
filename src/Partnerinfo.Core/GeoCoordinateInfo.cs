@@ -59,11 +59,11 @@ namespace Partnerinfo
         {
             if (longitude != null)
             {
-                Longitude = Math.Truncate((double)longitude * (int)precision) / (int)precision;
+                Longitude = (long)(longitude * (int)precision) / (double)precision;
             }
             if (latitude != null)
             {
-                Latitude = Math.Truncate((double)latitude * (int)precision) / (int)precision;
+                Latitude = (long)(latitude * (int)precision) / (double)precision;
             }
             Precision = precision;
         }
