@@ -138,7 +138,7 @@ namespace Partnerinfo.Contact.Controllers
             }
 
             var contacts = await _contactManager.FindAllAsync(options);
-            return this.OkList(Url, contacts, options.Offset, options.Limit);
+            return this.OkList(contacts, options.Offset, options.Limit);
         }
     }
 }
