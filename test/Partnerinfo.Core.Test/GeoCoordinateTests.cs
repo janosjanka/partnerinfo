@@ -10,8 +10,8 @@ namespace Partnerinfo
         [Fact]
         public void EqualsWithTheSamePrecision()
         {
-            var coordinate1 = new GeoCoordinateInfo(47.53333, 21.63333, GeoDegreePrecision.IndividualTrees);
-            var coordinate2 = new GeoCoordinateInfo(47.5333367, 21.6333367, GeoDegreePrecision.IndividualTrees);
+            var coordinate1 = new GeoCoordinateInfo(47.53333, 21.63333, GeoDegreePrecision.IndividualTree);
+            var coordinate2 = new GeoCoordinateInfo(47.5333367, 21.6333367, GeoDegreePrecision.IndividualTree);
                         
             Assert.StrictEqual(coordinate1, coordinate2);
         }

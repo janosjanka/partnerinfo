@@ -37,14 +37,14 @@ namespace Partnerinfo
         IndividualStreet = 10000,
 
         /// <summary>
-        /// Individual trees. Decimal places: 5, decimal degrees: 0.00001, DMS: 0° 00' 0.036", N/S or E/W at equator: 1.1132 m.
+        /// Individual tree. Decimal places: 5, decimal degrees: 0.00001, DMS: 0° 00' 0.036", N/S or E/W at equator: 1.1132 m.
         /// </summary>
-        IndividualTrees = 100000,
+        IndividualTree = 100000,
 
         /// <summary>
-        /// Individual humans. Decimal places: 6, decimal degrees: 0.000001, DMS: 0° 00' 0.0036", N/S or E/W at equator: 111.32 mm.
+        /// Individual human. Decimal places: 6, decimal degrees: 0.000001, DMS: 0° 00' 0.0036", N/S or E/W at equator: 111.32 mm.
         /// </summary>
-        IndividualHumans = 1000000,
+        IndividualHuman = 1000000,
 
         /// <summary>
         /// Practical limit of commercial surveying. Decimal places: 7, decimal degrees: 0.0000001, DMS: 0° 00' 0.00036", N/S or E/W at equator: 11.132 mm.
