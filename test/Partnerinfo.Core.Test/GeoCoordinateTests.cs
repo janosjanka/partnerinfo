@@ -1,21 +1,19 @@
 ﻿// Copyright (c) János Janka. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
-using System;
 using Xunit;
 
 namespace Partnerinfo
 {
     public class GeoCoordinateTests
     {
-
         [Fact]
-        public void ValidateNormalizedUri()
+        public void EqualsWithTheSamePrecision()
         {
-            var normalizer = new GeoCoordinateInfo(47.5333300, 21.6333300);
-            var result = normalizer.Normalize(Text);
-
-            Assert.True(Uri.IsWellFormedUriString(result, UriKind.Relative));
+            var coordinate1 = new GeoCoordinateInfo(47.53333, 21.63333, GeoDegreePrecision.IndividualTrees);
+            var coordinate2 = new GeoCoordinateInfo(47.5333367, 21.6333367, GeoDegreePrecision.IndividualTrees);
+                        
+            Assert.StrictEqual(coordinate1, coordinate2);
         }
     }
 }
