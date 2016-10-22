@@ -16,20 +16,20 @@ namespace Partnerinfo
     public sealed class GeoCoordinateInfo : IEquatable<GeoCoordinateInfo>
     {
         /// <summary>
-        /// Gets or sets the longitude geographic coordinate that specifies the east-west position of a point on the Earth's surface.
-        /// </summary>
-        /// <value>
-        /// The longitude is a geographic coordinate that specifies the east-west position of a point on the Earth's surface.
-        /// </value>
-        public double? Longitude { get; private set; }
-
-        /// <summary>
         /// Gets or sets the latitude geographic coordinate that specifies the north-south position of a point on the Earth's surface.
         /// </summary>
         /// <value>
         /// The latitude is a geographic coordinate that specifies the north-south position of a point on the Earth's surface.
         /// </value>
         public double? Latitude { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the longitude geographic coordinate that specifies the east-west position of a point on the Earth's surface.
+        /// </summary>
+        /// <value>
+        /// The longitude is a geographic coordinate that specifies the east-west position of a point on the Earth's surface.
+        /// </value>
+        public double? Longitude { get; private set; }
 
         /// <summary>
         /// Decimal degrees (DD) express latitude and longitude geographic coordinates as decimal fractions.
@@ -52,18 +52,18 @@ namespace Partnerinfo
         /// <summary>
         /// Initializes a new instance of the <see cref="GeoCoordinateInfo" /> class.
         /// </summary>
-        /// <param name="longitude">The longitude is a geographic coordinate that specifies the east-west position of a point on the Earth's surface.</param>
         /// <param name="latitude">The latitude is a geographic coordinate that specifies the north-south position of a point on the Earth's surface.</param>
-        /// <param name="precision">The precision.</param>
-        public GeoCoordinateInfo(double? longitude, double? latitude, GeoDegreePrecision precision)
+        /// <param name="longitude">The longitude is a geographic coordinate that specifies the east-west position of a point on the Earth's surface.</param>
+        /// <param name="precision">Decimal degrees (DD) express latitude and longitude geographic coordinates as decimal fractions.</param>
+        public GeoCoordinateInfo(double? latitude, double? longitude, GeoDegreePrecision precision)
         {
-            if (longitude != null)
-            {
-                Longitude = (long)(longitude * (int)precision) / (double)precision;
-            }
             if (latitude != null)
             {
                 Latitude = (long)(latitude * (int)precision) / (double)precision;
+            }
+            if (longitude != null)
+            {
+                Longitude = (long)(longitude * (int)precision) / (double)precision;
             }
             Precision = precision;
         }
@@ -78,7 +78,7 @@ namespace Partnerinfo
         /// <remarks>
         /// Precision: <see ref="https://en.wikipedia.org/wiki/Decimal_degrees">Decimal degrees</see>.
         /// </remarks>
-        public bool Equals(GeoCoordinateInfo other) => Longitude == other?.Longitude && Latitude == other?.Latitude;
+        public bool Equals(GeoCoordinateInfo other) => Latitude == other?.Latitude && Longitude == other?.Longitude;
 
         /// <summary>
         /// Determines whether the specified <see cref="System.Object" />, is equal to this instance.
@@ -95,7 +95,7 @@ namespace Partnerinfo
         /// <returns>
         /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
         /// </returns>
-        public sealed override int GetHashCode() => Hash.Combine(Longitude?.GetHashCode() ?? 0, Latitude?.GetHashCode() ?? 0);
+        public sealed override int GetHashCode() => Hash.Combine(Latitude?.GetHashCode() ?? 0, Longitude?.GetHashCode() ?? 0);
 
         /// <summary>
         /// Returns a <see cref="string" /> that represents this instance.
@@ -103,6 +103,6 @@ namespace Partnerinfo
         /// <returns>
         /// A <see cref="string" /> that represents this instance.
         /// </returns>
-        public sealed override string ToString() => $"POINT({Longitude} {Latitude})";
+        public sealed override string ToString() => $"POINT({Latitude} {Longitude})";
     }
 }
