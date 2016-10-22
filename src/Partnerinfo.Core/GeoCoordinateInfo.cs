@@ -16,14 +16,6 @@ namespace Partnerinfo
     public sealed class GeoCoordinateInfo : IEquatable<GeoCoordinateInfo>
     {
         /// <summary>
-        /// Decimal degrees (DD) express latitude and longitude geographic coordinates as decimal fractions.
-        /// </summary>
-        /// <remarks>
-        /// Precision: <see ref="https://en.wikipedia.org/wiki/Decimal_degrees">Decimal degrees</see>.
-        /// </remarks>
-        private const int Precision = 10 * 4; // Decimal degrees: 0.0001, DMS: 0° 00' 0.36", Individual street, land parcel.
-
-        /// <summary>
         /// Gets or sets the longitude geographic coordinate that specifies the east-west position of a point on the Earth's surface.
         /// </summary>
         /// <value>
@@ -40,6 +32,14 @@ namespace Partnerinfo
         public double? Latitude { get; private set; }
 
         /// <summary>
+        /// Decimal degrees (DD) express latitude and longitude geographic coordinates as decimal fractions.
+        /// </summary>
+        /// <remarks>
+        /// Precision: <see ref="https://en.wikipedia.org/wiki/Decimal_degrees">Decimal degrees</see>.
+        /// </remarks>
+        public GeoDegreePrecision Precision { get; private set; }
+
+        /// <summary>
         /// Prevents a default instance of the <see cref="GeoCoordinateInfo" /> class from being created.
         /// </summary>
         /// <remarks>
@@ -54,16 +54,18 @@ namespace Partnerinfo
         /// </summary>
         /// <param name="longitude">The longitude is a geographic coordinate that specifies the east-west position of a point on the Earth's surface.</param>
         /// <param name="latitude">The latitude is a geographic coordinate that specifies the north-south position of a point on the Earth's surface.</param>
-        public GeoCoordinateInfo(double? longitude, double? latitude)
+        /// <param name="precision">The precision.</param>
+        public GeoCoordinateInfo(double? longitude, double? latitude, GeoDegreePrecision precision)
         {
             if (longitude != null)
             {
-                Longitude = Math.Truncate((double)longitude * Precision) / Precision;
+                Longitude = Math.Truncate((double)longitude * (int)precision) / (int)precision;
             }
             if (latitude != null)
             {
-                Latitude = Math.Truncate((double)latitude * Precision) / Precision;
+                Latitude = Math.Truncate((double)latitude * (int)precision) / (int)precision;
             }
+            Precision = precision;
         }
 
         /// <summary>
