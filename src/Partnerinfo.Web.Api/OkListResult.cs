@@ -69,14 +69,14 @@ namespace Partnerinfo
                 // Create a link pointing to the previous page.
                 int prevOffset = _offset - _limit;
                 context.RouteData.Values["offset"] = prevOffset <= 0 ? 0 : prevOffset;
-                result.PrevLink = _urlHelper.Link("", context.RouteData.Values);
+                result.PrevLink = _urlHelper.Link(null /* TODO: routeName from the context */, context.RouteData.Values);
             }
 
             if (_count > _limit)
             {
                 // Create a link pointing to the next page.
                 context.RouteData.Values["offset"] = _offset + _limit;
-                result.NextLink = _urlHelper.Link("", context.RouteData.Values);
+                result.NextLink = _urlHelper.Link(null /* TODO: routeName from the context */, context.RouteData.Values);
             }
 
             Value = result;
