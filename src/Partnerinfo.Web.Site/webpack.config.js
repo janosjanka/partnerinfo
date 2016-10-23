@@ -9,13 +9,14 @@ const WebpackTextPlugin = require("extract-text-webpack-plugin");
 const webpackExtractCss = new WebpackTextPlugin("[name].css");
 
 const srcFolder = "ClientApp";
-const outFolder = "dist";
+const dstFolder = "dist";
+const dstFullPath = path.join("wwwroot", dstFolder);
 
 module.exports = {
     output: {
-        path: path.join(__dirname, "wwwroot", outFolder),
+        path: path.join(__dirname, "wwwroot", dstFolder),
         filename: `[name].js`,
-        publicPath: `/${outFolder}/`
+        publicPath: `/${dstFolder}/`
     },
     entry: {
         main: [`./${srcFolder}/main.ts`]
@@ -36,12 +37,13 @@ module.exports = {
     plugins: [
         new webpack.DllReferencePlugin({
             context: __dirname,
-            manifest: require(`./wwwroot/${outFolder}/corefx-manifest.json`)
+            manifest: require(`./${dstFullPath}/corefx-manifest.json`)
         })
     ].concat(isDevBuild ? [
         // Plugins that apply in development builds only.
         new webpack.SourceMapDevToolPlugin({
-            moduleFilenameTemplate: "../../[resourcePath]"
+            filename: "[file].map",
+            moduleFilenameTemplate: path.relative(dstFullPath, "[resourcePath]")
         })
     ] : [
         // Plugins that apply in production builds only.

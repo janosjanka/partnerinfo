@@ -9,11 +9,12 @@ const WebpackTextPlugin = require("extract-text-webpack-plugin");
 const webpackExtractCss = new WebpackTextPlugin("[name].css");
 
 const srcFolder = "ClientApp";
-const outFolder = "dist";
+const dstFolder = "dist";
+const dstFullPath = path.join("wwwroot", dstFolder);
 
 module.exports = {
     output: {
-        path: path.join(__dirname, "wwwroot", outFolder),
+        path: path.join(__dirname, dstFullPath),
         filename: "[name].js",
         library: "[name]_[hash]",
     },
@@ -48,7 +49,7 @@ module.exports = {
         new webpack.ProvidePlugin({ $: "jquery", jQuery: "jquery" }),
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.DllPlugin({
-            path: path.join(__dirname, "wwwroot", outFolder, "[name]-manifest.json"),
+            path: path.join(__dirname, dstFullPath, "[name]-manifest.json"),
             name: "[name]_[hash]"
         })
     ].concat(isDevBuild ? [

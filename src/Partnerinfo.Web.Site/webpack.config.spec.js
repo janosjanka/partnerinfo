@@ -19,7 +19,7 @@ module.exports = {
     entry: {
         spec: [
             "jasmine-core",
-            //"jasmine-reporters",
+            "jasmine-reporters",
             `./${srcFolder}/spec.ts`
         ]
     },
@@ -41,7 +41,7 @@ module.exports = {
     },
     plugins: [
         new WebpackJasminePlugin({
-            filename: "specRunner.html"
+            filename: "spec-runner.html"
         })
     ]
 };
