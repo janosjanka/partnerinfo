@@ -25,5 +25,8 @@ cache:
 git:
   depth: 1
 
+before_script:
+  cd src/Partnerinfo.Web.Site
+
 script:
   - npm test
