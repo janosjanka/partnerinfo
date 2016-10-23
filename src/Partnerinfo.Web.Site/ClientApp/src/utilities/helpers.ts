@@ -20,7 +20,7 @@ export function debounce(callback: Function, delay: number = 0, immediate: boole
         };
         const callNow = immediate && !timeout;
         clearTimeout(timeout);
-        timeout = setTimeout(later, delay);
+        timeout = window.setTimeout(later, delay);
         if (callNow) {
             callback.apply(this, args);
         }

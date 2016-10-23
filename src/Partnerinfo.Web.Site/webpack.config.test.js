@@ -1,15 +1,14 @@
-﻿// Copyright (c) János Janka. All rights reserved.
+// Copyright (c) J�nos Janka. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
 const debug = process.argv.indexOf("--release") < 0;
 
 const path = require("path");
 const webpack = require("webpack");
-const WebpackTextPlugin = require("extract-text-webpack-plugin");
-const webpackExtractCss = new WebpackTextPlugin("[name].css");
+const WebpackJasminePlugin = require("jasmine-webpack-plugin");
 
 const srcFolder = "ClientApp";
-const outFolder = "dist";
+const outFolder = "spec";
 
 module.exports = {
     output: {
@@ -18,7 +17,11 @@ module.exports = {
         publicPath: `/${outFolder}/`
     },
     entry: {
-        main: [`./${srcFolder}/main.ts`]
+        spec: [
+            "jasmine-core",
+            "jasmine-reporters",
+            `./${srcFolder}/spec.ts`
+        ]
     },
     resolve: {
         extensions: ["", ".js", ".ts"]
@@ -34,24 +37,8 @@ module.exports = {
         ]
     },
     plugins: [
-        new webpack.DllReferencePlugin({
-            context: __dirname,
-            manifest: require(`./wwwroot/${outFolder}/corefx-manifest.json`)
+        new WebpackJasminePlugin({
+            filename: "specRunner.html"
         })
-    ].concat(debug ? [
-        // Plugins that apply in development builds only.
-        new webpack.SourceMapDevToolPlugin({
-            moduleFilenameTemplate: "../../[resourcePath]"
-        })
-    ] : [
-        // Plugins that apply in production builds only.
-        webpackExtractCss,
-        new webpack.optimize.OccurenceOrderPlugin(),
-        new webpack.optimize.UglifyJsPlugin({
-            compress: { warnings: false },
-            comments: false,
-            minimize: true,
-            mangle: true
-        })
-    ])
+    ]
 };

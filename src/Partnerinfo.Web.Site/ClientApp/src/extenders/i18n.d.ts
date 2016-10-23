@@ -3,7 +3,7 @@
 
 interface KnockoutExtenders {
     /** Configures i18n options. */
-    i18nOptions(target: any, options: I18next.TranslationOptions): any;
+    i18nOptions(target: any, options: Object): any;
 
     /** Represents the localized name of the specified target object. */
     displayName(target: any, displayName: string): any;
@@ -25,7 +25,7 @@ interface KnockoutI18nStatic {
      * @param {string}  key     The key to localize.
      * @param {options} options Translation options.
      */
-    t(key: string, options?: I18next.TranslationOptions): KnockoutComputed<string>;
+    t(key: string, options?: Object): KnockoutComputed<string>;
 }
 
 interface KnockoutStatic {

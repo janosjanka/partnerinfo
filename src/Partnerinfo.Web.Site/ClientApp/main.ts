@@ -51,10 +51,9 @@ i18next
         load: "currentOnly",
         ns: ["shared"]
     },
-    (error: any, t: (key: string, options?: I18next.TranslationOptions) => string) => {
+    (error: any, t: i18next.TranslationFunction) => {
         // Tell Knockout to start up an instance of the application after
         // loading the specified language resources.
-        // TODO: Shared resources should be rendered at startup.
         ko.applyBindings();
     });
 

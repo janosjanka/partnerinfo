@@ -19,11 +19,11 @@ const language = ko.observable<string>();
         return i18next.languages;
     },
 
-    t: (key: string, options?: I18next.TranslationOptions): KnockoutComputed<string> =>
+    t: (key: string, options?: i18next.TranslationOptions): KnockoutComputed<string> =>
         ko.pureComputed<string>(() => language() ? i18next.t(key, options) : "")
 };
 
-ko.extenders.i18nOptions = (target: any, i18nOptions: I18next.TranslationOptions): any => {
+ko.extenders.i18nOptions = (target: any, i18nOptions: i18next.TranslationOptions): any => {
     target.i18nOptions = i18nOptions;
     return target;
 };

@@ -5,8 +5,8 @@ const debug = process.argv.indexOf("--release") < 0;
 
 const path = require("path");
 const webpack = require("webpack");
-const webpackExtractTxt = require("extract-text-webpack-plugin");
-const webpackExtractCss = new webpackExtractTxt("[name].css");
+const WebpackTextPlugin = require("extract-text-webpack-plugin");
+const webpackExtractCss = new WebpackTextPlugin("[name].css");
 
 const srcFolder = "ClientApp";
 const outFolder = "dist";

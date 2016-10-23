@@ -1,8 +1,0 @@
-{
-  "resolution": "main",
-  "tree": {
-    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/55c3e254e151847b8d37ca09b1a566ad4a48a66a/knockout/knockout.d.ts",
-    "raw": "github:DefinitelyTyped/DefinitelyTyped/knockout/knockout.d.ts#55c3e254e151847b8d37ca09b1a566ad4a48a66a",
-    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/55c3e254e151847b8d37ca09b1a566ad4a48a66a/knockout/knockout.d.ts"
-  }
-}
