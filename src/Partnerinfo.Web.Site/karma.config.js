@@ -17,15 +17,18 @@ module.exports = function (config) {
           "spec/**/*.ts"
         ],
 
-        webpack: {
-            module: webpackConfig.module,
-            resolve: webpackConfig.resolve
-        },
-
         // Preprocess matching files before serving them to the browser.
         // Available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
             "spec/**/*.ts": ["webpack"]
+        },
+
+        // Webpack configuration.
+        // Karma watches the test entry points (you don't need to specify
+        // the entry option) webpack watches dependencies.
+        webpack: {
+            module: webpackConfig.module,
+            resolve: webpackConfig.resolve
         },
 
         // Test results reporter to use.
