@@ -14,7 +14,7 @@ namespace Partnerinfo
         /// <summary>
         /// Country or large region. Decimal places: 0, decimal degrees: 1.0, DMS: 1° 00' 0', N/S or E/W at equator: 111.32 km.
         /// </summary>
-        CountryOrRegion = 0,
+        CountryOrRegion = 1,
 
         /// <summary>
         /// Large city or district. Decimal places: 1, decimal degrees: 0.1, DMS: 0° 06' 0", N/S or E/W at equator: 11.132 km.
