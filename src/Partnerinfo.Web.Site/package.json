@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "build": "npm run clean && npm run build:lib && npm run build:app",
-    "build:lib": "node node_modules/webpack/bin/webpack.js --dist --config webpack.config.bootstrap.js",
+    "build:lib": "node node_modules/webpack/bin/webpack.js --dist --config webpack.config.corefx.js",
     "build:app": "node node_modules/webpack/bin/webpack.js --dist",
     "lint": "tslint src",
     "test": "karma start --single-run --no-auto-watch karma.config.js"

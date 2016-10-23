@@ -71,7 +71,7 @@
   "scripts": {
     "prepublish": [
       "npm install",
-      "node node_modules/webpack/bin/webpack.js --dist --config webpack.config.bootstrap.js",
+      "node node_modules/webpack/bin/webpack.js --dist --config webpack.config.corefx.js",
       "node node_modules/webpack/bin/webpack.js --dist"
     ],
     "postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ]
