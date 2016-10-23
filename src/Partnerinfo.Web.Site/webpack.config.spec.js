@@ -18,7 +18,7 @@ module.exports = {
     },
     entry: {
         spec: [
-            "jasmine-core",
+            "jasmine",
             "jasmine-reporters",
             `./${srcFolder}/spec.ts`
         ]
