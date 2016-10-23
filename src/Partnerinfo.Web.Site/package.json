@@ -3,7 +3,7 @@
   "description": "Partnerinfo - Online Marketing System",
   "version": "1.0.0",
   "license": "ISC",
-  "author": "János Janka",
+  "author": "Jï¿½nos Janka",
   "keywords": [
     "Partnerinfo"
   ],
@@ -15,9 +15,9 @@
     "i18next-xhr-backend": "^1.2.0",
     "jquery": "^3.1.1",
     "knockout": "^3.4.0",
-    "knockout.validation": "^2.0.3",
     "knockout-bootstrap": "^0.2.0",
     "knockout-postbox": "^0.5.2",
+    "knockout.validation": "^2.0.3",
     "ko-component-router": "^3.11.1",
     "one-com-knockout-projections": "^1.6.0"
   },
@@ -37,7 +37,6 @@
     "typings": "^1.4.0",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.2",
-    "webpack-hot-middleware": "^2.13.0",
-    "webpack-merge": "^0.14.1"
+    "webpack-hot-middleware": "^2.13.0"
   }
 }
