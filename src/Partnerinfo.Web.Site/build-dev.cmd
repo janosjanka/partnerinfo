@@ -14,11 +14,11 @@ CALL npm install
 
 ECHO.
 ECHO 3/4. Building core library...
-node "node_modules/webpack/bin/webpack.js" --config "webpack.config.corefx.js"
+CALL node "node_modules/webpack/bin/webpack.js" --config "webpack.config.corefx.js"
 
 ECHO.
 ECHO 4/4. Building application...
-node "node_modules/webpack/bin/webpack.js"
+CALL node "node_modules/webpack/bin/webpack.js"
 
 ECHO.
 PAUSE
