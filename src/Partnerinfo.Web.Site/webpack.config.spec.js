@@ -18,8 +18,8 @@ module.exports = {
     },
     entry: {
         spec: [
-            "jasmine",
-            "jasmine-reporters",
+            "jasmine-core",
+            //"jasmine-reporters",
             `./${srcFolder}/spec.ts`
         ]
     },
@@ -35,6 +35,9 @@ module.exports = {
             { test: /\.json$/, loader: "json-loader" },
             { test: /\.(png|jpg|jpeg|gif|svg)$/, loader: "url", query: { limit: 25000 } }
         ]
+    },
+    node: {
+        fs: "empty"
     },
     plugins: [
         new WebpackJasminePlugin({

@@ -51,13 +51,15 @@ module.exports = {
             path: path.join(__dirname, "wwwroot", outFolder, "[name]-manifest.json"),
             name: "[name]_[hash]"
         })
-    ].concat(
-        isDevBuild ? [] : [
-            new webpack.optimize.UglifyJsPlugin({
-                compress: { warnings: false },
-                comments: false,
-                minimize: true,
-                mangle: true
-            })
-        ])
+    ].concat(isDevBuild ? [
+        // Plugins that apply in development builds only.
+    ] : [
+        // Plugins that apply in production builds only.
+        new webpack.optimize.UglifyJsPlugin({
+            compress: { warnings: false },
+            comments: false,
+            minimize: true,
+            mangle: true
+        })
+    ])
 };

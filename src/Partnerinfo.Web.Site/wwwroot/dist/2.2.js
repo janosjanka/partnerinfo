@@ -1,1 +1,31 @@
-webpackJsonp([2],{21:function(e,n){e.exports='<div class="container">\r\n    <h1>About Page</h1>\r\n</div>\r\n\r\n<div class="container">\r\n    Megnéztük, milyen tervei vannak a demokrata Hillary Clintonnak és a republikánus Donald Trumpnak a techszektorral. A két jelölt a legtöbb kérdésben nagyon mást gondol arról, mit kéne vele kezdeni, de még ennél is nagyobb a különbség abban, hogy egyáltalán milyen súllyal kezelik a kérdést. Az idei elnökválasztás az ágazat képviselőiből is szokatlanul erőteljes reakciókat váltott ki. Clintonnak újra fájhat a feje, hogy külügyminiszterként magasról tett a biztonságos emailezésre, de még így is népszerűbb, mint az orosz kiberbűnözőkkel viccelődő ellenfele.\r\n</div>'},37:function(e,n,a){"use strict";var l=function(){function e(){}return e}();Object.defineProperty(n,"__esModule",{value:!0}),n["default"]={viewModel:l,template:a(21)}}});
+webpackJsonp([2],{
+
+/***/ 42:
+/***/ function(module, exports, __webpack_require__) {
+
+	// Copyright (c) János Janka. All rights reserved.
+	// Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
+	"use strict";
+	var AboutViewModel = (function () {
+	    function AboutViewModel() {
+	    }
+	    return AboutViewModel;
+	}());
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = {
+	    viewModel: AboutViewModel,
+	    template: __webpack_require__(43)
+	};
+
+
+/***/ },
+
+/***/ 43:
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"container\">\r\n    <h1>About Page</h1>\r\n</div>\r\n\r\n<div class=\"container\">\r\n    Megnéztük, milyen tervei vannak a demokrata Hillary Clintonnak és a republikánus Donald Trumpnak a techszektorral. A két jelölt a legtöbb kérdésben nagyon mást gondol arról, mit kéne vele kezdeni, de még ennél is nagyobb a különbség abban, hogy egyáltalán milyen súllyal kezelik a kérdést. Az idei elnökválasztás az ágazat képviselőiből is szokatlanul erőteljes reakciókat váltott ki. Clintonnak újra fájhat a feje, hogy külügyminiszterként magasról tett a biztonságos emailezésre, de még így is népszerűbb, mint az orosz kiberbűnözőkkel viccelődő ellenfele.\r\n</div>"
+
+/***/ }
+
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4vQ2xpZW50QXBwL3NyYy9jb21wb25lbnRzL3NoYXJlZC9hYm91dC50cyIsIi4uLy4uLy4vQ2xpZW50QXBwL3NyYy9jb21wb25lbnRzL3NoYXJlZC9hYm91dC5odG1sIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7O0FBQUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQSxFQUFDO0FBQ0QsK0NBQThDLGNBQWM7QUFDNUQ7QUFDQTtBQUNBO0FBQ0E7Ozs7Ozs7O0FDWkEsbXJCIiwiZmlsZSI6IjIuMi5qcyIsInNvdXJjZXNDb250ZW50IjpbIi8vIENvcHlyaWdodCAoYykgSsOhbm9zIEphbmthLiBBbGwgcmlnaHRzIHJlc2VydmVkLlxyXG4vLyBMaWNlbnNlZCB1bmRlciB0aGUgQXBhY2hlIExpY2Vuc2UsIFZlcnNpb24gMi4wLiBTZWUgTGljZW5zZS50eHQgaW4gdGhlIHByb2plY3Qgcm9vdCBmb3IgbGljZW5zZSBpbmZvcm1hdGlvbi5cclxuXCJ1c2Ugc3RyaWN0XCI7XHJcbnZhciBBYm91dFZpZXdNb2RlbCA9IChmdW5jdGlvbiAoKSB7XHJcbiAgICBmdW5jdGlvbiBBYm91dFZpZXdNb2RlbCgpIHtcclxuICAgIH1cclxuICAgIHJldHVybiBBYm91dFZpZXdNb2RlbDtcclxufSgpKTtcclxuT2JqZWN0LmRlZmluZVByb3BlcnR5KGV4cG9ydHMsIFwiX19lc01vZHVsZVwiLCB7IHZhbHVlOiB0cnVlIH0pO1xyXG5leHBvcnRzLmRlZmF1bHQgPSB7XHJcbiAgICB2aWV3TW9kZWw6IEFib3V0Vmlld01vZGVsLFxyXG4gICAgdGVtcGxhdGU6IHJlcXVpcmUoXCIuL2Fib3V0Lmh0bWxcIilcclxufTtcclxuXG5cblxuLyoqKioqKioqKioqKioqKioqXG4gKiogV0VCUEFDSyBGT09URVJcbiAqKiAuL34vdHMtbG9hZGVyP3tcInNpbGVudFwiOnRydWV9IS4vQ2xpZW50QXBwL3NyYy9jb21wb25lbnRzL3NoYXJlZC9hYm91dC50c1xuICoqIG1vZHVsZSBpZCA9IDQyXG4gKiogbW9kdWxlIGNodW5rcyA9IDJcbiAqKi8iLCJtb2R1bGUuZXhwb3J0cyA9IFwiPGRpdiBjbGFzcz1cXFwiY29udGFpbmVyXFxcIj5cXHJcXG4gICAgPGgxPkFib3V0IFBhZ2U8L2gxPlxcclxcbjwvZGl2PlxcclxcblxcclxcbjxkaXYgY2xhc3M9XFxcImNvbnRhaW5lclxcXCI+XFxyXFxuICAgIE1lZ27DqXp0w7xrLCBtaWx5ZW4gdGVydmVpIHZhbm5hayBhIGRlbW9rcmF0YSBIaWxsYXJ5IENsaW50b25uYWsgw6lzIGEgcmVwdWJsaWvDoW51cyBEb25hbGQgVHJ1bXBuYWsgYSB0ZWNoc3pla3RvcnJhbC4gQSBrw6l0IGplbMO2bHQgYSBsZWd0w7ZiYiBrw6lyZMOpc2JlbiBuYWd5b24gbcOhc3QgZ29uZG9sIGFycsOzbCwgbWl0IGvDqW5lIHZlbGUga2V6ZGVuaSwgZGUgbcOpZyBlbm7DqWwgaXMgbmFneW9iYiBhIGvDvGzDtm5ic8OpZyBhYmJhbiwgaG9neSBlZ3nDoWx0YWzDoW4gbWlseWVuIHPDumxseWFsIGtlemVsaWsgYSBrw6lyZMOpc3QuIEF6IGlkZWkgZWxuw7ZrdsOhbGFzenTDoXMgYXogw6FnYXphdCBrw6lwdmlzZWzFkWlixZFsIGlzIHN6b2thdGxhbnVsIGVyxZF0ZWxqZXMgcmVha2Npw7NrYXQgdsOhbHRvdHQga2kuIENsaW50b25uYWsgw7pqcmEgZsOhamhhdCBhIGZlamUsIGhvZ3kga8O8bMO8Z3ltaW5pc3p0ZXJrw6ludCBtYWdhc3LDs2wgdGV0dCBhIGJpenRvbnPDoWdvcyBlbWFpbGV6w6lzcmUsIGRlIG3DqWcgw61neSBpcyBuw6lwc3plcsWxYmIsIG1pbnQgYXogb3Jvc3oga2liZXJixbFuw7Z6xZFra2VsIHZpY2NlbMWRZMWRIGVsbGVuZmVsZS5cXHJcXG48L2Rpdj5cIlxuXG5cbi8qKioqKioqKioqKioqKioqKlxuICoqIFdFQlBBQ0sgRk9PVEVSXG4gKiogLi9DbGllbnRBcHAvc3JjL2NvbXBvbmVudHMvc2hhcmVkL2Fib3V0Lmh0bWxcbiAqKiBtb2R1bGUgaWQgPSA0M1xuICoqIG1vZHVsZSBjaHVua3MgPSAyXG4gKiovIl0sInNvdXJjZVJvb3QiOiIifQ==
