@@ -1,7 +1,7 @@
 ﻿// Copyright (c) János Janka. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
-const debug = process.argv.indexOf("--release") < 0;
+const isDevBuild = process.argv.indexOf("--dist") < 0;
 
 const path = require("path");
 const webpack = require("webpack");
@@ -27,8 +27,8 @@ module.exports = {
         loaders: [
             { test: /\.ts$/, include: new RegExp(srcFolder), loader: "ts", query: { silent: true } },
             { test: /\.html$/, loader: "raw" },
-            { test: /\.less$/, loader: debug ? "style!css!less" : webpackExtractCss.extract(["css", "less"]) },
-            { test: /\.css$/, loader: debug ? "style!css" : webpackExtractCss.extract(["css"]) },
+            { test: /\.less$/, loader: isDevBuild ? "style!css!less" : webpackExtractCss.extract(["css", "less"]) },
+            { test: /\.css$/, loader: isDevBuild ? "style!css" : webpackExtractCss.extract(["css"]) },
             { test: /\.json$/, loader: "json-loader" },
             { test: /\.(png|jpg|jpeg|gif|svg)$/, loader: "url", query: { limit: 25000 } }
         ]
@@ -38,7 +38,7 @@ module.exports = {
             context: __dirname,
             manifest: require(`./wwwroot/${outFolder}/corefx-manifest.json`)
         })
-    ].concat(debug ? [
+    ].concat(isDevBuild ? [
         // Plugins that apply in development builds only.
         new webpack.SourceMapDevToolPlugin({
             moduleFilenameTemplate: "../../[resourcePath]"

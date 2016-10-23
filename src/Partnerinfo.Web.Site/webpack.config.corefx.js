@@ -1,7 +1,7 @@
 // Copyright (c) János Janka. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
-const debug = process.argv.indexOf("--release") < 0;
+const isDevBuild = process.argv.indexOf("--dist") < 0;
 
 const path = require("path");
 const webpack = require("webpack");
@@ -52,7 +52,7 @@ module.exports = {
             name: "[name]_[hash]"
         })
     ].concat(
-        debug ? [] : [
+        isDevBuild ? [] : [
             new webpack.optimize.UglifyJsPlugin({
                 compress: { warnings: false },
                 comments: false,
