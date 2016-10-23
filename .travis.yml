@@ -1,8 +1,7 @@
 language: node_js
 
 node_js:
-  - 'stable'
-  - '4'
+  - '6.1'
 
 sudo: false
 
@@ -18,7 +17,6 @@ branches:
 
 install:
   - npm install
-  - npm update
 
 cache:
   directories:
@@ -26,3 +24,6 @@ cache:
 
 git:
   depth: 1
+
+script:
+  - npm test
