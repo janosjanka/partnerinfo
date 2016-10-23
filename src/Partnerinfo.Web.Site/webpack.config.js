@@ -8,25 +8,25 @@ const webpack = require("webpack");
 const WebpackTextPlugin = require("extract-text-webpack-plugin");
 const webpackExtractCss = new WebpackTextPlugin("[name].css");
 
-const srcFolder = "ClientApp";
-const dstFolder = "dist";
-const dstFullPath = path.join("wwwroot", dstFolder);
+const srcFolderName = "ClientApp";
+const dstFolderName = "dist";
+const dstRelativePath = path.join("wwwroot", dstFolderName);
 
 module.exports = {
     output: {
-        path: path.join(__dirname, "wwwroot", dstFolder),
+        path: path.join(__dirname, dstRelativePath),
         filename: `[name].js`,
-        publicPath: `/${dstFolder}/`
+        publicPath: `/${dstFolderName}/`
     },
     entry: {
-        main: [`./${srcFolder}/main.ts`]
+        main: [`./${srcFolderName}/main.ts`]
     },
     resolve: {
         extensions: ["", ".js", ".ts"]
     },
     module: {
         loaders: [
-            { test: /\.ts$/, include: new RegExp(srcFolder), loader: "ts", query: { silent: true } },
+            { test: /\.ts$/, include: new RegExp(srcFolderName), loader: "ts", query: { silent: true } },
             { test: /\.html$/, loader: "raw" },
             { test: /\.less$/, loader: isDevBuild ? "style!css!less" : webpackExtractCss.extract(["css", "less"]) },
             { test: /\.css$/, loader: isDevBuild ? "style!css" : webpackExtractCss.extract(["css"]) },
@@ -37,13 +37,13 @@ module.exports = {
     plugins: [
         new webpack.DllReferencePlugin({
             context: __dirname,
-            manifest: require(`./${dstFullPath}/corefx-manifest.json`)
+            manifest: require(`./${dstRelativePath}/corefx-manifest.json`)
         })
     ].concat(isDevBuild ? [
         // Plugins that apply in development builds only.
         new webpack.SourceMapDevToolPlugin({
             filename: "[file].map",
-            moduleFilenameTemplate: path.relative(dstFullPath, "[resourcePath]")
+            moduleFilenameTemplate: path.relative(dstRelativePath, "[resourcePath]")
         })
     ] : [
         // Plugins that apply in production builds only.

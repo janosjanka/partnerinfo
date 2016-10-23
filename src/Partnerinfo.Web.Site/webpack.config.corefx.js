@@ -8,13 +8,13 @@ const webpack = require("webpack");
 const WebpackTextPlugin = require("extract-text-webpack-plugin");
 const webpackExtractCss = new WebpackTextPlugin("[name].css");
 
-const srcFolder = "ClientApp";
-const dstFolder = "dist";
-const dstFullPath = path.join("wwwroot", dstFolder);
+const srcFolderName = "ClientApp";
+const dstFolderName = "dist";
+const dstRelativePath = path.join("wwwroot", dstFolderName);
 
 module.exports = {
     output: {
-        path: path.join(__dirname, dstFullPath),
+        path: path.join(__dirname, dstRelativePath),
         filename: "[name].js",
         library: "[name]_[hash]",
     },
@@ -33,7 +33,7 @@ module.exports = {
             "es6-promise",
             "jquery",
             "bootstrap",
-            `./${srcFolder}/less/bootstrap.less`,
+            `./${srcFolderName}/less/bootstrap.less`,
             "knockout",
             "knockout.validation",
             "knockout-bootstrap",
@@ -49,7 +49,7 @@ module.exports = {
         new webpack.ProvidePlugin({ $: "jquery", jQuery: "jquery" }),
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.DllPlugin({
-            path: path.join(__dirname, dstFullPath, "[name]-manifest.json"),
+            path: path.join(__dirname, dstRelativePath, "[name]-manifest.json"),
             name: "[name]_[hash]"
         })
     ].concat(isDevBuild ? [
