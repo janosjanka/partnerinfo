@@ -13,7 +13,7 @@ namespace Partnerinfo
         [InlineData(GeoDegreePrecision.TownOrVillage)]
         [InlineData(GeoDegreePrecision.Neighborhood)]
         [InlineData(GeoDegreePrecision.IndividualStreet)]
-        public void EqualsWithTheSamePrecision(GeoDegreePrecision precision)
+        public void EqualsInPrecisionRange(GeoDegreePrecision precision)
         {
             var coordinate1 = new GeoCoordinateInfo(47.53333, 21.63333, precision);
             var coordinate2 = new GeoCoordinateInfo(47.5333367, 21.6333367, precision);
