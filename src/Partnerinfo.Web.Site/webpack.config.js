@@ -5,8 +5,8 @@ const debug = process.argv.indexOf("--release") < 0;
 
 const path = require("path");
 const webpack = require("webpack");
-const webpackExtractText = require("extract-text-webpack-plugin");
-const webpackExtractCss = new webpackExtractText("[name].css");
+const webpackExtractTxt = require("extract-text-webpack-plugin");
+const webpackExtractCss = new webpackExtractTxt("[name].css");
 
 const srcFolder = "ClientApp";
 const outFolder = "dist";
@@ -27,7 +27,7 @@ module.exports = {
         loaders: [
             { test: /\.ts$/, include: new RegExp(srcFolder), loader: "ts", query: { silent: true } },
             { test: /\.html$/, loader: "raw" },
-            { test: /\.less$/, loader: debug ? "less" : webpackExtractCss.extract(["less"]) },
+            { test: /\.less$/, loader: debug ? "style!css!less" : webpackExtractCss.extract(["css", "less"]) },
             { test: /\.css$/, loader: debug ? "style!css" : webpackExtractCss.extract(["css"]) },
             { test: /\.json$/, loader: "json-loader" },
             { test: /\.(png|jpg|jpeg|gif|svg)$/, loader: "url", query: { limit: 25000 } }

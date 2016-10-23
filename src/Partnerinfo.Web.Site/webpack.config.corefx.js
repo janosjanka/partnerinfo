@@ -1,25 +1,30 @@
 // Copyright (c) János Janka. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
+const debug = process.argv.indexOf("--release") < 0;
+
 const path = require("path");
 const webpack = require("webpack");
-const webpackExtractText = require("extract-text-webpack-plugin");
-const webpackExtractCSS = new webpackExtractText("[name].css");
-const webpackExtractLESS = new webpackExtractText("[name].css");
+const webpackExtractTxt = require("extract-text-webpack-plugin");
+const webpackExtractCss = new webpackExtractTxt("[name].css");
 
-const isDevEnv = process.env.ASPNETCORE_ENVIRONMENT === "Development";
 const srcFolder = "ClientApp";
 const outFolder = "dist";
 
 module.exports = {
+    output: {
+        path: path.join(__dirname, "wwwroot", outFolder),
+        filename: "[name].js",
+        library: "[name]_[hash]",
+    },
     resolve: {
         extensions: ["", ".js"]
     },
     module: {
         loaders: [
-            { test: /\.css$/i, loader: webpackExtractCSS.extract(["css"]) },
-            { test: /\.less$/i, loader: webpackExtractLESS.extract(["css", "less"]) },
-            { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: "url-loader?limit=100000" }
+            { test: /\.less$/, loader: webpackExtractCss.extract(["css", "less"]) },
+            { test: /\.css$/, loader: webpackExtractCss.extract(["css"]) },
+            { test: /\.(png|jpg|jpeg|gif|svg)$/, loader: "url", query: { limit: 25000 } }
         ]
     },
     entry: {
@@ -38,14 +43,8 @@ module.exports = {
             "i18next-xhr-backend"
         ]
     },
-    output: {
-        path: path.join(__dirname, "wwwroot", outFolder),
-        filename: "[name].js",
-        library: "[name]_[hash]",
-    },
     plugins: [
-        webpackExtractCSS,
-        webpackExtractLESS,
+        webpackExtractCss,
         new webpack.ProvidePlugin({ $: "jquery", jQuery: "jquery" }),
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.DllPlugin({
@@ -53,7 +52,7 @@ module.exports = {
             name: "[name]_[hash]"
         })
     ].concat(
-        isDevEnv ? [] : [
+        debug ? [] : [
             new webpack.optimize.UglifyJsPlugin({
                 compress: { warnings: false },
                 comments: false,
