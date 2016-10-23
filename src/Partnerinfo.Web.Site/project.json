@@ -68,8 +68,8 @@
   "scripts": {
     "prepublish": [
       "npm install",
-      "node node_modules/webpack/bin/webpack.js --config webpack.config.bootstrap.js --env.prod",
-      "node node_modules/webpack/bin/webpack.js --env.prod"
+      "node node_modules/webpack/bin/webpack.js --config webpack.config.bootstrap.js --release",
+      "node node_modules/webpack/bin/webpack.js --release"
     ],
     "postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ]
   },

@@ -16,19 +16,14 @@ module.exports = {
         extensions: ["", ".js"]
     },
     module: {
-        loaders: [{
-            test: /\.css$/i,
-            loader: webpackExtractCSS.extract(["css"])
-        }, {
-            test: /\.less$/i,
-            loader: webpackExtractLESS.extract(["css", "less"])
-        }, {
-            test: /\.(png|woff|woff2|eot|ttf|svg)$/,
-            loader: "url-loader?limit=100000"
-        }]
+        loaders: [
+            { test: /\.css$/i, loader: webpackExtractCSS.extract(["css"]) },
+            { test: /\.less$/i, loader: webpackExtractLESS.extract(["css", "less"]) },
+            { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: "url-loader?limit=100000" }
+        ]
     },
     entry: {
-        bootstrap: [
+        corefx: [
             "es6-promise",
             "jquery",
             "bootstrap",

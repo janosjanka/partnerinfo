@@ -1,39 +1,57 @@
 ﻿// Copyright (c) János Janka. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
+const debug = process.argv.indexOf("--release") < 0;
+
 const path = require("path");
 const webpack = require("webpack");
-const webpackMerge = require("webpack-merge");
-const webpackConfigDebug = require("./webpack.config.debug");
-const webpackConfigRelease = require("./webpack.config.release");
+const webpackExtractText = require("extract-text-webpack-plugin");
+const webpackExtractCss = new webpackExtractText("[name].css");
 
-const isDevEnv = process.env.ASPNETCORE_ENVIRONMENT === "Development";
 const srcFolder = "ClientApp";
 const outFolder = "dist";
 
-module.exports = webpackMerge({
-    resolve: {
-        extensions: ["", ".js", ".ts"]
-    },
-    module: {
-        loaders: [
-            { test: /\.ts$/, include: new RegExp(srcFolder), loader: "ts-loader?silent=true" },
-            { test: /\.html$/, loader: "raw-loader" },
-            { test: /\.json$/, loader: "json-loader" }
-        ]
-    },
-    entry: {
-        main: [`./${srcFolder}/main.ts`]
-    },
+module.exports = {
     output: {
         path: path.join(__dirname, "wwwroot", outFolder),
         filename: `[name].js`,
         publicPath: `/${outFolder}/`
     },
+    entry: {
+        main: [`./${srcFolder}/main.ts`]
+    },
+    resolve: {
+        extensions: ["", ".js", ".ts"]
+    },
+    module: {
+        loaders: [
+            { test: /\.ts$/, include: new RegExp(srcFolder), loader: "ts", query: { silent: true } },
+            { test: /\.html$/, loader: "raw" },
+            { test: /\.less$/, loader: debug ? "less" : webpackExtractCss.extract(["less"]) },
+            { test: /\.css$/, loader: debug ? "style!css" : webpackExtractCss.extract(["css"]) },
+            { test: /\.json$/, loader: "json-loader" },
+            { test: /\.(png|jpg|jpeg|gif|svg)$/, loader: "url", query: { limit: 25000 } }
+        ]
+    },
     plugins: [
         new webpack.DllReferencePlugin({
             context: __dirname,
-            manifest: require(`./wwwroot/${outFolder}/bootstrap-manifest.json`)
+            manifest: require(`./wwwroot/${outFolder}/corefx-manifest.json`)
         })
-    ]
-}, isDevEnv ? webpackConfigDebug : webpackConfigRelease);
+    ].concat(debug ? [
+        // Plugins that apply in development builds only.
+        new webpack.SourceMapDevToolPlugin({
+            moduleFilenameTemplate: "../../[resourcePath]"
+        })
+    ] : [
+        // Plugins that apply in production builds only.
+        webpackExtractCss,
+        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: { warnings: false },
+            comments: false,
+            minimize: true,
+            mangle: true
+        })
+    ])
+};
