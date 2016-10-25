@@ -41,7 +41,7 @@ namespace Partnerinfo
         public void ConfigureIdentity(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory logFactory)
         {
             // For more details on creating database during deployment see http://go.microsoft.com/fwlink/?LinkID=615859
-            //if (!env.IsDevelopment())
+            if (!env.IsDevelopment())
             {
                 try
                 {
