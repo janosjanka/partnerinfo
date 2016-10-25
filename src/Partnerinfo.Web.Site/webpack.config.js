@@ -1,35 +1,31 @@
 ﻿// Copyright (c) János Janka. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
-const isDevBuild = process.argv.indexOf("--dist") < 0;
+const config = require("./comm.config");
 
 const path = require("path");
 const webpack = require("webpack");
 const WebpackTextPlugin = require("extract-text-webpack-plugin");
 const webpackExtractCss = new WebpackTextPlugin("[name].css");
 
-const srcFolderName = "ClientApp";
-const dstFolderName = "dist";
-const dstRelativePath = path.join("wwwroot", dstFolderName);
-
 module.exports = {
     output: {
-        path: path.join(__dirname, dstRelativePath),
+        path: path.join(__dirname, config.dstRelativePath),
         filename: `[name].js`,
-        publicPath: `/${dstFolderName}/`
+        publicPath: `/${config.dstFolderName}/`
     },
     entry: {
-        main: [`./${srcFolderName}/main.ts`]
+        main: [`./${config.srcFolderName}/main.ts`]
     },
     resolve: {
         extensions: ["", ".js", ".ts"]
     },
     module: {
         loaders: [
-            { test: /\.ts$/, include: new RegExp(srcFolderName), loader: "ts", query: { silent: true } },
+            { test: /\.ts$/, include: new RegExp(config.srcFolderName), loader: "ts", query: { silent: true } },
             { test: /\.html$/, loader: "raw" },
-            { test: /\.less$/, loader: isDevBuild ? "style!css!less" : webpackExtractCss.extract(["css", "less"]) },
-            { test: /\.css$/, loader: isDevBuild ? "style!css" : webpackExtractCss.extract(["css"]) },
+            { test: /\.less$/, loader: config.isDevBuild ? "style!css!less" : webpackExtractCss.extract(["css", "less"]) },
+            { test: /\.css$/, loader: config.isDevBuild ? "style!css" : webpackExtractCss.extract(["css"]) },
             { test: /\.json$/, loader: "json-loader" },
             { test: /\.(png|jpg|jpeg|gif|svg)$/, loader: "url", query: { limit: 25000 } }
         ]
@@ -37,13 +33,13 @@ module.exports = {
     plugins: [
         new webpack.DllReferencePlugin({
             context: __dirname,
-            manifest: require(`./${dstRelativePath}/corefx-manifest.json`)
+            manifest: require(`./${config.dstRelativePath}/corefx-manifest.json`)
         })
-    ].concat(isDevBuild ? [
+    ].concat(config.isDevBuild ? [
         // Plugins that apply in development builds only.
         new webpack.SourceMapDevToolPlugin({
             filename: "[file].map",
-            moduleFilenameTemplate: path.relative(dstRelativePath, "[resourcePath]")
+            moduleFilenameTemplate: path.relative(config.dstRelativePath, "[resourcePath]")
         })
     ] : [
         // Plugins that apply in production builds only.

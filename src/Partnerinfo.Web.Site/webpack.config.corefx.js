@@ -1,20 +1,16 @@
 // Copyright (c) János Janka. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
-const isDevBuild = process.argv.indexOf("--dist") < 0;
+const config = require("./comm.config");
 
 const path = require("path");
 const webpack = require("webpack");
 const WebpackTextPlugin = require("extract-text-webpack-plugin");
 const webpackExtractCss = new WebpackTextPlugin("[name].css");
 
-const srcFolderName = "ClientApp";
-const dstFolderName = "dist";
-const dstRelativePath = path.join("wwwroot", dstFolderName);
-
 module.exports = {
     output: {
-        path: path.join(__dirname, dstRelativePath),
+        path: path.join(__dirname, config.dstRelativePath),
         filename: "[name].js",
         library: "[name]_[hash]",
     },
@@ -33,7 +29,7 @@ module.exports = {
             "es6-promise",
             "jquery",
             "bootstrap",
-            `./${srcFolderName}/less/bootstrap.less`,
+            `./${config.srcFolderName}/less/bootstrap.less`,
             "knockout",
             "knockout.validation",
             "knockout-bootstrap",
@@ -49,10 +45,10 @@ module.exports = {
         new webpack.ProvidePlugin({ $: "jquery", jQuery: "jquery" }),
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.DllPlugin({
-            path: path.join(__dirname, dstRelativePath, "[name]-manifest.json"),
+            path: path.join(__dirname, config.dstRelativePath, "[name]-manifest.json"),
             name: "[name]_[hash]"
         })
-    ].concat(isDevBuild ? [
+    ].concat(config.isDevBuild ? [
         // Plugins that apply in development builds only.
     ] : [
         // Plugins that apply in production builds only.
