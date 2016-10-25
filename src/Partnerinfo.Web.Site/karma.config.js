@@ -1,7 +1,7 @@
 ﻿// Copyright (c) János Janka. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
-const commonConfig = require("./comm.config");
+const commonConfig = require("./common.config");
 const webpackConfig = require("./webpack.config");
 const searchPattern = `${commonConfig.appSpecName}/**/*.ts`;
 
