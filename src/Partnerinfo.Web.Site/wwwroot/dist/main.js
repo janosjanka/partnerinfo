@@ -380,9 +380,9 @@
 	    // This Knockout component loader integrates with Webpack's lazy-loaded bundle feature.
 	    // ko.components.register("component", require("bundle?lazy!../some-path-to-a-js-or-ts-module"));
 	    // and then it will be loaded on demand instead of being loaded up front.
-	    loadComponent: function (name, componentConfig, callback) {
-	        if (typeof componentConfig === "function") {
-	            componentConfig(function (loadedModule) {
+	    loadComponent: function (name, config, callback) {
+	        if (typeof config === "function") {
+	            config(function (loadedModule) {
 	                if (loadedModule.__esModule && loadedModule.default) {
 	                    loadedModule = loadedModule.default;
 	                }
