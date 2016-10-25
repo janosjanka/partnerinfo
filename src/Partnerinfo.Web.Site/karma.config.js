@@ -1,12 +1,14 @@
 ﻿// Copyright (c) János Janka. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
+const commonConfig = require("./comm.config");
 const webpackConfig = require("./webpack.config");
+const searchPattern = `${commonConfig.appSpecName}/**/*.ts`;
 
 module.exports = function (config) {
     config.set({
         // Base path that will be used to resolve all patterns (eg. files, exclude).
-        basePath: "ClientApp",
+        basePath: commonConfig.appRoot,
 
         // Frameworks to use.
         // Available frameworks: https://npmjs.org/browse/keyword/karma-adapter
@@ -14,13 +16,13 @@ module.exports = function (config) {
 
         // List of files / patterns to load in the browser.
         files: [
-          "spec/**/*.ts"
+          searchPattern
         ],
 
         // Preprocess matching files before serving them to the browser.
         // Available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
-            "spec/**/*.ts": ["webpack"]
+            [searchPattern]: ["webpack"]
         },
 
         // Webpack configuration.

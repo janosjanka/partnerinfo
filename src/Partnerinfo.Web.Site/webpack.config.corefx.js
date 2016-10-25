@@ -10,7 +10,7 @@ const webpackExtractCss = new WebpackTextPlugin("[name].css");
 
 module.exports = {
     output: {
-        path: path.join(__dirname, config.dstRelativePath),
+        path: path.join(__dirname, config.outDistPath),
         filename: "[name].js",
         library: "[name]_[hash]",
     },
@@ -29,7 +29,7 @@ module.exports = {
             "es6-promise",
             "jquery",
             "bootstrap",
-            `./${config.srcFolderName}/less/bootstrap.less`,
+            `./${config.appLessPath}/bootstrap.less`,
             "knockout",
             "knockout.validation",
             "knockout-bootstrap",
@@ -45,10 +45,10 @@ module.exports = {
         new webpack.ProvidePlugin({ $: "jquery", jQuery: "jquery" }),
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.DllPlugin({
-            path: path.join(__dirname, config.dstRelativePath, "[name]-manifest.json"),
+            path: path.join(__dirname, config.outDistPath, "[name]-manifest.json"),
             name: "[name]_[hash]"
         })
-    ].concat(config.isDevBuild ? [
+    ].concat(config.debug ? [
         // Plugins that apply in development builds only.
     ] : [
         // Plugins that apply in production builds only.

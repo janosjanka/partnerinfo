@@ -10,22 +10,22 @@ const webpackExtractCss = new WebpackTextPlugin("[name].css");
 
 module.exports = {
     output: {
-        path: path.join(__dirname, config.dstRelativePath),
+        path: path.join(__dirname, config.outDistPath),
         filename: `[name].js`,
-        publicPath: `/${config.dstFolderName}/`
+        publicPath: `/${config.outDistName}/`
     },
     entry: {
-        main: [`./${config.srcFolderName}/main.ts`]
+        main: [`./${config.appRoot}/main.ts`]
     },
     resolve: {
         extensions: ["", ".js", ".ts"]
     },
     module: {
         loaders: [
-            { test: /\.ts$/, include: new RegExp(config.srcFolderName), loader: "ts", query: { silent: true } },
+            { test: /\.ts$/, include: new RegExp(config.appRoot), loader: "ts", query: { silent: true } },
             { test: /\.html$/, loader: "raw" },
-            { test: /\.less$/, loader: config.isDevBuild ? "style!css!less" : webpackExtractCss.extract(["css", "less"]) },
-            { test: /\.css$/, loader: config.isDevBuild ? "style!css" : webpackExtractCss.extract(["css"]) },
+            { test: /\.less$/, loader: config.debug ? "style!css!less" : webpackExtractCss.extract(["css", "less"]) },
+            { test: /\.css$/, loader: config.debug ? "style!css" : webpackExtractCss.extract(["css"]) },
             { test: /\.json$/, loader: "json-loader" },
             { test: /\.(png|jpg|jpeg|gif|svg)$/, loader: "url", query: { limit: 25000 } }
         ]
@@ -33,13 +33,13 @@ module.exports = {
     plugins: [
         new webpack.DllReferencePlugin({
             context: __dirname,
-            manifest: require(`./${config.dstRelativePath}/corefx-manifest.json`)
+            manifest: require(`./${config.outDistPath}/corefx-manifest.json`)
         })
-    ].concat(config.isDevBuild ? [
+    ].concat(config.debug ? [
         // Plugins that apply in development builds only.
         new webpack.SourceMapDevToolPlugin({
             filename: "[file].map",
-            moduleFilenameTemplate: path.relative(config.dstRelativePath, "[resourcePath]")
+            moduleFilenameTemplate: path.relative(config.outDistPath, "[resourcePath]")
         })
     ] : [
         // Plugins that apply in production builds only.
