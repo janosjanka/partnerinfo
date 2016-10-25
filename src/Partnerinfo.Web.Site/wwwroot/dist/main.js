@@ -223,20 +223,20 @@
 	var ko = __webpack_require__(6);
 	__webpack_require__(10);
 	var typeahead_1 = __webpack_require__(11);
-	var webpack_loader_1 = __webpack_require__(13);
+	var webpack_1 = __webpack_require__(13);
 	var colorpicker_1 = __webpack_require__(14);
 	var countdown_1 = __webpack_require__(16);
 	var cultures_1 = __webpack_require__(18);
 	var timespan_1 = __webpack_require__(20);
 	var validationerrors_1 = __webpack_require__(22);
 	//
-	// Register KO loaders.
-	//
-	ko.components.loaders.unshift(webpack_loader_1.default);
-	//
 	// Register KO extenders.
 	//
 	ko.bindingHandlers.typeahead = typeahead_1.default;
+	//
+	// Register KO loaders.
+	//
+	ko.components.loaders.unshift(webpack_1.default);
 	//
 	// Register KO components.
 	//   ui- => Standard UI components

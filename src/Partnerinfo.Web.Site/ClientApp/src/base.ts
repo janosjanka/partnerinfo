@@ -8,7 +8,7 @@ import "./extenders/i18n";
 
 import typeahead from "./bindingHandlers/typeahead";
 
-import webpackLoader from "./components/webpack-loader";
+import webpackLoader from "./components/loaders/webpack";
 import colorPicker from "./components/controls/colorpicker";
 import countdown from "./components/controls/countdown";
 import cultures from "./components/controls/cultures";
@@ -16,14 +16,14 @@ import timeSpan from "./components/controls/timespan";
 import validationErrors from "./components/controls/validationerrors";
 
 //
-// Register KO loaders.
-//
-ko.components.loaders.unshift(webpackLoader);
-
-//
 // Register KO extenders.
 //
 ko.bindingHandlers.typeahead = typeahead;
+
+//
+// Register KO loaders.
+//
+ko.components.loaders.unshift(webpackLoader);
 
 //
 // Register KO components.

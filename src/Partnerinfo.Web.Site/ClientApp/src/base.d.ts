@@ -27,14 +27,6 @@ interface Validable {
 interface Serializable {
 
     /** Serializes this object to a native JS object. */
-    toObject(): Object;
-
-}
-
-/** Defines a provider for progress updates. */
-interface Progress<T> {
-
-    /** Reports a progress update. */
-    report(value: T): void;
+    toObject(): any;
 
 }
