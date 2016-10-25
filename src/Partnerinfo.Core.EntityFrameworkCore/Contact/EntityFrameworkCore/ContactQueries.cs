@@ -62,17 +62,17 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
                 Id = c.Id
             };
 
-            if (fields.HasFlag(ContactQueryFields.Sponsor))
+            if ((fields & ContactQueryFields.Sponsor) == ContactQueryFields.Sponsor)
             {
                 selector = selector.Merge(c => new ContactItem { });
             }
 
-            if (fields.HasFlag(ContactQueryFields.Attributes))
+            if ((fields & ContactQueryFields.Attributes) == ContactQueryFields.Attributes)
             {
                 selector = selector.Merge(c => new ContactItem { });
             }
 
-            if (fields.HasFlag(ContactQueryFields.BusinessTags))
+            if ((fields & ContactQueryFields.BusinessTags) == ContactQueryFields.BusinessTags)
             {
                 selector = selector.Merge(c => new ContactItem { });
             }

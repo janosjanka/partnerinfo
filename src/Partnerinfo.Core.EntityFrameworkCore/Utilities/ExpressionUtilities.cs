@@ -29,7 +29,7 @@ namespace Partnerinfo.Utilities
         {
             //
             //  Expression<Func<Project, ProjectDto>> selector = project => new ProjectDto { Name = project.Name };
-            // 
+            //
             //  if (fields.HasFlag(ProjectField.Owner))
             //  {
             //      selector = selector.Merge(project => new ProjectDto { Owner = project.Owner });
@@ -46,6 +46,7 @@ namespace Partnerinfo.Utilities
         /// <typeparam name="TSource">Source data type.</typeparam>
         /// <typeparam name="TBaseDest">Resulting type of the base query.</typeparam>
         /// <typeparam name="TExtendedDest">Resulting type of the merged expression.</typeparam>
+        /// <seealso cref="System.Linq.Expressions.ExpressionVisitor" />
         private sealed class MergingVisitor<TSource, TBaseDest, TExtendedDest> : ExpressionVisitor
         {
             /// <summary>
@@ -72,12 +73,11 @@ namespace Partnerinfo.Utilities
                 }
 
                 /// <summary>
-                /// Whenever a memberaccess is done that access the old parameter, rewrite
-                /// it to access the new parameter instead.
+                /// Visits the children of the <see cref="T:System.Linq.Expressions.MemberExpression" />.
                 /// </summary>
-                /// <param name="node">Member expression to visit.</param>
+                /// <param name="node">The expression to visit.</param>
                 /// <returns>
-                /// Possibly rewritten member access node.
+                /// The modified expression, if it or any subexpression was modified; otherwise, returns the original expression.
                 /// </returns>
                 protected override Expression VisitMember(MemberExpression node)
                 {
@@ -106,11 +106,13 @@ namespace Partnerinfo.Utilities
             }
 
             /// <summary>
-            /// Pick up the extended expressions range variable.
+            /// Visits the children of the <see cref="T:System.Linq.Expressions.Expression`1" />.
             /// </summary>
-            /// <typeparam name="T">Not used</typeparam>
-            /// <param name="node">Lambda expression node</param>
-            /// <returns>Unmodified expression tree</returns>
+            /// <typeparam name="T">The type of the delegate.</typeparam>
+            /// <param name="node">The expression to visit.</param>
+            /// <returns>
+            /// The modified expression, if it or any subexpression was modified; otherwise, returns the original expression.
+            /// </returns>
             protected override Expression VisitLambda<T>(Expression<T> node)
             {
                 if (_newParameter == null)
@@ -122,17 +124,18 @@ namespace Partnerinfo.Utilities
             }
 
             /// <summary>
-            /// Visit the member init expression of the extended expression. Merge the base 
-            /// expression into it.
+            /// Visits the children of the <see cref="T:System.Linq.Expressions.MemberInitExpression" />.
             /// </summary>
-            /// <param name="node">Member init expression node.</param>
-            /// <returns>Merged member init expression.</returns>
+            /// <param name="node">The expression to visit.</param>
+            /// <returns>
+            /// The modified expression, if it or any subexpression was modified; otherwise, returns the original expression.
+            /// </returns>
             protected override Expression VisitMemberInit(MemberInitExpression node)
             {
-                var rebindVisitor = new LambdaRebindingVisitor(_newParameter, _baseParameter);
-                var reboundBaseInit = (MemberInitExpression)rebindVisitor.Visit(_baseInit);
-                var mergedInitList = node.Bindings.Concat(reboundBaseInit.Bindings);
-                return Expression.MemberInit(Expression.New(typeof(TExtendedDest)), mergedInitList);
+                var rebindingVisitor = new LambdaRebindingVisitor(_newParameter, _baseParameter);
+                var baseInitExpression = (MemberInitExpression)rebindingVisitor.Visit(_baseInit);
+                var mergedInitListBindings = node.Bindings.Concat(baseInitExpression.Bindings);
+                return Expression.MemberInit(Expression.New(typeof(TExtendedDest)), mergedInitListBindings);
             }
         }
     }
