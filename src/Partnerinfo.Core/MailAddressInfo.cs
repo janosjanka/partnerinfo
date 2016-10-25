@@ -51,7 +51,7 @@ namespace Partnerinfo
         /// </returns>
         public bool Equals(MailAddressInfo other) => 
             string.Equals(Address, other?.Address, StringComparison.OrdinalIgnoreCase) &&
-            string.Equals(DisplayName, other?.DisplayName, StringComparison.OrdinalIgnoreCase);
+            string.Equals(DisplayName, other?.DisplayName, StringComparison.CurrentCultureIgnoreCase);
 
         /// <summary>
         /// Determines whether the specified <see cref="System.Object" />, is equal to this instance.
