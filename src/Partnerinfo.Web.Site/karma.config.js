@@ -3,7 +3,8 @@
 
 const commonConfig = require("./common.config");
 const webpackConfig = require("./webpack.config");
-const searchPattern = `${commonConfig.appSpecName}/**/*.ts`;
+
+const specSearchPattern = `${commonConfig.appSpecName}/**/*.spec.ts`;
 
 module.exports = function (config) {
     config.set({
@@ -16,13 +17,13 @@ module.exports = function (config) {
 
         // List of files / patterns to load in the browser.
         files: [
-          searchPattern
+            { pattern: specSearchPattern, watched: true, served: true, included: true }
         ],
 
         // Preprocess matching files before serving them to the browser.
         // Available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
-            [searchPattern]: ["webpack"]
+            [specSearchPattern]: ["webpack"]
         },
 
         // Webpack configuration.
@@ -36,7 +37,7 @@ module.exports = function (config) {
         // Test results reporter to use.
         // Possible values: "dots", "progress".
         // Available reporters: https://npmjs.org/browse/keyword/karma-reporter
-        reporters: ["progress", "kjhtml"],
+        reporters: ["dots", "progress", "kjhtml", "coverage"],
 
         // Web server port.
         port: 9876,
