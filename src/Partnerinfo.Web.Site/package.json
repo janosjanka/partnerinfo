@@ -14,7 +14,8 @@
     "build:dist": "npm install && npm run build:dist:lib && npm run build:dist:app",
     "build:dist:lib": "node node_modules/webpack/bin/webpack.js --dist --config webpack.config.corefx.js",
     "build:dist:app": "node node_modules/webpack/bin/webpack.js --dist",
-    "test": "karma start --no-single-run karma.config.js"
+    "test:single": "karma start karma.config.js",
+    "test:integrated": "karma start --no-single-run karma.config.js"
   },
   "dependencies": {
     "bootstrap": "^3.3.7",
