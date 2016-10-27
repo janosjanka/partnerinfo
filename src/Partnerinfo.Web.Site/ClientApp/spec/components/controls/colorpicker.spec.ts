@@ -6,6 +6,14 @@ import * as ko from "knockout";
 import "../../../src/jasmine/extensions";
 import colorPicker from "../../../src/components/controls/colorpicker";
 
+function rgb2hex(rgb: string): string {
+    const matchArray = rgb.match(/^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i);
+    return (matchArray && matchArray.length === 4) ? "#" +
+        ("0" + parseInt(matchArray[1], 10).toString(16)).slice(-2) +
+        ("0" + parseInt(matchArray[2], 10).toString(16)).slice(-2) +
+        ("0" + parseInt(matchArray[3], 10).toString(16)).slice(-2) : null;
+}
+
 describe("Components > Controls > ColorPicker", () => {
     const testComponentName = "ui-colorpicker";
 
@@ -27,7 +35,9 @@ describe("Components > Controls > ColorPicker", () => {
         ko.tasks.schedule(() => {
             const itemList = jasmine.testNode.querySelectorAll(".ui-colorpicker-item") as NodeListOf<HTMLElement>;
             for (let i = 0; i < itemList.length; ++i) {
-                expect(parseInt(itemList[i].style.backgroundColor)).toEqual(parseInt(testComponentParams.value()));
+                const item = itemList[i];
+                item.click();
+                expect(rgb2hex(item.style.backgroundColor)).toEqual(testComponentParams.value());
             }
             done();
         });
