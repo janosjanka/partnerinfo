@@ -4,6 +4,8 @@
 
 /// <reference path="extensions.d.ts" />
 
+import * as $ from "jquery";
+
 /**
  * The bindings specs make frequent use of this utility function to set up
  * a clean new DOM node they can execute code against.
