@@ -2,7 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 // https://github.com/knockout/knockout/blob/master/spec/lib/jasmine.extensions.js
 
-/// <reference path="extensions.d.ts" />
+/// <reference path="jasmine.d.ts" />
 import * as $ from "jquery";
 import "jasmine-jquery";
 
