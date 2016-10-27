@@ -23,7 +23,7 @@ describe("Components > Controls > ColorPicker", () => {
     });
 
     it("throws if the selected value is not white", () => {
-        ko.utils.setHtml(jasmine.testNode, `<div data-bind="component: { name: 'ui-colorpicker', params: { value: '#ffffff' } }"></div>`);
+        ko.utils.setHtml(jasmine.testNode, `<div data-bind="component: { name: 'ui-colorpicker' }"></div>`);
         ko.applyBindings({ value: "#ffffff" }, jasmine.testNode);
         expect(ko.unwrap(ko.dataFor(jasmine.testNode).value)).toEqual("#ffffff");
     });
