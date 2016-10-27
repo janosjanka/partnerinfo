@@ -6,9 +6,9 @@ import "../../../src/utilities/jasmine";
 import * as color from "../../../src/utilities/color";
 import colorPicker from "../../../src/components/controls/colorpicker";
 
-describe("Components > Controls > ColorPicker", () => {
-    const testComponentName = "ui-colorpicker";
+const testComponentName = "colorpicker";
 
+describe(`components > controls > ${testComponentName}`, () => {
     beforeEach(() => {
         jasmine.prepareTestNode();
         ko.components.register(testComponentName, colorPicker);
@@ -16,7 +16,7 @@ describe("Components > Controls > ColorPicker", () => {
 
     it("sets the value to the background-color of the clicked item", done => {
         const testComponentParams = { value: ko.observable<string>() };
-        ko.utils.setHtml(jasmine.testNode, `<div data-bind="component: { name: 'ui-colorpicker', params: $data }"></div>`);
+        ko.utils.setHtml(jasmine.testNode, `<div data-bind="component: { name: '${testComponentName}', params: $data }"></div>`);
 
         // Since components are loaded asynchronously, it doesn't show up synchronously.
         ko.applyBindings(testComponentParams, jasmine.testNode);
