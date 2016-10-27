@@ -4,7 +4,7 @@
 import * as ko from "knockout";
 
 import "../../../src/utilities/jasmine";
-import * as colors from "../../../src/utilities/colors";
+import * as color from "../../../src/utilities/color";
 import colorPicker from "../../../src/components/controls/colorpicker";
 
 describe("Components > Controls > ColorPicker", () => {
@@ -30,7 +30,7 @@ describe("Components > Controls > ColorPicker", () => {
             for (let i = 0; i < itemList.length; ++i) {
                 const item = itemList[i];
                 ko.utils.triggerEvent(item, "click");
-                expect(colors.rgbToHex(item.style.backgroundColor)).toEqual(testComponentParams.value());
+                expect(color.rgbToHex(item.style.backgroundColor)).toEqual(testComponentParams.value());
             }
             done();
         });
