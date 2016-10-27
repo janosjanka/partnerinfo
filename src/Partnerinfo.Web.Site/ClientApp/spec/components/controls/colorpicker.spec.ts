@@ -4,6 +4,7 @@
 import * as $ from "jquery";
 import * as ko from "knockout";
 
+import "../../extensions";
 import colorPicker from "../../../src/components/controls/colorpicker";
 
 describe("Components > Controls > ColorPicker", () => {
@@ -21,8 +22,10 @@ describe("Components > Controls > ColorPicker", () => {
         jasmine.clock().uninstall();
     });
 
-    it("throws if the selected value is not white (#ffffff)", () => {
+    it("throws if the selected value is not white", () => {
         ko.utils.setHtml(jasmine.testNode, `<div data-bind="component: { name: 'ui-colorpicker', params: { value: '#ffffff' } }"></div>`);
+        ko.applyBindings({ value: "#ffffff" }, jasmine.testNode);
+        expect(ko.unwrap(ko.dataFor(jasmine.testNode).value)).toEqual("#ffffff");
     });
 
 });

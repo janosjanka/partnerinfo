@@ -10,7 +10,7 @@ const specSearchPattern = `${commonConfig.appSpecPath}/**/*.spec.ts`;
 module.exports = function (config) {
     config.set({
         // Base path that will be used to resolve all patterns (eg. files, exclude).
-        basePath: ".",
+        basePath: "./",
 
         // Frameworks to use.
         // Available frameworks: https://npmjs.org/browse/keyword/karma-adapter
@@ -32,7 +32,7 @@ module.exports = function (config) {
         // 
         // Available options: https://www.npmjs.com/package/karma-typescript-preprocessor2
         typescriptPreprocessor: {
-            tsconfigPath: "./tsconfig.json",
+            tsconfigPath: "tsconfig.json",
 
             // Ignore all files that ends with .d.ts (this files will not be served).
             ignorePath: function (path) {
