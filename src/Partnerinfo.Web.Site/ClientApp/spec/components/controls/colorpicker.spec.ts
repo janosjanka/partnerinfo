@@ -27,7 +27,7 @@ describe("Components > Controls > ColorPicker", () => {
         ko.tasks.schedule(() => {
             const itemList = jasmine.testNode.querySelectorAll(".ui-colorpicker-item") as NodeListOf<HTMLElement>;
             for (let i = 0; i < itemList.length; ++i) {
-                expect(parseInt(itemList.item(i).style["backgroundColor"])).toEqual(parseInt(testComponentParams.value()));
+                expect(parseInt(itemList[i].style.backgroundColor)).toEqual(parseInt(testComponentParams.value()));
             }
             done();
         });
