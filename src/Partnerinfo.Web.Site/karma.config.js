@@ -4,7 +4,6 @@
 const commonConfig = require("./common.config");
 const webpackConfig = require("./webpack.config");
 
-const baseSearchPattern = `${commonConfig.appSpecPath}/*.ts`;
 const specSearchPattern = `${commonConfig.appSpecPath}/**/*.spec.ts`;
 
 module.exports = function (config) {
@@ -18,33 +17,13 @@ module.exports = function (config) {
 
         // List of files / patterns to load in the browser.
         files: [
-            { pattern: baseSearchPattern, watched: false, served: true, included: true },
             { pattern: specSearchPattern, watched: true, served: true, included: true }
         ],
 
         // Preprocess matching files before serving them to the browser.
         // Available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
-            [baseSearchPattern]: ["typescript", "sourcemap"],
             [specSearchPattern]: ["webpack"]
-        },
-
-        // 
-        // Available options: https://www.npmjs.com/package/karma-typescript-preprocessor2
-        typescriptPreprocessor: {
-            tsconfigPath: "tsconfig.json",
-
-            // Ignore all files that ends with .d.ts (this files will not be served).
-            ignorePath: function (path) {
-                return /\.d\.ts$/.test(path);
-            },
-
-            // Transforming the filenames you can pass more than one, they will be execute in order.
-            transformPath: [function (path) {
-                return path.replace(/\.ts$/, ".js");
-            }, function (path) {
-                return path.replace(/[\/\\]spec[\/\\]/i, "/");
-            }]
         },
 
         // Webpack configuration.

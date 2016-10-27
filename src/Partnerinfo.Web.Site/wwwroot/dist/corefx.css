@@ -6068,7 +6068,7 @@ button.close {
   padding: 0;
   list-style-type: none;
 }
-.ui-colorpicker > li {
+.ui-colorpicker-item {
   float: left;
   margin: 0;
   padding: 0;
@@ -6080,11 +6080,11 @@ button.close {
   -webkit-transition: transform ease-in 0.1s;
   transition: transform ease-in 0.1s;
 }
-.ui-colorpicker > li.notset {
+.ui-colorpicker-item.notset {
   border: 2px dashed #777;
 }
-.ui-colorpicker > li:hover,
-.ui-colorpicker > li.selected {
+.ui-colorpicker-item:hover,
+.ui-colorpicker-item.selected {
   border-color: #777;
   -moz-transform: scale(1.5);
   -ms-transform: scale(1.5);

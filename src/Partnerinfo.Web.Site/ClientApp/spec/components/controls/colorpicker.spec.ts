@@ -2,8 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
 import * as ko from "knockout";
-
-import "../../extensions";
+import "../../../src/jasmine/extensions";
 import colorPicker from "../../../src/components/controls/colorpicker";
 
 describe("Components > Controls > ColorPicker", () => {
@@ -21,18 +20,21 @@ describe("Components > Controls > ColorPicker", () => {
         jasmine.clock().uninstall();
     });
 
-    it("throws if the selected value is not white", () => {
+    it("sets the value to '#ffffff' at initialization", () => {
         ko.utils.setHtml(jasmine.testNode, `<div data-bind="component: { name: 'ui-colorpicker' }"></div>`);
         ko.applyBindings({ value: "#ffffff" }, jasmine.testNode);
+        jasmine.clock().tick(1);
         expect(ko.unwrap(ko.dataFor(jasmine.testNode).value)).toEqual("#ffffff");
     });
 
-    it("throws if the clicked value is not black", () => {
+    it("sets the value to the background-color of the clicked item", () => {
         ko.utils.setHtml(jasmine.testNode, `<div data-bind="component: { name: 'ui-colorpicker' }"></div>`);
         ko.applyBindings({ value: null }, jasmine.testNode);
-        jasmine.clock().tick(1);
-
-
+        const viewModel = ko.dataFor(jasmine.testNode);
+        
+        jasmine.testNodeJQ.filter(".ui-colorpicker-item").each((index, elem) => {
+            //const li = $(elem).trigger("click");
+        });
     });
 
 });

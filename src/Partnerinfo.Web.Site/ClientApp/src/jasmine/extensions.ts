@@ -3,7 +3,6 @@
 // https://github.com/knockout/knockout/blob/master/spec/lib/jasmine.extensions.js
 
 /// <reference path="extensions.d.ts" />
-
 import * as $ from "jquery";
 
 /**

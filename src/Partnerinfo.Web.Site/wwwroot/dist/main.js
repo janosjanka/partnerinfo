@@ -173,7 +173,7 @@
 /* 3 */
 /***/ function(module, exports) {
 
-	module.exports = corefx_205be74bc332080d26f5;
+	module.exports = corefx_6c6ba7a7c7a170567ce6;
 
 /***/ },
 /* 4 */
@@ -454,7 +454,7 @@
 /* 15 */
 /***/ function(module, exports) {
 
-	module.exports = "<ul class=\"ui-colorpicker\" data-bind=\"foreach: palette, click: onListClick\">\r\n    <li data-bind=\"css: { selected: $data === $parent.value(), notset: $data === null }, style: { backgroundColor: $data }\"></li>\r\n</ul>"
+	module.exports = "<div class=\"ui-colorpicker\" data-bind=\"foreach: palette, click: onListClick\">\r\n    <div class=\"ui-colorpicker-item\" data-bind=\"css: { selected: $data === $parent.value(), notset: $data === null }, style: { backgroundColor: $data }\"></div>\r\n</div>"
 
 /***/ },
 /* 16 */
