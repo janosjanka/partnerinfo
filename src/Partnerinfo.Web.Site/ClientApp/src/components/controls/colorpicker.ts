@@ -8,7 +8,7 @@ type RGBColor = KnockoutObservable<string> | string;
 interface ColorPickerParams {
     /** An [observable] color value to update. */
     value: RGBColor;
-    /** An array of RGB color values. */
+    /** An array of RGB color values. This is an optional field. */
     palette?: ArrayLike<string>;
 }
 
@@ -28,7 +28,7 @@ class ColorPicker {
     /** Raised when the user clicks on the list element. */
     onListClick(viewModel: ColorPicker, event: MouseEvent): boolean | void {
         if (ko.isWriteableObservable(viewModel.value)) {
-            // Event bubbling helps us to avoid attaching expensive event handlers
+            // Event bubbling helps us avoid attaching expensive event handlers
             // to each color item. You can simply get the current color using
             // ko.dataFor(...) passing the target (clicked <li>) element into it.
             viewModel.value(ko.dataFor(event.target));
