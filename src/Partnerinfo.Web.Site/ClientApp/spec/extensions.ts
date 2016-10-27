@@ -15,5 +15,5 @@ jasmine.prepareTestNode = (): void => {
     }
     jasmine.testNode = document.createElement("div");
     jasmine.testNode.id = "testNode";
-    document.body.appendChild(jasmine.testNode);
+    jasmine.testNodeJQ = $(document.body.appendChild(jasmine.testNode));
 }

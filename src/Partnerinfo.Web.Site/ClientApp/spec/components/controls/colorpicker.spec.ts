@@ -1,7 +1,6 @@
 ﻿// Copyright (c) János Janka. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
-import * as $ from "jquery";
 import * as ko from "knockout";
 
 import "../../extensions";
@@ -26,6 +25,14 @@ describe("Components > Controls > ColorPicker", () => {
         ko.utils.setHtml(jasmine.testNode, `<div data-bind="component: { name: 'ui-colorpicker' }"></div>`);
         ko.applyBindings({ value: "#ffffff" }, jasmine.testNode);
         expect(ko.unwrap(ko.dataFor(jasmine.testNode).value)).toEqual("#ffffff");
+    });
+
+    it("throws if the clicked value is not black", () => {
+        ko.utils.setHtml(jasmine.testNode, `<div data-bind="component: { name: 'ui-colorpicker' }"></div>`);
+        ko.applyBindings({ value: null }, jasmine.testNode);
+        jasmine.clock().tick(1);
+
+
     });
 
 });

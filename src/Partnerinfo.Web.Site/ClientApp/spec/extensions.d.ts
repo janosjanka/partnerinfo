@@ -7,6 +7,9 @@ declare namespace jasmine {
     /** A HTML DOM element that can be used for your tests. */
     let testNode: Element;
 
+    /** A jQuery object wrapping up the test node that can be used for your tests. */
+    let testNodeJQ: JQuery;
+
     /**
      * The bindings specs make frequent use of this utility function to set up
      * a clean new DOM node they can execute code against.
