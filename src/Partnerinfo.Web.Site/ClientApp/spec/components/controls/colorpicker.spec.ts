@@ -2,39 +2,38 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
 import * as ko from "knockout";
+
 import "../../../src/jasmine/extensions";
 import colorPicker from "../../../src/components/controls/colorpicker";
 
 describe("Components > Controls > ColorPicker", () => {
-
     const testComponentName = "ui-colorpicker";
 
     beforeEach(() => {
         jasmine.prepareTestNode();
-        jasmine.clock().install();
         ko.components.register(testComponentName, colorPicker);
+    });
+
+    it("sets the value to the background-color of the clicked item", done => {
+        const testComponentParams = { value: ko.observable<string>() };
+        ko.utils.setHtml(jasmine.testNode, `<div data-bind="component: { name: 'ui-colorpicker', params: $data }"></div>`);
+
+        // Since components are loaded asynchronously, it doesn't show up synchronously.
+        ko.applyBindings(testComponentParams, jasmine.testNode);
+
+        // It is used internally for Knockout components to maintain asynchronous behavior,
+        // and for scheduling deferred updates for observables.
+        // http://knockoutjs.com/documentation/microtasks.html
+        ko.tasks.schedule(() => {
+            const itemList = jasmine.testNode.querySelectorAll(".ui-colorpicker-item") as NodeListOf<HTMLElement>;
+            for (let i = 0; i < itemList.length; ++i) {
+                expect(parseInt(itemList.item(i).style["backgroundColor"])).toEqual(parseInt(testComponentParams.value()));
+            }
+            done();
+        });
     });
 
     afterEach(() => {
         ko.components.unregister(testComponentName);
-        jasmine.clock().uninstall();
     });
-
-    it("sets the value to '#ffffff' at initialization", () => {
-        ko.utils.setHtml(jasmine.testNode, `<div data-bind="component: { name: 'ui-colorpicker' }"></div>`);
-        ko.applyBindings({ value: "#ffffff" }, jasmine.testNode);
-        jasmine.clock().tick(1);
-        expect(ko.unwrap(ko.dataFor(jasmine.testNode).value)).toEqual("#ffffff");
-    });
-
-    it("sets the value to the background-color of the clicked item", () => {
-        ko.utils.setHtml(jasmine.testNode, `<div data-bind="component: { name: 'ui-colorpicker' }"></div>`);
-        ko.applyBindings({ value: null }, jasmine.testNode);
-        const viewModel = ko.dataFor(jasmine.testNode);
-        
-        jasmine.testNodeJQ.filter(".ui-colorpicker-item").each((index, elem) => {
-            //const li = $(elem).trigger("click");
-        });
-    });
-
 });
