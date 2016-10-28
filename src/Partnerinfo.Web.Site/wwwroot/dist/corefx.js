@@ -1,4 +1,4 @@
-var corefx_6c6ba7a7c7a170567ce6 =
+var corefx_8225f61297e71afd6e94 =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -34967,7 +34967,7 @@ var corefx_6c6ba7a7c7a170567ce6 =
 
 		var _router2 = _interopRequireDefault(_router);
 
-		__webpack_require__(14);
+		__webpack_require__(15);
 
 		function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -35005,15 +35005,15 @@ var corefx_6c6ba7a7c7a170567ce6 =
 
 		var _qs2 = _interopRequireDefault(_qs);
 
-		var _context = __webpack_require__(7);
+		var _context = __webpack_require__(8);
 
 		var _context2 = _interopRequireDefault(_context);
 
-		var _route = __webpack_require__(11);
+		var _route = __webpack_require__(12);
 
 		var _route2 = _interopRequireDefault(_route);
 
-		var _utils = __webpack_require__(9);
+		var _utils = __webpack_require__(10);
 
 		function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -35023,23 +35023,23 @@ var corefx_6c6ba7a7c7a170567ce6 =
 
 		var Router = function () {
 		  function Router(el, bindingCtx, _ref) {
-		    var routes = _ref.routes;
-		    var _ref$base = _ref.base;
-		    var base = _ref$base === undefined ? '' : _ref$base;
-		    var _ref$hashbang = _ref.hashbang;
-		    var hashbang = _ref$hashbang === undefined ? false : _ref$hashbang;
-		    var _ref$inTransition = _ref.inTransition;
-		    var inTransition = _ref$inTransition === undefined ? noop : _ref$inTransition;
-		    var _ref$outTransition = _ref.outTransition;
-		    var outTransition = _ref$outTransition === undefined ? noop : _ref$outTransition;
-		    var _ref$persistState = _ref.persistState;
-		    var persistState = _ref$persistState === undefined ? false : _ref$persistState;
-		    var _ref$persistQuery = _ref.persistQuery;
-		    var persistQuery = _ref$persistQuery === undefined ? false : _ref$persistQuery;
-		    var _ref$queryParser = _ref.queryParser;
-		    var queryParser = _ref$queryParser === undefined ? _qs2.default.parse : _ref$queryParser;
-		    var _ref$queryStringifier = _ref.queryStringifier;
-		    var queryStringifier = _ref$queryStringifier === undefined ? _qs2.default.stringify : _ref$queryStringifier;
+		    var routes = _ref.routes,
+		        _ref$base = _ref.base,
+		        base = _ref$base === undefined ? '' : _ref$base,
+		        _ref$hashbang = _ref.hashbang,
+		        hashbang = _ref$hashbang === undefined ? false : _ref$hashbang,
+		        _ref$inTransition = _ref.inTransition,
+		        inTransition = _ref$inTransition === undefined ? noop : _ref$inTransition,
+		        _ref$outTransition = _ref.outTransition,
+		        outTransition = _ref$outTransition === undefined ? noop : _ref$outTransition,
+		        _ref$persistState = _ref.persistState,
+		        persistState = _ref$persistState === undefined ? false : _ref$persistState,
+		        _ref$persistQuery = _ref.persistQuery,
+		        persistQuery = _ref$persistQuery === undefined ? false : _ref$persistQuery,
+		        _ref$queryParser = _ref.queryParser,
+		        queryParser = _ref$queryParser === undefined ? _qs2.default.parse : _ref$queryParser,
+		        _ref$queryStringifier = _ref.queryStringifier,
+		        queryStringifier = _ref$queryStringifier === undefined ? _qs2.default.stringify : _ref$queryStringifier;
 
 		    _classCallCheck(this, Router);
 
@@ -35167,12 +35167,14 @@ var corefx_6c6ba7a7c7a170567ce6 =
 
 		'use strict';
 
-		var Stringify = __webpack_require__(4);
-		var Parse = __webpack_require__(6);
+		var stringify = __webpack_require__(4);
+		var parse = __webpack_require__(7);
+		var formats = __webpack_require__(6);
 
 		module.exports = {
-		    stringify: Stringify,
-		    parse: Parse
+		    formats: formats,
+		    parse: parse,
+		    stringify: stringify
 		};
 
 
@@ -35182,7 +35184,8 @@ var corefx_6c6ba7a7c7a170567ce6 =
 
 		'use strict';
 
-		var Utils = __webpack_require__(5);
+		var utils = __webpack_require__(5);
+		var formats = __webpack_require__(6);
 
 		var arrayPrefixGenerators = {
 		    brackets: function brackets(prefix) {
@@ -35196,20 +35199,25 @@ var corefx_6c6ba7a7c7a170567ce6 =
 		    }
 		};
 
+		var toISO = Date.prototype.toISOString;
+
 		var defaults = {
 		    delimiter: '&',
-		    strictNullHandling: false,
-		    skipNulls: false,
 		    encode: true,
-		    encoder: Utils.encode
+		    encoder: utils.encode,
+		    serializeDate: function serializeDate(date) {
+		        return toISO.call(date);
+		    },
+		    skipNulls: false,
+		    strictNullHandling: false
 		};
 
-		var stringify = function stringify(object, prefix, generateArrayPrefix, strictNullHandling, skipNulls, encoder, filter, sort, allowDots) {
+		var stringify = function stringify(object, prefix, generateArrayPrefix, strictNullHandling, skipNulls, encoder, filter, sort, allowDots, serializeDate, formatter) {
 		    var obj = object;
 		    if (typeof filter === 'function') {
 		        obj = filter(prefix, obj);
 		    } else if (obj instanceof Date) {
-		        obj = obj.toISOString();
+		        obj = serializeDate(obj);
 		    } else if (obj === null) {
 		        if (strictNullHandling) {
 		            return encoder ? encoder(prefix) : prefix;
@@ -35218,11 +35226,11 @@ var corefx_6c6ba7a7c7a170567ce6 =
 		        obj = '';
 		    }
 
-		    if (typeof obj === 'string' || typeof obj === 'number' || typeof obj === 'boolean' || Utils.isBuffer(obj)) {
+		    if (typeof obj === 'string' || typeof obj === 'number' || typeof obj === 'boolean' || utils.isBuffer(obj)) {
 		        if (encoder) {
-		            return [encoder(prefix) + '=' + encoder(obj)];
+		            return [formatter(encoder(prefix)) + '=' + formatter(encoder(obj))];
 		        }
-		        return [prefix + '=' + String(obj)];
+		        return [formatter(prefix) + '=' + formatter(String(obj))];
 		    }
 
 		    var values = [];
@@ -35247,9 +35255,33 @@ var corefx_6c6ba7a7c7a170567ce6 =
 		        }
 
 		        if (Array.isArray(obj)) {
-		            values = values.concat(stringify(obj[key], generateArrayPrefix(prefix, key), generateArrayPrefix, strictNullHandling, skipNulls, encoder, filter, sort, allowDots));
+		            values = values.concat(stringify(
+		                obj[key],
+		                generateArrayPrefix(prefix, key),
+		                generateArrayPrefix,
+		                strictNullHandling,
+		                skipNulls,
+		                encoder,
+		                filter,
+		                sort,
+		                allowDots,
+		                serializeDate,
+		                formatter
+		            ));
 		        } else {
-		            values = values.concat(stringify(obj[key], prefix + (allowDots ? '.' + key : '[' + key + ']'), generateArrayPrefix, strictNullHandling, skipNulls, encoder, filter, sort, allowDots));
+		            values = values.concat(stringify(
+		                obj[key],
+		                prefix + (allowDots ? '.' + key : '[' + key + ']'),
+		                generateArrayPrefix,
+		                strictNullHandling,
+		                skipNulls,
+		                encoder,
+		                filter,
+		                sort,
+		                allowDots,
+		                serializeDate,
+		                formatter
+		            ));
 		        }
 		    }
 
@@ -35266,6 +35298,13 @@ var corefx_6c6ba7a7c7a170567ce6 =
 		    var encoder = encode ? (typeof options.encoder === 'function' ? options.encoder : defaults.encoder) : null;
 		    var sort = typeof options.sort === 'function' ? options.sort : null;
 		    var allowDots = typeof options.allowDots === 'undefined' ? false : options.allowDots;
+		    var serializeDate = typeof options.serializeDate === 'function' ? options.serializeDate : defaults.serializeDate;
+		    if (typeof options.format === 'undefined') {
+		        options.format = formats.default;
+		    } else if (!Object.prototype.hasOwnProperty.call(formats.formatters, options.format)) {
+		        throw new TypeError('Unknown format option provided.');
+		    }
+		    var formatter = formats.formatters[options.format];
 		    var objKeys;
 		    var filter;
 
@@ -35277,7 +35316,8 @@ var corefx_6c6ba7a7c7a170567ce6 =
 		        filter = options.filter;
 		        obj = filter('', obj);
 		    } else if (Array.isArray(options.filter)) {
-		        objKeys = filter = options.filter;
+		        filter = options.filter;
+		        objKeys = filter;
 		    }
 
 		    var keys = [];
@@ -35312,7 +35352,19 @@ var corefx_6c6ba7a7c7a170567ce6 =
 		            continue;
 		        }
 
-		        keys = keys.concat(stringify(obj[key], key, generateArrayPrefix, strictNullHandling, skipNulls, encoder, filter, sort, allowDots));
+		        keys = keys.concat(stringify(
+		            obj[key],
+		            key,
+		            generateArrayPrefix,
+		            strictNullHandling,
+		            skipNulls,
+		            encoder,
+		            filter,
+		            sort,
+		            allowDots,
+		            serializeDate,
+		            formatter
+		        ));
 		    }
 
 		    return keys.join(delimiter);
@@ -35325,17 +35377,19 @@ var corefx_6c6ba7a7c7a170567ce6 =
 
 		'use strict';
 
+		var has = Object.prototype.hasOwnProperty;
+
 		var hexTable = (function () {
-		    var array = new Array(256);
+		    var array = [];
 		    for (var i = 0; i < 256; ++i) {
-		        array[i] = '%' + ((i < 16 ? '0' : '') + i.toString(16)).toUpperCase();
+		        array.push('%' + ((i < 16 ? '0' : '') + i.toString(16)).toUpperCase());
 		    }
 
 		    return array;
 		}());
 
 		exports.arrayToObject = function (source, options) {
-		    var obj = options.plainObjects ? Object.create(null) : {};
+		    var obj = options && options.plainObjects ? Object.create(null) : {};
 		    for (var i = 0; i < source.length; ++i) {
 		        if (typeof source[i] !== 'undefined') {
 		            obj[i] = source[i];
@@ -35369,6 +35423,21 @@ var corefx_6c6ba7a7c7a170567ce6 =
 		    var mergeTarget = target;
 		    if (Array.isArray(target) && !Array.isArray(source)) {
 		        mergeTarget = exports.arrayToObject(target, options);
+		    }
+
+		    if (Array.isArray(target) && Array.isArray(source)) {
+		        source.forEach(function (item, i) {
+		            if (has.call(target, i)) {
+		                if (target[i] && typeof target[i] === 'object') {
+		                    target[i] = exports.merge(target[i], item, options);
+		                } else {
+		                    target.push(item);
+		                }
+		            } else {
+		                target[i] = item;
+		            }
+		        });
+		        return target;
 		    }
 
 		    return Object.keys(source).reduce(function (acc, key) {
@@ -35468,10 +35537,9 @@ var corefx_6c6ba7a7c7a170567ce6 =
 		    }
 
 		    var keys = Object.keys(obj);
-		    for (var j = 0; j < keys.length; ++j) {
-		        var key = keys[j];
+		    keys.forEach(function (key) {
 		        obj[key] = exports.compact(obj[key], refs);
-		    }
+		    });
 
 		    return obj;
 		};
@@ -35491,24 +35559,48 @@ var corefx_6c6ba7a7c7a170567ce6 =
 
 	/***/ },
 	/* 6 */
+	/***/ function(module, exports) {
+
+		'use strict';
+
+		var replace = String.prototype.replace;
+		var percentTwenties = /%20/g;
+
+		module.exports = {
+		    'default': 'RFC3986',
+		    formatters: {
+		        RFC1738: function (value) {
+		            return replace.call(value, percentTwenties, '+');
+		        },
+		        RFC3986: function (value) {
+		            return value;
+		        }
+		    },
+		    RFC1738: 'RFC1738',
+		    RFC3986: 'RFC3986'
+		};
+
+
+	/***/ },
+	/* 7 */
 	/***/ function(module, exports, __webpack_require__) {
 
 		'use strict';
 
-		var Utils = __webpack_require__(5);
+		var utils = __webpack_require__(5);
 
 		var has = Object.prototype.hasOwnProperty;
 
 		var defaults = {
+		    allowDots: false,
+		    allowPrototypes: false,
+		    arrayLimit: 20,
+		    decoder: utils.decode,
 		    delimiter: '&',
 		    depth: 5,
-		    arrayLimit: 20,
 		    parameterLimit: 1000,
-		    strictNullHandling: false,
 		    plainObjects: false,
-		    allowPrototypes: false,
-		    allowDots: false,
-		    decoder: Utils.decode
+		    strictNullHandling: false
 		};
 
 		var parseValues = function parseValues(str, options) {
@@ -35630,7 +35722,7 @@ var corefx_6c6ba7a7c7a170567ce6 =
 		        throw new TypeError('Decoder has to be a function.');
 		    }
 
-		    options.delimiter = typeof options.delimiter === 'string' || Utils.isRegExp(options.delimiter) ? options.delimiter : defaults.delimiter;
+		    options.delimiter = typeof options.delimiter === 'string' || utils.isRegExp(options.delimiter) ? options.delimiter : defaults.delimiter;
 		    options.depth = typeof options.depth === 'number' ? options.depth : defaults.depth;
 		    options.arrayLimit = typeof options.arrayLimit === 'number' ? options.arrayLimit : defaults.arrayLimit;
 		    options.parseArrays = options.parseArrays !== false;
@@ -35654,15 +35746,15 @@ var corefx_6c6ba7a7c7a170567ce6 =
 		    for (var i = 0; i < keys.length; ++i) {
 		        var key = keys[i];
 		        var newObj = parseKeys(key, tempObj[key], options);
-		        obj = Utils.merge(obj, newObj, options);
+		        obj = utils.merge(obj, newObj, options);
 		    }
 
-		    return Utils.compact(obj);
+		    return utils.compact(obj);
 		};
 
 
 	/***/ },
-	/* 7 */
+	/* 8 */
 	/***/ function(module, exports, __webpack_require__) {
 
 		'use strict';
@@ -35683,11 +35775,11 @@ var corefx_6c6ba7a7c7a170567ce6 =
 
 		var _qs2 = _interopRequireDefault(_qs);
 
-		var _query = __webpack_require__(8);
+		var _query = __webpack_require__(9);
 
-		var _state = __webpack_require__(10);
+		var _state = __webpack_require__(11);
 
-		var _utils = __webpack_require__(9);
+		var _utils = __webpack_require__(10);
 
 		function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -35783,18 +35875,17 @@ var corefx_6c6ba7a7c7a170567ce6 =
 
 		      var fromCtx = this.toJS();
 
-		      var _route$parse = route.parse(url);
-
-		      var _route$parse2 = _slicedToArray(_route$parse, 6);
-
-		      var path = _route$parse2[0];
-		      var params = _route$parse2[1];
-		      var hash = _route$parse2[2];
-		      var pathname = _route$parse2[3];
-		      var querystring = _route$parse2[4];
-		      var childPath = _route$parse2[5];
+		      var _route$parse = route.parse(url),
+		          _route$parse2 = _slicedToArray(_route$parse, 6),
+		          path = _route$parse2[0],
+		          params = _route$parse2[1],
+		          hash = _route$parse2[2],
+		          pathname = _route$parse2[3],
+		          querystring = _route$parse2[4],
+		          childPath = _route$parse2[5];
 
 		      var samePage = this.pathname() === pathname;
+		      var sameRoute = this.route() === route;
 
 		      var shouldNavigatePromise = function () {
 		        if (samePage) {
@@ -35821,16 +35912,25 @@ var corefx_6c6ba7a7c7a170567ce6 =
 
 		        var paramsChanged = !(0, _utils.deepEquals)(params, _this2.prevParams);
 		        var queryChanged = query && !(0, _utils.deepEquals)(query, _this2.prevQuery);
+		        var paramsForcedUpdate = _this2.config._forceReloadOnParamChange && paramsChanged;
+		        var queryForcedUpdate = _this2.config._forceReloadOnQueryChange && queryChanged;
+		        var forceUpdate = paramsForcedUpdate || queryForcedUpdate;
 
 		        _this2.prevParams = params;
 		        if (query) {
 		          _this2.prevQuery = query;
 		        }
 
-		        if (!samePage && !firstRun || _this2.config._forceReloadOnParamChange && paramsChanged || _this2.config._forceReloadOnQueryChange && queryChanged) {
+		        if (!sameRoute || forceUpdate) {
+		          if (_this2.$child) {
+		            _this2.$child.destroy();
+		            delete _this2.$child;
+		          }
+		        }
+
+		        if (!samePage && !firstRun || forceUpdate) {
 		          _this2.isNavigating(true);
 		          _this2.reload();
-		          _this2._beforeNavigateCallbacks = [];
 		        }
 
 		        var canonicalPath = Context.getCanonicalPath(_this2.getBase().replace(/\/$/, ''), pathname, childPath, _this2.query.getFullQueryString(query, pathname), hash);
@@ -35870,16 +35970,14 @@ var corefx_6c6ba7a7c7a170567ce6 =
 		            delete toCtx.query;
 		            toCtx.route.runPipeline(toCtx).then(function () {
 		              if (fromCtx.route.component === toCtx.route.component) {
+		                (0, _utils.merge)(_this2, toCtx);
 		                if (_this2.config._forceReloadOnParamChange && paramsChanged || _this2.config._forceReloadOnQueryChange && queryChanged) {
 		                  var r = toCtx.route;
 		                  toCtx.route = { component: '__KO_ROUTER_EMPTY_COMPONENT__' };
 		                  _this2.config._forceReloadOnParamChange = false;
 		                  _this2.config._forceReloadOnQueryChange = false;
-		                  (0, _utils.extend)(_this2, toCtx);
 		                  _knockout2.default.tasks.runEarly();
 		                  _this2.route(r);
-		                } else {
-		                  (0, _utils.merge)(_this2, toCtx);
 		                }
 		              } else {
 		                _this2.config._forceReloadOnParamChange = false;
@@ -35977,11 +36075,7 @@ var corefx_6c6ba7a7c7a170567ce6 =
 		  }, {
 		    key: 'reload',
 		    value: function reload() {
-		      if (this.$child) {
-		        this.$child.destroy();
-		        delete this.$child;
-		      }
-
+		      this._beforeNavigateCallbacks = [];
 		      this.query.reload();
 		      this.state.reload();
 		    }
@@ -36052,7 +36146,7 @@ var corefx_6c6ba7a7c7a170567ce6 =
 		exports.default = Context;
 
 	/***/ },
-	/* 8 */
+	/* 9 */
 	/***/ function(module, exports, __webpack_require__) {
 
 		'use strict';
@@ -36069,7 +36163,7 @@ var corefx_6c6ba7a7c7a170567ce6 =
 
 		var _knockout2 = _interopRequireDefault(_knockout);
 
-		var _utils = __webpack_require__(9);
+		var _utils = __webpack_require__(10);
 
 		function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -36127,9 +36221,9 @@ var corefx_6c6ba7a7c7a170567ce6 =
 		              return defaultVal;
 		            },
 		            write: function write(v) {
-		              var _location = location;
-		              var pathname = _location.pathname;
-		              var hash = _location.hash;
+		              var _location = location,
+		                  pathname = _location.pathname,
+		                  hash = _location.hash;
 
 		              if ((0, _utils.deepEquals)(v, this.prev)) {
 		                return;
@@ -36309,7 +36403,7 @@ var corefx_6c6ba7a7c7a170567ce6 =
 		}
 
 	/***/ },
-	/* 9 */
+	/* 10 */
 	/***/ function(module, exports, __webpack_require__) {
 
 		'use strict';
@@ -36352,11 +36446,9 @@ var corefx_6c6ba7a7c7a170567ce6 =
 		      return resolve(true);
 		    }
 
-		    var _callbacks = _toArray(callbacks);
-
-		    var cb = _callbacks[0];
-
-		    var restCallbacks = _callbacks.slice(1);
+		    var _callbacks = _toArray(callbacks),
+		        cb = _callbacks[0],
+		        restCallbacks = _callbacks.slice(1);
 
 		    var recursiveResolve = function recursiveResolve() {
 		      var shouldUpdate = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
@@ -36602,7 +36694,7 @@ var corefx_6c6ba7a7c7a170567ce6 =
 		}
 
 	/***/ },
-	/* 10 */
+	/* 11 */
 	/***/ function(module, exports, __webpack_require__) {
 
 		'use strict';
@@ -36616,7 +36708,7 @@ var corefx_6c6ba7a7c7a170567ce6 =
 
 		var _knockout2 = _interopRequireDefault(_knockout);
 
-		var _utils = __webpack_require__(9);
+		var _utils = __webpack_require__(10);
 
 		function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -36674,7 +36766,7 @@ var corefx_6c6ba7a7c7a170567ce6 =
 		}
 
 	/***/ },
-	/* 11 */
+	/* 12 */
 	/***/ function(module, exports, __webpack_require__) {
 
 		'use strict';
@@ -36687,11 +36779,11 @@ var corefx_6c6ba7a7c7a170567ce6 =
 
 		var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-		var _pathToRegexp = __webpack_require__(12);
+		var _pathToRegexp = __webpack_require__(13);
 
 		var _pathToRegexp2 = _interopRequireDefault(_pathToRegexp);
 
-		var _utils = __webpack_require__(9);
+		var _utils = __webpack_require__(10);
 
 		function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -36748,12 +36840,11 @@ var corefx_6c6ba7a7c7a170567ce6 =
 
 		      var qsIndex = path.indexOf('?');
 
-		      var _ref = ~qsIndex ? path.split('?') : [path];
+		      var _ref = ~qsIndex ? path.split('?') : [path],
+		          _ref2 = _slicedToArray(_ref, 2),
+		          pathname = _ref2[0],
+		          querystring = _ref2[1]; // eslint-disable-line
 
-		      var _ref2 = _slicedToArray(_ref, 2);
-
-		      var pathname = _ref2[0];
-		      var querystring = _ref2[1]; // eslint-disable-line
 
 		      var matches = this._regexp.exec(decodeURIComponent(pathname));
 
@@ -36788,10 +36879,10 @@ var corefx_6c6ba7a7c7a170567ce6 =
 		exports.default = Route;
 
 	/***/ },
-	/* 12 */
+	/* 13 */
 	/***/ function(module, exports, __webpack_require__) {
 
-		var isarray = __webpack_require__(13)
+		var isarray = __webpack_require__(14)
 
 		/**
 		 * Expose `pathToRegexp`.
@@ -37219,7 +37310,7 @@ var corefx_6c6ba7a7c7a170567ce6 =
 
 
 	/***/ },
-	/* 13 */
+	/* 14 */
 	/***/ function(module, exports) {
 
 		module.exports = Array.isArray || function (arr) {
@@ -37228,7 +37319,7 @@ var corefx_6c6ba7a7c7a170567ce6 =
 
 
 	/***/ },
-	/* 14 */
+	/* 15 */
 	/***/ function(module, exports, __webpack_require__) {
 
 		'use strict';
@@ -37249,7 +37340,7 @@ var corefx_6c6ba7a7c7a170567ce6 =
 
 		var _qs2 = _interopRequireDefault(_qs);
 
-		var _utils = __webpack_require__(9);
+		var _utils = __webpack_require__(10);
 
 		function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -37271,12 +37362,10 @@ var corefx_6c6ba7a7c7a170567ce6 =
 		_knockout2.default.bindingHandlers.path.utils = { resolveHref: resolveHref };
 
 		function resolveHref(bindingCtx, _path, query) {
-		  var _parsePathBinding = parsePathBinding(bindingCtx, _path);
-
-		  var _parsePathBinding2 = _slicedToArray(_parsePathBinding, 2);
-
-		  var ctx = _parsePathBinding2[0];
-		  var path = _parsePathBinding2[1];
+		  var _parsePathBinding = parsePathBinding(bindingCtx, _path),
+		      _parsePathBinding2 = _slicedToArray(_parsePathBinding, 2),
+		      ctx = _parsePathBinding2[0],
+		      path = _parsePathBinding2[1];
 
 		  var querystring = query ? '?' + _qs2.default.stringify(_knockout2.default.toJS(query)) : '';
 
@@ -37306,12 +37395,10 @@ var corefx_6c6ba7a7c7a170567ce6 =
 		      return true;
 		    }
 
-		    var _parsePathBinding3 = parsePathBinding(bindingCtx, path);
-
-		    var _parsePathBinding4 = _slicedToArray(_parsePathBinding3, 2);
-
-		    var router = _parsePathBinding4[0];
-		    var route = _parsePathBinding4[1];
+		    var _parsePathBinding3 = parsePathBinding(bindingCtx, path),
+		        _parsePathBinding4 = _slicedToArray(_parsePathBinding3, 2),
+		        router = _parsePathBinding4[0],
+		        route = _parsePathBinding4[1];
 
 		    var handled = router._update(route, _knockout2.default.toJS(state), true, _knockout2.default.toJS(query), true);
 
@@ -37346,13 +37433,10 @@ var corefx_6c6ba7a7c7a170567ce6 =
 		}
 
 		function isActivePath(bindingCtx, _path) {
-		  var _parsePathBinding5 = parsePathBinding(bindingCtx, _path);
-
-		  var _parsePathBinding6 = _slicedToArray(_parsePathBinding5, 2);
-
-		  var ctx = _parsePathBinding6[0];
-		  var path = _parsePathBinding6[1];
-
+		  var _parsePathBinding5 = parsePathBinding(bindingCtx, _path),
+		      _parsePathBinding6 = _slicedToArray(_parsePathBinding5, 2),
+		      ctx = _parsePathBinding6[0],
+		      path = _parsePathBinding6[1];
 
 		  if (localPathMatches(ctx, path)) {
 		    while (ctx.$child) {

@@ -2,6 +2,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "allowJs": false,
+    "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
     "noFallthroughCasesInSwitch": true,

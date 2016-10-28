@@ -25,20 +25,20 @@ class LoginViewModel implements Validable, Serializable {
 
         this.email = ko.observable<string>(params.options && params.options.email)
             .extend({
-                displayName: "shared:account.login.email",
-                description: "shared:account.login.emailDescription",
+                displayName: "shared:identity.login.email",
+                description: "shared:identity.login.emailDescription",
                 required: {
                     message: "{0}",
-                    params: ko.i18n.t("shared:account.login.emailRequired")
+                    params: ko.i18n.t("shared:identity.login.emailRequired")
                 }
             });
         this.password = ko.observable<string>(params.options && params.options.password)
             .extend({
-                displayName: "shared:account.login.password",
-                description: "shared:account.login.passwordDescription",
+                displayName: "shared:identity.login.password",
+                description: "shared:identity.login.passwordDescription",
                 required: {
                     message: "{0}",
-                    params: ko.i18n.t("shared:account.login.passwordRequired")
+                    params: ko.i18n.t("shared:identity.login.passwordRequired")
                 }
             });
 

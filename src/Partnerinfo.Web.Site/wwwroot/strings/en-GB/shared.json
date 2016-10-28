@@ -1,5 +1,5 @@
 ﻿{
-  "account": {
+  "identity": {
     "login": {
       "email": "Email",
       "emailDescription": "Email",
