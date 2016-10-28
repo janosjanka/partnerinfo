@@ -52,10 +52,10 @@ module.exports = {
     ] : [
         // Plugins that apply in production builds only.
         new webpack.optimize.UglifyJsPlugin({
-            compress: { warnings: false },
             comments: false,
-            minimize: true,
-            mangle: true
+            compress: { warnings: false },
+            mangle: { except: ["$"] },
+            minimize: true
         })
     ])
 };
