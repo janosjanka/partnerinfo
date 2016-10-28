@@ -27,8 +27,8 @@ ko.components.loaders.unshift(webpackLoader);
 
 //
 // Register KO components.
-//   ui- => Standard UI components
-//   pi- => Application components
+//   ui- => standard ui components
+//   pi- => partnerinfo components
 //
 ko.components.register("ui-colorpicker", colorPicker);
 ko.components.register("ui-countdown", countdown);

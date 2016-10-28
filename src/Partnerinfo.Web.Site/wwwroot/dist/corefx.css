@@ -6111,6 +6111,27 @@ button.close {
   margin-right: 8px;
   width: 52px;
 }
+.ui-validation-errors {
+  overflow: hidden;
+  text-align: left;
+  color: #d14836;
+}
+.ui-validation-errors > ul {
+  padding: 0;
+  list-style-type: none;
+}
+.ui-validation-errors > ul > li {
+  line-height: 2em;
+}
+.ui-input-validation-error {
+  background-color: #d14836;
+}
+.ui-field-validation-error {
+  display: block;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: #d14836;
+}
 .theme-light {
   background-color: #fafafa;
   color: #3a3a3a;
@@ -6582,27 +6603,6 @@ fieldset[disabled] .btn-danger.active {
 }
 label {
   font-weight: normal;
-}
-.validation-errors {
-  overflow: hidden;
-  text-align: left;
-  color: #d14836;
-}
-.validation-errors > ul {
-  padding: 0;
-  list-style-type: none;
-}
-.validation-errors > ul > li {
-  line-height: 2em;
-}
-.input-validation-error {
-  background-color: #d14836;
-}
-.field-validation-error {
-  display: block;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  color: #d14836;
 }
 .navbar-main {
   background-color: #fff;
