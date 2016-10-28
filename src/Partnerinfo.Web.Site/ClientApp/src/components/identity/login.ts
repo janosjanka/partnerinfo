@@ -2,6 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
 import * as ko from "knockout";
+import * as kod from "../../decorators/knockout";
 import * as koValidation from "knockout.validation";
 import * as i18n from "i18next";
 
