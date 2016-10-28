@@ -17,15 +17,9 @@ ko.options.deferUpdates = true;
 // Initialize Knockout validation before binding data.
 // https://github.com/Knockout-Contrib/Knockout-Validation/wiki/Configuration
 koValidation.init({
-    registerExtenders: true,
-    errorClass: "validation-summary-errors",
-    errorElementClass: "input-validation-error",
-    errorMessageClass: "validation-summary-errors",
-    decorateInputElement: true,
-    messageTemplate: undefined,
-    messagesOnModified: true,
-    insertMessages: true,
-    parseInputAttributes: false
+    errorElementClass: "ui-validation-error-in", // class to decorate error element
+    errorMessageClass: "ui-validation-error",    // class to decorate error message 
+    decorateInputElement: true
 });
 
 // Load and register the <pi-app> component.
