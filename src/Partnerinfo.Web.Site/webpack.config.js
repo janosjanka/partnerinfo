@@ -45,8 +45,8 @@ module.exports = {
         webpackExtractCss,
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.optimize.UglifyJsPlugin({
-            compress: { warnings: false },
             comments: false,
+            compress: { warnings: false },
             mangle: { except: ["$"] },
             minimize: true
         })
