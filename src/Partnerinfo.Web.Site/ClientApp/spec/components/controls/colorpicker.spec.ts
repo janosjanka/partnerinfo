@@ -15,6 +15,10 @@ describe(`components > controls > ${testComponentName}`, () => {
         ko.components.register(testComponentName, colorPicker);
     });
 
+    afterEach(() => {
+        ko.components.unregister(testComponentName);
+    });
+
     it("should be initialized with an observable value '#ffffff'", done => {
         const testComponentParams = { value: ko.observable<string>("#ffffff") };
 
@@ -33,7 +37,6 @@ describe(`components > controls > ${testComponentName}`, () => {
 
     it("sets the value to the background-color of the clicked item", done => {
         const testComponentParams = { value: ko.observable<string>() };
-        jasmine.testNode.innerHTML = `<div data-bind="component: { name: '${testComponentName}', params: $data }"></div>`;
 
         // Since components are loaded asynchronously, it doesn't show up synchronously.
         ko.applyBindings(testComponentParams, jasmine.testNode);
@@ -48,9 +51,5 @@ describe(`components > controls > ${testComponentName}`, () => {
             }
             done();
         });
-    });
-
-    afterEach(() => {
-        ko.components.unregister(testComponentName);
     });
 });
