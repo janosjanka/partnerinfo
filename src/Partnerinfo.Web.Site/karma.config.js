@@ -43,7 +43,7 @@ module.exports = function (config) {
         // https://github.com/karma-runner/karma-coverage
         coverageReporter: {
             type: "html",
-            dir: `${commonConfig.appSpecPath}/coverage/`
+            dir: `${commonConfig.appSpecPath}/.coverage/`
         },
 
         // Web server port.
