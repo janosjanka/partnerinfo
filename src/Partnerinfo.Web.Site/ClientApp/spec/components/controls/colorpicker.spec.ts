@@ -9,14 +9,13 @@ import colorPicker from "@pi/components/controls/colorpicker";
 const testComponentName = "colorpicker";
 
 describe(`components > controls > ${testComponentName}`, () => {
-    beforeEach(() => {
-        jasmine.prepareTestNode();
-        jasmine.testNode.innerHTML = `<div data-bind="component: { name: '${testComponentName}', params: $data }"></div>`;
+    beforeAll(() => {
         ko.components.register(testComponentName, colorPicker);
     });
 
-    afterEach(() => {
-        ko.components.unregister(testComponentName);
+    beforeEach(() => {
+        jasmine.prepareTestNode();
+        jasmine.testNode.innerHTML = `<div data-bind="component: { name: '${testComponentName}', params: $data }"></div>`;
     });
 
     it("should be initialized with an observable value '#ffffff'", done => {
@@ -51,5 +50,9 @@ describe(`components > controls > ${testComponentName}`, () => {
             }
             done();
         });
+    });
+
+    afterAll(() => {
+        ko.components.unregister(testComponentName);
     });
 });
