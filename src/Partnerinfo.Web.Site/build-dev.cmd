@@ -13,8 +13,4 @@ ECHO Building ...
 CALL npm run build:dev
 
 ECHO.
-ECHO Running tests ...
-CALL npm run test:single
-
-ECHO.
 PAUSE

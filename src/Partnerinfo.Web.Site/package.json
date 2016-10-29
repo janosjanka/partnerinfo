@@ -8,14 +8,15 @@
     "Partnerinfo"
   ],
   "scripts": {
-    "build:dev": "npm install && npm run build:dev:lib && npm run build:dev:app",
-    "build:dev:lib": "node node_modules/webpack/bin/webpack.js --config webpack.config.corefx.js",
+    "build": "npm run build:dist",
+    "build:dev": "npm install && npm run build:dev:lib && npm run build:dev:app && npm run test:single",
     "build:dev:app": "node node_modules/webpack/bin/webpack.js",
-    "build:dist": "npm install && npm run build:dist:lib && npm run build:dist:app",
-    "build:dist:lib": "node node_modules/webpack/bin/webpack.js --dist --config webpack.config.corefx.js",
+    "build:dev:lib": "node node_modules/webpack/bin/webpack.js --config webpack.config.corefx.js",
+    "build:dist": "npm install && npm run build:dist:lib && npm run build:dist:app && npm run test:single",
     "build:dist:app": "node node_modules/webpack/bin/webpack.js --dist",
-    "test:single": "karma start karma.config.js",
-    "test:integrated": "karma start --no-single-run karma.config.js"
+    "build:dist:lib": "node node_modules/webpack/bin/webpack.js --dist --config webpack.config.corefx.js",
+    "test:integrated": "karma start --no-single-run karma.config.js",
+    "test:single": "karma start karma.config.js"
   },
   "dependencies": {
     "bootstrap": "^3.3.7",
