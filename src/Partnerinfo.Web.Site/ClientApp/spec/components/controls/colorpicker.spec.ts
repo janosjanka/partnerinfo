@@ -2,9 +2,9 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
 import * as ko from "knockout";
-import "../../../src/utilities/jasmine";
-import * as color from "../../../src/utilities/color";
-import colorPicker from "../../../src/components/controls/colorpicker";
+import "@pi/utilities/jasmine";
+import * as color from "@pi/utilities/color";
+import colorPicker from "@pi/components/controls/colorpicker";
 
 const testComponentName = "colorpicker";
 

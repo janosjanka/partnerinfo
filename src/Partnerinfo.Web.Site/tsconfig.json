@@ -1,13 +1,19 @@
+// TypeScript Compiler Options
+// https://www.typescriptlang.org/docs/handbook/compiler-options.html
 {
   "compileOnSave": false,
   "compilerOptions": {
     "allowJs": false,
+    "baseUrl": ".",
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
     "noImplicitReturns": true,
+    "paths": {
+      "@pi/*": [ "ClientApp/src/*" ]
+    },
     "skipDefaultLibCheck": true,
     "target": "es5"
   },

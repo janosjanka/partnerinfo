@@ -17,6 +17,9 @@ module.exports = {
         main: [`./${config.appRoot}/main.ts`]
     },
     resolve: {
+        alias: {
+            "@pi": path.resolve(config.appSrcPath),
+        },
         extensions: ["", ".js", ".ts"]
     },
     module: {
