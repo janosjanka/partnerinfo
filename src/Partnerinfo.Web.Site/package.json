@@ -26,9 +26,11 @@
     "i18next-xhr-backend": "^1.2.0",
     "jquery": "^3.1.1",
     "knockout": "^3.4.0",
-    "knockout.validation": "^2.0.3",
     "knockout-bootstrap": "^0.2.0",
+    "knockout-dragdrop": "^2.5.1",
     "knockout-postbox": "^0.5.2",
+    "knockout.selection": "^0.9.3",
+    "knockout.validation": "^2.0.3",
     "ko-component-router": "^3.11.1",
     "one-com-knockout-projections": "^1.6.0"
   },
