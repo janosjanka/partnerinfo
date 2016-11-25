@@ -14,7 +14,7 @@ class CultureInfo {
         this.isActive = ko.pureComputed<boolean>(() => this.language === ko.i18n.language, this);
     }
 
-    dispose() {
+    dispose(): void {
         this.isActive.dispose();
     }
 }
@@ -25,11 +25,11 @@ class CultureListViewModel {
         new CultureInfo("hu-HU", "Hungarian")
     ];
 
-    changeLanguage(info: CultureInfo) {
+    changeLanguage(info: CultureInfo): void {
         ko.i18n.language = info.language;
     }
 
-    dispose() {
+    dispose(): void {
         this.languages.forEach(info => info.dispose());
     }
 }
