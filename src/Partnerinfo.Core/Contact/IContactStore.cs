@@ -62,6 +62,6 @@ namespace Partnerinfo.Contact
         /// <returns>
         /// A <see cref="Task{IList{ContactItem}}" /> that contains the contacts according to the specified filter parameters.
         /// </returns>
-        Task<IList<ContactItem>> FindAllAsync(ContactQueryOptions options, CancellationToken cancellationToken);
+        Task<IReadOnlyList<ContactItem>> FindAllAsync(ContactQueryOptions options, CancellationToken cancellationToken);
     }
 }

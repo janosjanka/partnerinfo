@@ -161,7 +161,7 @@ namespace Partnerinfo.Contact
         /// <returns>
         /// A <see cref="Task{IList{ContactItem}}" /> that contains the contacts according to the specified filter parameters.
         /// </returns>
-        public virtual Task<IList<ContactItem>> FindAllAsync(ContactQueryOptions options)
+        public virtual Task<IReadOnlyList<ContactItem>> FindAllAsync(ContactQueryOptions options)
         {
             ThrowIfDisposed();
             return Store.FindAllAsync(options, CancellationToken);
