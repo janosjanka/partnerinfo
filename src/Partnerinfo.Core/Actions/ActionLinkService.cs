@@ -13,7 +13,7 @@ namespace Partnerinfo.Actions
     /// Provides an implementation for action link operations.
     /// </summary>
     /// <seealso cref="Partnerinfo.Actions.IActionLinkService" />
-    public class ActionLinkService : IActionLinkService
+    public class ActionLinkService : IActionLinkEncoder, IActionLinkService
     {
         private const char RootPrefixChar = 'a';
         private const char ValueSeparator = '.';

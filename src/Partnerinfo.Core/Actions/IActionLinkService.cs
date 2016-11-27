@@ -11,25 +11,6 @@ namespace Partnerinfo.Actions
     public interface IActionLinkService
     {
         /// <summary>
-        /// Creates a new action link parameters that can be shared on the Web.
-        /// </summary>
-        /// <param name="actionLink">An object that configures the action link will be created.</param>
-        /// <returns>
-        /// The link.
-        /// </returns>
-        string UrlTokenEncode(ActionLink actionLink);
-
-        /// <summary>
-        /// Parses the given string parameters and returns with a <see cref="ActionLink" /> object.
-        /// </summary>
-        /// <param name="paramUri">The string that contains entity ID(s).</param>
-        /// <param name="customUri">The user-defined URI for the action link.</param>
-        /// <returns>
-        /// A <see cref="ActionLink" /> object.
-        /// </returns>
-        ActionLink UrlTokenDecode(string paramUri, string customUri = null);
-
-        /// <summary>
         /// Creates a new action link that can be shared on the Web.
         /// </summary>
         /// <param name="actionLink">An object that configures the action link will be created.</param>

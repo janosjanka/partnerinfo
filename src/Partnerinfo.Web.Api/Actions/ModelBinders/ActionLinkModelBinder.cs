@@ -13,15 +13,17 @@ namespace Partnerinfo.Actions.ModelBinders
     /// <seealso cref="Microsoft.AspNetCore.Mvc.ModelBinding.IModelBinder" />
     public sealed class ActionLinkModelBinder : IModelBinder
     {
-        private readonly IActionLinkService _service;
+        private readonly IActionLinkEncoder _encoder;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ActionLinkModelBinder" /> class.
         /// </summary>
-        /// <param name="service">The action link service.</param>
-        public ActionLinkModelBinder(IActionLinkService service)
+        /// <param name="encoder">The action link service.</param>
+        public ActionLinkModelBinder(IActionLinkEncoder encoder)
         {
-            _service = service;
+            Debug.Assert(encoder != null);
+
+            _encoder = encoder;
         }
 
         /// <summary>
@@ -49,7 +51,7 @@ namespace Partnerinfo.Actions.ModelBinders
             if (paramUri != null)
             {
                 string customUri = bindingContext.ValueProvider.GetValue("customUri").FirstValue;
-                bindingContext.Model = _service.UrlTokenDecode(paramUri, customUri);
+                bindingContext.Model = _encoder.UrlTokenDecode(paramUri, customUri);
             }
 
             return Task.CompletedTask;
