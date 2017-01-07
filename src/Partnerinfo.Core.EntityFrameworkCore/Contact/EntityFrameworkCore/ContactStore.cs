@@ -177,7 +177,7 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
         /// A <see cref="T:System.Threading.Tasks.Task`1" /> that contains the contacts according to the specified filter parameters.
         /// </returns>
         /// <exception cref="System.ArgumentNullException">options</exception>
-        public virtual async Task<IList<ContactItem>> FindAllAsync(ContactQueryOptions options, CancellationToken cancellationToken)
+        public virtual async Task<IReadOnlyList<ContactItem>> FindAllAsync(ContactQueryOptions options, CancellationToken cancellationToken)
         {
             ThrowIfDisposed();
             if (options == null)
@@ -192,7 +192,7 @@ namespace Partnerinfo.Contact.EntityFrameworkCore
                 .Skip(options.Offset)
                 .Take(options.Limit)
                 .Select(options.Fields)
-                .ToListAsync(cancellationToken);
+                .ToArrayAsync(cancellationToken);
         }
 
         /// <summary>
