@@ -1,5 +1,5 @@
 # Partnerinfo (www.partnerinfo.tv)
-*This repo contains .NET Core implementation of [Partnerinfo TV - Online Marketing System](https://github.com/janosjanka/partnerinfo.old) using modern API design practices and microservice architecture. Until C# 7.2 is released with supporting nullable references, reference semantics with value types, etc., this project is not under developement.*
+*This repo contains .NET Core implementation of [Partnerinfo TV - Online Marketing System](https://github.com/janosjanka/partnerinfo.old) using modern API design practices and microservice architecture.
 
 Partnerinfo is an Online Marketing & Content Management System supporting campaigns, contacts, newsletters, action links, workflows, analytics,
 client-side routing, modules aka components + full-featured module designer, dependency resolution, and REST APIs for each part of the system.
