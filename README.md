@@ -1,9 +1,13 @@
 # Partnerinfo (www.partnerinfo.tv)
 *This repo contains .NET Core implementation of [Partnerinfo TV - Online Marketing System](https://github.com/janosjanka/partnerinfo.old) using modern API design practices and microservice architecture.*
 
+
 You can test it using the accout:
+
 http://www.partnerinfo.tv/admin/projects
+
 User name: test@outlook.com
+
 Password: Test1234
 
 Partnerinfo is an Online Marketing & Content Management System supporting campaigns, contacts, newsletters, action links, workflows, analytics,
